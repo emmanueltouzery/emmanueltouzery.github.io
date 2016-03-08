@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+	      <title>Dabbling with Reflex FRP</title>
+	      <meta charset="utf-8">
+	      <meta http-equiv="x-ua-compatible" content="ie=edge">
+	      <meta name="viewport" content="width=device-width, initial-scale=1">
+	      <link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+    </head>
+    <body class="shower list">
+	      <header class="caption">
+		        <p>Shower Presentation Engine</p>
+	      </header>
+	      <section class="slide" id="cover">
+		        <h2>Dabbling with Reflex FRP</h2>
+            <center><small>(and ghcjs)</small></center>
+		        <p><a href="http://www.twitter.com/emmanueltouzery">@emmanueltouzery</a></p>
+		        <img src="pictures/Haskell.sh-600x600.png" alt="" class="cover">
+		        <!--
+			           To apply styles to the certain slides
+			           set slide ID to get needed elements
+			         -->
+		        <style>
+			       #cover h2 {
+				         margin:30px 0 0;
+				         color:#000;
+				         text-align:center;
+				         font-size:70px;
+				     }
+			       #cover p {
+				         margin:10px 0 0;
+				         text-align:center;
+				         color:#000;
+				         font-style:italic;
+				         font-size:20px;
+				     }
+				     #cover p a {
+					       color:#000;
+					   }
+             a.nodeco {
+                 color: transparent
+             }
+		        </style>
+	      </section>
+	      <section class="slide">
+		        <h2>Reflex basics</h2>
+		        <ol>
+			          <li>Based on FRP concepts</li>
+			          <li class="next">Not tied only to the browser</li>
+                <li class="next">Performance is a priority</li>
+                <li class="next">In use in production today (but API still in flux)</li>
+			          <li class="next">Reflex-dom Leverages <code>ghcjs</code></li>
+		        </ol>
+	      </section>
+        <section class="slide">
+            <h2>The alternatives</h2>
+            <ul>
+                <li>Elm</li>
+                <li>Purescript (Thermite/Halogen)</li>
+                <li>Fay/Haste</li>
+                <li>om/om.next</li>
+                <li>cycle.js (rxjs)</li>
+                <li>Haskell has a rich choice of FRP libraries</li>
+        </section>
+	      <section class="slide">
+		        <h2>The app I've built (port from fay/knockout)</h2>
+            <a href="https://github.com/emmanueltouzery/cigale-timesheet/"><img src="pictures/cigale-main.png"></a>
+	      </section>
+        <section class="slide">
+            <h2>GHCJS</h2>
+            <ul>
+                <li>A big step up from Fay</li>
+                <li>Basically the full GHC</li>
+                <li>Including Template Haskell</li>
+                <li>Basically full hackage (lens, aeson...)</li>
+                <li>And threading...</li>
+                <li>REPL on its way!</li>
+        </section>
+        <section class="slide">
+            <h2>FRP</h2>
+            <ul>
+                <li>Paul Hudak & Conal Elliott in 1997</li>
+                <li>Had performance issues at the beginning</li>
+                <li>Several schools: arrowized, first-order, higher-order...</li>
+            </ul>
+        </section>
+	      <section class="slide">
+		        <h2>Nice DSLs 1/2</h2>
+            using <code>clay</code>!
+            <iframe src="fonted-buffer.html" style="width:90%;height:70%"></iframe>
+	      </section>
+	      <section class="slide">
+		        <h2>Nice DSLs 2/2</h2>
+            <iframe src="fonted-buffer1.html" style="width:100%;height:80%"></iframe>
+	      </section>
+	      <section class="slide">
+		        <h2>Events!</h2>
+            <a href="https://twitter.com/andrestaltz/status/691896130133622785">source</a>
+            <video src="pictures/cycle-events.mp4" controls style="width: 80%; height: 80%">
+	      </section>
+	      <section class="slide">
+		        <h2>Constructs</h2>
+            <table>
+                <tr>
+                    <th scope="row" style="width: 450px">Event</th>
+                    <td>
+                        <svg width="100" height="100">
+                            <circle cx="50" cy="50" r="0" fill="#7EEC4A" stroke="rgb(208,231,235)" linejoin="round" stroke-width="1" fill-opacity="0.9" stroke-opacity="0.2">
+                                <animate id="anim" attributeType="xml" attributeName="r" from="0" to="50" dur="0.3s" begin="4;anim.end+4" />
+                            </circle>
+                            <text x="50" y="50" text-anchor="middle" font-size="0" dominant-baseline="central">
+                                1
+                                <animate id="anim1" attributeType="XML" attributeName="font-size" from="0" to="35" dur="0.3s" begin="4;anim1.end+12.6" />
+                            </text>
+                            <text x="50" y="50" text-anchor="middle" font-size="0" dominant-baseline="central">
+                                2
+                                <animate id="anim2" attributeType="XML" attributeName="font-size" from="0" to="35" dur="0.3s" begin="8.3;anim2.end+12.6" />
+                            </text>
+                            <text x="50" y="50" text-anchor="middle" font-size="0" dominant-baseline="central">
+                                3
+                                <animate id="anim3" attributeType="XML" attributeName="font-size" from="0" to="35" dur="0.3s" begin="12.6;anim3.end+12.6" />
+                            </text>
+                        </svg>
+                    </td>
+                </tr>
+            </table>
+            <table class="next">
+                <tr><th scope="row" style="width: 450px">Behavior</th>
+                    <td>
+                        <svg width="100" height="100">
+                            <circle cx="50" cy="50" r="50" fill="#7EEC4A" stroke="rgb(208,231,235)" linejoin="round" stroke-width="1" fill-opacity="0.9" stroke-opacity="0.2">
+                            </circle>
+                            <text x="50" y="50" text-anchor="middle" font-size="0" dominant-baseline="central">
+                                1
+                                <animate id="anim1" attributeType="XML" attributeName="font-size" from="35" to="35" dur="4s" begin="4;anim1.end+12.6" />
+                            </text>
+                            <text x="50" y="50" text-anchor="middle" font-size="0" dominant-baseline="central">
+                                2
+                                <animate id="anim2" attributeType="XML" attributeName="font-size" from="35" to="35" dur="4s" begin="8.3;anim2.end+12.6" />
+                            </text>
+                            <text x="50" y="50" text-anchor="middle" font-size="0" dominant-baseline="central">
+                                3
+                                <animate id="anim3" attributeType="XML" attributeName="font-size" from="35" to="35" dur="4s" begin="12.6;anim3.end+12.6" />
+                            </text>
+                        </svg>
+                    </td>
+                </tr>
+            </table>
+            <table class="next">
+                <tr>
+                    <th scope="row" style="width: 450px">Dynamic</th>
+                    <td>
+                        <svg width="100" height="100">
+                            <circle cx="50" cy="50" r="50" fill="#7EEC4A" stroke="rgb(208,231,235)" linejoin="round" stroke-width="1" fill-opacity="0.9" stroke-opacity="0.2">
+                                <animate id="anim" attributeType="xml" attributeName="r" from="0" to="50" dur="0.3s" begin="4;anim.end+4" />
+                            </circle>
+                            <text x="50" y="50" text-anchor="middle" font-size="0" dominant-baseline="central">
+                                1
+                                <animate id="anim1" attributeType="XML" attributeName="font-size" from="0" to="35" dur="0.3s" begin="4;anim1.end+12.6" />
+                                <animate attributeType="xml" attributeName="font-size" from="35" to="35" dur="3.7s" begin="anim1.end">
+                            </text>
+                            <text x="50" y="50" text-anchor="middle" font-size="0" dominant-baseline="central">
+                                2
+                                <animate id="anim2" attributeType="XML" attributeName="font-size" from="0" to="35" dur="0.3s" begin="8.3;anim2.end+12.6" />
+                                <animate attributeType="xml" attributeName="font-size" from="35" to="35" dur="3.7s" begin="anim2.end">
+                            </text>
+                            <text x="50" y="50" text-anchor="middle" font-size="0" dominant-baseline="central">
+                                3
+                                <animate id="anim3" attributeType="XML" attributeName="font-size" from="0" to="35" dur="0.3s" begin="12.6;anim3.end+12.6" />
+                                <animate attributeType="xml" attributeName="font-size" from="35" to="35" dur="3.7s" begin="anim3.end">
+                            </text>
+                        </svg>
+                    </td>
+                </tr>
+            </table>
+	      </section>
+        <section class="slide">
+            <p class="note" style="float:right"><small>thanks to <a href="http://rxmarbles.com">rxmarbles.com!</a></small></p>
+            <h2>Event operations</h2>
+            <a href="http://rxmarbles.com/#map" class="nodeco"><img src="pictures/rxmap.png"></a>
+            <code>Event</code> is a <code>Functor</code> -> <code>fmap (const 5) clickEvt</code>
+        </section>
+        <section class="slide">
+            <a href="http://rxmarbles.com/#merge" class="nodeco"><img src="pictures/rxmerge.png"></a>
+            <br/>leftmost :: <code>&hellip; ⇒ [Event t a] → Event t a</code><br/>
+            mergeWith :: <code>&hellip; ⇒ (a → a → a) → [Event t a] → Event t a</code>
+        </section>
+        <section class="slide">
+            <a href="http://rxmarbles.com/#filter" class="nodeco"><img src="pictures/rxfilter.png"></a>
+            <br/>ffilter :: <code>FunctorMaybe f => (a → Bool) → f a → f a </code>
+        </section>
+        <section class="slide" style="padding-right: 20px; padding-top: 50px;">
+            <h2>Dynamic operations</h2>
+            <a href="http://rxmarbles.com/#scan" class="nodeco"><img src="pictures/rxscan.png"></a>
+            <br/>foldDyn <code>&hellip; ⇒ (a → b → b) → b → Event t a → m (Dynamic t b)</code><br/>
+            Compare to: foldr :: <code>(a → b → b) → b → [a] → b</code><br/>
+            foldr (+) 5 [1,2,3,4] -> 15
+        </section>
+        <section class="slide">
+            <a href="http://rxmarbles.com/#distinctuntilchanged" class="nodeco"><img src="pictures/rxdistinctuntilchanged.png"></a>
+            <br/>nubDyn :: <code>&hellip; ⇒ Dynamic t a → Dynamic t a</code>
+        </section>
+        <!-- later?
+             <li>holdDyn</li>
+             <li>dyn</li>
+             <li>simpleList</li>
+           -->
+            </ul>
+        </section>
+	      <section class="slide">
+		        <h2>Events -- again</h2>
+            <a href="https://twitter.com/andrestaltz/status/691896130133622785">source</a>
+            <video src="pictures/cycle-events.mp4" controls style="width: 80%; height: 80%">
+	      </section>
+        <section class="slide">
+            <h2 style="position: absolute; bottom: 20px">The ELM basic pattern</h2>
+            <a class="cover nodeco" href="http://futurice.com/blog/elm-in-the-real-world"><img src="pictures/elm-pattern_s830x0_q80_noupscale.png"></a>
+        </section>
+	      <section class="slide" style="padding-top: 60px">
+		        <h2>Code walkthrough: the date picker</h2>
+            <a href="https://github.com/emmanueltouzery/cigale-timesheet/blob/58cd7276eee31b3f40cc4551175600cdef3ea062/src/WebGui/EventsView.hs#L126"><code>EventsView.hs</code></a>
+            <ul>
+                <li>addDatePicker</li>
+                <li>displayPickerBlock</li>
+            </ul>
+            <u>Prerequisites:</u><br/>
+                <code>RecursiveDo</code><br/>
+                <code class="next"> const                   :: a -> b -> a</code><br/>
+                <code class="next">const x _               =  x</code><br/>
+                <code class="next">fmap (const 6) [1,2,3,4] -> [6,6,6,6]</code><br/>
+                <code class="next">fmap (\_ -> 6) [1,2,3,4] -> [6,6,6,6]</code>
+	      </section>
+        <section class="slide">
+            <h2>Some more APIs</h2>
+            <ul>
+                <li><a href="https://hackage.haskell.org/package/reflex-dom-0.3/docs/Reflex-Dom-Widget-Basic.html#t:EventName">domEvent</a></li>
+                <li class="next">mapDyn :: <code>&hellip; ⇒ (a → b) → Dynamic t a → m (Dynamic t b)</code>
+                    <li class="next">forDyn :: <code>&hellip; ⇒ Dynamic t a → (a → b) → m (Dynamic t b)</code>
+            </ul>
+        </section>
+        <section class="slide">
+		        <h2>Code walkthrough: password field</h2>
+            <a href="https://github.com/emmanueltouzery/cigale-timesheet/blob/79d07897b57eaf239b432afc84edcb67e0b0d501/src/WebGui/Config.hs#L221"><code>Config.hs</code></a>
+            <ul>
+                <li>passwordEntry</li>
+            </ul>
+            <p>Note we bypassed <a href="https://hackage.haskell.org/package/reflex-dom-0.3/docs/Reflex-Dom-Widget-Input.html#t:TextInput">the input API</a>, and it's <a href="https://m.reddit.com/r/haskell/comments/3pqdln/large_applications_written_using_frp/cw8stq2" title='"Reflex allows widgets to handle this kind of state internally without needing to add it to some top-level application-wide state object"'>self-contained</a>.</p>
+        </section>
+        <section class="slide" style="padding-top: 45px">
+            <h2>Some more APIs</h2>
+            <a href="http://rxmarbles.com/#combineLatest" class="nodeco"><img src="pictures/rxcombineLatest.png"></a>
+                combineDyn :: <code>&hellip; ⇒ (a → b → c) → Dynamic t a → Dynamic t b → m (Dynamic t c)</code>
+        </section>
+        <section class="slide">
+            <ul>
+                <li>getPostBuild :: <code>&hellip; ⇒ m (Event t ())</code></li>
+                <li class="next">makeSimpleXhr/RemoteData (mine)<br/><code>&hellip; ⇒ String → Event t b → m (Dynamic t (RemoteData a))</code></li>
+            </ul>
+        </section>
+        <section class="slide">
+            <h2>Code walkthrough: the settings model/XHR</h2>
+            <a href="https://github.com/emmanueltouzery/cigale-timesheet/blob/79d07897b57eaf239b432afc84edcb67e0b0d501/src/WebGui/Config.hs#L53"><code>Config.hs</code></a>
+            <ul>
+                <li>configView</li>
+                <li>displaySectionItem</li>
+                <li>applyConfigChange</li>
+            </ul>
+            <p class="next">
+                Taking advantage of <code>combineDyn</code> -- we don't need <code>$q.all</code> and things like that.
+            </p>
+        </section>
+        <section class="slide">
+            <h2>Some more APIs</h2>
+            <ul>
+                <li class="next">constDyn :: <code>&hellip; ⇒ a → Dynamic t a</code></li>
+                <li class="next">holdDyn :: <code>&hellip; ⇒ a → Event t a → m (Dynamic t a)</code></li>
+            </ul>
+        </section>
+	      <section class="slide">
+		        <h2>Some difficulties... (1/2)</h2>
+            <ul>
+                <li class="next">Setting up the environment (and also stack vs nix)</li>
+                <li class="next">types can get hairy: <code>Dynamic t (m (Event t Day))</code> and things like that are pretty common</li>
+                <li class="next">The typeclass for the monad can make for confusing errors messages</li>
+                <li class="next"><code>recursive do</code>: the error could be anywhere in the <code>rec</code> block...</li>
+                <li class="next">Not really a problem: no DOM diffing: it's manual</li>
+            </ul>
+        </section>
+        <section class="slide">
+		        <h2>Some difficulties... (2/2)</h2>
+            <ul>
+                <li class="next">modals, render elsewhere in the DOM is not a solved problem</li>
+                <li class="next">Got some event loops/cycles</li>
+                <li class="next"><code>ghcjs</code>: shims -- builds then crashes at runtime! Had to patch the RTS.</li>
+                <li class="next"><code>ghcjs</code>: Running on 0.1, ~0.3 is dev..</li>
+                <li class="next">build time vs JS instant feedback (<code>ghcjsi</code> will help)</li>
+                <li class="next"><i>Height (-1000) is not greater than current height (0)</i></li>
+            </ul>
+	      </section>
+        <section class="slide">
+            <h2>What worked for me</h2>
+            <ul>
+                <li>FRP</li>
+                <li>View generated through simple functions (no template language)</li>
+                <li>Types!</li>
+        </section>
+        <section class="slide">
+            <h2>The ugly</h2>
+            <blockquote><p lang="en" dir="ltr">My SPA GHCJS/Reflex app is 18MB (all in).  That&#39;s a pretty hefty page load. (I wasn&#39;t successful with first run of closure-compiler either)</p>&mdash; Tim Dysinger (@dysinger) <a href="https://twitter.com/dysinger/status/703389082924134400">February 27, 2016</a></blockquote>
+            <script async src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <p class="note" style="margin-top: 50px">... and inline CSS...</p>
+        </section>
+        <section class="slide">
+            <h2>Getting started</h2>
+            <ul>
+                <li>Ryan Trinkle's presentation (<a href="https://www.youtube.com/watch?v=mYvkcskJbc4">Part 1</a>, <a href="https://www.youtube.com/watch?v=3qfc9XFVo2c">Part 2</a>, <a href="https://obsidian.systems/reflex-nyhug/">Slides</a>)</li>
+                <li><a href="https://github.com/reflex-frp/reflex-todomvc">reflex-todomvc</a></li>
+                <li><a href="https://github.com/reflex-frp/reflex-platform">reflex-platform</a> or <a href="https://github.com/luigy/try-stack-reflex">try-stack-reflex</a></li>
+                <li>irc.freenode.net #reflex-frp</li>
+                <li><a href="https://www.reddit.com/r/reflexfrp">/r/reflexfrp</a></li>
+                <li>lots of <a href="http://elm-lang.org/">Elm</a>, <a href="http://cycle.js.org/">cyclejs</a> material</li>
+            </ul>
+        </section>
+	      <!--
+		         To hide progress bar from entire presentation
+		         just remove “progress” element.
+		       -->
+	      <div class="progress"></div>
+	      <script src="shower/shower.min.js"></script>
+	      <!-- Copyright © 2015 Yours Truly, Famous Inc. -->
+	      <!-- Photos by John Carey, fiftyfootshadows.net -->
+    </body>
+</html>
