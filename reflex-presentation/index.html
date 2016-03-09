@@ -48,7 +48,7 @@
 			          <li>Based on FRP concepts</li>
 			          <li class="next">Not tied only to the browser</li>
                 <li class="next">Performance is a priority</li>
-                <li class="next">In use in production today (but API still in flux)</li>
+                <li class="next">In use in production today</li>
 			          <li class="next">Reflex-dom Leverages <code>ghcjs</code></li>
 		        </ol>
 	      </section>
@@ -240,7 +240,7 @@
         </section>
         <section class="slide">
 		        <h2>Code walkthrough: password field</h2>
-            <a href="https://github.com/emmanueltouzery/cigale-timesheet/blob/79d07897b57eaf239b432afc84edcb67e0b0d501/src/WebGui/Config.hs#L221"><code>Config.hs</code></a>
+            <a href="https://github.com/emmanueltouzery/cigale-timesheet/blob/cf763f40c1101a26884382c91ddcb78008b49522/src/WebGui/Config.hs#L221"><code>Config.hs</code></a>
             <ul>
                 <li>passwordEntry</li>
             </ul>
@@ -259,15 +259,20 @@
         </section>
         <section class="slide">
             <h2>Code walkthrough: the settings model/XHR</h2>
-            <a href="https://github.com/emmanueltouzery/cigale-timesheet/blob/79d07897b57eaf239b432afc84edcb67e0b0d501/src/WebGui/Config.hs#L53"><code>Config.hs</code></a>
+            <a href="https://github.com/emmanueltouzery/cigale-timesheet/blob/cf763f40c1101a26884382c91ddcb78008b49522/src/WebGui/Config.hs#L53"><code>Config.hs</code></a>
             <ul>
                 <li>configView</li>
                 <li>displaySectionItem</li>
                 <li>applyConfigChange</li>
             </ul>
-            <p class="next">
+            <ul>
+            <li class="next">
                 Taking advantage of <code>combineDyn</code> -- we don't need <code>$q.all</code> and things like that.
-            </p>
+            </li>
+            <li class="next">
+                addEditButton: We filter the XHR response event for success to close the modal & refresh -- for error to display error messages.
+            </li>
+            </ul>
         </section>
         <section class="slide">
             <h2>Some more APIs</h2>
