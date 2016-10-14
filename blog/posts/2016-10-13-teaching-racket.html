@@ -29,14 +29,16 @@
 </div>
 
 <p>As a professionnal software developer, and with my older daughter Lara being 11 years old, and the second one Kristina 8, I figured it made sense to spend some time trying to introduce them to programming. My father introduced me to it at a slightly later age, but still relatively early (it was some BASIC dialect at the time).</p>
-<p>After some research I decided to eschew the usual choice of <a href="https://en.wikipedia.org/wiki/Scratch_(programming_language)">Scratch</a> because I thought it too imperative, not emphasizing enough programming as composition of smaller pieces, and not being something you can easily grow from to more classical programming languages. I may have been wrong on this, I confess that I didn’t spend as much time researching <code>scratch</code> as I should have.</p>
-<p>Instead I bought the <a href="http://www.realmofracket.com/">Realm of Racket</a> book, which was a great source of inspiration. The racket language, as a <code>scheme</code> dialect (itself a <code>lisp</code> dialect), seems like a great fit for teaching children:</p>
+<p>After some research I decided to eschew the usual choice of <a href="https://en.wikipedia.org/wiki/Scratch_(programming_language)">Scratch</a> because I thought it too imperative, not emphasizing enough programming as composition of smaller pieces, and not being something you can easily grow from to more classical programming languages. I may have been wrong on this, I confess that I didn’t spend as much time researching <code>Scratch</code> as I should have.</p>
+<p>I’ve spent some time considering which language to use, but it was a true coincidence that I was listening one day to the Functional Geekery podcast <a href="https://www.functionalgeekery.com/episode-38-dr-conrad-barski/">interview of Conrad Barski</a>, where he mentioned his <a href="http://landoflisp.com/">Land of Lisp</a> book, and its <a href="http://www.realmofracket.com/">Realm of Racket</a> sequel. I’ve had the wish to learn a <code>lisp</code> for some time, and I’m also biased towards more functional languages and approaches (FP). So I bought the book, which was a great source of inspiration. I also ordered a Scratch book at the same time, but I actually never opened it, because it became quickly clear to me that racket was going to be the one.</p>
+<p>The racket language, as a <code>scheme</code> dialect (itself a <code>lisp</code> dialect), seems like a great fit for teaching children:</p>
 <ul>
 <li>very little syntax</li>
-<li>no keywords, translate-able (see lower)</li>
+<li>no keywords, translate-able (see below)</li>
 <li>very good libraries and material for teaching, like <a href="http://www.htdp.org/">HtDP</a></li>
-<li>a REPL and the DrRacket GUI</li>
+<li>a REPL and the DrRacket IDE</li>
 </ul>
+<p>In addition the <code>Realm of Racket</code> book is built around the idea of building increasingly complex games to introduce children to programming, which I thought was a great approach.</p>
 <p>For older children with some experience in mathematics, I would actually consider <code>haskell</code>, but at this age I think <code>racket</code> is a great option.</p>
 <p>We worked through weekly ~1h sessions through the summer, with little or no material prepared ahead of time. Most of the time I would write the skeleton of the code and ask them to modify it to achieve the function. Children were not independently writing code from scratch. Due to that, it’s a question how much programming they actually learned. We did work on their geometry skills when working on the game, at the very least.</p>
 <p>I don’t claim to have achieved anything better than if we had went with <code>scratch</code>. Maybe it would have been a better choice in the end. I don’t know scratch enough to make a judgment on that.</p>
@@ -91,10 +93,10 @@
 <span class="dv">62</span>
 <span class="kw">&gt;</span> (smaller)
 <span class="dv">56</span></code></pre></div>
-<p>The hardest thing here was explaining the binary search algorithm. But they got it, it’s pretty intuitive in the context of guessing a number.</p>
+<p>The hardest thing here was explaining the binary search algorithm. But they got it, it’s pretty intuitive in the context of guessing a number. They quickly understood that picking the number in the middle of the interval would get the result faster, although of course their first plan was to try 1, then 2, and so on.</p>
 <p>Regarding the implementation, while I’m not a great fan of the mutation, it’s pretty concise, and the game was a great success with the kids. We proceeded to expand it, changing the range of numbers, and also detecting when we knew we won (when upper is equal to lower) – an idea of the kids.</p>
 <p>At that point it was mostly me changing the application itself, but I would ask the children what part of the program should be changed to achieve the new feature, and what exactly would they change. We would try every suggestion from the children, including those that were obviously not going to work, so that they could see the effects of the changes by themselves. I think that was an important aspect, that they could grasp this sense of interactivity and control.</p>
-<p>Then I would slowly have them make the changes themselves and try them up.</p>
+<p>Then I would slowly have them make the changes themselves and try them out.</p>
 <h1 id="graphics">Graphics</h1>
 <p>One of the articles that inspired me preparing the plan for the graphics was <a href="https://cdsmith.wordpress.com/2016/05/22/codeworlds-big-decisions/">that one about the CodeWorld teaching language</a>, and in particular this paragraph:</p>
 <blockquote>
@@ -119,7 +121,7 @@
 <p class="caption">Our hero</p>
 </div>
 <p>To draw our snowman, I prepared the code to draw the background rectangle and the lower circle, then asked the children to modify the program to draw the second circle in the right position and at the right size. Their success showed that they had at least some understanding of the program structure and of the geometry involved. Thank you <code>CodeWorld</code>!</p>
-<p>Also thumbs up to DrRacket for displaying also pictures in the REPL output!</p>
+<p>Also thumbs up to DrRacket for displaying pictures in the REPL output!</p>
 <h2 id="the-big-bang">The Big Bang</h2>
 <p>After drawing, we could move to the next step: animating! This is where the killer application for <code>racket</code> for teaching comes up: the <a href="https://docs.racket-lang.org/teachpack/2htdpuniverse.html#%28form._world._%28%28lib._2htdp%2Funiverse..rkt%29._big-bang%29%29">big-bang</a> function. Big bang, part of the “How to Design Programs” suite, guides the developer in organizing the application’s state in a single structure, then providing functions to evolve that state when the following events (or many other types of events) occur:</p>
 <ul>
@@ -128,7 +130,7 @@
 <li>endgame detection</li>
 </ul>
 <p>So all you need for a functional game is an initial state, a drawing function taking the state, and functions to transform the state when any of those events occur.</p>
-<p>The first obvious program we built was to have the snowman fall on the display. Our state is be a single integer: the y position of the snowman, and it increases with time. We also modify our existing <code>snowman</code> function to take as a parameter the vertical offset at which to draw.</p>
+<p>The first obvious program we built was to have the snowman fall on the display. Our state is a single integer: the y position of the snowman, and it increases with time. We also modify our existing <code>snowman</code> function to take as a parameter the vertical offset at which to draw.</p>
 <div class="sourceCode"><pre class="sourceCode scheme"><code class="sourceCode scheme">#lang racket
 
 (require 2htdp/image 2htdp/universe)
@@ -189,7 +191,8 @@
 <p>And so on. The <code>#:transparent</code> is pretty unfortunate, it’s required among others so that the contents of the struct are nicely displayed by the REPL. Originally I intended to have the children be a list, but in the end I backed off, didn’t want to already introduce the concept of a list right then, also because non-graphic programming was much less attractive to the kids at this point (a difficult balance, that.. you want to build on the basics but you have to keep them motivated at all times…).</p>
 <p>Anyway to introduce the new feature we had with structures, we expanded the program we had by having a 2D position for the snowman, X and Y, taking advantage of all the arrow keys.</p>
 <p>That lesson was pretty boring for the kids as the code porting was pretty mechanical (previously the state was simply the Y of the snowman, now we had to call <code>game-state-position-top</code> to extract it) and unfortunately I did most of it myself. But they had fun playing with the updated game afterwards and the eldest daughter could understand structs much better after that. It was very tough for the younger one though.</p>
-<p>During that lesson I also considered introducing racket pattern-matching, which would have helped making the code more concise. With pattern matching, you give the “shape” of the parameter the function expects, and you can deconstruct it to extract directly the field(s) you’re interested it in a new variable<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>.</p>
+<div class="note">
+<p>I also considered introducing pattern-matching, where you give the “shape” of the data to deconstruct it and extract the field(s) you’re interested in<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>.</p>
 <div class="sourceCode"><pre class="sourceCode scheme"><code class="sourceCode scheme"><span class="co">;; our game state-state struct has two fields: position top &amp; left</span>
 (struct game-state (position-top position-left) #:transparent)
 
@@ -198,11 +201,11 @@
   (<span class="kw">&gt;=</span> (game-state-position-top state) (<span class="kw">-</span> <span class="dv">300</span> <span class="dv">60</span>)))
 
 <span class="co">;; pattern matching</span>
-<span class="co">;; we extract the first field of the game-state and name the variable 'top'</span>
-<span class="co">;; we ignore the second field, mark it with an underscore</span>
+<span class="co">;; extract the first field of the game-state to the variable 'top'</span>
 (define/match* (end2? (game-state top _))
   (<span class="kw">&gt;=</span> top (<span class="kw">-</span> <span class="dv">300</span> <span class="dv">60</span>)))</code></pre></div>
-<p>But ultimately it was painfully clear that already the introduction of structs was well enough on its own without adding more new concepts, so I renounced it. That did make the rest of code more verbose, in the same way than what <a href="http://stackoverflow.com/questions/36228594"><code>Realm of Racket</code> is doing</a>, with many <code>define</code> calls, but it was the best compromise at that point.</p>
+<p>But already the introduction of structs was well enough without adding more concepts, so I renounced it. The code is more verbose, <a href="http://stackoverflow.com/questions/36228594">as in <code>Realm of Racket</code></a>, with many <code>define</code> calls, but it was the best compromise at that point.</p>
+</div>
 <h1 id="flappy-bird">Flappy bird</h1>
 <p>To implement flappy bird, we started by scrapping the left/right movement of the snowman, and add the drawing of pillars. Pillars are simply drawn through two rectangles. The girls did come up with the coordinates for the pillars although the geometry started being tough for the younger one.</p>
 <p>Also the oldest one gave us a good surprise when after the lesson she took the initiative to modify the program on her own to redecorate the game by adding many colors.</p>
