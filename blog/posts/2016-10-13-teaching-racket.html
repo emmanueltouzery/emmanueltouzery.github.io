@@ -146,9 +146,9 @@
      (place-image/align
       (circle <span class="dv">10</span> <span class="st">&quot;solid&quot;</span> <span class="st">&quot;white&quot;</span>) <span class="dv">250</span> position <span class="st">&quot;left&quot;</span> <span class="st">&quot;top&quot;</span> _)))
 
-(big-bang <span class="dv">0</span>
-          (on-tick add1) <span class="co">;; increase the Y offset with time</span>
-          (on-draw snowman))</code></pre></div>
+(big-bang <span class="dv">0</span>                  <span class="co">;; the initial state is the integer 0</span>
+          (on-tick add1)     <span class="co">;; increase the Y offset with time</span>
+          (on-draw snowman)) <span class="co">;; will be called with the state as parameter</span></code></pre></div>
 <p><img src="../images/2016-10-09-teaching-racket-snowman-anim.png" onclick="this.src = this.src.endsWith('gif') ? '../images/2016-10-09-teaching-racket-snowman-anim.png' : '../images/2016-10-09-teaching-racket-snowman-anim.gif'" /></p>
 <p>At first the children modified the snowman function to take the vertical offset (experimenting with several values until they got it right), then we plugged in the big-bang.</p>
 <p>I expected that the origin of the coordinate system being the top-left would be a problem, but it turned out to be no issue at all. And, in hindsight, why would it be? At that age, they were never exposed to any cartesian coordinate system!</p>
