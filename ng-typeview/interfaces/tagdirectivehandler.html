@@ -105,7 +105,7 @@
 					<div class="tsd-signature tsd-kind-icon">for<wbr>Tags<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/c1a4fd3/src/ng-directives.ts#L59">src/ng-directives.ts:59</a></li>
+							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/1bf657c/src/ng-directives.ts#L55">src/ng-directives.ts:55</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -124,13 +124,13 @@
 					<a name="handletag" class="tsd-anchor"></a>
 					<h3>handle<wbr>Tag</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">handle<wbr>Tag<span class="tsd-signature-symbol">(</span>tagName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, attribs<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span>, addScopeAccessors<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span>, registerVariable<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../globals.html#directiveresponse" class="tsd-signature-type">DirectiveResponse</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
+						<li class="tsd-signature tsd-kind-icon">handle<wbr>Tag<span class="tsd-signature-symbol">(</span>tagName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, attribs<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span>, codegenHelpers<span class="tsd-signature-symbol">: </span><a href="codegenhelpers.html" class="tsd-signature-type">CodegenHelpers</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../globals.html#directiveresponse" class="tsd-signature-type">DirectiveResponse</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/c1a4fd3/src/ng-directives.ts#L74">src/ng-directives.ts:74</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/1bf657c/src/ng-directives.ts#L66">src/ng-directives.ts:66</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -159,59 +159,11 @@
 									</ul>
 								</li>
 								<li>
-									<h5>addScopeAccessors: <span class="tsd-signature-type">function</span></h5>
+									<h5>codegenHelpers: <a href="codegenhelpers.html" class="tsd-signature-type">CodegenHelpers</a></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>Add scope accessors to a JS expression. For instance,
-											&quot;data.name&quot; will become &quot;$scope.data.name&quot; if the scope
-										has a field named &#39;data&#39;</p>
+										<p>Object containing helper functions
+										to assist with typescript code generation</p>
 									</div>
-									<ul class="tsd-parameters">
-										<li class="tsd-parameter-siganture">
-											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
-												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>js<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
-											</ul>
-											<ul class="tsd-descriptions">
-												<li class="tsd-description">
-													<h4 class="tsd-parameters-title">Parameters</h4>
-													<ul class="tsd-parameters">
-														<li>
-															<h5>js: <span class="tsd-signature-type">string</span></h5>
-														</li>
-													</ul>
-													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-												</li>
-											</ul>
-										</li>
-									</ul>
-								</li>
-								<li>
-									<h5>registerVariable: <span class="tsd-signature-type">function</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Generate a TS expression declaring a variable of
-											the type and value that you give. Will automatically call
-										<code>addScopeAccessors</code> on the value.</p>
-									</div>
-									<ul class="tsd-parameters">
-										<li class="tsd-parameter-siganture">
-											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
-												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, val<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
-											</ul>
-											<ul class="tsd-descriptions">
-												<li class="tsd-description">
-													<h4 class="tsd-parameters-title">Parameters</h4>
-													<ul class="tsd-parameters">
-														<li>
-															<h5>type: <span class="tsd-signature-type">string</span></h5>
-														</li>
-														<li>
-															<h5>val: <span class="tsd-signature-type">string</span></h5>
-														</li>
-													</ul>
-													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-												</li>
-											</ul>
-										</li>
-									</ul>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="../globals.html#directiveresponse" class="tsd-signature-type">DirectiveResponse</a>
@@ -240,6 +192,9 @@
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="attributedirectivehandler.html" class="tsd-kind-icon">Attribute<wbr>Directive<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="codegenhelpers.html" class="tsd-kind-icon">Codegen<wbr>Helpers</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="controllerviewconnector.html" class="tsd-kind-icon">Controller<wbr>View<wbr>Connector</a>

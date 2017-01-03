@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ProjectSettings | ng-typeview</title>
+	<title>CodegenHelpers | ng-typeview</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -52,10 +52,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="projectsettings.html">ProjectSettings</a>
+					<a href="codegenhelpers.html">CodegenHelpers</a>
 				</li>
 			</ul>
-			<h1>Interface ProjectSettings</h1>
+			<h1>Interface CodegenHelpers</h1>
 		</div>
 	</div>
 </header>
@@ -65,7 +65,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Configuration for a ng-typeview project.</p>
+						<p>Helper functions to assist with code generation.</p>
 					</div>
 				</div>
 			</section>
@@ -73,7 +73,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">ProjectSettings</span>
+						<span class="target">CodegenHelpers</span>
 					</li>
 				</ul>
 			</section>
@@ -84,13 +84,9 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="projectsettings.html#attributedirectives" class="tsd-kind-icon">attribute<wbr>Directives</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="projectsettings.html#blacklistedpaths" class="tsd-kind-icon">blacklisted<wbr>Paths</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="projectsettings.html#ctrlviewconnectors" class="tsd-kind-icon">ctrl<wbr>View<wbr>Connectors</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="projectsettings.html#extractrlviewconnections" class="tsd-kind-icon">extra<wbr>Ctrl<wbr>View<wbr>Connections</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="projectsettings.html#ngfilters" class="tsd-kind-icon">ng<wbr>Filters</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="projectsettings.html#path" class="tsd-kind-icon">path</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="projectsettings.html#tagdirectives" class="tsd-kind-icon">tag<wbr>Directives</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="codegenhelpers.html#addscopeaccessors" class="tsd-kind-icon">add<wbr>Scope<wbr>Accessors</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="codegenhelpers.html#getnewvariablename" class="tsd-kind-icon">get<wbr>New<wbr>Variable<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="codegenhelpers.html#registervariable" class="tsd-kind-icon">register<wbr>Variable</a></li>
 							</ul>
 						</section>
 					</div>
@@ -99,120 +95,136 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="attributedirectives" class="tsd-anchor"></a>
-					<h3>attribute<wbr>Directives</h3>
-					<div class="tsd-signature tsd-kind-icon">attribute<wbr>Directives<span class="tsd-signature-symbol">:</span> <a href="attributedirectivehandler.html" class="tsd-signature-type">AttributeDirectiveHandler</a><span class="tsd-signature-symbol">[]</span></div>
+					<a name="addscopeaccessors" class="tsd-anchor"></a>
+					<h3>add<wbr>Scope<wbr>Accessors</h3>
+					<div class="tsd-signature tsd-kind-icon">add<wbr>Scope<wbr>Accessors<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/1bf657c/src/ng-typeview.ts#L131">src/ng-typeview.ts:131</a></li>
+							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/1bf657c/src/view-ngexpression-parser.ts#L19">src/view-ngexpression-parser.ts:19</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>List of attribute-bound angular directives to handle during the analysis.
-								<a href="../globals.html#defaultattrdirectivehandlers">defaultAttrDirectiveHandlers</a> contains a default list; you can use
-							that, add to that list, or specify your own.</p>
+							<p>Add scope accessors to a JS expression. For instance,
+								&quot;data.name&quot; will become &quot;$scope.data.name&quot; if the scope
+							has a field named &#39;data&#39;</p>
 						</div>
+						<dl class="tsd-comment-tags">
+							<dt>param</dt>
+							<dd><p>the javascript from the angular view</p>
+							</dd>
+							<dt>returns</dt>
+							<dd><p>new source with the scope accessors added</p>
+							</dd>
+						</dl>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>js<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>js: <span class="tsd-signature-type">string</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="blacklistedpaths" class="tsd-anchor"></a>
-					<h3>blacklisted<wbr>Paths</h3>
-					<div class="tsd-signature tsd-kind-icon">blacklisted<wbr>Paths<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
+					<a name="getnewvariablename" class="tsd-anchor"></a>
+					<h3>get<wbr>New<wbr>Variable<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">get<wbr>New<wbr>Variable<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/1bf657c/src/ng-typeview.ts#L101">src/ng-typeview.ts:101</a></li>
+							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/1bf657c/src/view-ngexpression-parser.ts#L24">src/view-ngexpression-parser.ts:24</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Folders within the project to exclude from analysis
-								(for instance external JS libraries, the folder where
-							your typescript is compiled to javascript, and so on).</p>
+							<p>Get a new unique variable name</p>
 						</div>
+						<dl class="tsd-comment-tags">
+							<dt>returns</dt>
+							<dd><p>new unique variable name</p>
+							</dd>
+						</dl>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="ctrlviewconnectors" class="tsd-anchor"></a>
-					<h3>ctrl<wbr>View<wbr>Connectors</h3>
-					<div class="tsd-signature tsd-kind-icon">ctrl<wbr>View<wbr>Connectors<span class="tsd-signature-symbol">:</span> <a href="controllerviewconnector.html" class="tsd-signature-type">ControllerViewConnector</a><span class="tsd-signature-symbol">[]</span></div>
+					<a name="registervariable" class="tsd-anchor"></a>
+					<h3>register<wbr>Variable</h3>
+					<div class="tsd-signature tsd-kind-icon">register<wbr>Variable<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/1bf657c/src/ng-typeview.ts#L112">src/ng-typeview.ts:112</a></li>
+							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/1bf657c/src/view-ngexpression-parser.ts#L33">src/view-ngexpression-parser.ts:33</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>List of controller-view connectors to use.
-								<a href="../globals.html#defaultctrlviewconnectors">defaultCtrlViewConnectors</a> contains a default list; you can use
-							that, add to that list, or specify your own.</p>
+							<p>Generate a TS expression declaring a variable of
+								the type and value that you give. Will automatically call
+							<code>addScopeAccessors</code> on the value.</p>
 						</div>
+						<dl class="tsd-comment-tags">
+							<dt>param</dt>
+							<dd><p>typescript type for the variable</p>
+							</dd>
+							<dt>param</dt>
+							<dd><p>value for the variable</p>
+							</dd>
+							<dt>returns</dt>
+							<dd><p>typescript expression that registers the variable, as string.</p>
+							</dd>
+						</dl>
 					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="extractrlviewconnections" class="tsd-anchor"></a>
-					<h3>extra<wbr>Ctrl<wbr>View<wbr>Connections</h3>
-					<div class="tsd-signature tsd-kind-icon">extra<wbr>Ctrl<wbr>View<wbr>Connections<span class="tsd-signature-symbol">:</span> <a href="controllerviewinfo.html" class="tsd-signature-type">ControllerViewInfo</a><span class="tsd-signature-symbol">[]</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/1bf657c/src/ng-typeview.ts#L119">src/ng-typeview.ts:119</a></li>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, val<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>type: <span class="tsd-signature-type">string</span></h5>
+											</li>
+											<li>
+												<h5>val: <span class="tsd-signature-type">string</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+									</li>
+								</ul>
+							</li>
 						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Hardcoded controller/view connections that&#39;ll be added
-								to the ones which were autodetected through ctrlViewConnectors.
-								Useful in case it&#39;s too hard to parse some connections
-							from source.</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="ngfilters" class="tsd-anchor"></a>
-					<h3>ng<wbr>Filters</h3>
-					<div class="tsd-signature tsd-kind-icon">ng<wbr>Filters<span class="tsd-signature-symbol">:</span> <a href="../classes/ngfilter.html" class="tsd-signature-type">NgFilter</a><span class="tsd-signature-symbol">[]</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/1bf657c/src/ng-typeview.ts#L106">src/ng-typeview.ts:106</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>List of angular filters to handle during the analysis.
-							You can use <a href="../globals.html#defaultngfilters">defaultNgFilters</a>, add to that list, or specify your own.</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="path" class="tsd-anchor"></a>
-					<h3>path</h3>
-					<div class="tsd-signature tsd-kind-icon">path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/1bf657c/src/ng-typeview.ts#L95">src/ng-typeview.ts:95</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The path for the project on disk (root folder)</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="tagdirectives" class="tsd-anchor"></a>
-					<h3>tag<wbr>Directives</h3>
-					<div class="tsd-signature tsd-kind-icon">tag<wbr>Directives<span class="tsd-signature-symbol">:</span> <a href="tagdirectivehandler.html" class="tsd-signature-type">TagDirectiveHandler</a><span class="tsd-signature-symbol">[]</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/1bf657c/src/ng-typeview.ts#L125">src/ng-typeview.ts:125</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>List of tag-bound angular directives to handle during the analysis.
-								<a href="../globals.html#defaulttagdirectivehandlers">defaultTagDirectiveHandlers</a> contains a default list; you can use
-							that, add to that list, or specify your own.</p>
-						</div>
 					</div>
 				</section>
 			</section>
@@ -233,9 +245,24 @@
 					<li class=" tsd-kind-interface">
 						<a href="attributedirectivehandler.html" class="tsd-kind-icon">Attribute<wbr>Directive<wbr>Handler</a>
 					</li>
-					<li class=" tsd-kind-interface">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface">
 						<a href="codegenhelpers.html" class="tsd-kind-icon">Codegen<wbr>Helpers</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="codegenhelpers.html#addscopeaccessors" class="tsd-kind-icon">add<wbr>Scope<wbr>Accessors</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="codegenhelpers.html#getnewvariablename" class="tsd-kind-icon">get<wbr>New<wbr>Variable<wbr>Name</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="codegenhelpers.html#registervariable" class="tsd-kind-icon">register<wbr>Variable</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-interface">
 						<a href="controllerviewconnector.html" class="tsd-kind-icon">Controller<wbr>View<wbr>Connector</a>
 					</li>
@@ -248,36 +275,9 @@
 					<li class=" tsd-kind-interface">
 						<a href="ngfilterexpression.html" class="tsd-kind-icon">Ng<wbr>Filter<wbr>Expression</a>
 					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-interface">
+					<li class=" tsd-kind-interface">
 						<a href="projectsettings.html" class="tsd-kind-icon">Project<wbr>Settings</a>
-						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="projectsettings.html#attributedirectives" class="tsd-kind-icon">attribute<wbr>Directives</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="projectsettings.html#blacklistedpaths" class="tsd-kind-icon">blacklisted<wbr>Paths</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="projectsettings.html#ctrlviewconnectors" class="tsd-kind-icon">ctrl<wbr>View<wbr>Connectors</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="projectsettings.html#extractrlviewconnections" class="tsd-kind-icon">extra<wbr>Ctrl<wbr>View<wbr>Connections</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="projectsettings.html#ngfilters" class="tsd-kind-icon">ng<wbr>Filters</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="projectsettings.html#path" class="tsd-kind-icon">path</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="projectsettings.html#tagdirectives" class="tsd-kind-icon">tag<wbr>Directives</a>
-							</li>
-						</ul>
 					</li>
-				</ul>
-				<ul class="after-current">
 					<li class=" tsd-kind-interface">
 						<a href="tagdirectivehandler.html" class="tsd-kind-icon">Tag<wbr>Directive<wbr>Handler</a>
 					</li>

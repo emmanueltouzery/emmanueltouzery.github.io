@@ -61,14 +61,16 @@
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
 				<h1 id="ng-typeview">ng-typeview</h1>
+				<p><a href="https://www.npmjs.com/package/ng-typeview"><img src="https://img.shields.io/npm/v/ng-typeview.svg?style=flat-square" alt="NPM version"></a></p>
 				<h2 id="purpose">Purpose</h2>
 				<p>ng-typeview aims to enable type-checking of <code>angular1</code> views. Normally, angular1 views
 					are html files with special purpose markers (special tags &amp; annotations) which are
 					registered as angular directives and filters, which cooperate with the matching
 				controller(s) which are written in javascript.</p>
-				<p>It is possible to use <code>typescript</code> instead of javascript; in that case you get
-					type-checking for the controllers and the remaining client-side code, but still
-				no type-checking for the views, which are exercised only at runtime.</p>
+				<p>It is possible to use <code>typescript</code> instead of javascript for angular applications;
+					in that case you get type-checking for the controllers and the remaining
+					client-side code, but still no type-checking for the views, which are exercised
+				only at runtime.</p>
 				<p>ng-typeview allows to extract the code from the views in new &#39;viewtest&#39; typescript
 				files, which can then get type-checked against the controllers.</p>
 				<h2 id="operation-mode">Operation mode</h2>
@@ -77,25 +79,74 @@
 					to require special handling, which will be better managed through custom code than
 				options of an executable.</p>
 				<p>ng-typeview expects that in the controllers you define an interface for the scope:</p>
-				<pre><code><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Scope</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ng</span>.<span class="hljs-title">IScope</span> {</span>
-<span class="hljs-symbol">    modal:</span> {<span class="hljs-string">title:</span> string};
-<span class="hljs-symbol">    showTitle:</span> <span class="hljs-keyword">boolean</span>;
+				<pre><code class="lang-typescript"><span class="hljs-keyword">interface</span> Scope <span class="hljs-keyword">extends</span> ng.IScope {
+    modal: {title: <span class="hljs-built_in">string</span>};
+    showTitle: <span class="hljs-built_in">boolean</span>;
 }
-</code></pre><p>In the matching view, ng-typeview searches for expressions like <code>{{title}}</code>,
+</code></pre>
+				<p>In the matching view, ng-typeview searches for expressions like <code>{{title}}</code>,
 				or <code>ng-if=&#39;showTitle&#39;</code>, and similar.</p>
 				<p>Then it generates a new &#39;viewtest&#39; typescript file containing the scope definition,
 					and also expressions extracted from the view. A bit more complex expressions
 					such as <code>ng-repeat</code>, <code>ng-switch</code> are also supported. Filters such as
 					<code>myList | orderBy: &#39;name&#39;</code> as well. The generated typescript code is not meant
 				to be executed, only to be used for type-checking.</p>
-				<p>In addition you can also define your own directives and filters so they&#39;ll get
-				extracted from the views &amp; properly converted to typescript code for type-checking.</p>
-				<link to apidoc>
+				<p>In addition you can also let ng-typeview know about your own directives and
+					filters so they&#39;ll get extracted from the views &amp; properly converted to
+				typescript code for type-checking.</p>
+				<p>You can view an example of the operation by looking in the ng-typeview source, in the
+					<code>test/data</code> subfolder, there is a controller, a view, and the expected generated
+				typescript code, that can confirm whether the view type-checks or not.</p>
+				<h2 id="api-docs">API docs</h2>
+				<p>You can see the full API documentation <a href="http://emmanueltouzery.github.io/ng-typeview/globals.html">by clicking here.</a></p>
+				<p>The main entry point is the <a href="http://emmanueltouzery.github.io/ng-typeview/globals.html#processproject">processProject</a> function.
+					You must prepare a <a href="http://emmanueltouzery.github.io/ng-typeview/interfaces/projectsettings.html">ProjectSettings</a>
+					object and <code>processProject</code> will go through your source and generate the &#39;viewtest&#39;
+					files. Each field of <code>ProjectSettings</code> allows you to customize an aspect of the
+				integration with your angular1 application.</p>
+				<h2 id="getting-started">Getting started</h2>
+				<p>You need to create an application depending on ng-typeview. And basically you
+					just need to call <code>processProject</code>. Then ng-typeview will generate the &#39;testview&#39;
+					files in the folder of your application. Then try to compile your application.
+					The typescript compiler will warn you in case some code from the views doesn&#39;t
+					match code from the controllers.
+					That&#39;s good for a first run, but then you probably have to customize ng-typeview
+				for your application.</p>
+				<h2 id="customizations">Customizations</h2>
+				<p>ng-typeview uses the <a href="https://github.com/Microsoft/TypeScript/wiki/Using-the-Compiler-API">typescript compiler API</a>
+					to parse the javascript and typescript code, <a href="https://github.com/fb55/htmlparser2">htmlparser2</a>
+					to parse the views, and the <a href="https://github.com/jneen/parsimmon">parsimmon</a> parser
+				combinator library to parse angular expressions (such as &quot;for .. in .. track by ..&quot;).</p>
+				<h3 id="projectsettings-ctrlviewconnectors">ProjectSettings.ctrlViewConnectors</h3>
+				<p>To begin with, ng-typeview must be able to connect controllers and views.
+					It must find out that the controller <code>app/core/user-list-ctrl.ts</code> matches the view
+					<code>app/core/user-list-view.html</code>. ng-typeview makes no assumption on files layout
+					or naming conventions (especially since the controller-view connection may not
+					be 1:1).
+					By default ng-typeview can detect <code>$modal.open()</code> calls, which connect controllers and views,
+					and also module state declarations.
+					You can register new ways of connecting controllers and views, for instance if your
+				app wraps these calls through helper functions, preventing ng-typeview from spotting them.</p>
+				<p>Since this is typescript parsing, this part is tied to the
+				<a href="https://github.com/Microsoft/TypeScript/wiki/Using-the-Compiler-API">typescript compiler API</a>.</p>
+				<h3 id="projectsettings-ngfilters">ProjectSettings.ngFilters</h3>
+				<p>If you define your own angular filters, you can let ng-typeview know about them
+					and the parameters they expect through <code>ngFilters</code>. You just need to give a name
+				and parameter types.</p>
+				<h3 id="projectsettings-attributedirectives-tagdirectives">ProjectSettings.attributeDirectives &amp; tagDirectives</h3>
+				<p>You can also register your directives. There you must generate typescript code
+					(as string), used to check the type-safety of the expressions found in the views.
+				As input you get the contents of tags &amp; attributes from the view.</p>
 				<h2 id="caveats">Caveats</h2>
 				<ul>
-					<li>won&#39;t detect scopes with inheritance</li>
-					<li>imperfect parsing of expressions</li>
-					<li>incomplete mapping of standard directives &amp; filters</li>
+					<li>was tested only against two projects from a single company for now</li>
+					<li>won&#39;t detect scopes with inheritance (the <code>Scope</code> in the controller must inherit
+						from <code>ng.IScope</code>, if you use inheritance with your scopes, ng-typeview won&#39;t work,
+					for now)</li>
+					<li>incomplete mapping of standard directives &amp; filters (ng-typeview does not support
+					all of the syntaxes of <code>ng-repeat</code> for instance.. Pull requests welcome :-) )</li>
+					<li>probably incomplete in just about all the aspects, as angular is huge</li>
+					<li>angular1 only</li>
 				</ul>
 				<h2 id="commands">Commands</h2>
 				<pre><code><span class="hljs-built_in">npm</span> install
@@ -121,6 +172,9 @@
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/attributedirectivehandler.html" class="tsd-kind-icon">Attribute<wbr>Directive<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/codegenhelpers.html" class="tsd-kind-icon">Codegen<wbr>Helpers</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/controllerviewconnector.html" class="tsd-kind-icon">Controller<wbr>View<wbr>Connector</a>
