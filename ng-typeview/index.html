@@ -84,6 +84,7 @@
     showTitle: <span class="hljs-built_in">boolean</span>;
 }
 </code></pre>
+				<p>(ng-typeview searches for an interface named <code>Scope</code> in the controller)</p>
 				<p>In the matching view, ng-typeview searches for expressions like <code>{{title}}</code>,
 				or <code>ng-if=&#39;showTitle&#39;</code>, and similar.</p>
 				<p>Then it generates a new &#39;viewtest&#39; typescript file containing the scope definition,
@@ -139,10 +140,8 @@
 				As input you get the contents of tags &amp; attributes from the view.</p>
 				<h2 id="caveats">Caveats</h2>
 				<ul>
+					<li>the API is still changing very often</li>
 					<li>was tested only against two projects from a single company for now</li>
-					<li>won&#39;t detect scopes with inheritance (the <code>Scope</code> in the controller must inherit
-						from <code>ng.IScope</code>, if you use inheritance with your scopes, ng-typeview won&#39;t work,
-					for now)</li>
 					<li>incomplete mapping of standard directives &amp; filters (ng-typeview does not support
 					all of the syntaxes of <code>ng-repeat</code> for instance.. Pull requests welcome :-) )</li>
 					<li>probably incomplete in just about all the aspects, as angular is huge</li>
@@ -168,19 +167,22 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class">
+						<a href="classes/codegenhelper.html" class="tsd-kind-icon">Codegen<wbr>Helper</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="classes/ngfilter.html" class="tsd-kind-icon">Ng<wbr>Filter</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/attributedirectivehandler.html" class="tsd-kind-icon">Attribute<wbr>Directive<wbr>Handler</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/codegenhelpers.html" class="tsd-kind-icon">Codegen<wbr>Helpers</a>
-					</li>
-					<li class=" tsd-kind-interface">
 						<a href="interfaces/controllerviewconnector.html" class="tsd-kind-icon">Controller<wbr>View<wbr>Connector</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/controllerviewinfo.html" class="tsd-kind-icon">Controller<wbr>View<wbr>Info</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/directiveresponse.html" class="tsd-kind-icon">Directive<wbr>Response</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/ngfiltercall.html" class="tsd-kind-icon">Ng<wbr>Filter<wbr>Call</a>
@@ -195,7 +197,7 @@
 						<a href="interfaces/tagdirectivehandler.html" class="tsd-kind-icon">Tag<wbr>Directive<wbr>Handler</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
-						<a href="globals.html#directiveresponse" class="tsd-kind-icon">Directive<wbr>Response</a>
+						<a href="globals.html#ngscopeinfo" class="tsd-kind-icon">Ng<wbr>Scope<wbr>Info</a>
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#defaultattrdirectivehandlers" class="tsd-kind-icon">default<wbr>Attr<wbr>Directive<wbr>Handlers</a>

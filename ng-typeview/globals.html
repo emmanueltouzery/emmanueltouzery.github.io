@@ -66,6 +66,7 @@
 						<section class="tsd-index-section ">
 							<h3>Classes</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-class"><a href="classes/codegenhelper.html" class="tsd-kind-icon">Codegen<wbr>Helper</a></li>
 								<li class="tsd-kind-class"><a href="classes/ngfilter.html" class="tsd-kind-icon">Ng<wbr>Filter</a></li>
 							</ul>
 						</section>
@@ -73,9 +74,9 @@
 							<h3>Interfaces</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-interface"><a href="interfaces/attributedirectivehandler.html" class="tsd-kind-icon">Attribute<wbr>Directive<wbr>Handler</a></li>
-								<li class="tsd-kind-interface"><a href="interfaces/codegenhelpers.html" class="tsd-kind-icon">Codegen<wbr>Helpers</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/controllerviewconnector.html" class="tsd-kind-icon">Controller<wbr>View<wbr>Connector</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/controllerviewinfo.html" class="tsd-kind-icon">Controller<wbr>View<wbr>Info</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/directiveresponse.html" class="tsd-kind-icon">Directive<wbr>Response</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/ngfiltercall.html" class="tsd-kind-icon">Ng<wbr>Filter<wbr>Call</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/ngfilterexpression.html" class="tsd-kind-icon">Ng<wbr>Filter<wbr>Expression</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/projectsettings.html" class="tsd-kind-icon">Project<wbr>Settings</a></li>
@@ -85,7 +86,7 @@
 						<section class="tsd-index-section ">
 							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-type-alias"><a href="globals.html#directiveresponse" class="tsd-kind-icon">Directive<wbr>Response</a></li>
+								<li class="tsd-kind-type-alias"><a href="globals.html#ngscopeinfo" class="tsd-kind-icon">Ng<wbr>Scope<wbr>Info</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -113,22 +114,19 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Type aliases</h2>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias">
-					<a name="directiveresponse" class="tsd-anchor"></a>
-					<h3>Directive<wbr>Response</h3>
-					<div class="tsd-signature tsd-kind-icon">Directive<wbr>Response<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<a name="ngscopeinfo" class="tsd-anchor"></a>
+					<h3>Ng<wbr>Scope<wbr>Info</h3>
+					<div class="tsd-signature tsd-kind-icon">Ng<wbr>Scope<wbr>Info<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/1bf657c/src/ng-directives.ts#L17">src/ng-directives.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/bc96a55/src/view-ngexpression-parser.ts#L13">src/view-ngexpression-parser.ts:13</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>When handling an angular directive, you can generate TS source code for
-							type-safety testing. You can generate two things:</p>
-							<ol>
-								<li>Field <code>source</code>: code inserted right now</li>
-								<li>Field <code>closeSource</code>: code that&#39;ll be inserted when this tag gets closed.</li>
-							</ol>
+							<p>Scope info used by ng-typeview. Directive authors can
+								consider it an opaque type (type synonym on purpose
+							so typedoc doesn&#39;t document it).</p>
 						</div>
 					</div>
 					<div class="tsd-type-declaration">
@@ -146,7 +144,7 @@
 					<div class="tsd-signature tsd-kind-icon">default<wbr>Attr<wbr>Directive<wbr>Handlers<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/attributedirectivehandler.html" class="tsd-signature-type">AttributeDirectiveHandler</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;[boolAttrHandler, boolWithScopeAttrHandler,anyAttrHandler, stringAttrHandler, numberAttrHandler,ngBindAttrDirectiveHandler,ngRepeatAttrDirectiveHandler, ngOptions]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/1bf657c/src/ng-directives.ts#L324">src/ng-directives.ts:324</a></li>
+							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/bc96a55/src/ng-directives.ts#L345">src/ng-directives.ts:345</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -163,7 +161,7 @@
 					<div class="tsd-signature tsd-kind-icon">default<wbr>Ctrl<wbr>View<wbr>Connectors<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/controllerviewconnector.html" class="tsd-signature-type">ControllerViewConnector</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;[modalOpenViewConnector, moduleStateViewConnector]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/1bf657c/src/controller-parser.ts#L198">src/controller-parser.ts:198</a></li>
+							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/bc96a55/src/controller-parser.ts#L187">src/controller-parser.ts:187</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -181,7 +179,7 @@
 					<div class="tsd-signature tsd-kind-icon">default<wbr>NgFilters<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="classes/ngfilter.html" class="tsd-signature-type">NgFilter</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;[new NgFilter(&quot;translate&quot;, &quot;(key: string) &#x3D;&gt; string&quot;),new NgFilter(&quot;linky&quot;, &quot;(text:string, target: &#x27;_blank&#x27;|&#x27;_self&#x27;|&#x27;_parent&#x27;|&#x27;_top&#x27;) &#x3D;&gt; string&quot;),new NgFilter(&quot;orderBy&quot;, &quot;&lt;T, K extends keyof T&gt;(input:T[], field: K) &#x3D;&gt; T[]&quot;),new NgFilter(&quot;filter&quot;, &quot;&lt;T&gt;(input:T[], v: string | { [P in keyof T]?: T[P]; }) &#x3D;&gt; T[]&quot;)]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/1bf657c/src/ng-typeview.ts#L188">src/ng-typeview.ts:188</a></li>
+							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/bc96a55/src/ng-typeview.ts#L211">src/ng-typeview.ts:211</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -198,7 +196,7 @@
 					<div class="tsd-signature tsd-kind-icon">default<wbr>Tag<wbr>Directive<wbr>Handlers<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/tagdirectivehandler.html" class="tsd-signature-type">TagDirectiveHandler</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;[ngUiSelectDirectiveTagHandler, ngUiSelectChoicesTagHandler,ngSwitch, ngSwitchWhen]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/1bf657c/src/ng-directives.ts#L335">src/ng-directives.ts:335</a></li>
+							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/bc96a55/src/ng-directives.ts#L356">src/ng-directives.ts:356</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -216,13 +214,13 @@
 					<a name="filterexpressiontotypescript" class="tsd-anchor"></a>
 					<h3>filter<wbr>Expression<wbr>ToTypescript</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">filter<wbr>Expression<wbr>ToTypescript<span class="tsd-signature-symbol">(</span>expr<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, codegenHelpers<span class="tsd-signature-symbol">: </span><a href="interfaces/codegenhelpers.html" class="tsd-signature-type">CodegenHelpers</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+						<li class="tsd-signature tsd-kind-icon">filter<wbr>Expression<wbr>ToTypescript<span class="tsd-signature-symbol">(</span>expr<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, codegenHelpers<span class="tsd-signature-symbol">: </span><a href="classes/codegenhelper.html" class="tsd-signature-type">CodegenHelper</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/1bf657c/src/view-ngexpression-parser.ts#L165">src/view-ngexpression-parser.ts:165</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/bc96a55/src/view-ngexpression-parser.ts#L224">src/view-ngexpression-parser.ts:224</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -242,7 +240,7 @@
 									</div>
 								</li>
 								<li>
-									<h5>codegenHelpers: <a href="interfaces/codegenhelpers.html" class="tsd-signature-type">CodegenHelpers</a></h5>
+									<h5>codegenHelpers: <a href="classes/codegenhelper.html" class="tsd-signature-type">CodegenHelper</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Object which contains functions
 										to assist with typescript code generation.</p>
@@ -259,13 +257,13 @@
 					<a name="ngfilterexpressiontotypescriptembedded" class="tsd-anchor"></a>
 					<h3>ng<wbr>Filter<wbr>Expression<wbr>ToType<wbr>Script<wbr>Embedded</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">ng<wbr>Filter<wbr>Expression<wbr>ToType<wbr>Script<wbr>Embedded<span class="tsd-signature-symbol">(</span>ngFilterExpr<span class="tsd-signature-symbol">: </span><a href="interfaces/ngfilterexpression.html" class="tsd-signature-type">NgFilterExpression</a>, codegenHelpers<span class="tsd-signature-symbol">: </span><a href="interfaces/codegenhelpers.html" class="tsd-signature-type">CodegenHelpers</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+						<li class="tsd-signature tsd-kind-icon">ng<wbr>Filter<wbr>Expression<wbr>ToType<wbr>Script<wbr>Embedded<span class="tsd-signature-symbol">(</span>ngFilterExpr<span class="tsd-signature-symbol">: </span><a href="interfaces/ngfilterexpression.html" class="tsd-signature-type">NgFilterExpression</a>, codegenHelpers<span class="tsd-signature-symbol">: </span><a href="classes/codegenhelper.html" class="tsd-signature-type">CodegenHelper</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/1bf657c/src/view-ngexpression-parser.ts#L215">src/view-ngexpression-parser.ts:215</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/bc96a55/src/view-ngexpression-parser.ts#L274">src/view-ngexpression-parser.ts:274</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -291,7 +289,7 @@
 									</div>
 								</li>
 								<li>
-									<h5>codegenHelpers: <a href="interfaces/codegenhelpers.html" class="tsd-signature-type">CodegenHelpers</a></h5>
+									<h5>codegenHelpers: <a href="classes/codegenhelper.html" class="tsd-signature-type">CodegenHelper</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Code generation helpers</p>
 									</div>
@@ -307,13 +305,13 @@
 					<a name="ngfilterexpressiontotypescriptstandalone" class="tsd-anchor"></a>
 					<h3>ng<wbr>Filter<wbr>Expression<wbr>ToType<wbr>Script<wbr>Standalone</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">ng<wbr>Filter<wbr>Expression<wbr>ToType<wbr>Script<wbr>Standalone<span class="tsd-signature-symbol">(</span>ngFilterExpr<span class="tsd-signature-symbol">: </span><a href="interfaces/ngfilterexpression.html" class="tsd-signature-type">NgFilterExpression</a>, codegenHelpers<span class="tsd-signature-symbol">: </span><a href="interfaces/codegenhelpers.html" class="tsd-signature-type">CodegenHelpers</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+						<li class="tsd-signature tsd-kind-icon">ng<wbr>Filter<wbr>Expression<wbr>ToType<wbr>Script<wbr>Standalone<span class="tsd-signature-symbol">(</span>ngFilterExpr<span class="tsd-signature-symbol">: </span><a href="interfaces/ngfilterexpression.html" class="tsd-signature-type">NgFilterExpression</a>, codegenHelpers<span class="tsd-signature-symbol">: </span><a href="classes/codegenhelper.html" class="tsd-signature-type">CodegenHelper</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/1bf657c/src/view-ngexpression-parser.ts#L188">src/view-ngexpression-parser.ts:188</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/bc96a55/src/view-ngexpression-parser.ts#L247">src/view-ngexpression-parser.ts:247</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -332,7 +330,7 @@
 									</div>
 								</li>
 								<li>
-									<h5>codegenHelpers: <a href="interfaces/codegenhelpers.html" class="tsd-signature-type">CodegenHelpers</a></h5>
+									<h5>codegenHelpers: <a href="classes/codegenhelper.html" class="tsd-signature-type">CodegenHelper</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Object which contains functions
 										to assist with typescript code generation.</p>
@@ -355,7 +353,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/1bf657c/src/view-ngexpression-parser.ts#L125">src/view-ngexpression-parser.ts:125</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/bc96a55/src/view-ngexpression-parser.ts#L184">src/view-ngexpression-parser.ts:184</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -380,7 +378,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/1bf657c/src/ng-typeview.ts#L146">src/ng-typeview.ts:146</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/bc96a55/src/ng-typeview.ts#L169">src/ng-typeview.ts:169</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -414,19 +412,22 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class">
+						<a href="classes/codegenhelper.html" class="tsd-kind-icon">Codegen<wbr>Helper</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="classes/ngfilter.html" class="tsd-kind-icon">Ng<wbr>Filter</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/attributedirectivehandler.html" class="tsd-kind-icon">Attribute<wbr>Directive<wbr>Handler</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/codegenhelpers.html" class="tsd-kind-icon">Codegen<wbr>Helpers</a>
-					</li>
-					<li class=" tsd-kind-interface">
 						<a href="interfaces/controllerviewconnector.html" class="tsd-kind-icon">Controller<wbr>View<wbr>Connector</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/controllerviewinfo.html" class="tsd-kind-icon">Controller<wbr>View<wbr>Info</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/directiveresponse.html" class="tsd-kind-icon">Directive<wbr>Response</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/ngfiltercall.html" class="tsd-kind-icon">Ng<wbr>Filter<wbr>Call</a>
@@ -441,7 +442,7 @@
 						<a href="interfaces/tagdirectivehandler.html" class="tsd-kind-icon">Tag<wbr>Directive<wbr>Handler</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
-						<a href="globals.html#directiveresponse" class="tsd-kind-icon">Directive<wbr>Response</a>
+						<a href="globals.html#ngscopeinfo" class="tsd-kind-icon">Ng<wbr>Scope<wbr>Info</a>
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#defaultattrdirectivehandlers" class="tsd-kind-icon">default<wbr>Attr<wbr>Directive<wbr>Handlers</a>
