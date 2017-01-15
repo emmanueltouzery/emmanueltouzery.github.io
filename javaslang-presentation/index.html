@@ -82,12 +82,13 @@
     completely a piece of code by looking at it in isolation.</li>
           <li>Much better for tests! explicit input, same input&rarr;same output</li>
           <li>Immutability gives you guarantees that functions won't modify data behind your back</li>
-          <li>"Hidden" inputs & ouputs: exceptions, side-effects, global state, class members</li>
+          <li>"Hidden" inputs & ouputs: unchecked exceptions, side-effects, global state, class members</li>
   </section>
   <section class="slide">
       <h2>Immutable?</h2>
       <p>No 'void' modifiers. Example of mutable classes: List, Map, old Date, Calendar</p>
       <code>List<Car> newList = existing.prepend(extraCar);</code>
+          <p>Note that we now have two lists: <code>existing</code> is still available and unchanged, and <code>newList</code> is added, with the change included.</p>
       <p>We say of a 'void' returning function that it's only side-effecting.</p>
   </section>
   <section class="slide">
@@ -321,7 +322,7 @@
       </blockquote>
 			    <figcaption><a href="https://en.wikipedia.org/wiki/Function_(mathematics)">Wikipedia</a></figcaption>
           <code>list.map(f).map(g)</code> is equivalent to <code>list.map(f.andThen(g))</code> only if both functions are pure (free of side-effects).
-          <p class="note">Side effects: anything that depends on an eternal system. Filesystem, global mutable state..</p>
+          <p class="note">Side effects: anything that depends on an external system. Filesystem, global mutable state..</p>
   </section>
   <section class="slide">
       <h2>Function composition</h2>
@@ -390,6 +391,7 @@
           <li>Option</li>
 
           <iframe src="match-option.html" style="width:100%;height:180px"></iframe>
+          <p>Note that <code>Match</code> is pushing the java8 type inference. Sometimes you must really fight the compiler and the code is sensitive on the type annotations and difficult to write.</p>
       </ul>
   </section>
   <section class="slide">
@@ -412,7 +414,7 @@
   <section class="slide">
       <h2>Universality</h2>
       These concepts are general, and you will find them in many environments.
-      Scala, Haskell but also Javascript libraries, lisps...
+      Scala, Haskell but also Javascript libraries, F#, elm, lisps...
   </section>
 	<section class="slide">
 		<h2>Missing from javaslang</h2>
