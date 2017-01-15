@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Javaslang &amp; FP in java</title>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+</head>
+<body class="shower list">
+	<header class="caption">
+		<h1>Javslang &amp; FP in java</h1>
+		<p>Emmanuel Touzery</p>
+	</header>
+	<section class="slide" id="cover">
+		<h2 style="color: black">Javaslang &amp; FP in java</h2>
+		<p><img src="pictures/twitter.png"/><a href="https://twitter.com/emmanueltouzery" style="color: black">Emmanuel Touzery</a></p>
+		<img src="pictures/javaslang-logo.png" alt=""/>
+    <img src="pictures/duke_lambda.jpg"/>
+    <span style="float:right">January 2017</span>
+		<!--
+			To apply styles to the certain slides
+			set slide ID to get needed elements
+			-->
+		<style>
+			#cover h2 {
+				margin:30px 0 0;
+				color:#FFF;
+				text-align:center;
+				font-size:70px;
+				}
+			#cover p {
+				margin:10px 0 0;
+				text-align:center;
+				color:#FFF;
+				font-style:italic;
+				font-size:20px;
+				}
+				#cover p a {
+					color:#FFF;
+					}
+		</style>
+	</section>
+	<section class="slide">
+      <h2>Who am I</h2>
+      <ul>
+          <li>Doing haskell on the side for a while (first attempt before 2011, real use in 2012)</li>
+          <li>Doing java/typescript at work nowadays</li>
+          <li>Introduced javaslang in our work environment (6 developers full-time)</li>
+          <li>Real-world app. in fact, JEE</li>
+      </ul>
+  </section>
+  <section class="slide">
+      <h2>Javaslang</h2>
+      <ul>
+          <li>Java 8+</li>
+          <li>First release one day after java8</li>
+          <li>Scala is the reference</li>
+          <li>Emphasis on the collections</li>
+          <li>Javaslang has zero external dependencies!</li>
+      </ul>
+  </section>
+  <section class="slide">
+      <h2>Why javaslang?</h2>
+      <img src="pictures/lambdaclass.png" width="70%" style="position:absolute; left: 45%; z-index:-10;"/>
+      <p>It has an interface named λ.<br/>I rest my case ∎</p>
+      <img src="pictures/micdrop.gif"/>
+  </section>
+  <section class="slide">
+		<h2>FP key features</h2>
+		<ul>
+			<li>Immutability</li>
+			<li>Composability</li>
+      <li>High-level paradigms</li>
+      <li>Explicitness</li>
+		</ul>
+  </section>
+  <section class="slide">
+      <h2>Big picture</h2>
+      <ul>
+          <li>By avoiding global state, being explicit about input and output for functions, we can understand
+    completely a piece of code by looking at it in isolation.</li>
+          <li>Much better for tests! explicit input, same input&rarr;same output</li>
+          <li>Immutability gives you guarantees that functions won't modify data behind your back</li>
+          <li>"Hidden" inputs & ouputs: exceptions, side-effects, global state, class members</li>
+  </section>
+  <section class="slide">
+      <h2>Immutable?</h2>
+      <p>No 'void' modifiers. Example of mutable classes: List, Map, old Date, Calendar</p>
+      <code>List<Car> newList = existing.prepend(extraCar);</code>
+      <p>We say of a 'void' returning function that it's only side-effecting.</p>
+  </section>
+  <section class="slide">
+      <h2>Immutability, what for</h2>
+      <p>No more 'getters' which allow to modify your state</p>
+          <iframe src="getter_setter.html" width="85%" height="120px"></iframe>
+          <hr/>
+      <figure>
+          <blockquote>
+              <p>Mutability increases complexity by adding the dimension of time to all objects.</p>
+          </blockquote>
+			    <figcaption><a href="https://twitter.com/mfpiccolo/status/715209874964021248">Mike Piccolo, Jose Valim</a></figcaption>
+      </figure>
+  </section>
+  <section class="slide">
+      <h2>Immutability is winning</h2>
+      <span>Some immutable classes in the JDK (many of them newer!)</span>
+      <table>
+          <tr>
+              <td style="padding-top:45px;padding-left:160px;">
+                  <ul>
+                      <li>String</li>
+                      <li>Datetime</li>
+                      <li>Path</li>
+                      <li>Optional</li>
+                      <li>Stream</li>
+                  </ul>
+              </td>
+              <td style="padding:45px">
+                  <ul>
+                      <li>CompletableFuture</li>
+                      <li>Builder pattern (eg ProcessBuilder)</li>
+                      <li>Java9 collection factories</li>
+                      <li>Project Valhalla -- java value objects</li>
+                  </ul>
+              </td>
+          </tr>
+      </table>
+  </section>
+  <section class="slide">
+      <h2>Immutability and performance 1/3</h2>
+      <p>Key points: it's monitored, and same order of magnitude</p>
+      <b>for `1026` elements</b>
+      <table>
+          <tr><td>Java mutable @ ArrayList</td><td> →  19,072 bytes</td></tr>
+          <tr><td>PCollections persistent @ TreePVector              </td><td> →  56,096 bytes</td></tr>
+          <tr><td>Eclipse Collections persistent @ ImmutableArrayList</td><td> →  19,064 bytes</td></tr>
+          <tr><td>Clojure persistent @ PersistentVector              </td><td> →  20,552 bytes</td></tr>
+          <tr><td>Scala persistent @ Vector                          </td><td> →  20,168 bytes</td></tr>
+          <tr><td>Javaslang persistent @ Vector                      </td><td> →  19,816 bytes</td></tr>
+          <tr><td>Javaslang persistent @ Vector                      </td><td> →   4,888 bytes</td></tr>
+          <tr><td>Javaslang persistent @ Vector                      </td><td> →   1,816 bytes</td></tr>
+      </table>
+  </section>
+  <section class="slide">
+      <h2>Immutability and performance 2/3</h2>
+      <p>Key points: it's monitored, and same order of magnitude</p>
+      <table>
+          <tr><th>Operation  </th><th>Ratio                                           </th><th>     10  </th><th>    100  </th><th>   1026</th></tr>
+          <tr><td>Create     </td><td>slang_persistent/java_mutable                   </td><td>  1.68×  </td><td>  1.31×  </td><td>  1.28×</td></tr>
+          <tr><td>Head       </td><td>slang_persistent/java_mutable                   </td><td>  0.66×  </td><td>  0.49×  </td><td>  0.39×</td></tr>
+          <tr><td>Tail       </td><td>slang_persistent/java_mutable                   </td><td>  0.88×  </td><td>  0.48×  </td><td>  0.49×</td></tr>
+          <tr><td>Get        </td><td>slang_persistent/java_mutable                   </td><td>  0.80×  </td><td>  0.41×  </td><td>  0.27×</td></tr>
+          <tr><td>Update     </td><td>slang_persistent/java_mutable                   </td><td>  0.18×  </td><td>  0.06×  </td><td>  0.04×</td></tr>
+          <tr><td>Map        </td><td>slang_persistent/java_mutable                   </td><td>  2.16×  </td><td>  2.37×  </td><td>  2.30×</td></tr>
+          <tr><td>Map        </td><td>slang_persistent/java_mutable_loop              </td><td>  0.48×  </td><td>  0.51×  </td><td>  0.72×</td></tr>
+          <tr><td>Filter     </td><td>slang_persistent/java_mutable                   </td><td>  1.88×  </td><td>  1.94×  </td><td>  1.53×</td></tr>
+          <tr><td>Prepend    </td><td>slang_persistent/java_mutable                   </td><td>  0.11×  </td><td>  0.12×  </td><td>  0.23×</td></tr>
+          <tr><td>Append     </td><td>slang_persistent/java_mutable                   </td><td>  0.04×  </td><td>  0.03×  </td><td>  0.02×</td></tr>
+          <tr><td>GroupBy    </td><td>slang_persistent/java_mutable                   </td><td>  0.35×  </td><td>  0.53×  </td><td>  0.89×</td></tr>
+          <tr><td>Slice      </td><td>slang_persistent/java_mutable                   </td><td>  0.63×  </td><td>  0.43×  </td><td>  0.45×</td></tr>
+          <tr><td>Iterate    </td><td>slang_persistent/java_mutable                   </td><td>  0.75×  </td><td>  0.30×  </td><td>  0.40×</td></tr>
+      </table>
+  </section>
+  <section class="slide">
+      <h2>Immutability and performance 3/3</h2>
+      <span>Javaslang authors <a href="https://github.com/javaslang/javaslang/pull/1658#issuecomment-258248102">noticed a performance regression in scala...</a>
+      <img src="pictures/javaslang_scala_slow.png"/>
+</span>
+
+      <ul>
+          <li>Good Big-O performance, often worse constant factors (but 80/20 rule).</li>
+          <li>If performance is a major concern: immutability in the large, mutability in the small => local mutability.</li>
+          <li>Scala offers both mutable & immutable, defaults to immutable.</li>
+      </ul>
+  </section>
+  <section class="slide">
+      <h2>What about guava or others?</h2>
+      <p>Javaslang <code>List</code> doesn't inherit from <code>java.util.List</code>, unlike guava or <code>Collections.unmodifiableList</code> for instance</p>
+      <img src="pictures/guava_immutablelist.png"/>
+  </section>
+  <section class="slide">
+      <img src="pictures/fp_in_java.png" class="cover" />
+  </section>
+  <section class="slide">
+      <h2>"Functors" 1/2</h2>
+      <div style="position:absolute;bottom:0px;width:70%">
+          <iframe src="option-functor.html" width="85%" height="60px"></iframe>
+          <p class="note">Picture from <a href="http://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html">adit.io</a></p>
+      </div>
+      <img src="pictures/fmap_just.png" class="cover"/>
+  </section>
+  <section class="slide">
+      <h2>"Functors" 2/2</h2>
+      <table>
+          <tr>
+              <td>
+          <ul>
+              <li>List, Array, Vector</li>
+              <li>Map</li>
+              <li>CharSeq</li>
+              <li>Option</li>
+              <li>Tuple</li>
+          </ul>
+              </td><td>
+          <ul>
+              <li>Either</li>
+              <li>Try</li>
+              <li>Future</li>
+              <li>Validation</li>
+              <li>Lazy</li>
+          </ul>
+              </td>
+          </tr>
+      </table>
+      <p>Java8 has Optional, Stream, CompletableFuture</p>
+  </section>
+  <section class="slide">
+      <h2>REPL</h2>
+      <ul>
+          <li>list, map, filter, sort, fold</li>
+          <li>Set, union, intersect</li>
+          <li>Option, sequence, flatMap(identity)</li>
+          <li>HashSet.of("a; b ; c".split(";")).map(String::trim)</li>
+      </ul>
+  </section>
+  <section class="slide">
+      <h2>Railway-oriented programming</h2>
+      <p>Scott Wlaschin</p>
+      <img src="pictures/rop1.jpg" width="80%" style="margin: 0 auto;display:block"/>
+  </section>
+  <section class="slide">
+      <h2>Railway-oriented programming</h2>
+      <p>Scott Wlaschin</p>
+      <img src="pictures/rop2.jpg" width="80%" style="margin: 0 auto;display:block"/>
+  </section>
+  <section class="slide">
+      <h2>Railway-oriented programming</h2>
+      <p>Scott Wlaschin</p>
+      <img src="pictures/rop3.jpg" width="80%" style="margin: 0 auto;display:block"/>
+  </section>
+  <section class="slide">
+      <h2>Option&lt;T&gt;</h2>
+      <ul>
+          <li>Similar to java's <code>Optional</code> but better</li>
+          <li>Slight differences, probably not worth explaining here</li>
+          <li>A value is present, or not</li>
+          <li><code>map</code>, <code>flatMap</code>, <code>filter</code>, <code>sequence</code></li>
+      </ul>
+  </section>
+  <section class="slide">
+      <h2>Try&lt;T&gt;</h2>
+      <ul>
+          <li>Represents a computation which may return a value or fail</li>
+          <li><code>Try.of</code> turns a function returning T potentially throwing into a <code>Try&lt;T&gt;</code></li>
+          <li>Preferred to exception-throwing functions</li>
+          <li><code>map</code>, <code>mapTry</code>, <code>andThenTry</code>, <code>getOrElse*</code>, <code>sequence</code></li>
+      </ul>
+  </section>
+  <section class="slide">
+      <h2>Either&lt;L,R&gt;</h2>
+      <ul>
+          <li><code>Either&lt;Throwable,T&gt;</code> is comparable to <code>Try&lt;T&gt;</code></li>
+          <li>Either a left (failure) or a right (success)</li>
+          <li><code>map</code>, <code>flatMap</code> & <code>mapLeft</code></li>
+      </ul>
+  </section>
+  <section class="slide">
+      <h2>Validation&lt;E,T&gt;</h2>
+      <ul>
+          <li>Again Error or Succcess, but a validation will accumulate the errors instead of short-circuiting</li>
+          <li><code>map</code>, <code>mapError</code>, <code>get</code>, <code>getError</code>, <code>sequence</code></li>
+      </ul>
+          <iframe src="validation.html" width="80%" height="170px"></iframe>
+  </section>
+  <section class="slide">
+      <img src="pictures/func_reac_domain_modeling_p125.png" height="90%" style="margin: 0 auto;display:block"/>
+      <p class="note" style="margin-top:-20px">Functional and Reactive domain modeling, Debasish Ghosh, p125</p>
+  </section>
+  <section class="slide">
+      <h2>Tuple</h2>
+      <ul>
+          <li>Multiple arities are available</li>
+          <li><code>mapN</code>, <code>_N</code></li>
+          <li>Zipping (REPL)</li>
+          <li>A map can be viewed as a list of pairs</li>
+          <li>List.partition & variants</li>
+          <li>Function.tupled</li>
+  </section>
+  <section class="slide">
+      <h2>Expressions vs statements</h2>
+    "if" is a statement, ternaries are an expression. Expressions compose, statements don't.<br/>
+      1. good old<br/>
+
+          <iframe src="expr-for.html" width="80%" height="170px"></iframe>
+  </section>
+  <section class="slide">
+      <h2>Expressions vs statements</h2>
+          2. java streams<br/>
+
+          <iframe src="expr-stream.html" width="80%" height="140px"></iframe>
+          <p>Patterns are extracted an immediately visible, while a <code>for</code> loop could perform anything.</p>
+  </section>
+  <section class="slide">
+      <h2>Expressions vs statements</h2>
+      3. javaslang<br/>
+
+          <iframe src="expr-slang.html" width="80%" height="120px"></iframe>
+  </section>
+	<section class="slide">
+		<h2>Expressions vs statements</h2>
+          <iframe src="simple-match.html" width="60%" height="180px" style="margin-left:-35px"></iframe>
+    <p>
+          <iframe src="simple-try.html" width="100%" height="80px" style="margin-left:-35px"></iframe>
+    </p>
+	</section>
+  <section class="slide">
+      <h2>Functions</h2>
+      <blockquote>
+          <p> In mathematics, a <function></function> is a relation between a set of inputs and a set of permissible outputs with the property that each input is related to exactly one output.</p>
+      </blockquote>
+			    <figcaption><a href="https://en.wikipedia.org/wiki/Function_(mathematics)">Wikipedia</a></figcaption>
+          <code>list.map(f).map(g)</code> is equivalent to <code>list.map(f.andThen(g))</code> only if both functions are pure (free of side-effects).
+          <p class="note">Side effects: anything that depends on an eternal system. Filesystem, global mutable state..</p>
+  </section>
+  <section class="slide">
+      <h2>Function composition</h2>
+      <p>You can wrap a function with another one, or compose them.
+          Composed function are better testable (in tests and in the REPL)</p>
+
+      <img src="fn-composition2.svg" width="100%"/>
+      <p>
+      getTranslationIdentifierToKey<br/>
+        &rarr;  calls getTranslations<br/>
+      getTranslations<br/>
+        &rarr;  calls decodeTranslationFile<br/>
+        &rarr;  extracts the translations<br/>
+  </section>
+  <section class="slide">
+      <h2>Function composition</h2>
+      <p>You can wrap a function with another one, or compose them.
+          Composed function are better testable (in tests and in the REPL)</p>
+
+          <iframe src="composition.html" width="120%" height="200px" style="margin-left:-35px"></iframe>
+  </section>
+  <section class="slide">
+      <h2>Don't underestimate Option!</h2>
+      <ul>
+          <li>Javaslang embraces Option</li>
+          <li>Map.get() returns Option</li>
+          <li>Traversable.headOption</li>
+          <li>Option is invaluable as a documentation</li>
+      </ul>
+          <iframe class="next" src="option-before.html" style="width:120%;height:45%;margin-left:-35px"></iframe>
+  </section>
+  <section class="slide">
+      <h2>Don't underestimate Option!</h2>
+      <ul>
+          <li>Javaslang embraces Option</li>
+          <li>Map.get() returns Option</li>
+          <li>Traversable.headOption</li>
+          <li>Option is invaluable to us, as a documentation for return types</li>
+      </ul>
+          <iframe src="option-after.html" style="width:120%;height:45%;margin-left:-35px"></iframe>
+  </section>
+  <section class="slide">
+      <h2>Option and DTOs: before</h2>
+          <iframe src="dto-no-option.html" style="width:120%;height:85%;margin-left:-35px"></iframe>
+  </section>
+  <section class="slide">
+      <h2>Option and DTOs: after</h2>
+          <iframe src="dto-with-option.html" style="width:120%;height:75%;margin-left:-35px"></iframe>
+  </section>
+  <section class="slide">
+      <h2 style="margin-bottom: 5px">Infinite streams</h2>
+          <iframe src="codeexample0.html" style="width:100%;height:45%"></iframe>
+          <iframe src="codeexample1.html" style="width:100%;height:30%"></iframe>
+  </section>
+  <section class="slide">
+      <h2>Pattern matching again</h2>
+      <ul>
+          <li>Ready-made predicates like <code>instanceOf</code>, <code>isIn</code></li>
+          <li>Or custom check with lambda -- <code>x -> x %2 == 0 || x < 0</code></li>
+      </ul>
+          <iframe src="match-version.html" style="width:100%;height:180px"></iframe>
+  </section>
+  <section class="slide">
+      <h2>Pattern matching deconstruction 1/2</h2>
+      <ul>
+          <li>Option</li>
+
+          <iframe src="match-option.html" style="width:100%;height:180px"></iframe>
+      </ul>
+  </section>
+  <section class="slide">
+      <h2>Pattern matching deconstruction 2/2</h2>
+          <iframe src="tryToResponse.html" style="width:115%;height:70%"></iframe>
+  </section>
+	<section class="slide">
+		<h2>And more...</h2>
+		<ul>
+      <li>Lifting</li>
+      <li>Property testing</li>
+      <li>Currying</li>
+      <li>For</li>
+			<li>Future</li>
+			<li>Lazy</li>
+      <li>Memoization</li>
+      <li>Jackson integration</li>
+		</ul>
+	</section>
+  <section class="slide">
+      <h2>Universality</h2>
+      These concepts are general, and you will find them in many environments.
+      Scala, Haskell but also Javascript libraries, lisps...
+  </section>
+	<section class="slide">
+		<h2>Missing from javaslang</h2>
+		<ol>
+			  <li>Simple immutable types (see <a href="https://immutables.github.io/">java immutables</a>, upcoming <a href="http://openjdk.java.net/jeps/169">Project Valhalla</a>)</li>
+			  <li>Algebraic Data Types (<a href="https://github.com/derive4j/derive4j">derive4j?</a>)</li>
+        <li>Advanced types & type-level programming (not workable in java)</li>
+        <li>No tail recursion in java</li>
+		</ol>
+	</section>
+  <section class="slide">
+      <h2>Annex: immutables for value objects</h2>
+      <a href="https://immutables.github.io/">Immutables</a> is a library offering value types for java.
+          <iframe src="immutables1.html" width="85%" height="200px"></iframe>
+  </section>
+  <section class="slide">
+      <h2 style="margin-bottom: 10px;">References and links</h2>
+      <ul>
+          <li><a href="http://www.javaslang.io/">Javaslang</a></li>
+          <li><a href="https://immutables.github.io/">Immutables</a></li>
+          <li><a href="http://github.com/netzwerg/slides">Rahel Lüthy - Javaslang</a></li>
+          <li><a href="http://vdichev.github.io/talks/lessons_fp.html">Vassil Dichev - Lessons Of Functional Programming</a></li>
+          <li><a href="http://slides.com/pivovarit/javaslang-functional-java-done-right">Grzegorz Piwowarek - Javaslang</a></li>
+          <li><a href="https://www.manning.com/books/functional-and-reactive-domain-modeling">Debasish Ghosh - Functional and Reactive domain modeling</a></li>
+          <li><a href="https://docs.google.com/presentation/d/1YOJ2hU60KcXJ3m3CG28EtfTO4t1OP_JR0gpM82i2xcI/edit#slide=id.g338d117be_040">Brian Lonsdorf - Functional Programming</a></li>
+          <li><a href="http://www.slideshare.net/ScottWlaschin/fp-patterns-buildstufflt">Scott Wlaschin - Functional Design Patterns</a></li>
+          <li><a href="http://fsharpforfunandprofit.com/rop/">Scott Wlaschin - Railway Oriented Programming</a></li>
+  </section>
+	<!--
+		To hide progress bar from entire presentation
+		just remove “progress” element.
+		-->
+	<div class="progress"></div>
+	<script src="shower/shower.min.js"></script>
+	<!-- Copyright © 2015 Yours Truly, Famous Inc. -->
+	<!-- Photos by John Carey, fiftyfootshadows.net -->
+</body>
+</html>

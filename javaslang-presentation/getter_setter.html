@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>*scratch*</title>
+<meta name="generator" content="emacs 25.1.1; htmlfontify 0.21" />
+<style type="text/css"><!--
+@font-face {
+font-family: Fira Mono for PowerlineJ;
+src: url("fonts/Fira Mono Regular for PowerlineJ.otf") format("opentype");
+}
+
+@font-face {
+font-family: Fira Mono for PowerlineJ;
+font-weight: bold;
+src: url("fonts/Fira Mono Bold for PowerlineJ.otf") format("opentype");
+}
+body { font-family: Fira Mono for PowerlineJ;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #c5c8c6;  background: #1d1f21;  font-size: 16pt;  text-decoration: none; }
+span.default   { font-family: Fira Mono for PowerlineJ;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #c5c8c6;  background: #1d1f21;  font-size: 16pt;  text-decoration: none; }
+span.default a { font-family: Fira Mono for PowerlineJ;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #c5c8c6;  background: #1d1f21;  font-size: 16pt;  text-decoration: underline; }
+span.constant   { color: #81a2be;  font-family: Fira Mono for PowerlineJ;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1d1f21;  font-size: 16pt;  text-decoration: none; }
+span.constant a { color: #81a2be;  font-family: Fira Mono for PowerlineJ;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1d1f21;  font-size: 16pt;  text-decoration: underline; }
+span.rainbow-delimiters-depth-1-face   { color: #c5c8c6;  font-family: Fira Mono for PowerlineJ;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1d1f21;  font-size: 16pt;  text-decoration: none; }
+span.rainbow-delimiters-depth-1-face a { color: #c5c8c6;  font-family: Fira Mono for PowerlineJ;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1d1f21;  font-size: 16pt;  text-decoration: underline; }
+ --></style>
+
+    <script type="text/javascript"><!--
+  // this function is needed to work around
+  // a bug in IE related to element attributes
+  function hasClass(obj)
+  {
+      var result = false;
+      if (obj.getAttributeNode("class") != null)
+      {
+          result = obj.getAttributeNode("class").value;
+      }
+      return result;
+  }
+
+  function stripe(id)
+  {
+      // the flag we'll use to keep track of
+      // whether the current row is odd or even
+      var even = false;
+
+      // if arguments are provided to specify the colors
+      // of the even & odd rows, then use the them;
+      // otherwise use the following defaults:
+      var evenColor = arguments[1] ? arguments[1] : "#fff";
+      var oddColor  = arguments[2] ? arguments[2] : "#ddd";
+
+      // obtain a reference to the desired table
+      // if no such table exists, abort
+      var table = document.getElementById(id);
+      if (! table) { return; }
+
+      // by definition, tables can have more than one tbody
+      // element, so we'll have to get the list of child
+      // &lt;tbody&gt;s
+      var tbodies = table.getElementsByTagName("tbody");
+
+      // and iterate through them...
+      for (var h = 0; h < tbodies.length; h++)
+      {
+          // find all the &lt;tr&gt; elements...
+          var trs = tbodies[h].getElementsByTagName("tr");
+
+          // ... and iterate through them
+          for (var i = 0; i < trs.length; i++)
+          {
+              // avoid rows that have a class attribute
+              // or backgroundColor style
+              if (! hasClass(trs[i]) &&
+                  ! trs[i].style.backgroundColor)
+              {
+                  // get all the cells in this row...
+                  var tds = trs[i].getElementsByTagName("td");
+
+                  // and iterate through them...
+                  for (var j = 0; j < tds.length; j++)
+                  {
+                      var mytd = tds[j];
+
+                      // avoid cells that have a class attribute
+                      // or backgroundColor style
+                      if (! hasClass(mytd) &&
+                          ! mytd.style.backgroundColor)
+                      {
+                          mytd.style.backgroundColor =
+                            even ? evenColor : oddColor;
+                      }
+                  }
+              }
+              // flip from odd to even, or vice-versa
+              even =  ! even;
+          }
+      }
+  }
+
+  function toggle_invis( name )
+  {
+      var filter =
+        { acceptNode:
+          function( node )
+          { var classname = node.id;
+            if( classname )
+            { var classbase = classname.substr( 0, name.length );
+              if( classbase == name ) { return NodeFilter.FILTER_ACCEPT; } }
+            return NodeFilter.FILTER_SKIP; } };
+      var walker = document.createTreeWalker( document.body           ,
+                                              NodeFilter.SHOW_ELEMENT ,
+                                              filter                  ,
+                                              false                   );
+      while( walker.nextNode() )
+      {
+          var e = walker.currentNode;
+          if( e.style.display == "none" ) { e.style.display = "inline"; }
+          else                            { e.style.display = "none";   }
+      }
+  }
+--> </script>
+  </head>
+  <body onload="stripe('index'); return true;">
+
+<pre>filter.getJpaParameters<span class="rainbow-delimiters-depth-1-face">(</span><span class="rainbow-delimiters-depth-1-face">)</span>.get<span class="rainbow-delimiters-depth-1-face">(</span>i<span class="rainbow-delimiters-depth-1-face">)</span>.setName<span class="rainbow-delimiters-depth-1-face">(</span>newName<span class="rainbow-delimiters-depth-1-face">)</span>;
+v.getCustomAttributes<span class="rainbow-delimiters-depth-1-face">(</span><span class="rainbow-delimiters-depth-1-face">)</span>.set<span class="rainbow-delimiters-depth-1-face">(</span>def, <span class="constant">true</span><span class="rainbow-delimiters-depth-1-face">)</span>;</pre>
+
+ </body>
+</html>
