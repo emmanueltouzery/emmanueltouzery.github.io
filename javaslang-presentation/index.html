@@ -245,7 +245,7 @@
       <ul>
           <li>Similar to java's <code>Optional</code> but better</li>
           <li>Slight differences, probably not worth explaining here</li>
-          <li>A value is present, or not</li>
+          <li>A value is present (<code>Some</code>), or not (<code>None</code>)</li>
           <li><code>map</code>, <code>flatMap</code>, <code>filter</code>, <code>sequence</code></li>
       </ul>
   </section>
@@ -255,21 +255,22 @@
           <li>Represents a computation which may return a value or fail</li>
           <li><code>Try.of</code> turns a function returning T potentially throwing into a <code>Try&lt;T&gt;</code></li>
           <li>Preferred to exception-throwing functions</li>
-          <li><code>map</code>, <code>mapTry</code>, <code>andThenTry</code>, <code>getOrElse*</code>, <code>sequence</code></li>
+          <li>The computation is a <code>Success</code> or a <code>Failure</code></li>
+          <li><code>map</code>, <code>mapTry</code>, <code>andThenTry</code>, <code>getOrElse*</code>, <code>sequence</code>, <code>recover</code></li>
       </ul>
   </section>
   <section class="slide">
       <h2>Either&lt;L,R&gt;</h2>
       <ul>
           <li><code>Either&lt;Throwable,T&gt;</code> is comparable to <code>Try&lt;T&gt;</code></li>
-          <li>Either a left (failure) or a right (success)</li>
+          <li>Either a <code>Left</code> (failure) or a <code>Right</code> (success)</li>
           <li><code>map</code>, <code>flatMap</code> & <code>mapLeft</code></li>
       </ul>
   </section>
   <section class="slide">
       <h2>Validation&lt;E,T&gt;</h2>
       <ul>
-          <li>Again Error or Succcess, but a validation will accumulate the errors instead of short-circuiting</li>
+          <li><code>Valid</code> or <code>Invalid</code>, but a validation will accumulate the errors instead of short-circuiting</li>
           <li><code>map</code>, <code>mapError</code>, <code>get</code>, <code>getError</code>, <code>sequence</code></li>
       </ul>
           <iframe src="validation.html" width="80%" height="170px"></iframe>
