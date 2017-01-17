@@ -5,7 +5,7 @@
   <head>
     <title>*scratch*</title>
 <meta name="generator" content="emacs 25.1.1; htmlfontify 0.21" />
-<style type="text/css"><!--
+<style type="text/css"><!-- 
 @font-face {
 font-family: Fira Mono for PowerlineJ;
 src: url("fonts/Fira Mono Regular for PowerlineJ.otf") format("opentype");
@@ -21,12 +21,16 @@ span.default   { font-family: Fira Mono for PowerlineJ;  font-stretch: normal;  
 span.default a { font-family: Fira Mono for PowerlineJ;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #c5c8c6;  background: #1d1f21;  font-size: 16pt;  text-decoration: underline; }
 span.rainbow-delimiters-depth-3-face   { color: #f0c674;  font-family: Fira Mono for PowerlineJ;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1d1f21;  font-size: 16pt;  text-decoration: none; }
 span.rainbow-delimiters-depth-3-face a { color: #f0c674;  font-family: Fira Mono for PowerlineJ;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1d1f21;  font-size: 16pt;  text-decoration: underline; }
+span.rainbow-delimiters-depth-2-face-0001   { color: #8abeb7;  font-family: Fira Mono for PowerlineJ;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1d1f21;  font-size: 16pt;  text-decoration: none; }
+span.rainbow-delimiters-depth-2-face-0001 a { color: #8abeb7;  font-family: Fira Mono for PowerlineJ;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1d1f21;  font-size: 16pt;  text-decoration: underline; }
 span.constant   { color: #81a2be;  font-family: Fira Mono for PowerlineJ;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1d1f21;  font-size: 16pt;  text-decoration: none; }
 span.constant a { color: #81a2be;  font-family: Fira Mono for PowerlineJ;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1d1f21;  font-size: 16pt;  text-decoration: underline; }
 span.variable-name   { color: #f0c674;  font-family: Fira Mono for PowerlineJ;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1d1f21;  font-size: 16pt;  text-decoration: none; }
 span.variable-name a { color: #f0c674;  font-family: Fira Mono for PowerlineJ;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1d1f21;  font-size: 16pt;  text-decoration: underline; }
 span.type   { color: #81a2be;  font-family: Fira Mono for PowerlineJ;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1d1f21;  font-size: 16pt;  text-decoration: none; }
 span.type a { color: #81a2be;  font-family: Fira Mono for PowerlineJ;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1d1f21;  font-size: 16pt;  text-decoration: underline; }
+span.rainbow-delimiters-depth-1-face-0000   { color: #c5c8c6;  font-family: Fira Mono for PowerlineJ;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1d1f21;  font-size: 16pt;  text-decoration: none; }
+span.rainbow-delimiters-depth-1-face-0000 a { color: #c5c8c6;  font-family: Fira Mono for PowerlineJ;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1d1f21;  font-size: 16pt;  text-decoration: underline; }
 span.rainbow-delimiters-depth-2-face   { color: #8abeb7;  font-family: Fira Mono for PowerlineJ;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1d1f21;  font-size: 16pt;  text-decoration: none; }
 span.rainbow-delimiters-depth-2-face a { color: #8abeb7;  font-family: Fira Mono for PowerlineJ;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1d1f21;  font-size: 16pt;  text-decoration: underline; }
 span.rainbow-delimiters-depth-1-face   { color: #c5c8c6;  font-family: Fira Mono for PowerlineJ;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1d1f21;  font-size: 16pt;  text-decoration: none; }
@@ -133,13 +137,13 @@ span.keyword a { color: #b5bd68;  font-family: Fira Mono for PowerlineJ;  font-s
   </head>
   <body onload="stripe('index'); return true;">
 
-<pre><span class="keyword">if</span> <span class="rainbow-delimiters-depth-1-face">(</span>levelStatusMap.containsKey<span class="rainbow-delimiters-depth-2-face">(</span>dto.levelStatus<span class="rainbow-delimiters-depth-2-face">)</span><span class="rainbow-delimiters-depth-1-face">)</span> <span class="rainbow-delimiters-depth-1-face">{</span>
-    <span class="type">in</span><span class="type">t</span> <span class="variable-name">oldConfigId</span> = levelStatusMap.get<span class="rainbow-delimiters-depth-2-face">(</span>dto.levelStatus<span class="rainbow-delimiters-depth-2-face">)</span>;
-    <span class="type">AfcConfigDat</span><span class="type">a</span> <span class="variable-name">oldData</span> = em.find<span class="rainbow-delimiters-depth-2-face">(</span>AfcConfigData.<span class="keyword">class</span>, oldConfigId<span class="rainbow-delimiters-depth-2-face">)</span>;
-    <span class="keyword">if</span> <span class="rainbow-delimiters-depth-2-face">(</span>oldData != <span class="constant">null</span><span class="rainbow-delimiters-depth-2-face">)</span> <span class="rainbow-delimiters-depth-2-face">{</span>
-        oldData.setLevelStatus<span class="rainbow-delimiters-depth-3-face">(</span><span class="constant">AfcLevelStatusEnum</span>.LEVEL_STATUS_INACTIVE<span class="rainbow-delimiters-depth-3-face">)</span>;
-    <span class="rainbow-delimiters-depth-2-face">}</span>
-<span class="rainbow-delimiters-depth-1-face">}</span></pre>
+<pre><span class="keyword">if</span> <span class="rainbow-delimiters-depth-1-face">(</span>statusMap.containsKey<span class="rainbow-delimiters-depth-2-face">(</span>dto.status<span class="rainbow-delimiters-depth-2-face">)</span><span class="rainbow-delimiters-depth-1-face">)</span> <span class="rainbow-delimiters-depth-1-face-0000">{</span>
+    <span class="type">in</span><span class="type">t</span> <span class="variable-name">oldConfigId</span> = statusMap.get<span class="rainbow-delimiters-depth-2-face">(</span>dto.status<span class="rainbow-delimiters-depth-2-face">)</span>;
+    <span class="type">Confi</span><span class="type">g</span> <span class="variable-name">oldData</span> = em.find<span class="rainbow-delimiters-depth-2-face">(</span>Config.<span class="keyword">class</span>, oldConfigId<span class="rainbow-delimiters-depth-2-face">)</span>;
+    <span class="keyword">if</span> <span class="rainbow-delimiters-depth-2-face">(</span>oldData != <span class="constant">null</span><span class="rainbow-delimiters-depth-2-face">)</span> <span class="rainbow-delimiters-depth-2-face-0001">{</span>
+        oldData.setStatus<span class="rainbow-delimiters-depth-3-face">(</span><span class="constant">StatusEnum</span>.INACTIVE<span class="rainbow-delimiters-depth-3-face">)</span>;
+    <span class="rainbow-delimiters-depth-2-face-0001">}</span>
+<span class="rainbow-delimiters-depth-1-face-0000">}</span></pre>
 
  </body>
 </html>
