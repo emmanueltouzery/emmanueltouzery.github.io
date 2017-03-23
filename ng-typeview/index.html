@@ -110,9 +110,16 @@
 					just need to call <code>processProject</code>. Then ng-typeview will generate the &#39;testview&#39;
 					files in the folder of your application. Then try to compile your application.
 					The typescript compiler will warn you in case some code from the views doesn&#39;t
-					match code from the controllers.
-					That&#39;s good for a first run, but then you probably have to customize ng-typeview
+				match code from the controllers.</p>
+				<p>You can look at <code>test/ng-typeview.ts</code> for a sample set-up.</p>
+				<p>That&#39;s good for a first run, but then you probably have to customize ng-typeview
 				for your application.</p>
+				<p>ng-typeview leaves the generated &#39;testview&#39; files in your source code directory; it&#39;s
+					probably best not to commit them to source control. If you minify your javascript,
+					they won&#39;t be included since nothing links to them. If you don&#39;t, they might be
+					copied to your server, but since noone links to them and they have no side-effects
+					they shouldn&#39;t pose any problem. That said, deleting them is trivial, as they have
+				a clear filename pattern.</p>
 				<h2 id="customizations">Customizations</h2>
 				<p>ng-typeview uses the <a href="https://github.com/Microsoft/TypeScript/wiki/Using-the-Compiler-API">typescript compiler API</a>
 					to parse the javascript and typescript code, <a href="https://github.com/fb55/htmlparser2">htmlparser2</a>
@@ -125,7 +132,7 @@
 					or naming conventions (especially since the controller-view connection may not
 					be 1:1).
 					By default ng-typeview can detect <code>$modal.open()</code> calls, which connect controllers and views,
-					and also module state declarations.
+					and also module state declarations (the <code>ng-controller</code> directive is ignored though for now).
 					You can register new ways of connecting controllers and views, for instance if your
 				app wraps these calls through helper functions, preventing ng-typeview from spotting them.</p>
 				<p>Since this is typescript parsing, this part is tied to the
@@ -137,7 +144,15 @@
 				<h3 id="projectsettings-attributedirectives-tagdirectives">ProjectSettings.attributeDirectives &amp; tagDirectives</h3>
 				<p>You can also register your directives. There you must generate typescript code
 					(as string), used to check the type-safety of the expressions found in the views.
-				As input you get the contents of tags &amp; attributes from the view.</p>
+					You implement either a <a href="http://emmanueltouzery.github.io/ng-typeview/interfaces/attributedirectivehandler.html">AttributeDirectiveHandler</a>,
+				or a <a href="http://emmanueltouzery.github.io/ng-typeview/interfaces/tagdirectivehandler.html">TagDirectiveHandler</a>.</p>
+				<p>As input you get the contents of tags &amp; attributes from the view.
+					You are given some API to assist with the code generation,
+					<a href="http://emmanueltouzery.github.io/ng-typeview/classes/codegenhelper.html">CodegenHelper</a>;
+					in fact you must use it, because ng-typeview must know when you declare new
+				variables.</p>
+				<p>The directives that ng-typeview supports out of the box are developed using that
+				mechanism, so you can also look at <code>src/ng-directives.ts</code> for examples of use.</p>
 				<h2 id="caveats">Caveats</h2>
 				<ul>
 					<li>the API is still changing very often</li>
@@ -211,8 +226,14 @@
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#defaulttagdirectivehandlers" class="tsd-kind-icon">default<wbr>Tag<wbr>Directive<wbr>Handlers</a>
 					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#collectionkeepdefined" class="tsd-kind-icon">collection<wbr>Keep<wbr>Defined</a>
+					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#filterexpressiontotypescript" class="tsd-kind-icon">filter<wbr>Expression<wbr>ToTypescript</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#listkeepdefined" class="tsd-kind-icon">list<wbr>Keep<wbr>Defined</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#ngfilterexpressiontotypescriptembedded" class="tsd-kind-icon">ng<wbr>Filter<wbr>Expression<wbr>ToType<wbr>Script<wbr>Embedded</a>
