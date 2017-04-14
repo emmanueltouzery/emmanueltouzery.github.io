@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>NgFilterExpression | ng-typeview</title>
+	<title>ModelViewInfo | ng-typeview</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -52,10 +52,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="ngfilterexpression.html">NgFilterExpression</a>
+					<a href="modelviewinfo.html">ModelViewInfo</a>
 				</li>
 			</ul>
-			<h1>Interface NgFilterExpression</h1>
+			<h1>Interface ModelViewInfo</h1>
 		</div>
 	</div>
 </header>
@@ -65,11 +65,9 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>An angular filter expression. For instance
-							&quot;data.items | orderBy: &#39;name&#39;&quot;
-							For that example, <code>expression</code> will contain &quot;data.items&quot;
-							and <code>filterCalls</code> will contain a single filter, &quot;orderBy&quot; with a parameter
-						of &quot;name&quot;.</p>
+						<p>Returned by [[ModelViewConnector.getControllerView]]
+							Describes a connection between a controller or directive (TS file
+						containing a scope), and a view (HTML file).</p>
 					</div>
 				</div>
 			</section>
@@ -77,7 +75,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">NgFilterExpression</span>
+						<span class="target">ModelViewInfo</span>
 					</li>
 				</ul>
 			</section>
@@ -88,8 +86,8 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ngfilterexpression.html#expression" class="tsd-kind-icon">expression</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ngfilterexpression.html#filtercalls" class="tsd-kind-icon">filter<wbr>Calls</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="modelviewinfo.html#modelpath" class="tsd-kind-icon">model<wbr>Path</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="modelviewinfo.html#viewpath" class="tsd-kind-icon">view<wbr>Path</a></li>
 							</ul>
 						</section>
 					</div>
@@ -98,32 +96,35 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="expression" class="tsd-anchor"></a>
-					<h3>expression</h3>
-					<div class="tsd-signature tsd-kind-icon">expression<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="modelpath" class="tsd-anchor"></a>
+					<h3>model<wbr>Path</h3>
+					<div class="tsd-signature tsd-kind-icon">model<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/55dfa1e/src/view-ngexpression-parser.ts#L112">src/view-ngexpression-parser.ts:112</a></li>
+							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/55dfa1e/src/controller-parser.ts#L105">src/controller-parser.ts:105</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The base expression for the filter expression</p>
+							<p>Path to a file containing an angular controller scope
+								(can be a controller or a directive, the important thing
+							is that it contains the scope to use for the view)</p>
 						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="filtercalls" class="tsd-anchor"></a>
-					<h3>filter<wbr>Calls</h3>
-					<div class="tsd-signature tsd-kind-icon">filter<wbr>Calls<span class="tsd-signature-symbol">:</span> <a href="ngfiltercall.html" class="tsd-signature-type">NgFilterCall</a><span class="tsd-signature-symbol">[]</span></div>
+					<a name="viewpath" class="tsd-anchor"></a>
+					<h3>view<wbr>Path</h3>
+					<div class="tsd-signature tsd-kind-icon">view<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/55dfa1e/src/view-ngexpression-parser.ts#L116">src/view-ngexpression-parser.ts:116</a></li>
+							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/55dfa1e/src/controller-parser.ts#L110">src/controller-parser.ts:110</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>List of the filter calls applied to the base expression.</p>
+							<p>Path to an angular view (file name within the project,
+							NOT absolute path on disk).</p>
 						</div>
 					</div>
 				</section>
@@ -160,27 +161,27 @@
 					<li class=" tsd-kind-interface">
 						<a href="modelviewconnector.html" class="tsd-kind-icon">Model<wbr>View<wbr>Connector</a>
 					</li>
-					<li class=" tsd-kind-interface">
-						<a href="modelviewinfo.html" class="tsd-kind-icon">Model<wbr>View<wbr>Info</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="ngfiltercall.html" class="tsd-kind-icon">Ng<wbr>Filter<wbr>Call</a>
-					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
-						<a href="ngfilterexpression.html" class="tsd-kind-icon">Ng<wbr>Filter<wbr>Expression</a>
+						<a href="modelviewinfo.html" class="tsd-kind-icon">Model<wbr>View<wbr>Info</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="ngfilterexpression.html#expression" class="tsd-kind-icon">expression</a>
+								<a href="modelviewinfo.html#modelpath" class="tsd-kind-icon">model<wbr>Path</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="ngfilterexpression.html#filtercalls" class="tsd-kind-icon">filter<wbr>Calls</a>
+								<a href="modelviewinfo.html#viewpath" class="tsd-kind-icon">view<wbr>Path</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-interface">
+						<a href="ngfiltercall.html" class="tsd-kind-icon">Ng<wbr>Filter<wbr>Call</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="ngfilterexpression.html" class="tsd-kind-icon">Ng<wbr>Filter<wbr>Expression</a>
+					</li>
 					<li class=" tsd-kind-interface">
 						<a href="projectsettings.html" class="tsd-kind-icon">Project<wbr>Settings</a>
 					</li>
