@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>NgFilter | ng-typeview</title>
+	<title>CtrlViewFragmentExtractor | ng-typeview</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -52,10 +52,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="ngfilter.html">NgFilter</a>
+					<a href="ctrlviewfragmentextractor.html">CtrlViewFragmentExtractor</a>
 				</li>
 			</ul>
-			<h1>Class NgFilter</h1>
+			<h1>Interface CtrlViewFragmentExtractor</h1>
 		</div>
 	</div>
 </header>
@@ -65,24 +65,18 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>An angular filter. They can be registered through the <a href="../interfaces/projectsettings.html">ProjectSettings</a> setup.
-							You must give a name, and the type for the filter.
-							Example:
-						<code>new NgFilter(&quot;translate&quot;, &quot;(key: string) =&gt; string&quot;)</code></p>
+						<p>You can register such an extractor using <a href="projectsettings.html#ctrlviewfragmentextractors">ProjectSettings.ctrlViewFragmentExtractors</a>.
+							Will be called when parsing typescript files, allows you to tell ng-typeview
+							about view fragments present in your controllers, for instance ng-grid has
+						&#39;cell templates&#39; which typeview can also type-check through this mechanism.</p>
 					</div>
-					<p>You can also supply a addScopeToParam function: you are given the parameter index,
-						and are called with the parameter, so you can or not add scope accessors.
-						99% of the time you want scope accessors for filter parameters, but for instance
-						&#39;filter&#39; allows you to specify a pattern for items through an object literal.
-						If the filter spec is {name: &quot;test&quot;}, we certainly don&#39;t want to change it to:
-					{$scope.name: &quot;test&quot;}.</p>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">NgFilter</span>
+						<span class="target">CtrlViewFragmentExtractor</span>
 					</li>
 				</ul>
 			</section>
@@ -91,157 +85,76 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Constructors</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="ngfilter.html#constructor" class="tsd-kind-icon">constructor</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="ngfilter.html#addscopetoparam" class="tsd-kind-icon">add<wbr>Scope<wbr>ToParam</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="ngfilter.html#name" class="tsd-kind-icon">name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="ngfilter.html#type" class="tsd-kind-icon">type</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ctrlviewfragmentextractor.html#getviewfragments" class="tsd-kind-icon">get<wbr>View<wbr>Fragments</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ctrlviewfragmentextractor.html#interceptastnode" class="tsd-kind-icon">intercept<wbr>Ast<wbr>Node</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Constructors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
-					<a name="constructor" class="tsd-anchor"></a>
-					<h3>constructor</h3>
-					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>NgFilter<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, addScopeToParam<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="ngfilter.html" class="tsd-signature-type">NgFilter</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/25be3db/src/filters.ts#L22">src/filters.ts:22</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>name: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>The name of the angular filter</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<h5>type: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>The type that&#39;ll be used to type-check uses of the filter.</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> addScopeToParam: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">function</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>Customize the scope adding for parameter index n For instance
-												for &#39;filter&#39;, we shouldn&#39;t wrap the values in the scope for the
-											&#39;expression&#39; parameter, which is a spec of the values to keep.</p>
-										</div>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="ngfilter.html" class="tsd-signature-type">NgFilter</a></h4>
-						</li>
-					</ul>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="addscopetoparam" class="tsd-anchor"></a>
-					<h3>add<wbr>Scope<wbr>ToParam</h3>
-					<div class="tsd-signature tsd-kind-icon">add<wbr>Scope<wbr>ToParam<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="getviewfragments" class="tsd-anchor"></a>
+					<h3>get<wbr>View<wbr>Fragments</h3>
+					<div class="tsd-signature tsd-kind-icon">get<wbr>View<wbr>Fragments<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/25be3db/src/filters.ts#L22">src/filters.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/25be3db/src/controller-parser.ts#L442">src/controller-parser.ts:442</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>When your view connector is registered and we parse a TS file and
+								ecounter an AST node with the type you specified through <a href="ctrlviewfragmentextractor.html#interceptastnode">interceptAstNode</a>,
+							this function will be called.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>param</dt>
+							<dd><p>the AST node which matched your specification</p>
+							</dd>
+							<dt>returns</dt>
+							<dd><p>the view fragments that you detected for this node,
+								if any (the empty array if you didn&#39;t detect any).</p>
+							</dd>
+						</dl>
+					</div>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-siganture">
 								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>paramIndex<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, input<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, addScopeAccessors<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>node<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ts.Node</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
 								</ul>
 								<ul class="tsd-descriptions">
 									<li class="tsd-description">
 										<h4 class="tsd-parameters-title">Parameters</h4>
 										<ul class="tsd-parameters">
 											<li>
-												<h5>paramIndex: <span class="tsd-signature-type">number</span></h5>
-											</li>
-											<li>
-												<h5>input: <span class="tsd-signature-type">string</span></h5>
-											</li>
-											<li>
-												<h5>addScopeAccessors: <span class="tsd-signature-type">function</span></h5>
-												<ul class="tsd-parameters">
-													<li class="tsd-parameter-siganture">
-														<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
-															<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>input<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
-														</ul>
-														<ul class="tsd-descriptions">
-															<li class="tsd-description">
-																<h4 class="tsd-parameters-title">Parameters</h4>
-																<ul class="tsd-parameters">
-																	<li>
-																		<h5>input: <span class="tsd-signature-type">string</span></h5>
-																	</li>
-																</ul>
-																<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-															</li>
-														</ul>
-													</li>
-												</ul>
+												<h5>node: <span class="tsd-signature-type">ts.Node</span></h5>
 											</li>
 										</ul>
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
 									</li>
 								</ul>
 							</li>
 						</ul>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="name" class="tsd-anchor"></a>
-					<h3>name</h3>
-					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="interceptastnode" class="tsd-anchor"></a>
+					<h3>intercept<wbr>Ast<wbr>Node</h3>
+					<div class="tsd-signature tsd-kind-icon">intercept<wbr>Ast<wbr>Node<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ts.SyntaxKind</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/25be3db/src/filters.ts#L32">src/filters.ts:32</a></li>
+							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/25be3db/src/controller-parser.ts#L433">src/controller-parser.ts:433</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The name of the angular filter</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="type" class="tsd-anchor"></a>
-					<h3>type</h3>
-					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/25be3db/src/filters.ts#L33">src/filters.ts:33</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The type that&#39;ll be used to type-check uses of the filter.</p>
+							<p>Which AST node you want to be listening for</p>
 						</div>
 					</div>
 				</section>
@@ -258,61 +171,55 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class">
-						<a href="codegenhelper.html" class="tsd-kind-icon">Codegen<wbr>Helper</a>
+						<a href="../classes/codegenhelper.html" class="tsd-kind-icon">Codegen<wbr>Helper</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="../classes/ngfilter.html" class="tsd-kind-icon">Ng<wbr>Filter</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="attributedirectivehandler.html" class="tsd-kind-icon">Attribute<wbr>Directive<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="controllerviewconnector.html" class="tsd-kind-icon">Controller<wbr>View<wbr>Connector</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="controllerviewinfo.html" class="tsd-kind-icon">Controller<wbr>View<wbr>Info</a>
 					</li>
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-class">
-						<a href="ngfilter.html" class="tsd-kind-icon">Ng<wbr>Filter</a>
+					<li class="current tsd-kind-interface">
+						<a href="ctrlviewfragmentextractor.html" class="tsd-kind-icon">Ctrl<wbr>View<wbr>Fragment<wbr>Extractor</a>
 						<ul>
-							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="ngfilter.html#constructor" class="tsd-kind-icon">constructor</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="ctrlviewfragmentextractor.html#getviewfragments" class="tsd-kind-icon">get<wbr>View<wbr>Fragments</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="ngfilter.html#addscopetoparam" class="tsd-kind-icon">add<wbr>Scope<wbr>ToParam</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="ngfilter.html#name" class="tsd-kind-icon">name</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="ngfilter.html#type" class="tsd-kind-icon">type</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="ctrlviewfragmentextractor.html#interceptastnode" class="tsd-kind-icon">intercept<wbr>Ast<wbr>Node</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface">
-						<a href="../interfaces/attributedirectivehandler.html" class="tsd-kind-icon">Attribute<wbr>Directive<wbr>Handler</a>
+						<a href="directiveresponse.html" class="tsd-kind-icon">Directive<wbr>Response</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="../interfaces/controllerviewconnector.html" class="tsd-kind-icon">Controller<wbr>View<wbr>Connector</a>
+						<a href="modelviewconnector.html" class="tsd-kind-icon">Model<wbr>View<wbr>Connector</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="../interfaces/controllerviewinfo.html" class="tsd-kind-icon">Controller<wbr>View<wbr>Info</a>
+						<a href="modelviewinfo.html" class="tsd-kind-icon">Model<wbr>View<wbr>Info</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="../interfaces/ctrlviewfragmentextractor.html" class="tsd-kind-icon">Ctrl<wbr>View<wbr>Fragment<wbr>Extractor</a>
+						<a href="ngfiltercall.html" class="tsd-kind-icon">Ng<wbr>Filter<wbr>Call</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="../interfaces/directiveresponse.html" class="tsd-kind-icon">Directive<wbr>Response</a>
+						<a href="ngfilterexpression.html" class="tsd-kind-icon">Ng<wbr>Filter<wbr>Expression</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="../interfaces/modelviewconnector.html" class="tsd-kind-icon">Model<wbr>View<wbr>Connector</a>
+						<a href="projectsettings.html" class="tsd-kind-icon">Project<wbr>Settings</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="../interfaces/modelviewinfo.html" class="tsd-kind-icon">Model<wbr>View<wbr>Info</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/ngfiltercall.html" class="tsd-kind-icon">Ng<wbr>Filter<wbr>Call</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/ngfilterexpression.html" class="tsd-kind-icon">Ng<wbr>Filter<wbr>Expression</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/projectsettings.html" class="tsd-kind-icon">Project<wbr>Settings</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/tagdirectivehandler.html" class="tsd-kind-icon">Tag<wbr>Directive<wbr>Handler</a>
+						<a href="tagdirectivehandler.html" class="tsd-kind-icon">Tag<wbr>Directive<wbr>Handler</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="../globals.html#ngscopeinfo" class="tsd-kind-icon">Ng<wbr>Scope<wbr>Info</a>

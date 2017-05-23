@@ -87,6 +87,7 @@
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="projectsettings.html#attributedirectives" class="tsd-kind-icon">attribute<wbr>Directives</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="projectsettings.html#blacklistedpaths" class="tsd-kind-icon">blacklisted<wbr>Paths</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="projectsettings.html#ctrlviewconnectors" class="tsd-kind-icon">ctrl<wbr>View<wbr>Connectors</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="projectsettings.html#ctrlviewfragmentextractors" class="tsd-kind-icon">ctrl<wbr>View<wbr>Fragment<wbr>Extractors</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="projectsettings.html#extractrlviewconnections" class="tsd-kind-icon">extra<wbr>Ctrl<wbr>View<wbr>Connections</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="projectsettings.html#modelviewconnectors" class="tsd-kind-icon">model<wbr>View<wbr>Connectors</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="projectsettings.html#ngfilters" class="tsd-kind-icon">ng<wbr>Filters</a></li>
@@ -106,7 +107,7 @@
 					<div class="tsd-signature tsd-kind-icon">attribute<wbr>Directives<span class="tsd-signature-symbol">:</span> <a href="attributedirectivehandler.html" class="tsd-signature-type">AttributeDirectiveHandler</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/55dfa1e/src/ng-typeview.ts#L120">src/ng-typeview.ts:120</a></li>
+							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/25be3db/src/ng-typeview.ts#L122">src/ng-typeview.ts:122</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -123,7 +124,7 @@
 					<div class="tsd-signature tsd-kind-icon">blacklisted<wbr>Paths<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/55dfa1e/src/ng-typeview.ts#L81">src/ng-typeview.ts:81</a></li>
+							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/25be3db/src/ng-typeview.ts#L83">src/ng-typeview.ts:83</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -140,7 +141,7 @@
 					<div class="tsd-signature tsd-kind-icon">ctrl<wbr>View<wbr>Connectors<span class="tsd-signature-symbol">:</span> <a href="controllerviewconnector.html" class="tsd-signature-type">ControllerViewConnector</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/55dfa1e/src/ng-typeview.ts#L92">src/ng-typeview.ts:92</a></li>
+							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/25be3db/src/ng-typeview.ts#L94">src/ng-typeview.ts:94</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -152,12 +153,30 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="ctrlviewfragmentextractors" class="tsd-anchor"></a>
+					<h3>ctrl<wbr>View<wbr>Fragment<wbr>Extractors</h3>
+					<div class="tsd-signature tsd-kind-icon">ctrl<wbr>View<wbr>Fragment<wbr>Extractors<span class="tsd-signature-symbol">:</span> <a href="ctrlviewfragmentextractor.html" class="tsd-signature-type">CtrlViewFragmentExtractor</a><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/25be3db/src/ng-typeview.ts#L129">src/ng-typeview.ts:129</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Controller view fragment extractors. For instance, you may have
+								view fragments present in your controllers, for instance ng-grid has
+								&#39;cell templates&#39; which typeview can also type-check through this mechanism.
+							Extractors allows you to tell ng-typeview about those.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="extractrlviewconnections" class="tsd-anchor"></a>
 					<h3>extra<wbr>Ctrl<wbr>View<wbr>Connections</h3>
 					<div class="tsd-signature tsd-kind-icon">extra<wbr>Ctrl<wbr>View<wbr>Connections<span class="tsd-signature-symbol">:</span> <a href="controllerviewinfo.html" class="tsd-signature-type">ControllerViewInfo</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/55dfa1e/src/ng-typeview.ts#L99">src/ng-typeview.ts:99</a></li>
+							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/25be3db/src/ng-typeview.ts#L101">src/ng-typeview.ts:101</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -175,7 +194,7 @@
 					<div class="tsd-signature tsd-kind-icon">model<wbr>View<wbr>Connectors<span class="tsd-signature-symbol">:</span> <a href="modelviewconnector.html" class="tsd-signature-type">ModelViewConnector</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/55dfa1e/src/ng-typeview.ts#L108">src/ng-typeview.ts:108</a></li>
+							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/25be3db/src/ng-typeview.ts#L110">src/ng-typeview.ts:110</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -195,7 +214,7 @@
 					<div class="tsd-signature tsd-kind-icon">ng<wbr>Filters<span class="tsd-signature-symbol">:</span> <a href="../classes/ngfilter.html" class="tsd-signature-type">NgFilter</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/55dfa1e/src/ng-typeview.ts#L86">src/ng-typeview.ts:86</a></li>
+							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/25be3db/src/ng-typeview.ts#L88">src/ng-typeview.ts:88</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -211,7 +230,7 @@
 					<div class="tsd-signature tsd-kind-icon">path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/55dfa1e/src/ng-typeview.ts#L75">src/ng-typeview.ts:75</a></li>
+							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/25be3db/src/ng-typeview.ts#L77">src/ng-typeview.ts:77</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -226,7 +245,7 @@
 					<div class="tsd-signature tsd-kind-icon">resolve<wbr>Imports<wbr>AsNon<wbr>Scope<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/55dfa1e/src/ng-typeview.ts#L141">src/ng-typeview.ts:141</a></li>
+							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/25be3db/src/ng-typeview.ts#L150">src/ng-typeview.ts:150</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -258,7 +277,7 @@
 					<div class="tsd-signature tsd-kind-icon">tag<wbr>Directives<span class="tsd-signature-symbol">:</span> <a href="tagdirectivehandler.html" class="tsd-signature-type">TagDirectiveHandler</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/55dfa1e/src/ng-typeview.ts#L114">src/ng-typeview.ts:114</a></li>
+							<li>Defined in <a href="https://github.com/emmanueltouzery/ng-typeview/blob/25be3db/src/ng-typeview.ts#L116">src/ng-typeview.ts:116</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -297,6 +316,9 @@
 						<a href="controllerviewinfo.html" class="tsd-kind-icon">Controller<wbr>View<wbr>Info</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="ctrlviewfragmentextractor.html" class="tsd-kind-icon">Ctrl<wbr>View<wbr>Fragment<wbr>Extractor</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="directiveresponse.html" class="tsd-kind-icon">Directive<wbr>Response</a>
 					</li>
 					<li class=" tsd-kind-interface">
@@ -324,6 +346,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="projectsettings.html#ctrlviewconnectors" class="tsd-kind-icon">ctrl<wbr>View<wbr>Connectors</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="projectsettings.html#ctrlviewfragmentextractors" class="tsd-kind-icon">ctrl<wbr>View<wbr>Fragment<wbr>Extractors</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="projectsettings.html#extractrlviewconnections" class="tsd-kind-icon">extra<wbr>Ctrl<wbr>View<wbr>Connections</a>
@@ -358,6 +383,9 @@
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="../globals.html#defaultctrlviewconnectors" class="tsd-kind-icon">default<wbr>Ctrl<wbr>View<wbr>Connectors</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="../globals.html#defaultctrlviewfragmentextractors" class="tsd-kind-icon">default<wbr>Ctrl<wbr>View<wbr>Fragment<wbr>Extractors</a>
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="../globals.html#defaultmodelviewconnectors" class="tsd-kind-icon">default<wbr>Model<wbr>View<wbr>Connectors</a>
