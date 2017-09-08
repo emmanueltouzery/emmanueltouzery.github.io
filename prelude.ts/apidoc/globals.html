@@ -98,10 +98,11 @@
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-function"><a href="globals.html#areequal" class="tsd-kind-icon">are<wbr>Equal</a></li>
+								<li class="tsd-kind-function"><a href="globals.html#fieldshashcode" class="tsd-kind-icon">fields<wbr>Hash<wbr>Code</a></li>
+								<li class="tsd-kind-function"><a href="globals.html#gethashcode" class="tsd-kind-icon">get<wbr>Hash<wbr>Code</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#hasequals" class="tsd-kind-icon">has<wbr>Equals</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#stringhashcode" class="tsd-kind-icon">string<wbr>Hash<wbr>Code</a></li>
-								<li class="tsd-kind-function"><a href="globals.html#witheqequals" class="tsd-kind-icon">with<wbr>EqEquals</a></li>
-								<li class="tsd-kind-function"><a href="globals.html#witheqhashcode" class="tsd-kind-icon">with<wbr>EqHash<wbr>Code</a></li>
 							</ul>
 						</section>
 					</div>
@@ -115,7 +116,7 @@
 					<div class="tsd-signature tsd-kind-icon">Has<wbr>Equals<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0a3b696/src/Comparison.ts#L16">src/Comparison.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/098f678/src/Comparison.ts#L16">src/Comparison.ts:16</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -135,7 +136,7 @@
 					<div class="tsd-signature tsd-kind-icon">With<wbr>Equality<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><a href="globals.html#hasequals" class="tsd-signature-type">HasEquals</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0a3b696/src/Comparison.ts#L6">src/Comparison.ts:6</a></li>
+							<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/098f678/src/Comparison.ts#L6">src/Comparison.ts:6</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -150,6 +151,104 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
 				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="areequal" class="tsd-anchor"></a>
+					<h3>are<wbr>Equal</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">are<wbr>Equal<span class="tsd-signature-symbol">(</span>obj<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span>, obj2<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/098f678/src/Comparison.ts#L65">src/Comparison.ts:65</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Equality function which tries semantic equality (using .equals())
+									if possible, degrades to === if not available, and is also null-safe.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>obj: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></h5>
+								</li>
+								<li>
+									<h5>obj2: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="fieldshashcode" class="tsd-anchor"></a>
+					<h3>fields<wbr>Hash<wbr>Code</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">fields<wbr>Hash<wbr>Code<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>fields<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/098f678/src/Comparison.ts#L36">src/Comparison.ts:36</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Helper function for your objects so you can compute
+										a hashcode. You can pass to this function all the fields
+										of your object that should be taken into account for the
+									hash, and the function will return a reasonable hash code.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>fields: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the fields of your object to take
+										into account for the hashcode</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="gethashcode" class="tsd-anchor"></a>
+					<h3>get<wbr>Hash<wbr>Code</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Hash<wbr>Code<span class="tsd-signature-symbol">(</span>obj<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/098f678/src/Comparison.ts#L84">src/Comparison.ts:84</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Hashing function which tries to call hashCode()
+										and uses the object itself for numbers, then degrades
+										for stringHashCode of the string representation if
+									not available.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>obj: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
 					<a name="hasequals" class="tsd-anchor"></a>
 					<h3>has<wbr>Equals</h3>
 					<ul class="tsd-signatures tsd-kind-function">
@@ -159,7 +258,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0a3b696/src/Comparison.ts#L23">src/Comparison.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/098f678/src/Comparison.ts#L23">src/Comparison.ts:23</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -189,81 +288,18 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0a3b696/src/Comparison.ts#L30">src/Comparison.ts:30</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/098f678/src/Comparison.ts#L49">src/Comparison.ts:49</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Helper function to compute a reasonnable hashcode for strings.</p>
+									<p>Helper function to compute a reasonable hashcode for strings.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>str: <span class="tsd-signature-type">string</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function">
-					<a name="witheqequals" class="tsd-anchor"></a>
-					<h3>with<wbr>EqEquals</h3>
-					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">with<wbr>EqEquals<span class="tsd-signature-symbol">(</span>obj<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span>, obj2<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0a3b696/src/Comparison.ts#L46">src/Comparison.ts:46</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Equality function which tries semantic equality if possible,
-									degrades to === if not available.</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>obj: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></h5>
-								</li>
-								<li>
-									<h5>obj2: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function">
-					<a name="witheqhashcode" class="tsd-anchor"></a>
-					<h3>with<wbr>EqHash<wbr>Code</h3>
-					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">with<wbr>EqHash<wbr>Code<span class="tsd-signature-symbol">(</span>obj<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0a3b696/src/Comparison.ts#L65">src/Comparison.ts:65</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Hashing function which tries to call hashCode()
-										and uses the object itself for numbers, then degrades
-										for stringHashCode of the string representation if
-									not available.</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>obj: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -319,16 +355,19 @@
 						<a href="globals.html#withequality" class="tsd-kind-icon">With<wbr>Equality</a>
 					</li>
 					<li class=" tsd-kind-function">
+						<a href="globals.html#areequal" class="tsd-kind-icon">are<wbr>Equal</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#fieldshashcode" class="tsd-kind-icon">fields<wbr>Hash<wbr>Code</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#gethashcode" class="tsd-kind-icon">get<wbr>Hash<wbr>Code</a>
+					</li>
+					<li class=" tsd-kind-function">
 						<a href="globals.html#hasequals" class="tsd-kind-icon">has<wbr>Equals</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#stringhashcode" class="tsd-kind-icon">string<wbr>Hash<wbr>Code</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#witheqequals" class="tsd-kind-icon">with<wbr>EqEquals</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#witheqhashcode" class="tsd-kind-icon">with<wbr>EqHash<wbr>Code</a>
 					</li>
 				</ul>
 			</nav>
