@@ -102,7 +102,8 @@ Vector.of(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,
 					methods that <a href="https://facebook.github.io/immutable-js/docs/#/ValueObject">immutable.js uses</a>).
 					With these methods, structural equality is achievable, and indeed
 					<code>Vector.of(1,2,3).equals(Vector.of(1,2,3))</code> is <code>true</code>. However this can only
-					work if the values you put in collections have themselves properly defined equality.
+					work if the values you put in collections have themselves properly defined equality
+					(<a href="https://github.com/emmanueltouzery/prelude.ts/wiki/Equality">see how prelude.ts can help</a>).
 					If these values don&#39;t have structural equality, then we can get no better than
 				<code>===</code> behavior.</p>
 				<p>prelude.ts attempts to assist the programmer with this; it tries to encourage
@@ -119,28 +120,8 @@ Vector.of(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,
 					this value in a Set or as a Map key, and that equality features are not provided.
 					Similary, functions such a <code>map</code> have alternate implementations such as <code>mapStruct</code>
 				to warn the programmer in these cases.</p>
-				<p>prelude.ts also offers some helper functions to implement the <code>equals</code> and
-					<code>hashCode</code> functions for your own objects:
-					<a href="http://emmanueltouzery.github.io/prelude.ts/apidoc/globals.html#fieldshashcode">fieldsHashCode</a>
-				and <a href="http://emmanueltouzery.github.io/prelude.ts/apidoc/globals.html#areequal">areEqual</a>.</p>
-				<p>Here is an example of object using these helpers:</p>
-				<pre><code class="lang-typescript"><span class="hljs-keyword">class</span> MyClass {
-    <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> field1:<span class="hljs-built_in">string</span>, <span class="hljs-keyword">private</span> field2:<span class="hljs-built_in">number</span></span>) {}
-    equals(other: MyClass): <span class="hljs-built_in">boolean</span> {
-        <span class="hljs-keyword">return</span> areEqual(<span class="hljs-keyword">this</span>.field1, other.field1) &amp;&amp;
-            areEqual(<span class="hljs-keyword">this</span>.field2, other.field2);
-    }
-    hashCode(): <span class="hljs-built_in">number</span> {
-        <span class="hljs-keyword">return</span> fieldsHashCode(<span class="hljs-keyword">this</span>.field1, <span class="hljs-keyword">this</span>.field2);
-    }
-    toString(): <span class="hljs-built_in">string</span> {
-        <span class="hljs-keyword">return</span> <span class="hljs-string">`{field1: <span class="hljs-subst">${this.field1}</span>, field2: <span class="hljs-subst">${this.field2}</span>}`</span>;
-    }
-}
-</code></pre>
 				<h2 id="wishlist-upcoming-features">Wishlist/upcoming features</h2>
 				<ul>
-					<li>Stream (including infinite streams)</li>
 					<li>Either</li>
 					<li>Future, wrapping promises?</li>
 					<li>Non-empty vector probably</li>
@@ -203,6 +184,9 @@ Vector.of(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,
 					</li>
 					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="classes/option.html" class="tsd-kind-icon">Option</a>
+					</li>
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="classes/stream.html" class="tsd-kind-icon">Stream</a>
 					</li>
 					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="classes/tuple2.html" class="tsd-kind-icon">Tuple2</a>
