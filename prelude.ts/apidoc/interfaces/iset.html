@@ -110,9 +110,11 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="iset.html#add" class="tsd-kind-icon">add</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="iset.html#contains" class="tsd-kind-icon">contains</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="iset.html#diff" class="tsd-kind-icon">diff</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="iset.html#equals" class="tsd-kind-icon">equals</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="iset.html#hashcode" class="tsd-kind-icon">hash<wbr>Code</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="iset.html#isempty" class="tsd-kind-icon">is<wbr>Empty</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="iset.html#removeall" class="tsd-kind-icon">remove<wbr>All</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="iset.html#size" class="tsd-kind-icon">size</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="iset.html#toarray" class="tsd-kind-icon">to<wbr>Array</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="iset.html#tostring" class="tsd-kind-icon">to<wbr>String</a></li>
@@ -133,7 +135,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c808e49/src/ISet.ts#L23">src/ISet.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/ISet.ts#L23">src/ISet.ts:23</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -161,7 +163,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c808e49/src/ISet.ts#L29">src/ISet.ts:29</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/ISet.ts#L29">src/ISet.ts:29</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -180,6 +182,35 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="diff" class="tsd-anchor"></a>
+					<h3>diff</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">diff<span class="tsd-signature-symbol">(</span>other<span class="tsd-signature-symbol">: </span><a href="iset.html" class="tsd-signature-type">ISet</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> &amp; </span><a href="../globals.html#withequality" class="tsd-signature-type">WithEquality</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="iset.html" class="tsd-signature-type">ISet</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/ISet.ts#L35">src/ISet.ts:35</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns a new Set containing the difference
+									between this set and the other Set passed as parameter.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>other: <a href="iset.html" class="tsd-signature-type">ISet</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> &amp; </span><a href="../globals.html#withequality" class="tsd-signature-type">WithEquality</a><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="iset.html" class="tsd-signature-type">ISet</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
 					<a name="equals" class="tsd-anchor"></a>
 					<h3>equals</h3>
@@ -191,7 +222,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="value.html">Value</a>.<a href="value.html#equals">equals</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c808e49/src/Value.ts#L8">src/Value.ts:8</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Value.ts#L8">src/Value.ts:8</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -222,7 +253,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="value.html">Value</a>.<a href="value.html#hashcode">hashCode</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c808e49/src/Value.ts#L15">src/Value.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Value.ts#L15">src/Value.ts:15</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -246,7 +277,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c808e49/src/ISet.ts#L18">src/ISet.ts:18</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/ISet.ts#L18">src/ISet.ts:18</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -255,6 +286,37 @@
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="removeall" class="tsd-anchor"></a>
+					<h3>remove<wbr>All</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">remove<wbr>All<span class="tsd-signature-symbol">(</span>elts<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> &amp; </span><a href="../globals.html#withequality" class="tsd-signature-type">WithEquality</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="iset.html" class="tsd-signature-type">ISet</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/ISet.ts#L43">src/ISet.ts:43</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns a new set with all the elements of the current
+										Set, minus the elements of the iterable you give as a parameter.
+										If you call this function with a HashSet as parameter,
+									rather call &#39;diff&#39;, as it&#39;ll be faster.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>elts: <span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> &amp; </span><a href="../globals.html#withequality" class="tsd-signature-type">WithEquality</a><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="iset.html" class="tsd-signature-type">ISet</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -268,7 +330,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c808e49/src/ISet.ts#L13">src/ISet.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/ISet.ts#L13">src/ISet.ts:13</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -290,7 +352,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c808e49/src/ISet.ts#L34">src/ISet.ts:34</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/ISet.ts#L48">src/ISet.ts:48</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -313,7 +375,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="value.html">Value</a>.<a href="value.html#tostring">toString</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c808e49/src/Value.ts#L20">src/Value.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Value.ts#L20">src/Value.ts:20</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -372,6 +434,9 @@
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
 								<a href="iset.html#contains" class="tsd-kind-icon">contains</a>
 							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="iset.html#diff" class="tsd-kind-icon">diff</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
 								<a href="iset.html#equals" class="tsd-kind-icon">equals</a>
 							</li>
@@ -380,6 +445,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
 								<a href="iset.html#isempty" class="tsd-kind-icon">is<wbr>Empty</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="iset.html#removeall" class="tsd-kind-icon">remove<wbr>All</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
 								<a href="iset.html#size" class="tsd-kind-icon">size</a>
