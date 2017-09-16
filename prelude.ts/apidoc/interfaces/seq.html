@@ -98,6 +98,7 @@
 			<section class="tsd-panel">
 				<h3>Implemented by</h3>
 				<ul class="tsd-hierarchy">
+					<li><a href="../classes/stream.html" class="tsd-signature-type">Stream</a></li>
 					<li><a href="../classes/vector.html" class="tsd-signature-type">Vector</a></li>
 				</ul>
 			</section>
@@ -108,10 +109,13 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="seq.html#allmatch" class="tsd-kind-icon">all<wbr>Match</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="seq.html#anymatch" class="tsd-kind-icon">any<wbr>Match</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="seq.html#append" class="tsd-kind-icon">append</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="seq.html#appendall" class="tsd-kind-icon">append<wbr>All</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="seq.html#appendallstruct" class="tsd-kind-icon">append<wbr>All<wbr>Struct</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="seq.html#appendstruct" class="tsd-kind-icon">append<wbr>Struct</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="seq.html#contains" class="tsd-kind-icon">contains</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-has-type-parameter"><a href="seq.html#distinctby" class="tsd-kind-icon">distinct<wbr>By</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="seq.html#drop" class="tsd-kind-icon">drop</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="seq.html#dropright" class="tsd-kind-icon">drop<wbr>Right</a></li>
@@ -128,8 +132,10 @@
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-has-type-parameter"><a href="seq.html#groupby" class="tsd-kind-icon">group<wbr>By</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="seq.html#hashcode" class="tsd-kind-icon">hash<wbr>Code</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="seq.html#head" class="tsd-kind-icon">head</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="seq.html#inspect" class="tsd-kind-icon">inspect</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="seq.html#isempty" class="tsd-kind-icon">is<wbr>Empty</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="seq.html#last" class="tsd-kind-icon">last</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="seq.html#length" class="tsd-kind-icon">length</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-has-type-parameter"><a href="seq.html#map" class="tsd-kind-icon">map</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-has-type-parameter"><a href="seq.html#mapstruct" class="tsd-kind-icon">map<wbr>Struct</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="seq.html#mkstring" class="tsd-kind-icon">mk<wbr>String</a></li>
@@ -139,7 +145,6 @@
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="seq.html#prependallstruct" class="tsd-kind-icon">prepend<wbr>All<wbr>Struct</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="seq.html#prependstruct" class="tsd-kind-icon">prepend<wbr>Struct</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="seq.html#reverse" class="tsd-kind-icon">reverse</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="seq.html#size" class="tsd-kind-icon">size</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="seq.html#sortby" class="tsd-kind-icon">sort<wbr>By</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="seq.html#tail" class="tsd-kind-icon">tail</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="seq.html#takewhile" class="tsd-kind-icon">take<wbr>While</a></li>
@@ -157,6 +162,100 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="allmatch" class="tsd-anchor"></a>
+					<h3>all<wbr>Match</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">all<wbr>Match<span class="tsd-signature-symbol">(</span>predicate<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L134">src/Seq.ts:134</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns true if the predicate returns true for all the
+									elements in the collection.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>predicate: <span class="tsd-signature-type">function</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-siganture">
+											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>v<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5>v: <span class="tsd-signature-type">T</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="anymatch" class="tsd-anchor"></a>
+					<h3>any<wbr>Match</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">any<wbr>Match<span class="tsd-signature-symbol">(</span>predicate<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L140">src/Seq.ts:140</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns true if there the predicate returns true for any
+									element in the collection.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>predicate: <span class="tsd-signature-type">function</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-siganture">
+											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>v<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5>v: <span class="tsd-signature-type">T</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
 					<a name="append" class="tsd-anchor"></a>
 					<h3>append</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
@@ -166,7 +265,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Seq.ts#L36">src/Seq.ts:36</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L36">src/Seq.ts:36</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -195,7 +294,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Seq.ts#L43">src/Seq.ts:43</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L43">src/Seq.ts:43</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -225,7 +324,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Seq.ts#L50">src/Seq.ts:50</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L50">src/Seq.ts:50</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -255,7 +354,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Seq.ts#L30">src/Seq.ts:30</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L30">src/Seq.ts:30</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -274,6 +373,35 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="contains" class="tsd-anchor"></a>
+					<h3>contains</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">contains<span class="tsd-signature-symbol">(</span>v<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> &amp; </span><a href="../globals.html#withequality" class="tsd-signature-type">WithEquality</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L110">src/Seq.ts:110</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns true if the item is in the collection,
+									false otherwise.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>v: <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> &amp; </span><a href="../globals.html#withequality" class="tsd-signature-type">WithEquality</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-has-type-parameter">
 					<a name="distinctby" class="tsd-anchor"></a>
 					<h3>distinct<wbr>By</h3>
@@ -284,7 +412,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Seq.ts#L273">src/Seq.ts:273</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L292">src/Seq.ts:292</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -343,7 +471,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Seq.ts#L243">src/Seq.ts:243</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L262">src/Seq.ts:262</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -374,7 +502,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Seq.ts#L258">src/Seq.ts:258</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L277">src/Seq.ts:277</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -405,7 +533,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Seq.ts#L250">src/Seq.ts:250</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L269">src/Seq.ts:269</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -454,7 +582,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="value.html">Value</a>.<a href="value.html#equals">equals</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Value.ts#L8">src/Value.ts:8</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Value.ts#L8">src/Value.ts:8</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -484,7 +612,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Seq.ts#L96">src/Seq.ts:96</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L97">src/Seq.ts:97</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -532,7 +660,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Seq.ts#L103">src/Seq.ts:103</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L104">src/Seq.ts:104</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -580,7 +708,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Seq.ts#L112">src/Seq.ts:112</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L119">src/Seq.ts:119</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -636,7 +764,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Seq.ts#L121">src/Seq.ts:121</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L128">src/Seq.ts:128</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -692,7 +820,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Seq.ts#L175">src/Seq.ts:175</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L194">src/Seq.ts:194</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -763,7 +891,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Seq.ts#L191">src/Seq.ts:191</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L210">src/Seq.ts:210</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -828,18 +956,19 @@
 					<a name="foreach" class="tsd-anchor"></a>
 					<h3>for<wbr>Each</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">for<wbr>Each<span class="tsd-signature-symbol">(</span>fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">for<wbr>Each<span class="tsd-signature-symbol">(</span>fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="seq.html" class="tsd-signature-type">Seq</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Seq.ts#L55">src/Seq.ts:55</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L56">src/Seq.ts:56</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Call a function for element in the collection.</p>
+									<p>Call a function for element in the collection.
+									Return the unchanged collection.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -866,7 +995,7 @@
 									</ul>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="seq.html" class="tsd-signature-type">Seq</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -880,7 +1009,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Seq.ts#L235">src/Seq.ts:235</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L254">src/Seq.ts:254</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -910,7 +1039,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Seq.ts#L129">src/Seq.ts:129</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L148">src/Seq.ts:148</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -966,7 +1095,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="value.html">Value</a>.<a href="value.html#hashcode">hashCode</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Value.ts#L15">src/Value.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Value.ts#L15">src/Value.ts:15</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -990,7 +1119,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Seq.ts#L62">src/Seq.ts:62</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L63">src/Seq.ts:63</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1004,6 +1133,30 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
+					<a name="inspect" class="tsd-anchor"></a>
+					<h3>inspect</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">inspect<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="value.html">Value</a>.<a href="value.html#inspect">inspect</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Value.ts#L26">src/Value.ts:26</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Used by the node REPL to display values.
+									Most of the time should be the same as toString()</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
 					<a name="isempty" class="tsd-anchor"></a>
 					<h3>is<wbr>Empty</h3>
@@ -1014,7 +1167,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Seq.ts#L19">src/Seq.ts:19</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L19">src/Seq.ts:19</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1036,7 +1189,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Seq.ts#L69">src/Seq.ts:69</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L70">src/Seq.ts:70</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1050,6 +1203,28 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="length" class="tsd-anchor"></a>
+					<h3>length</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">length<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L14">src/Seq.ts:14</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get the length of the collection.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-has-type-parameter">
 					<a name="map" class="tsd-anchor"></a>
 					<h3>map</h3>
@@ -1060,7 +1235,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Seq.ts#L89">src/Seq.ts:89</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L90">src/Seq.ts:90</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1117,7 +1292,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Seq.ts#L82">src/Seq.ts:82</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L83">src/Seq.ts:83</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1171,7 +1346,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Seq.ts#L200">src/Seq.ts:200</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L219">src/Seq.ts:219</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1203,7 +1378,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Seq.ts#L292">src/Seq.ts:292</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L311">src/Seq.ts:311</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1256,7 +1431,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Seq.ts#L147">src/Seq.ts:147</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L166">src/Seq.ts:166</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1285,7 +1460,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Seq.ts#L153">src/Seq.ts:153</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L172">src/Seq.ts:172</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1314,7 +1489,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Seq.ts#L159">src/Seq.ts:159</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L178">src/Seq.ts:178</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1343,7 +1518,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Seq.ts#L141">src/Seq.ts:141</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L160">src/Seq.ts:160</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1372,7 +1547,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Seq.ts#L280">src/Seq.ts:280</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L299">src/Seq.ts:299</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1387,28 +1562,6 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="size" class="tsd-anchor"></a>
-					<h3>size</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">size<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Seq.ts#L14">src/Seq.ts:14</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Get the size (length) of the collection.</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
 					<a name="sortby" class="tsd-anchor"></a>
 					<h3>sort<wbr>By</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
@@ -1418,7 +1571,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Seq.ts#L135">src/Seq.ts:135</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L154">src/Seq.ts:154</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1462,22 +1615,22 @@
 					<a name="tail" class="tsd-anchor"></a>
 					<h3>tail</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">tail<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="seq.html" class="tsd-signature-type">Seq</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">tail<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../classes/option.html" class="tsd-signature-type">Option</a><span class="tsd-signature-symbol">&lt;</span><a href="seq.html" class="tsd-signature-type">Seq</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Seq.ts#L75">src/Seq.ts:75</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L76">src/Seq.ts:76</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Get all the elements in the collection but the first one.
-									If the collection is empty, return an empty collection.</p>
+									Option.None if it&#39;s empty.</p>
 								</div>
 							</div>
-							<h4 class="tsd-returns-title">Returns <a href="seq.html" class="tsd-signature-type">Seq</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="../classes/option.html" class="tsd-signature-type">Option</a><span class="tsd-signature-symbol">&lt;</span><a href="seq.html" class="tsd-signature-type">Seq</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -1491,7 +1644,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Seq.ts#L264">src/Seq.ts:264</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L283">src/Seq.ts:283</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1538,7 +1691,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Seq.ts#L24">src/Seq.ts:24</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L24">src/Seq.ts:24</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1560,7 +1713,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Seq.ts#L302">src/Seq.ts:302</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L321">src/Seq.ts:321</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1620,7 +1773,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Seq.ts#L312">src/Seq.ts:312</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L331">src/Seq.ts:331</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1681,7 +1834,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="value.html">Value</a>.<a href="value.html#tostring">toString</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Value.ts#L20">src/Value.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Value.ts#L20">src/Value.ts:20</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1703,7 +1856,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Seq.ts#L214">src/Seq.ts:214</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L233">src/Seq.ts:233</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1744,7 +1897,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Seq.ts#L228">src/Seq.ts:228</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Seq.ts#L247">src/Seq.ts:247</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1820,6 +1973,12 @@
 						<a href="seq.html" class="tsd-kind-icon">Seq</a>
 						<ul>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="seq.html#allmatch" class="tsd-kind-icon">all<wbr>Match</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="seq.html#anymatch" class="tsd-kind-icon">any<wbr>Match</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
 								<a href="seq.html#append" class="tsd-kind-icon">append</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
@@ -1830,6 +1989,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
 								<a href="seq.html#appendstruct" class="tsd-kind-icon">append<wbr>Struct</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="seq.html#contains" class="tsd-kind-icon">contains</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-has-type-parameter">
 								<a href="seq.html#distinctby" class="tsd-kind-icon">distinct<wbr>By</a>
@@ -1879,11 +2041,17 @@
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
 								<a href="seq.html#head" class="tsd-kind-icon">head</a>
 							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
+								<a href="seq.html#inspect" class="tsd-kind-icon">inspect</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
 								<a href="seq.html#isempty" class="tsd-kind-icon">is<wbr>Empty</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
 								<a href="seq.html#last" class="tsd-kind-icon">last</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="seq.html#length" class="tsd-kind-icon">length</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-has-type-parameter">
 								<a href="seq.html#map" class="tsd-kind-icon">map</a>
@@ -1911,9 +2079,6 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
 								<a href="seq.html#reverse" class="tsd-kind-icon">reverse</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="seq.html#size" class="tsd-kind-icon">size</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
 								<a href="seq.html#sortby" class="tsd-kind-icon">sort<wbr>By</a>

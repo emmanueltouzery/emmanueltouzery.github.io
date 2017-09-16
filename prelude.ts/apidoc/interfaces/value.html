@@ -85,6 +85,7 @@
 				<h3>Implemented by</h3>
 				<ul class="tsd-hierarchy">
 					<li><a href="../classes/option.html" class="tsd-signature-type">Option</a></li>
+					<li><a href="../classes/stream.html" class="tsd-signature-type">Stream</a></li>
 					<li><a href="../classes/tuple2.html" class="tsd-signature-type">Tuple2</a></li>
 				</ul>
 			</section>
@@ -97,6 +98,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="value.html#equals" class="tsd-kind-icon">equals</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="value.html#hashcode" class="tsd-kind-icon">hash<wbr>Code</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="value.html#inspect" class="tsd-kind-icon">inspect</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="value.html#tostring" class="tsd-kind-icon">to<wbr>String</a></li>
 							</ul>
 						</section>
@@ -115,7 +117,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Value.ts#L8">src/Value.ts:8</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Value.ts#L8">src/Value.ts:8</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -145,7 +147,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Value.ts#L15">src/Value.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Value.ts#L15">src/Value.ts:15</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -160,6 +162,29 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="inspect" class="tsd-anchor"></a>
+					<h3>inspect</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">inspect<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Value.ts#L26">src/Value.ts:26</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Used by the node REPL to display values.
+									Most of the time should be the same as toString()</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
 					<a name="tostring" class="tsd-anchor"></a>
 					<h3>to<wbr>String</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
@@ -169,7 +194,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Value.ts#L20">src/Value.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Value.ts#L20">src/Value.ts:20</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -233,6 +258,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
 								<a href="value.html#hashcode" class="tsd-kind-icon">hash<wbr>Code</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="value.html#inspect" class="tsd-kind-icon">inspect</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
 								<a href="value.html#tostring" class="tsd-kind-icon">to<wbr>String</a>

@@ -117,8 +117,10 @@
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="imap.html#equals" class="tsd-kind-icon">equals</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="imap.html#get" class="tsd-kind-icon">get</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="imap.html#hashcode" class="tsd-kind-icon">hash<wbr>Code</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="imap.html#inspect" class="tsd-kind-icon">inspect</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="imap.html#isempty" class="tsd-kind-icon">is<wbr>Empty</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="imap.html#keyset" class="tsd-kind-icon">key<wbr>Set</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="imap.html#length" class="tsd-kind-icon">length</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-has-type-parameter"><a href="imap.html#map" class="tsd-kind-icon">map</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-has-type-parameter"><a href="imap.html#mapstruct" class="tsd-kind-icon">map<wbr>Struct</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-has-type-parameter"><a href="imap.html#mapvalues" class="tsd-kind-icon">map<wbr>Values</a></li>
@@ -128,7 +130,6 @@
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="imap.html#putstruct" class="tsd-kind-icon">put<wbr>Struct</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="imap.html#putstructwithmerge" class="tsd-kind-icon">put<wbr>Struct<wbr>With<wbr>Merge</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="imap.html#putwithmerge" class="tsd-kind-icon">put<wbr>With<wbr>Merge</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="imap.html#size" class="tsd-kind-icon">size</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="imap.html#tostring" class="tsd-kind-icon">to<wbr>String</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="imap.html#tovector" class="tsd-kind-icon">to<wbr>Vector</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="imap.html#valueset" class="tsd-kind-icon">value<wbr>Set</a></li>
@@ -150,7 +151,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="value.html">Value</a>.<a href="value.html#equals">equals</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Value.ts#L8">src/Value.ts:8</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Value.ts#L8">src/Value.ts:8</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -180,7 +181,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/IMap.ts#L27">src/IMap.ts:27</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/IMap.ts#L27">src/IMap.ts:27</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -209,7 +210,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="value.html">Value</a>.<a href="value.html#hashcode">hashCode</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Value.ts#L15">src/Value.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Value.ts#L15">src/Value.ts:15</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -223,6 +224,30 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
+					<a name="inspect" class="tsd-anchor"></a>
+					<h3>inspect</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">inspect<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="value.html">Value</a>.<a href="value.html#inspect">inspect</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Value.ts#L26">src/Value.ts:26</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Used by the node REPL to display values.
+									Most of the time should be the same as toString()</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
 					<a name="isempty" class="tsd-anchor"></a>
 					<h3>is<wbr>Empty</h3>
@@ -233,7 +258,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/IMap.ts#L119">src/IMap.ts:119</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/IMap.ts#L119">src/IMap.ts:119</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -255,7 +280,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/IMap.ts#L17">src/IMap.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/IMap.ts#L17">src/IMap.ts:17</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -264,6 +289,28 @@
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <a href="iset.html" class="tsd-signature-type">ISet</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="length" class="tsd-anchor"></a>
+					<h3>length</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">length<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/IMap.ts#L114">src/IMap.ts:114</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>number of items in the map</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -277,7 +324,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/IMap.ts#L85">src/IMap.ts:85</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/IMap.ts#L85">src/IMap.ts:85</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -338,7 +385,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/IMap.ts#L77">src/IMap.ts:77</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/IMap.ts#L77">src/IMap.ts:77</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -399,7 +446,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/IMap.ts#L103">src/IMap.ts:103</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/IMap.ts#L103">src/IMap.ts:103</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -458,7 +505,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/IMap.ts#L94">src/IMap.ts:94</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/IMap.ts#L94">src/IMap.ts:94</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -514,7 +561,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/IMap.ts#L130">src/IMap.ts:130</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/IMap.ts#L130">src/IMap.ts:130</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -576,7 +623,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/IMap.ts#L36">src/IMap.ts:36</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/IMap.ts#L36">src/IMap.ts:36</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -615,7 +662,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/IMap.ts#L45">src/IMap.ts:45</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/IMap.ts#L45">src/IMap.ts:45</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -654,7 +701,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/IMap.ts#L69">src/IMap.ts:69</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/IMap.ts#L69">src/IMap.ts:69</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -722,7 +769,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/IMap.ts#L57">src/IMap.ts:57</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/IMap.ts#L57">src/IMap.ts:57</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -780,28 +827,6 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="size" class="tsd-anchor"></a>
-					<h3>size</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">size<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/IMap.ts#L114">src/IMap.ts:114</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>number of items in the map</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
-						</li>
-					</ul>
-				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
 					<a name="tostring" class="tsd-anchor"></a>
 					<h3>to<wbr>String</h3>
@@ -813,7 +838,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="value.html">Value</a>.<a href="value.html#tostring">toString</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/Value.ts#L20">src/Value.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/Value.ts#L20">src/Value.ts:20</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -835,7 +860,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/IMap.ts#L109">src/IMap.ts:109</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/IMap.ts#L109">src/IMap.ts:109</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -858,7 +883,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e80d4e4/src/IMap.ts#L22">src/IMap.ts:22</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/104fbfc/src/IMap.ts#L22">src/IMap.ts:22</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -917,11 +942,17 @@
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
 								<a href="imap.html#hashcode" class="tsd-kind-icon">hash<wbr>Code</a>
 							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
+								<a href="imap.html#inspect" class="tsd-kind-icon">inspect</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
 								<a href="imap.html#isempty" class="tsd-kind-icon">is<wbr>Empty</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
 								<a href="imap.html#keyset" class="tsd-kind-icon">key<wbr>Set</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="imap.html#length" class="tsd-kind-icon">length</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-has-type-parameter">
 								<a href="imap.html#map" class="tsd-kind-icon">map</a>
@@ -949,9 +980,6 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
 								<a href="imap.html#putwithmerge" class="tsd-kind-icon">put<wbr>With<wbr>Merge</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="imap.html#size" class="tsd-kind-icon">size</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
 								<a href="imap.html#tostring" class="tsd-kind-icon">to<wbr>String</a>
