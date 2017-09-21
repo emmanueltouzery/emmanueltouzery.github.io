@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Value | prelude.ts</title>
+	<title>Foldable | prelude.ts</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -52,21 +52,29 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="value.html">Value</a>
+					<a href="foldable.html">Foldable</a>
 				</li>
 			</ul>
-			<h1>Interface Value</h1>
+			<h1>Interface Foldable&lt;T&gt;</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-type-parameters">
+				<h3>Type parameters</h3>
+				<ul class="tsd-type-parameters">
+					<li>
+						<h4>T</h4>
+					</li>
+				</ul>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Value</span>
+						<span class="target">Foldable</span>
 						<ul class="tsd-hierarchy">
 							<li>
 								<a href="iset.html" class="tsd-signature-type">ISet</a>
@@ -75,17 +83,10 @@
 								<a href="imap.html" class="tsd-signature-type">IMap</a>
 							</li>
 							<li>
-								<a href="collection.html" class="tsd-signature-type">Collection</a>
+								<a href="seq.html" class="tsd-signature-type">Seq</a>
 							</li>
 						</ul>
 					</li>
-				</ul>
-			</section>
-			<section class="tsd-panel">
-				<h3>Implemented by</h3>
-				<ul class="tsd-hierarchy">
-					<li><a href="../classes/option.html" class="tsd-signature-type">Option</a></li>
-					<li><a href="../classes/tuple2.html" class="tsd-signature-type">Tuple2</a></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -95,10 +96,9 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="value.html#equals" class="tsd-kind-icon">equals</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="value.html#hashcode" class="tsd-kind-icon">hash<wbr>Code</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="value.html#inspect" class="tsd-kind-icon">inspect</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="value.html#tostring" class="tsd-kind-icon">to<wbr>String</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="foldable.html#fold" class="tsd-kind-icon">fold</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-has-type-parameter"><a href="foldable.html#foldleft" class="tsd-kind-icon">fold<wbr>Left</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-has-type-parameter"><a href="foldable.html#foldright" class="tsd-kind-icon">fold<wbr>Right</a></li>
 							</ul>
 						</section>
 					</div>
@@ -107,101 +107,202 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="equals" class="tsd-anchor"></a>
-					<h3>equals</h3>
+					<a name="fold" class="tsd-anchor"></a>
+					<h3>fold</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">equals<span class="tsd-signature-symbol">(</span>other<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon">fold<span class="tsd-signature-symbol">(</span>zero<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>, fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/f90a2a5/src/Value.ts#L8">src/Value.ts:8</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/f90a2a5/src/Foldable.ts#L13">src/Foldable.ts:13</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Two objects are equal if they represent the same value,
-										regardless of whether they are the same object physically
-									in memory.</p>
+									<p>Reduces the collection to a single value using the
+										associative binary function you give. Since the function
+									is associative, order of application doesn&#39;t matter.</p>
 								</div>
+								<p>Example:</p>
+								<pre><code>HashSet.of(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>).fold(<span class="hljs-number">0</span>, (a,b) =&gt; a + b);
+=&gt; <span class="hljs-number">6</span>
+</code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>other: <span class="tsd-signature-type">any</span></h5>
+									<h5>zero: <span class="tsd-signature-type">T</span></h5>
+								</li>
+								<li>
+									<h5>fn: <span class="tsd-signature-type">function</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-siganture">
+											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>v1<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>, v2<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5>v1: <span class="tsd-signature-type">T</span></h5>
+														</li>
+														<li>
+															<h5>v2: <span class="tsd-signature-type">T</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="hashcode" class="tsd-anchor"></a>
-					<h3>hash<wbr>Code</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">hash<wbr>Code<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-has-type-parameter">
+					<a name="foldleft" class="tsd-anchor"></a>
+					<h3>fold<wbr>Left</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">fold<wbr>Left&lt;U&gt;<span class="tsd-signature-symbol">(</span>zero<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">U</span>, fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">U</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/f90a2a5/src/Value.ts#L15">src/Value.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/f90a2a5/src/Foldable.ts#L29">src/Foldable.ts:29</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Get a number for that object. Two different values
-										may get the same number, but one value must always get
-									the same number. The formula can impact performance.</p>
+									<p>Reduces the collection to a single value.
+									Left-associative.</p>
 								</div>
+								<p>Example:</p>
+								<pre><code>Vector.of(<span class="hljs-string">"a"</span>, <span class="hljs-string">"b"</span>, <span class="hljs-string">"c"</span>).foldLeft(<span class="hljs-string">"!"</span>, (xs,x) =&gt; x+xs))
+=&gt; <span class="hljs-string">"cba!"</span>
+</code></pre>
 							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>U</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>zero: <span class="tsd-signature-type">U</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The initial value</p>
+									</div>
+								</li>
+								<li>
+									<h5>fn: <span class="tsd-signature-type">function</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>A function taking the previous value and
+											the current collection item, and returning
+										an updated value.</p>
+									</div>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-siganture">
+											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>soFar<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">U</span>, cur<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">U</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5>soFar: <span class="tsd-signature-type">U</span></h5>
+														</li>
+														<li>
+															<h5>cur: <span class="tsd-signature-type">T</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">U</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">U</span></h4>
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="inspect" class="tsd-anchor"></a>
-					<h3>inspect</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">inspect<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-has-type-parameter">
+					<a name="foldright" class="tsd-anchor"></a>
+					<h3>fold<wbr>Right</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">fold<wbr>Right&lt;U&gt;<span class="tsd-signature-symbol">(</span>zero<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">U</span>, fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">U</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/f90a2a5/src/Value.ts#L26">src/Value.ts:26</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/f90a2a5/src/Foldable.ts#L45">src/Foldable.ts:45</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Used by the node REPL to display values.
-									Most of the time should be the same as toString()</p>
+									<p>Reduces the collection to a single value.
+									Right-associative.</p>
 								</div>
+								<p>Example:</p>
+								<pre><code>Vector.of(<span class="hljs-string">"a"</span>, <span class="hljs-string">"b"</span>, <span class="hljs-string">"c"</span>).foldRight(<span class="hljs-string">"!"</span>, (x,xs) =&gt; xs+x))
+=&gt; <span class="hljs-string">"!cba"</span>
+</code></pre>
 							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="tostring" class="tsd-anchor"></a>
-					<h3>to<wbr>String</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">to<wbr>String<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/f90a2a5/src/Value.ts#L20">src/Value.ts:20</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Get a human-friendly string representation of that value.</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>U</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>zero: <span class="tsd-signature-type">U</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The initial value</p>
+									</div>
+								</li>
+								<li>
+									<h5>fn: <span class="tsd-signature-type">function</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>A function taking the current collection item and
+											the previous value , and returning
+										an updated value.</p>
+									</div>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-siganture">
+											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>cur<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>, soFar<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">U</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5>cur: <span class="tsd-signature-type">T</span></h5>
+														</li>
+														<li>
+															<h5>soFar: <span class="tsd-signature-type">U</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">U</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">U</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -241,9 +342,24 @@
 					<li class=" tsd-kind-interface tsd-has-type-parameter">
 						<a href="collection.html" class="tsd-kind-icon">Collection</a>
 					</li>
-					<li class=" tsd-kind-interface tsd-has-type-parameter">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface tsd-has-type-parameter">
 						<a href="foldable.html" class="tsd-kind-icon">Foldable</a>
+						<ul>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="foldable.html#fold" class="tsd-kind-icon">fold</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-has-type-parameter">
+								<a href="foldable.html#foldleft" class="tsd-kind-icon">fold<wbr>Left</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-has-type-parameter">
+								<a href="foldable.html#foldright" class="tsd-kind-icon">fold<wbr>Right</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-has-type-parameter">
 						<a href="imap.html" class="tsd-kind-icon">IMap</a>
 					</li>
@@ -253,27 +369,9 @@
 					<li class=" tsd-kind-interface tsd-has-type-parameter">
 						<a href="seq.html" class="tsd-kind-icon">Seq</a>
 					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-interface">
+					<li class=" tsd-kind-interface">
 						<a href="value.html" class="tsd-kind-icon">Value</a>
-						<ul>
-							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="value.html#equals" class="tsd-kind-icon">equals</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="value.html#hashcode" class="tsd-kind-icon">hash<wbr>Code</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="value.html#inspect" class="tsd-kind-icon">inspect</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="value.html#tostring" class="tsd-kind-icon">to<wbr>String</a>
-							</li>
-						</ul>
 					</li>
-				</ul>
-				<ul class="after-current">
 					<li class=" tsd-kind-type-alias">
 						<a href="../globals.html#hasequals" class="tsd-kind-icon">Has<wbr>Equals</a>
 					</li>

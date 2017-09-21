@@ -84,6 +84,7 @@
 							<h3>Interfaces</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/collection.html" class="tsd-kind-icon">Collection</a></li>
+								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/foldable.html" class="tsd-kind-icon">Foldable</a></li>
 								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/imap.html" class="tsd-kind-icon">IMap</a></li>
 								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/iset.html" class="tsd-kind-icon">ISet</a></li>
 								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/seq.html" class="tsd-kind-icon">Seq</a></li>
@@ -101,12 +102,9 @@
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function"><a href="globals.html#areequal" class="tsd-kind-icon">are<wbr>Equal</a></li>
-								<li class="tsd-kind-function tsd-has-type-parameter"><a href="globals.html#arrangeby" class="tsd-kind-icon">arrange<wbr>By</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#fieldshashcode" class="tsd-kind-icon">fields<wbr>Hash<wbr>Code</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#gethashcode" class="tsd-kind-icon">get<wbr>Hash<wbr>Code</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#hasequals" class="tsd-kind-icon">has<wbr>Equals</a></li>
-								<li class="tsd-kind-function"><a href="globals.html#runtests" class="tsd-kind-icon">run<wbr>Tests</a></li>
-								<li class="tsd-kind-function"><a href="globals.html#shuffle" class="tsd-kind-icon">shuffle</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#stringhashcode" class="tsd-kind-icon">string<wbr>Hash<wbr>Code</a></li>
 							</ul>
 						</section>
@@ -121,7 +119,7 @@
 					<div class="tsd-signature tsd-kind-icon">Has<wbr>Equals<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b09ca59/src/Comparison.ts#L16">src/Comparison.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/f90a2a5/src/Comparison.ts#L16">src/Comparison.ts:16</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -141,7 +139,7 @@
 					<div class="tsd-signature tsd-kind-icon">With<wbr>Equality<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><a href="globals.html#hasequals" class="tsd-signature-type">HasEquals</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b09ca59/src/Comparison.ts#L6">src/Comparison.ts:6</a></li>
+							<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/f90a2a5/src/Comparison.ts#L6">src/Comparison.ts:6</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -165,7 +163,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b09ca59/src/Comparison.ts#L65">src/Comparison.ts:65</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/f90a2a5/src/Comparison.ts#L65">src/Comparison.ts:65</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -187,62 +185,6 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-has-type-parameter">
-					<a name="arrangeby" class="tsd-anchor"></a>
-					<h3>arrange<wbr>By</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">arrange<wbr>By&lt;T, K&gt;<span class="tsd-signature-symbol">(</span>seq<span class="tsd-signature-symbol">: </span><a href="interfaces/seq.html" class="tsd-signature-type">Seq</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span>, getKey<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="classes/option.html" class="tsd-signature-type">Option</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/imap.html" class="tsd-signature-type">IMap</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b09ca59/src/SeqHelpers.ts#L26">src/SeqHelpers.ts:26</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-type-parameters-title">Type parameters</h4>
-							<ul class="tsd-type-parameters">
-								<li>
-									<h4>T</h4>
-								</li>
-								<li>
-									<h4>K</h4>
-								</li>
-							</ul>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>seq: <a href="interfaces/seq.html" class="tsd-signature-type">Seq</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
-								</li>
-								<li>
-									<h5>getKey: <span class="tsd-signature-type">function</span></h5>
-									<ul class="tsd-parameters">
-										<li class="tsd-parameter-siganture">
-											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
-												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>v<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol"> &amp; </span><a href="globals.html#withequality" class="tsd-signature-type">WithEquality</a></li>
-											</ul>
-											<ul class="tsd-descriptions">
-												<li class="tsd-description">
-													<h4 class="tsd-parameters-title">Parameters</h4>
-													<ul class="tsd-parameters">
-														<li>
-															<h5>v: <span class="tsd-signature-type">T</span></h5>
-														</li>
-													</ul>
-													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">K</span>
-														<span class="tsd-signature-symbol"> &amp; </span>
-														<a href="globals.html#withequality" class="tsd-signature-type">WithEquality</a>
-													</h4>
-												</li>
-											</ul>
-										</li>
-									</ul>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="classes/option.html" class="tsd-signature-type">Option</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/imap.html" class="tsd-signature-type">IMap</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function">
 					<a name="fieldshashcode" class="tsd-anchor"></a>
 					<h3>fields<wbr>Hash<wbr>Code</h3>
@@ -253,7 +195,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b09ca59/src/Comparison.ts#L36">src/Comparison.ts:36</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/f90a2a5/src/Comparison.ts#L36">src/Comparison.ts:36</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -288,7 +230,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b09ca59/src/Comparison.ts#L84">src/Comparison.ts:84</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/f90a2a5/src/Comparison.ts#L84">src/Comparison.ts:84</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -319,7 +261,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b09ca59/src/Comparison.ts#L23">src/Comparison.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/f90a2a5/src/Comparison.ts#L23">src/Comparison.ts:23</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -340,178 +282,6 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function">
-					<a name="runtests" class="tsd-anchor"></a>
-					<h3>run<wbr>Tests</h3>
-					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">run<wbr>Tests<span class="tsd-signature-symbol">(</span>seqName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, ofIterable<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span>, ofStruct<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span>, empty<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span>, unfoldRight<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b09ca59/tests/Seq.ts#L8">tests/Seq.ts:8</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>seqName: <span class="tsd-signature-type">string</span></h5>
-								</li>
-								<li>
-									<h5>ofIterable: <span class="tsd-signature-type">function</span></h5>
-									<ul class="tsd-parameters">
-										<li class="tsd-parameter-siganture">
-											<ul class="tsd-signatures tsd-kind-type-literal tsd-has-type-parameter tsd-is-not-exported">
-												<li class="tsd-signature tsd-kind-icon">&lt;T&gt;<span class="tsd-signature-symbol">(</span>i<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/seq.html" class="tsd-signature-type">Seq</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
-											</ul>
-											<ul class="tsd-descriptions">
-												<li class="tsd-description">
-													<h4 class="tsd-type-parameters-title">Type parameters</h4>
-													<ul class="tsd-type-parameters">
-														<li>
-															<h4>T</h4>
-														</li>
-													</ul>
-													<h4 class="tsd-parameters-title">Parameters</h4>
-													<ul class="tsd-parameters">
-														<li>
-															<h5>i: <span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
-														</li>
-													</ul>
-													<h4 class="tsd-returns-title">Returns <a href="interfaces/seq.html" class="tsd-signature-type">Seq</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
-												</li>
-											</ul>
-										</li>
-									</ul>
-								</li>
-								<li>
-									<h5>ofStruct: <span class="tsd-signature-type">function</span></h5>
-									<ul class="tsd-parameters">
-										<li class="tsd-parameter-siganture">
-											<ul class="tsd-signatures tsd-kind-type-literal tsd-has-type-parameter tsd-is-not-exported">
-												<li class="tsd-signature tsd-kind-icon">&lt;T&gt;<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>i<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/seq.html" class="tsd-signature-type">Seq</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
-											</ul>
-											<ul class="tsd-descriptions">
-												<li class="tsd-description">
-													<h4 class="tsd-type-parameters-title">Type parameters</h4>
-													<ul class="tsd-type-parameters">
-														<li>
-															<h4>T</h4>
-														</li>
-													</ul>
-													<h4 class="tsd-parameters-title">Parameters</h4>
-													<ul class="tsd-parameters">
-														<li>
-															<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>i: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
-														</li>
-													</ul>
-													<h4 class="tsd-returns-title">Returns <a href="interfaces/seq.html" class="tsd-signature-type">Seq</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
-												</li>
-											</ul>
-										</li>
-									</ul>
-								</li>
-								<li>
-									<h5>empty: <span class="tsd-signature-type">function</span></h5>
-									<ul class="tsd-parameters">
-										<li class="tsd-parameter-siganture">
-											<ul class="tsd-signatures tsd-kind-type-literal tsd-has-type-parameter tsd-is-not-exported">
-												<li class="tsd-signature tsd-kind-icon">&lt;T&gt;<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/seq.html" class="tsd-signature-type">Seq</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
-											</ul>
-											<ul class="tsd-descriptions">
-												<li class="tsd-description">
-													<h4 class="tsd-type-parameters-title">Type parameters</h4>
-													<ul class="tsd-type-parameters">
-														<li>
-															<h4>T</h4>
-														</li>
-													</ul>
-													<h4 class="tsd-returns-title">Returns <a href="interfaces/seq.html" class="tsd-signature-type">Seq</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
-												</li>
-											</ul>
-										</li>
-									</ul>
-								</li>
-								<li>
-									<h5>unfoldRight: <span class="tsd-signature-type">function</span></h5>
-									<ul class="tsd-parameters">
-										<li class="tsd-parameter-siganture">
-											<ul class="tsd-signatures tsd-kind-type-literal tsd-has-type-parameter tsd-is-not-exported">
-												<li class="tsd-signature tsd-kind-icon">&lt;T, U&gt;<span class="tsd-signature-symbol">(</span>seed<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>, fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/seq.html" class="tsd-signature-type">Seq</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span></li>
-											</ul>
-											<ul class="tsd-descriptions">
-												<li class="tsd-description">
-													<h4 class="tsd-type-parameters-title">Type parameters</h4>
-													<ul class="tsd-type-parameters">
-														<li>
-															<h4>T</h4>
-														</li>
-														<li>
-															<h4>U</h4>
-														</li>
-													</ul>
-													<h4 class="tsd-parameters-title">Parameters</h4>
-													<ul class="tsd-parameters">
-														<li>
-															<h5>seed: <span class="tsd-signature-type">T</span></h5>
-														</li>
-														<li>
-															<h5>fn: <span class="tsd-signature-type">function</span></h5>
-															<ul class="tsd-parameters">
-																<li class="tsd-parameter-siganture">
-																	<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
-																		<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="classes/option.html" class="tsd-signature-type">Option</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span></li>
-																	</ul>
-																	<ul class="tsd-descriptions">
-																		<li class="tsd-description">
-																			<h4 class="tsd-parameters-title">Parameters</h4>
-																			<ul class="tsd-parameters">
-																				<li>
-																					<h5>x: <span class="tsd-signature-type">T</span></h5>
-																				</li>
-																			</ul>
-																			<h4 class="tsd-returns-title">Returns <a href="classes/option.html" class="tsd-signature-type">Option</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span></h4>
-																		</li>
-																	</ul>
-																</li>
-															</ul>
-														</li>
-													</ul>
-													<h4 class="tsd-returns-title">Returns <a href="interfaces/seq.html" class="tsd-signature-type">Seq</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span></h4>
-												</li>
-											</ul>
-										</li>
-									</ul>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function">
-					<a name="shuffle" class="tsd-anchor"></a>
-					<h3>shuffle</h3>
-					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">shuffle<span class="tsd-signature-symbol">(</span>array<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b09ca59/src/SeqHelpers.ts#L7">src/SeqHelpers.ts:7</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>array: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function">
 					<a name="stringhashcode" class="tsd-anchor"></a>
 					<h3>string<wbr>Hash<wbr>Code</h3>
 					<ul class="tsd-signatures tsd-kind-function">
@@ -521,7 +291,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b09ca59/src/Comparison.ts#L49">src/Comparison.ts:49</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/f90a2a5/src/Comparison.ts#L49">src/Comparison.ts:49</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -576,6 +346,9 @@
 						<a href="interfaces/collection.html" class="tsd-kind-icon">Collection</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/foldable.html" class="tsd-kind-icon">Foldable</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
 						<a href="interfaces/imap.html" class="tsd-kind-icon">IMap</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-has-type-parameter">
@@ -596,9 +369,6 @@
 					<li class=" tsd-kind-function">
 						<a href="globals.html#areequal" class="tsd-kind-icon">are<wbr>Equal</a>
 					</li>
-					<li class=" tsd-kind-function tsd-has-type-parameter">
-						<a href="globals.html#arrangeby" class="tsd-kind-icon">arrange<wbr>By</a>
-					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#fieldshashcode" class="tsd-kind-icon">fields<wbr>Hash<wbr>Code</a>
 					</li>
@@ -607,12 +377,6 @@
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#hasequals" class="tsd-kind-icon">has<wbr>Equals</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#runtests" class="tsd-kind-icon">run<wbr>Tests</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#shuffle" class="tsd-kind-icon">shuffle</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#stringhashcode" class="tsd-kind-icon">string<wbr>Hash<wbr>Code</a>
