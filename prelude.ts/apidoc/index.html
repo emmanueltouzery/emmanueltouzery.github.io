@@ -96,7 +96,7 @@ Vector.of(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,
 					Besides this dependency, I&#39;ll try to limit the number of dependencies.
 					In addition the library is written in idiomatic javascript style, with loops
 				instead of recursion, so the performance should be reasonable.</p>
-				<h2 id="structs-and-equality">Structs and equality</h2>
+				<h2 id="set-map-and-equality">Set, Map and equality</h2>
 				<p>Javascript doesn&#39;t have structural equality, except for primitive types.
 					So, <code>1 === 1</code> is true. But <code>[1] === [1]</code> is not, and neither <code>{a:1} === {a:1}</code>.
 					This poses problems for collections, because if you have a <code>Set</code>, you don&#39;t
@@ -111,19 +111,17 @@ Vector.of(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,
 					If these values don&#39;t have structural equality, then we can get no better than
 				<code>===</code> behavior.</p>
 				<p>prelude.ts attempts to assist the programmer with this; it tries to encourage
-					the developer to do the right thing. First, it&#39;ll refuse types without properly
-					defined equality in Sets and in Maps keys. Second, it has a special terminology
-					for types without properly defined equality: &#39;structs&#39;.
-					When you operate with for instance a <code>Vector</code>, you&#39;ll have to explicitely say
-					when you deal with structs. So <code>Vector.of([1])</code> will not compile.
-				You get (a longer version of) this message:</p>
+					the developer to do the right thing. First, it&#39;ll refuse types without obviously properly
+					defined equality in Sets and in Maps keys, so <code>HashSet.of([1])</code>,
+					or <code>Vector.of([1]).equals(Vector.of([2]))</code> will not compile.
+				For both of these, you get (a longer version of) this message:</p>
 				<pre><code><span class="hljs-keyword">Type</span> <span class="hljs-string">'number[]'</span> <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> assignable <span class="hljs-keyword">to</span> <span class="hljs-keyword">type</span> <span class="hljs-string">'HasEquals'</span>.
   <span class="hljs-keyword">Property</span> <span class="hljs-string">'equals'</span> <span class="hljs-keyword">is</span> missing <span class="hljs-keyword">in</span> <span class="hljs-keyword">type</span> <span class="hljs-string">'number[]'</span>.
-</code></pre><p>So the solution is to use a struct-oriented function: <code>Vector.ofStruct([1])</code>.
-					That version compiles just fine. But now you&#39;ve been warned that you can&#39;t use
-					this value in a Set or as a Map key, and that equality features are not provided.
-					Similary, functions such a <code>map</code> have alternate implementations such as <code>mapStruct</code>
-				to warn the programmer in these cases.</p>
+</code></pre><p>But in some less obvious cases, we can&#39;t detect the issue at compile-time, so
+					prelude.ts will reject the code at runtime; for instance if you call
+				<code>HashSet.of(Vector.of([1]))</code> you&#39;ll get an exception at runtime:</p>
+				<pre><code><span class="hljs-keyword">Error </span>building a HashSet: element doesn't support true equality: Vector([1])
+</code></pre><p>(this behavior is <a href="http://emmanueltouzery.github.io/prelude.ts/apidoc/globals.html#setContractViolationAction">customizable</a>).</p>
 				<h2 id="wishlist-upcoming-features">Wishlist/upcoming features</h2>
 				<ul>
 					<li>Either</li>
@@ -235,6 +233,9 @@ npm <span class="hljs-keyword">run</span><span class="bash"> benchmarks</span>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#hasequals" class="tsd-kind-icon">has<wbr>Equals</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#setcontractviolationaction" class="tsd-kind-icon">set<wbr>Contract<wbr>Violation<wbr>Action</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#stringhashcode" class="tsd-kind-icon">string<wbr>Hash<wbr>Code</a>
