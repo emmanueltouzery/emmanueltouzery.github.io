@@ -124,6 +124,12 @@ Vector.of(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,
 				<pre><code><span class="hljs-keyword">Error </span>building a HashSet: element doesn't support true equality: Vector([1])
 </code></pre><p>(this behavior is <a href="http://emmanueltouzery.github.io/prelude.ts/apidoc/globals.html#setcontractviolationaction">customizable</a>).</p>
 				<h2 id="installation">Installation</h2>
+				<p>Typescript must know about <code>Iterable</code>, an ES6 feature (but present in most browsers)
+					to compile prelude.ts. If you target ES5, a minimum change to your tsconfig.json
+				could be to add:</p>
+				<pre><code class="lang-json">&quot;lib&quot;: [&quot;DOM&quot;, &quot;ES5&quot;, &quot;ScriptHost&quot;, &quot;es2015.iterable&quot;]
+</code></pre>
+				<p>(compared to the default es5 settings it only adds &#39;es2015.iterable&#39;)</p>
 				<h3 id="using-in-nodejs">Using in nodejs</h3>
 				<p>Just add the dependency in your <code>package.json</code> and start using it (like
 					<code>import { Vector } from &quot;prelude.ts&quot;;</code>).
@@ -138,7 +144,6 @@ Vector.of(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,
 				include the relevant one in your index.html in script tags:</p>
 				<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"node_modules/prelude.ts/dist/src/prelude_ts.min.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
-				<p>(the minified JS file is 42kb as of 0.3.1)</p>
 				<p>You shouldn&#39;t have an issue to import prelude.ts in your application, but if you use
 					modules it gets a little more complicated; One solution if you use them is to create
 				an <code>imports.d.ts</code> file with the following contents:</p>
@@ -221,6 +226,9 @@ npm <span class="hljs-keyword">run</span><span class="bash"> benchmarks</span>
 					</li>
 					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="classes/lazy.html" class="tsd-kind-icon">Lazy</a>
+					</li>
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="classes/list.html" class="tsd-kind-icon">List</a>
 					</li>
 					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="classes/option.html" class="tsd-kind-icon">Option</a>
