@@ -146,6 +146,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="seq.html#partition" class="tsd-kind-icon">partition</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="seq.html#prepend" class="tsd-kind-icon">prepend</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="seq.html#prependall" class="tsd-kind-icon">prepend<wbr>All</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="seq.html#removefirst" class="tsd-kind-icon">remove<wbr>First</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="seq.html#reverse" class="tsd-kind-icon">reverse</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="seq.html#shuffle" class="tsd-kind-icon">shuffle</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="seq.html#single" class="tsd-kind-icon">single</a></li>
@@ -158,6 +159,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="seq.html#tostring" class="tsd-kind-icon">to<wbr>String</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-has-type-parameter"><a href="seq.html#transform" class="tsd-kind-icon">transform</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-has-type-parameter"><a href="seq.html#zip" class="tsd-kind-icon">zip</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="seq.html#zipwithindex" class="tsd-kind-icon">zip<wbr>With<wbr>Index</a></li>
 							</ul>
 						</section>
 					</div>
@@ -176,7 +178,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Iterable.[Symbol.iterator]</p>
 								<ul>
-									<li>Defined in node_modules/typedoc/node_modules/typescript/lib/lib.es2015.iterable.d.ts:43</li>
+									<li>Defined in node_files/typedoc/node_files/typescript/lib/lib.es2015.iterable.d.ts:43</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Iterator</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -194,7 +196,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="collection.html">Collection</a>.<a href="collection.html#allmatch">allMatch</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Collection.ts#L51">src/Collection.ts:51</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Collection.ts#L51">src/Collection.ts:51</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -242,7 +244,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="collection.html">Collection</a>.<a href="collection.html#anymatch">anyMatch</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Collection.ts#L57">src/Collection.ts:57</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Collection.ts#L57">src/Collection.ts:57</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -289,7 +291,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Seq.ts#L16">src/Seq.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Seq.ts#L16">src/Seq.ts:16</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -317,7 +319,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Seq.ts#L22">src/Seq.ts:22</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Seq.ts#L22">src/Seq.ts:22</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -346,7 +348,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Seq.ts#L95">src/Seq.ts:95</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Seq.ts#L101">src/Seq.ts:101</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -369,7 +371,7 @@
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
 											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
-												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>v<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol"> &amp; </span><a href="../globals.html#withequality" class="tsd-signature-type">WithEquality</a></li>
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>v<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol"> &amp; </span><a href="../files/comparison.html#withequality" class="tsd-signature-type">WithEquality</a></li>
 											</ul>
 											<ul class="tsd-descriptions">
 												<li class="tsd-description">
@@ -381,7 +383,7 @@
 													</ul>
 													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">K</span>
 														<span class="tsd-signature-symbol"> &amp; </span>
-														<a href="../globals.html#withequality" class="tsd-signature-type">WithEquality</a>
+														<a href="../files/comparison.html#withequality" class="tsd-signature-type">WithEquality</a>
 													</h4>
 												</li>
 											</ul>
@@ -397,14 +399,14 @@
 					<a name="contains" class="tsd-anchor"></a>
 					<h3>contains</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">contains<span class="tsd-signature-symbol">(</span>v<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> &amp; </span><a href="../globals.html#withequality" class="tsd-signature-type">WithEquality</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon">contains<span class="tsd-signature-symbol">(</span>v<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> &amp; </span><a href="../files/comparison.html#withequality" class="tsd-signature-type">WithEquality</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="collection.html">Collection</a>.<a href="collection.html#contains">contains</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Collection.ts#L45">src/Collection.ts:45</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Collection.ts#L45">src/Collection.ts:45</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -416,7 +418,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>v: <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> &amp; </span><a href="../globals.html#withequality" class="tsd-signature-type">WithEquality</a></h5>
+									<h5>v: <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> &amp; </span><a href="../files/comparison.html#withequality" class="tsd-signature-type">WithEquality</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -433,7 +435,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Seq.ts#L194">src/Seq.ts:194</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Seq.ts#L209">src/Seq.ts:209</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -458,7 +460,7 @@
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
 											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
-												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol"> &amp; </span><a href="../globals.html#withequality" class="tsd-signature-type">WithEquality</a></li>
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol"> &amp; </span><a href="../files/comparison.html#withequality" class="tsd-signature-type">WithEquality</a></li>
 											</ul>
 											<ul class="tsd-descriptions">
 												<li class="tsd-description">
@@ -470,7 +472,7 @@
 													</ul>
 													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">U</span>
 														<span class="tsd-signature-symbol"> &amp; </span>
-														<a href="../globals.html#withequality" class="tsd-signature-type">WithEquality</a>
+														<a href="../files/comparison.html#withequality" class="tsd-signature-type">WithEquality</a>
 													</h4>
 												</li>
 											</ul>
@@ -492,7 +494,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Seq.ts#L164">src/Seq.ts:164</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Seq.ts#L179">src/Seq.ts:179</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -523,7 +525,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Seq.ts#L179">src/Seq.ts:179</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Seq.ts#L194">src/Seq.ts:194</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -554,7 +556,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Seq.ts#L171">src/Seq.ts:171</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Seq.ts#L186">src/Seq.ts:186</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -596,14 +598,14 @@
 					<a name="equals" class="tsd-anchor"></a>
 					<h3>equals</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">equals<span class="tsd-signature-symbol">(</span>other<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> &amp; </span><a href="../globals.html#withequality" class="tsd-signature-type">WithEquality</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon">equals<span class="tsd-signature-symbol">(</span>other<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> &amp; </span><a href="../files/comparison.html#withequality" class="tsd-signature-type">WithEquality</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="value.html">Value</a>.<a href="value.html#equals">equals</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Value.ts#L10">src/Value.ts:10</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Value.ts#L10">src/Value.ts:10</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -616,7 +618,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>other: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> &amp; </span><a href="../globals.html#withequality" class="tsd-signature-type">WithEquality</a></h5>
+									<h5>other: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> &amp; </span><a href="../files/comparison.html#withequality" class="tsd-signature-type">WithEquality</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -634,7 +636,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="collection.html">Collection</a>.<a href="collection.html#filter">filter</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Collection.ts#L27">src/Collection.ts:27</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Collection.ts#L27">src/Collection.ts:27</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -682,7 +684,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Seq.ts#L69">src/Seq.ts:69</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Seq.ts#L75">src/Seq.ts:75</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -730,7 +732,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Seq.ts#L77">src/Seq.ts:77</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Seq.ts#L83">src/Seq.ts:83</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -786,7 +788,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="foldable.html">Foldable</a>.<a href="foldable.html#fold">fold</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Foldable.ts#L13">src/Foldable.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Foldable.ts#L13">src/Foldable.ts:13</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -845,7 +847,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="foldable.html">Foldable</a>.<a href="foldable.html#foldleft">foldLeft</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Foldable.ts#L29">src/Foldable.ts:29</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Foldable.ts#L29">src/Foldable.ts:29</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -917,7 +919,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="foldable.html">Foldable</a>.<a href="foldable.html#foldright">foldRight</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Foldable.ts#L45">src/Foldable.ts:45</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Foldable.ts#L45">src/Foldable.ts:45</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -988,7 +990,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Seq.ts#L28">src/Seq.ts:28</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Seq.ts#L34">src/Seq.ts:34</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1035,7 +1037,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Seq.ts#L156">src/Seq.ts:156</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Seq.ts#L171">src/Seq.ts:171</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1065,7 +1067,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Seq.ts#L87">src/Seq.ts:87</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Seq.ts#L93">src/Seq.ts:93</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1090,7 +1092,7 @@
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
 											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
-												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>v<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">C</span><span class="tsd-signature-symbol"> &amp; </span><a href="../globals.html#withequality" class="tsd-signature-type">WithEquality</a></li>
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>v<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">C</span><span class="tsd-signature-symbol"> &amp; </span><a href="../files/comparison.html#withequality" class="tsd-signature-type">WithEquality</a></li>
 											</ul>
 											<ul class="tsd-descriptions">
 												<li class="tsd-description">
@@ -1102,7 +1104,7 @@
 													</ul>
 													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">C</span>
 														<span class="tsd-signature-symbol"> &amp; </span>
-														<a href="../globals.html#withequality" class="tsd-signature-type">WithEquality</a>
+														<a href="../files/comparison.html#withequality" class="tsd-signature-type">WithEquality</a>
 													</h4>
 												</li>
 											</ul>
@@ -1125,7 +1127,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="value.html">Value</a>.<a href="value.html#hashcode">hashCode</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Value.ts#L17">src/Value.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Value.ts#L17">src/Value.ts:17</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1149,7 +1151,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Seq.ts#L35">src/Seq.ts:35</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Seq.ts#L41">src/Seq.ts:41</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1174,7 +1176,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="value.html">Value</a>.<a href="value.html#inspect">inspect</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Value.ts#L28">src/Value.ts:28</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Value.ts#L28">src/Value.ts:28</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1198,7 +1200,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="collection.html">Collection</a>.<a href="collection.html#isempty">isEmpty</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Collection.ts#L15">src/Collection.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Collection.ts#L15">src/Collection.ts:15</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1220,7 +1222,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Seq.ts#L42">src/Seq.ts:42</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Seq.ts#L48">src/Seq.ts:48</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1245,7 +1247,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="collection.html">Collection</a>.<a href="collection.html#length">length</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Collection.ts#L10">src/Collection.ts:10</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Collection.ts#L10">src/Collection.ts:10</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1267,7 +1269,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Seq.ts#L54">src/Seq.ts:54</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Seq.ts#L60">src/Seq.ts:60</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1320,7 +1322,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Seq.ts#L62">src/Seq.ts:62</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Seq.ts#L68">src/Seq.ts:68</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1375,7 +1377,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Seq.ts#L136">src/Seq.ts:136</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Seq.ts#L142">src/Seq.ts:142</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1408,7 +1410,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="collection.html">Collection</a>.<a href="collection.html#partition">partition</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Collection.ts#L39">src/Collection.ts:39</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Collection.ts#L39">src/Collection.ts:39</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1461,7 +1463,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Seq.ts#L122">src/Seq.ts:122</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Seq.ts#L128">src/Seq.ts:128</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1489,7 +1491,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Seq.ts#L127">src/Seq.ts:127</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Seq.ts#L133">src/Seq.ts:133</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1508,6 +1510,53 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="removefirst" class="tsd-anchor"></a>
+					<h3>remove<wbr>First</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">remove<wbr>First<span class="tsd-signature-symbol">(</span>predicate<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="seq.html" class="tsd-signature-type">Seq</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Seq.ts#L28">src/Seq.ts:28</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Removes the first element matching the predicate
+									(use <a href="seq.html#filter">Seq.filter</a> to remove all elements matching a predicate)</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>predicate: <span class="tsd-signature-type">function</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-siganture">
+											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>v<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5>v: <span class="tsd-signature-type">T</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="seq.html" class="tsd-signature-type">Seq</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
 					<a name="reverse" class="tsd-anchor"></a>
 					<h3>reverse</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
@@ -1517,7 +1566,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Seq.ts#L201">src/Seq.ts:201</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Seq.ts#L216">src/Seq.ts:216</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1541,7 +1590,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Seq.ts#L100">src/Seq.ts:100</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Seq.ts#L106">src/Seq.ts:106</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1564,7 +1613,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="collection.html">Collection</a>.<a href="collection.html#single">single</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Collection.ts#L63">src/Collection.ts:63</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Collection.ts#L63">src/Collection.ts:63</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1587,7 +1636,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Seq.ts#L108">src/Seq.ts:108</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Seq.ts#L114">src/Seq.ts:114</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1604,7 +1653,7 @@
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
 											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
-												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>v1<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>, v2<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../enums/ordering.html" class="tsd-signature-type">Ordering</a></li>
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>v1<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>, v2<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../enums/comparison.ordering.html" class="tsd-signature-type">Ordering</a></li>
 											</ul>
 											<ul class="tsd-descriptions">
 												<li class="tsd-description">
@@ -1617,7 +1666,7 @@
 															<h5>v2: <span class="tsd-signature-type">T</span></h5>
 														</li>
 													</ul>
-													<h4 class="tsd-returns-title">Returns <a href="../enums/ordering.html" class="tsd-signature-type">Ordering</a></h4>
+													<h4 class="tsd-returns-title">Returns <a href="../enums/comparison.ordering.html" class="tsd-signature-type">Ordering</a></h4>
 												</li>
 											</ul>
 										</li>
@@ -1638,7 +1687,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Seq.ts#L117">src/Seq.ts:117</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Seq.ts#L123">src/Seq.ts:123</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1687,7 +1736,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Seq.ts#L48">src/Seq.ts:48</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Seq.ts#L54">src/Seq.ts:54</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1710,7 +1759,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Seq.ts#L185">src/Seq.ts:185</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Seq.ts#L200">src/Seq.ts:200</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1758,7 +1807,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="collection.html">Collection</a>.<a href="collection.html#toarray">toArray</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Collection.ts#L20">src/Collection.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Collection.ts#L20">src/Collection.ts:20</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1780,7 +1829,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Seq.ts#L210">src/Seq.ts:210</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Seq.ts#L225">src/Seq.ts:225</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1808,7 +1857,7 @@
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
 											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
-												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol"> &amp; </span><a href="../globals.html#withequality" class="tsd-signature-type">WithEquality</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">]</span></li>
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol"> &amp; </span><a href="../files/comparison.html#withequality" class="tsd-signature-type">WithEquality</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">]</span></li>
 											</ul>
 											<ul class="tsd-descriptions">
 												<li class="tsd-description">
@@ -1818,7 +1867,7 @@
 															<h5>x: <span class="tsd-signature-type">T</span></h5>
 														</li>
 													</ul>
-													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol"> &amp; </span><a href="../globals.html#withequality" class="tsd-signature-type">WithEquality</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">]</span></h4>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol"> &amp; </span><a href="../files/comparison.html#withequality" class="tsd-signature-type">WithEquality</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">]</span></h4>
 												</li>
 											</ul>
 										</li>
@@ -1840,7 +1889,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="value.html">Value</a>.<a href="value.html#tostring">toString</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Value.ts#L22">src/Value.ts:22</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Value.ts#L22">src/Value.ts:22</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1862,7 +1911,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Seq.ts#L216">src/Seq.ts:216</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Seq.ts#L231">src/Seq.ts:231</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1915,7 +1964,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/5b15819/src/Seq.ts#L149">src/Seq.ts:149</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Seq.ts#L155">src/Seq.ts:155</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1945,6 +1994,32 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="zipwithindex" class="tsd-anchor"></a>
+					<h3>zip<wbr>With<wbr>Index</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">zip<wbr>With<wbr>Index<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="seq.html" class="tsd-signature-type">Seq</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/51e3901/src/Seq.ts#L164">src/Seq.ts:164</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Combine this collection with the index of the elements
+										in it. Handy if you need the index when you map on
+									the collection for instance:</p>
+								</div>
+								<pre><code><span class="hljs-selector-tag">Vector</span><span class="hljs-selector-class">.of</span>(<span class="hljs-string">"a"</span>,<span class="hljs-string">"b"</span>)<span class="hljs-selector-class">.zipWithIndex</span>()<span class="hljs-selector-class">.map</span>([v,idx] =&gt; ...)
+</code></pre>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="seq.html" class="tsd-signature-type">Seq</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
 			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -1957,9 +2032,6 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-enum">
-						<a href="../enums/ordering.html" class="tsd-kind-icon">Ordering</a>
-					</li>
 					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="../classes/hashmap.html" class="tsd-kind-icon">Hash<wbr>Map</a>
 					</li>
@@ -1974,6 +2046,9 @@
 					</li>
 					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="../classes/option.html" class="tsd-kind-icon">Option</a>
+					</li>
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="../classes/predicates.html" class="tsd-kind-icon">Predicates</a>
 					</li>
 					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="../classes/stream.html" class="tsd-kind-icon">Stream</a>
@@ -1995,6 +2070,9 @@
 					</li>
 					<li class=" tsd-kind-interface tsd-has-type-parameter">
 						<a href="iset.html" class="tsd-kind-icon">ISet</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="predicate.html" class="tsd-kind-icon">Predicate</a>
 					</li>
 				</ul>
 				<ul class="current">
@@ -2101,6 +2179,9 @@
 								<a href="seq.html#prependall" class="tsd-kind-icon">prepend<wbr>All</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="seq.html#removefirst" class="tsd-kind-icon">remove<wbr>First</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
 								<a href="seq.html#reverse" class="tsd-kind-icon">reverse</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
@@ -2136,36 +2217,15 @@
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-has-type-parameter">
 								<a href="seq.html#zip" class="tsd-kind-icon">zip</a>
 							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="seq.html#zipwithindex" class="tsd-kind-icon">zip<wbr>With<wbr>Index</a>
+							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface">
 						<a href="value.html" class="tsd-kind-icon">Value</a>
-					</li>
-					<li class=" tsd-kind-type-alias">
-						<a href="../globals.html#hasequals" class="tsd-kind-icon">Has<wbr>Equals</a>
-					</li>
-					<li class=" tsd-kind-type-alias">
-						<a href="../globals.html#withequality" class="tsd-kind-icon">With<wbr>Equality</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="../globals.html#areequal" class="tsd-kind-icon">are<wbr>Equal</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="../globals.html#fieldshashcode" class="tsd-kind-icon">fields<wbr>Hash<wbr>Code</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="../globals.html#gethashcode" class="tsd-kind-icon">get<wbr>Hash<wbr>Code</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="../globals.html#hasequals" class="tsd-kind-icon">has<wbr>Equals</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="../globals.html#setcontractviolationaction" class="tsd-kind-icon">set<wbr>Contract<wbr>Violation<wbr>Action</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="../globals.html#stringhashcode" class="tsd-kind-icon">string<wbr>Hash<wbr>Code</a>
 					</li>
 				</ul>
 			</nav>
@@ -2177,7 +2237,7 @@
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
-				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">File</span></li>
 				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
 				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
 				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>

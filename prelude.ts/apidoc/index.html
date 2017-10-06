@@ -142,10 +142,10 @@ Vector.of(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,
 					which are UMD bundles; they work with other module systems and set <code>prelude_ts</code>
 					as a window global if no module system is found.
 				include the relevant one in your index.html in script tags:</p>
-				<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"node_modules/prelude.ts/dist/src/prelude_ts.min.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+				<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"node_files/prelude.ts/dist/src/prelude_ts.min.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
 				<p>You shouldn&#39;t have an issue to import prelude.ts in your application, but if you use
-					modules it gets a little more complicated; One solution if you use them is to create
+					files it gets a little more complicated; One solution if you use them is to create
 				an <code>imports.d.ts</code> file with the following contents:</p>
 				<pre><code class="lang-typescript"><span class="hljs-comment">// https://github.com/Microsoft/TypeScript/issues/3180#issuecomment-283007750</span>
 <span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> _P <span class="hljs-keyword">from</span> <span class="hljs-string">'prelude.ts'</span>;
@@ -211,13 +211,16 @@ npm <span class="hljs-keyword">run</span><span class="bash"> benchmarks</span>
 					<li class="globals  ">
 						<a href="globals.html"><em>Globals</em></a>
 					</li>
+					<li class=" tsd-kind-module">
+						<a href="files/comparison.html">Comparison</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="files/contract.html">Contract</a>
+					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-enum">
-						<a href="enums/ordering.html" class="tsd-kind-icon">Ordering</a>
-					</li>
 					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="classes/hashmap.html" class="tsd-kind-icon">Hash<wbr>Map</a>
 					</li>
@@ -232,6 +235,9 @@ npm <span class="hljs-keyword">run</span><span class="bash"> benchmarks</span>
 					</li>
 					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="classes/option.html" class="tsd-kind-icon">Option</a>
+					</li>
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="classes/predicates.html" class="tsd-kind-icon">Predicates</a>
 					</li>
 					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="classes/stream.html" class="tsd-kind-icon">Stream</a>
@@ -255,34 +261,13 @@ npm <span class="hljs-keyword">run</span><span class="bash"> benchmarks</span>
 						<a href="interfaces/iset.html" class="tsd-kind-icon">ISet</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/predicate.html" class="tsd-kind-icon">Predicate</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
 						<a href="interfaces/seq.html" class="tsd-kind-icon">Seq</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/value.html" class="tsd-kind-icon">Value</a>
-					</li>
-					<li class=" tsd-kind-type-alias">
-						<a href="globals.html#hasequals" class="tsd-kind-icon">Has<wbr>Equals</a>
-					</li>
-					<li class=" tsd-kind-type-alias">
-						<a href="globals.html#withequality" class="tsd-kind-icon">With<wbr>Equality</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#areequal" class="tsd-kind-icon">are<wbr>Equal</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#fieldshashcode" class="tsd-kind-icon">fields<wbr>Hash<wbr>Code</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#gethashcode" class="tsd-kind-icon">get<wbr>Hash<wbr>Code</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#hasequals" class="tsd-kind-icon">has<wbr>Equals</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#setcontractviolationaction" class="tsd-kind-icon">set<wbr>Contract<wbr>Violation<wbr>Action</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#stringhashcode" class="tsd-kind-icon">string<wbr>Hash<wbr>Code</a>
 					</li>
 				</ul>
 			</nav>
@@ -294,7 +279,7 @@ npm <span class="hljs-keyword">run</span><span class="bash"> benchmarks</span>
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
-				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">File</span></li>
 				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
 				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
 				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
