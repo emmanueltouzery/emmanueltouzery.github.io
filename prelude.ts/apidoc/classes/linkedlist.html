@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Stream | prelude.ts</title>
+	<title>LinkedList | prelude.ts</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -52,10 +52,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="stream.html">Stream</a>
+					<a href="linkedlist.html">LinkedList</a>
 				</li>
 			</ul>
-			<h1>Class Stream&lt;T&gt;</h1>
+			<h1>Class LinkedList&lt;T&gt;</h1>
 		</div>
 	</div>
 </header>
@@ -65,9 +65,14 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>A lazy, potentially infinite, sequence of values.</p>
+						<p>A sequence of values, organized in-memory as a strict linked list.
+						Each element has an head (value) and a tail (the rest of the list).</p>
 					</div>
-					<p>Use take() for instance to reduce an infinite stream to a finite one.</p>
+					<p>Random access is expensive, appending is expensive, prepend or getting
+						the tail of the list is very cheap.
+						If you often need random access you should rather use <a href="vector.html">Vector</a>.
+						Avoid appending at the end of the list in a loop, prefer prepending and
+					then reversing the list.</p>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-type-parameters">
@@ -82,14 +87,13 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Stream</span>
+						<span class="target">LinkedList</span>
 					</li>
 				</ul>
 			</section>
 			<section class="tsd-panel">
 				<h3>Implements</h3>
 				<ul class="tsd-hierarchy">
-					<li><span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 					<li><a href="../interfaces/seq.html" class="tsd-signature-type">Seq</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 			</section>
@@ -100,67 +104,61 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#___iterator" class="tsd-kind-icon">__@iterator</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#allmatch" class="tsd-kind-icon">all<wbr>Match</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#anymatch" class="tsd-kind-icon">any<wbr>Match</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#append" class="tsd-kind-icon">append</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#appendall" class="tsd-kind-icon">append<wbr>All</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#appendstream" class="tsd-kind-icon">append<wbr>Stream</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="stream.html#arrangeby" class="tsd-kind-icon">arrange<wbr>By</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#contains" class="tsd-kind-icon">contains</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#cycle" class="tsd-kind-icon">cycle</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="stream.html#distinctby" class="tsd-kind-icon">distinct<wbr>By</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#drop" class="tsd-kind-icon">drop</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#dropright" class="tsd-kind-icon">drop<wbr>Right</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#dropwhile" class="tsd-kind-icon">drop<wbr>While</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#equals" class="tsd-kind-icon">equals</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#filter" class="tsd-kind-icon">filter</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#find" class="tsd-kind-icon">find</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="stream.html#flatmap" class="tsd-kind-icon">flat<wbr>Map</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#fold" class="tsd-kind-icon">fold</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="stream.html#foldleft" class="tsd-kind-icon">fold<wbr>Left</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="stream.html#foldright" class="tsd-kind-icon">fold<wbr>Right</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#foreach" class="tsd-kind-icon">for<wbr>Each</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#get" class="tsd-kind-icon">get</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="stream.html#groupby" class="tsd-kind-icon">group<wbr>By</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#hashcode" class="tsd-kind-icon">hash<wbr>Code</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#head" class="tsd-kind-icon">head</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#inspect" class="tsd-kind-icon">inspect</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#isempty" class="tsd-kind-icon">is<wbr>Empty</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#last" class="tsd-kind-icon">last</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#length" class="tsd-kind-icon">length</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="stream.html#map" class="tsd-kind-icon">map</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="stream.html#mapoption" class="tsd-kind-icon">map<wbr>Option</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#mkstring" class="tsd-kind-icon">mk<wbr>String</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#partition" class="tsd-kind-icon">partition</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#prepend" class="tsd-kind-icon">prepend</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#prependall" class="tsd-kind-icon">prepend<wbr>All</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#removefirst" class="tsd-kind-icon">remove<wbr>First</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#reverse" class="tsd-kind-icon">reverse</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#shuffle" class="tsd-kind-icon">shuffle</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#single" class="tsd-kind-icon">single</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#sortby" class="tsd-kind-icon">sort<wbr>By</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#sorton" class="tsd-kind-icon">sort<wbr>On</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#span" class="tsd-kind-icon">span</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#splitat" class="tsd-kind-icon">split<wbr>At</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#tail" class="tsd-kind-icon">tail</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#take" class="tsd-kind-icon">take</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#takewhile" class="tsd-kind-icon">take<wbr>While</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#toarray" class="tsd-kind-icon">to<wbr>Array</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#tolinkedlist" class="tsd-kind-icon">to<wbr>Linked<wbr>List</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="stream.html#tomap" class="tsd-kind-icon">to<wbr>Map</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#tostring" class="tsd-kind-icon">to<wbr>String</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#tovector" class="tsd-kind-icon">to<wbr>Vector</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="stream.html#transform" class="tsd-kind-icon">transform</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="stream.html#zip" class="tsd-kind-icon">zip</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="stream.html#zipwithindex" class="tsd-kind-icon">zip<wbr>With<wbr>Index</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="stream.html#continually" class="tsd-kind-icon">continually</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="stream.html#empty" class="tsd-kind-icon">empty</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="stream.html#iterate" class="tsd-kind-icon">iterate</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="stream.html#of" class="tsd-kind-icon">of</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="stream.html#ofarray" class="tsd-kind-icon">of<wbr>Array</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="stream.html#ofiterable" class="tsd-kind-icon">of<wbr>Iterable</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="stream.html#unfoldright" class="tsd-kind-icon">unfold<wbr>Right</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#___iterator" class="tsd-kind-icon">__@iterator</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#allmatch" class="tsd-kind-icon">all<wbr>Match</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#anymatch" class="tsd-kind-icon">any<wbr>Match</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#append" class="tsd-kind-icon">append</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#appendall" class="tsd-kind-icon">append<wbr>All</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="linkedlist.html#arrangeby" class="tsd-kind-icon">arrange<wbr>By</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#contains" class="tsd-kind-icon">contains</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="linkedlist.html#distinctby" class="tsd-kind-icon">distinct<wbr>By</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#drop" class="tsd-kind-icon">drop</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#dropright" class="tsd-kind-icon">drop<wbr>Right</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#dropwhile" class="tsd-kind-icon">drop<wbr>While</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#equals" class="tsd-kind-icon">equals</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#filter" class="tsd-kind-icon">filter</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#find" class="tsd-kind-icon">find</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="linkedlist.html#flatmap" class="tsd-kind-icon">flat<wbr>Map</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#fold" class="tsd-kind-icon">fold</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="linkedlist.html#foldleft" class="tsd-kind-icon">fold<wbr>Left</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="linkedlist.html#foldright" class="tsd-kind-icon">fold<wbr>Right</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#foreach" class="tsd-kind-icon">for<wbr>Each</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#get" class="tsd-kind-icon">get</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="linkedlist.html#groupby" class="tsd-kind-icon">group<wbr>By</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#hashcode" class="tsd-kind-icon">hash<wbr>Code</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#head" class="tsd-kind-icon">head</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#inspect" class="tsd-kind-icon">inspect</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#isempty" class="tsd-kind-icon">is<wbr>Empty</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#last" class="tsd-kind-icon">last</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#length" class="tsd-kind-icon">length</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="linkedlist.html#map" class="tsd-kind-icon">map</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="linkedlist.html#mapoption" class="tsd-kind-icon">map<wbr>Option</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#mkstring" class="tsd-kind-icon">mk<wbr>String</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#partition" class="tsd-kind-icon">partition</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#prepend" class="tsd-kind-icon">prepend</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#prependall" class="tsd-kind-icon">prepend<wbr>All</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#removefirst" class="tsd-kind-icon">remove<wbr>First</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#reverse" class="tsd-kind-icon">reverse</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#shuffle" class="tsd-kind-icon">shuffle</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#single" class="tsd-kind-icon">single</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#sortby" class="tsd-kind-icon">sort<wbr>By</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#sorton" class="tsd-kind-icon">sort<wbr>On</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#span" class="tsd-kind-icon">span</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#splitat" class="tsd-kind-icon">split<wbr>At</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#tail" class="tsd-kind-icon">tail</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#take" class="tsd-kind-icon">take</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#takewhile" class="tsd-kind-icon">take<wbr>While</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#toarray" class="tsd-kind-icon">to<wbr>Array</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="linkedlist.html#tomap" class="tsd-kind-icon">to<wbr>Map</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#tostring" class="tsd-kind-icon">to<wbr>String</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#tovector" class="tsd-kind-icon">to<wbr>Vector</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="linkedlist.html#transform" class="tsd-kind-icon">transform</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="linkedlist.html#zip" class="tsd-kind-icon">zip</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#zipwithindex" class="tsd-kind-icon">zip<wbr>With<wbr>Index</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="linkedlist.html#empty" class="tsd-kind-icon">empty</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="linkedlist.html#of" class="tsd-kind-icon">of</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="linkedlist.html#ofiterable" class="tsd-kind-icon">of<wbr>Iterable</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="linkedlist.html#unfoldright" class="tsd-kind-icon">unfold<wbr>Right</a></li>
 							</ul>
 						</section>
 					</div>
@@ -179,7 +177,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#___iterator">__@iterator</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L122">src/Stream.ts:122</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L92">src/LinkedList.ts:92</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -201,7 +199,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L426">src/Stream.ts:426</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L376">src/LinkedList.ts:376</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -248,7 +246,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L432">src/Stream.ts:432</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L382">src/LinkedList.ts:382</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -289,19 +287,19 @@
 					<a name="append" class="tsd-anchor"></a>
 					<h3>append</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">append<span class="tsd-signature-symbol">(</span>v<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">append<span class="tsd-signature-symbol">(</span>v<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#append">append</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L357">src/Stream.ts:357</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L327">src/LinkedList.ts:327</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Append an element at the end of this Stream.</p>
+									<p>Append an element at the end of this LinkedList.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -310,7 +308,7 @@
 									<h5>v: <span class="tsd-signature-type">T</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -318,14 +316,14 @@
 					<a name="appendall" class="tsd-anchor"></a>
 					<h3>append<wbr>All</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">append<wbr>All<span class="tsd-signature-symbol">(</span>elts<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">append<wbr>All<span class="tsd-signature-symbol">(</span>elts<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#appendall">appendAll</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L362">src/Stream.ts:362</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L332">src/LinkedList.ts:332</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -334,30 +332,7 @@
 									<h5>elts: <span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="appendstream" class="tsd-anchor"></a>
-					<h3>append<wbr>Stream</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">append<wbr>Stream<span class="tsd-signature-symbol">(</span>elts<span class="tsd-signature-symbol">: </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L379">src/Stream.ts:379</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>elts: <a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -371,7 +346,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L343">src/Stream.ts:343</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L313">src/LinkedList.ts:313</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -379,7 +354,7 @@
 									<p>Matches each element with a unique key that you extract from it.
 									If the same key is present twice, the function will return None.</p>
 								</div>
-								<p>also see <a href="stream.html#groupby">Stream.groupBy</a></p>
+								<p>also see <a href="linkedlist.html#groupby">LinkedList.groupBy</a></p>
 							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
@@ -429,7 +404,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#contains">contains</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L182">src/Stream.ts:182</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L152">src/LinkedList.ts:152</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -448,43 +423,17 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="cycle" class="tsd-anchor"></a>
-					<h3>cycle</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">cycle<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L398">src/Stream.ts:398</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Repeat infinitely this Stream.
-									For instance:</p>
-								</div>
-								<pre><code>Stream.of(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>).cycle()
-=&gt; [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2.</span>..]
-</code></pre>
-							</div>
-							<h4 class="tsd-returns-title">Returns <a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
 					<a name="distinctby" class="tsd-anchor"></a>
 					<h3>distinct<wbr>By</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">distinct<wbr>By&lt;U&gt;<span class="tsd-signature-symbol">(</span>keyExtractor<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">distinct<wbr>By&lt;U&gt;<span class="tsd-signature-symbol">(</span>keyExtractor<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L467">src/Stream.ts:467</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L417">src/LinkedList.ts:417</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -529,7 +478,7 @@
 									</ul>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -537,14 +486,14 @@
 					<a name="drop" class="tsd-anchor"></a>
 					<h3>drop</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">drop<span class="tsd-signature-symbol">(</span>n<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">drop<span class="tsd-signature-symbol">(</span>n<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#drop">drop</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L202">src/Stream.ts:202</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L172">src/LinkedList.ts:172</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -561,7 +510,7 @@
 									<h5>n: <span class="tsd-signature-type">number</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -569,14 +518,14 @@
 					<a name="dropright" class="tsd-anchor"></a>
 					<h3>drop<wbr>Right</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">drop<wbr>Right<span class="tsd-signature-symbol">(</span>n<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">drop<wbr>Right<span class="tsd-signature-symbol">(</span>n<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#dropright">dropRight</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L217">src/Stream.ts:217</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L187">src/LinkedList.ts:187</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -593,7 +542,7 @@
 									<h5>n: <span class="tsd-signature-type">number</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -601,13 +550,13 @@
 					<a name="dropwhile" class="tsd-anchor"></a>
 					<h3>drop<wbr>While</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">drop<wbr>While<span class="tsd-signature-symbol">(</span>predicate<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">drop<wbr>While<span class="tsd-signature-symbol">(</span>predicate<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L209">src/Stream.ts:209</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L179">src/LinkedList.ts:179</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -641,7 +590,7 @@
 									</ul>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -649,13 +598,13 @@
 					<a name="equals" class="tsd-anchor"></a>
 					<h3>equals</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">equals<span class="tsd-signature-symbol">(</span>other<span class="tsd-signature-symbol">: </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> &amp; </span><a href="../files/comparison.html#withequality" class="tsd-signature-type">WithEquality</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon">equals<span class="tsd-signature-symbol">(</span>other<span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> &amp; </span><a href="../files/comparison.html#withequality" class="tsd-signature-type">WithEquality</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L524">src/Stream.ts:524</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L467">src/LinkedList.ts:467</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -668,7 +617,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>other: <a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> &amp; </span><a href="../files/comparison.html#withequality" class="tsd-signature-type">WithEquality</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>other: <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> &amp; </span><a href="../files/comparison.html#withequality" class="tsd-signature-type">WithEquality</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -679,13 +628,13 @@
 					<a name="filter" class="tsd-anchor"></a>
 					<h3>filter</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">filter<span class="tsd-signature-symbol">(</span>predicate<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">filter<span class="tsd-signature-symbol">(</span>predicate<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L439">src/Stream.ts:439</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L389">src/LinkedList.ts:389</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -719,7 +668,7 @@
 									</ul>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -733,7 +682,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L176">src/Stream.ts:176</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L146">src/LinkedList.ts:146</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -775,13 +724,13 @@
 					<a name="flatmap" class="tsd-anchor"></a>
 					<h3>flat<wbr>Map</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">flat<wbr>Map&lt;U&gt;<span class="tsd-signature-symbol">(</span>mapper<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">flat<wbr>Map&lt;U&gt;<span class="tsd-signature-symbol">(</span>mapper<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L420">src/Stream.ts:420</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L370">src/LinkedList.ts:370</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -805,7 +754,7 @@
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
 											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
-												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>v<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span></li>
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>v<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span></li>
 											</ul>
 											<ul class="tsd-descriptions">
 												<li class="tsd-description">
@@ -815,14 +764,14 @@
 															<h5>v: <span class="tsd-signature-type">T</span></h5>
 														</li>
 													</ul>
-													<h4 class="tsd-returns-title">Returns <a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span></h4>
+													<h4 class="tsd-returns-title">Returns <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span></h4>
 												</li>
 											</ul>
 										</li>
 									</ul>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -836,7 +785,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L229">src/Stream.ts:229</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L199">src/LinkedList.ts:199</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -846,7 +795,7 @@
 									is associative, order of application doesn&#39;t matter.</p>
 								</div>
 								<p>Example:</p>
-								<pre><code>Stream.of(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>).fold(<span class="hljs-number">0</span>, (a,b) =&gt; a + b);
+								<pre><code>LinkedList.of(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>).fold(<span class="hljs-number">0</span>, (a,b) =&gt; a + b);
 =&gt; <span class="hljs-number">6</span>
 </code></pre>
 							</div>
@@ -894,7 +843,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L247">src/Stream.ts:247</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L217">src/LinkedList.ts:217</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -965,7 +914,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L263">src/Stream.ts:263</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L233">src/LinkedList.ts:233</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1030,13 +979,13 @@
 					<a name="foreach" class="tsd-anchor"></a>
 					<h3>for<wbr>Each</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">for<wbr>Each<span class="tsd-signature-symbol">(</span>fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">for<wbr>Each<span class="tsd-signature-symbol">(</span>fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L472">src/Stream.ts:472</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L422">src/LinkedList.ts:422</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1068,7 +1017,7 @@
 									</ul>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -1083,7 +1032,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#get">get</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L169">src/Stream.ts:169</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L139">src/LinkedList.ts:139</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1093,7 +1042,7 @@
 									contain less elements than the index.</p>
 								</div>
 								<p>Careful this is going to have poor performance
-									on Stream, which is not a good data structure
+									on LinkedList, which is not a good data structure
 								for random access!</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1110,13 +1059,13 @@
 					<a name="groupby" class="tsd-anchor"></a>
 					<h3>group<wbr>By</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">group<wbr>By&lt;C&gt;<span class="tsd-signature-symbol">(</span>classifier<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="hashmap.html" class="tsd-signature-type">HashMap</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">C</span><span class="tsd-signature-symbol">, </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">group<wbr>By&lt;C&gt;<span class="tsd-signature-symbol">(</span>classifier<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="hashmap.html" class="tsd-signature-type">HashMap</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">C</span><span class="tsd-signature-symbol">, </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L335">src/Stream.ts:335</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L305">src/LinkedList.ts:305</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1126,7 +1075,7 @@
 										the classifier, and in value we get the list of elements
 									matching that value.</p>
 								</div>
-								<p>also see <a href="stream.html#arrangeby">Stream.arrangeBy</a></p>
+								<p>also see <a href="linkedlist.html#arrangeby">LinkedList.arrangeBy</a></p>
 							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
@@ -1161,7 +1110,7 @@
 									</ul>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="hashmap.html" class="tsd-signature-type">HashMap</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">C</span><span class="tsd-signature-symbol">, </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="hashmap.html" class="tsd-signature-type">HashMap</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">C</span><span class="tsd-signature-symbol">, </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -1176,7 +1125,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#hashcode">hashCode</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L536">src/Stream.ts:536</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L479">src/LinkedList.ts:479</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1201,7 +1150,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#head">head</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L145">src/Stream.ts:145</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L115">src/LinkedList.ts:115</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1226,7 +1175,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#inspect">inspect</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L538">src/Stream.ts:538</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L481">src/LinkedList.ts:481</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
@@ -1244,7 +1193,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#isempty">isEmpty</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L138">src/Stream.ts:138</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L108">src/LinkedList.ts:108</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1267,7 +1216,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#last">last</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L158">src/Stream.ts:158</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L128">src/LinkedList.ts:128</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1292,7 +1241,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#length">length</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L127">src/Stream.ts:127</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L97">src/LinkedList.ts:97</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1308,13 +1257,13 @@
 					<a name="map" class="tsd-anchor"></a>
 					<h3>map</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">map&lt;U&gt;<span class="tsd-signature-symbol">(</span>mapper<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">map&lt;U&gt;<span class="tsd-signature-symbol">(</span>mapper<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L404">src/Stream.ts:404</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L354">src/LinkedList.ts:354</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1353,7 +1302,7 @@
 									</ul>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -1361,13 +1310,13 @@
 					<a name="mapoption" class="tsd-anchor"></a>
 					<h3>map<wbr>Option</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">map<wbr>Option&lt;U&gt;<span class="tsd-signature-symbol">(</span>mapper<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">map<wbr>Option&lt;U&gt;<span class="tsd-signature-symbol">(</span>mapper<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L412">src/Stream.ts:412</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L362">src/LinkedList.ts:362</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1408,7 +1357,7 @@
 									</ul>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -1423,7 +1372,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#mkstring">mkString</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L481">src/Stream.ts:481</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L431">src/LinkedList.ts:431</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1449,13 +1398,13 @@
 					<a name="partition" class="tsd-anchor"></a>
 					<h3>partition</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">partition<span class="tsd-signature-symbol">(</span>predicate<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">]</span></li>
+						<li class="tsd-signature tsd-kind-icon">partition<span class="tsd-signature-symbol">(</span>predicate<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L325">src/Stream.ts:325</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L295">src/LinkedList.ts:295</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1494,7 +1443,7 @@
 									</ul>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">[</span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">]</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">[</span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">]</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -1502,14 +1451,14 @@
 					<a name="prepend" class="tsd-anchor"></a>
 					<h3>prepend</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">prepend<span class="tsd-signature-symbol">(</span>elt<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">prepend<span class="tsd-signature-symbol">(</span>elt<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#prepend">prepend</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L384">src/Stream.ts:384</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L343">src/LinkedList.ts:343</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1523,7 +1472,7 @@
 									<h5>elt: <span class="tsd-signature-type">T</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -1531,14 +1480,14 @@
 					<a name="prependall" class="tsd-anchor"></a>
 					<h3>prepend<wbr>All</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">prepend<wbr>All<span class="tsd-signature-symbol">(</span>elts<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">prepend<wbr>All<span class="tsd-signature-symbol">(</span>elts<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#prependall">prependAll</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L389">src/Stream.ts:389</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L348">src/LinkedList.ts:348</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1552,7 +1501,7 @@
 									<h5>elts: <span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -1560,19 +1509,19 @@
 					<a name="removefirst" class="tsd-anchor"></a>
 					<h3>remove<wbr>First</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">remove<wbr>First<span class="tsd-signature-symbol">(</span>predicate<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">remove<wbr>First<span class="tsd-signature-symbol">(</span>predicate<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L368">src/Stream.ts:368</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L338">src/LinkedList.ts:338</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Removes the first element matching the predicate
-									(use <a href="stream.html#filter">Stream.filter</a> to remove all elements matching a predicate)</p>
+									(use <a href="../interfaces/seq.html#filter">Seq.filter</a> to remove all elements matching a predicate)</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1599,7 +1548,7 @@
 									</ul>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -1607,14 +1556,14 @@
 					<a name="reverse" class="tsd-anchor"></a>
 					<h3>reverse</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">reverse<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">reverse<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#reverse">reverse</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L294">src/Stream.ts:294</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L264">src/LinkedList.ts:264</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1624,7 +1573,7 @@
 								<pre><code>[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>] =&gt; [<span class="hljs-number">3</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>]
 </code></pre>
 							</div>
-							<h4 class="tsd-returns-title">Returns <a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -1632,14 +1581,14 @@
 					<a name="shuffle" class="tsd-anchor"></a>
 					<h3>shuffle</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">shuffle<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">shuffle<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#shuffle">shuffle</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L350">src/Stream.ts:350</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L320">src/LinkedList.ts:320</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1647,7 +1596,7 @@
 									<p>Randomly reorder the elements of the collection.</p>
 								</div>
 							</div>
-							<h4 class="tsd-returns-title">Returns <a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -1662,7 +1611,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#single">single</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L133">src/Stream.ts:133</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L103">src/LinkedList.ts:103</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1679,13 +1628,13 @@
 					<a name="sortby" class="tsd-anchor"></a>
 					<h3>sort<wbr>By</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">sort<wbr>By<span class="tsd-signature-symbol">(</span>compare<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">sort<wbr>By<span class="tsd-signature-symbol">(</span>compare<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L447">src/Stream.ts:447</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L397">src/LinkedList.ts:397</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1693,7 +1642,7 @@
 									<p>Returns a new collection with elements
 									sorted according to the comparator you give.</p>
 								</div>
-								<p>also see <a href="stream.html#sorton">Stream.sortOn</a></p>
+								<p>also see <a href="linkedlist.html#sorton">LinkedList.sortOn</a></p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -1722,7 +1671,7 @@
 									</ul>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -1730,13 +1679,13 @@
 					<a name="sorton" class="tsd-anchor"></a>
 					<h3>sort<wbr>On</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">sort<wbr>On<span class="tsd-signature-symbol">(</span>getKey<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">sort<wbr>On<span class="tsd-signature-symbol">(</span>getKey<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L456">src/Stream.ts:456</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L406">src/LinkedList.ts:406</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1745,7 +1694,7 @@
 										elements from the collection, and the elements
 									are sorted according to that value.</p>
 								</div>
-								<p>also see <a href="stream.html#sortby">Stream.sortBy</a></p>
+								<p>also see <a href="linkedlist.html#sortby">LinkedList.sortBy</a></p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -1753,7 +1702,7 @@
 									<h5>getKey: <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">function</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -1761,13 +1710,13 @@
 					<a name="span" class="tsd-anchor"></a>
 					<h3>span</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">span<span class="tsd-signature-symbol">(</span>predicate<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">]</span></li>
+						<li class="tsd-signature tsd-kind-icon">span<span class="tsd-signature-symbol">(</span>predicate<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L305">src/Stream.ts:305</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L275">src/LinkedList.ts:275</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1777,8 +1726,8 @@
 										which satisfies the predicate, and the second collection
 									is the remainder of the collection.</p>
 								</div>
-								<p>   Stream.of(1,2,3,4,5,6).span(x =&gt; x <3)
-								=> [Stream.of(1,2), Stream.of(3,4,5,6)]</p>
+								<p>   LinkedList.of(1,2,3,4,5,6).span(x =&gt; x <3)
+								=> [LinkedList.of(1,2), LinkedList.of(3,4,5,6)]</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -1804,7 +1753,7 @@
 									</ul>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">[</span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">]</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">[</span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">]</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -1812,22 +1761,22 @@
 					<a name="splitat" class="tsd-anchor"></a>
 					<h3>split<wbr>At</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">split<wbr>At<span class="tsd-signature-symbol">(</span>index<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">]</span></li>
+						<li class="tsd-signature tsd-kind-icon">split<wbr>At<span class="tsd-signature-symbol">(</span>index<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#splitat">splitAt</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L313">src/Stream.ts:313</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L283">src/LinkedList.ts:283</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Split the collection at a specific index.</p>
 								</div>
-								<pre><code>Stream.of(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>).splitAt(<span class="hljs-number">3</span>)
-=&gt; [Stream.of(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>), Stream.of(<span class="hljs-number">4</span>,<span class="hljs-number">5</span>)]
+								<pre><code>LinkedList.of(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>).splitAt(<span class="hljs-number">3</span>)
+=&gt; [LinkedList.of(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>), LinkedList.of(<span class="hljs-number">4</span>,<span class="hljs-number">5</span>)]
 </code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1836,7 +1785,7 @@
 									<h5>index: <span class="tsd-signature-type">number</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">[</span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">]</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">[</span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">]</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -1844,14 +1793,14 @@
 					<a name="tail" class="tsd-anchor"></a>
 					<h3>tail</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">tail<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="option.html" class="tsd-signature-type">Option</a><span class="tsd-signature-symbol">&lt;</span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">tail<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="option.html" class="tsd-signature-type">Option</a><span class="tsd-signature-symbol">&lt;</span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#tail">tail</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L151">src/Stream.ts:151</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L121">src/LinkedList.ts:121</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1860,7 +1809,7 @@
 									If the collection is empty, return None.</p>
 								</div>
 							</div>
-							<h4 class="tsd-returns-title">Returns <a href="option.html" class="tsd-signature-type">Option</a><span class="tsd-signature-symbol">&lt;</span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="option.html" class="tsd-signature-type">Option</a><span class="tsd-signature-symbol">&lt;</span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -1868,14 +1817,14 @@
 					<a name="take" class="tsd-anchor"></a>
 					<h3>take</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">take<span class="tsd-signature-symbol">(</span>n<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">take<span class="tsd-signature-symbol">(</span>n<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#take">take</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L188">src/Stream.ts:188</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L158">src/LinkedList.ts:158</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1890,7 +1839,7 @@
 									<h5>n: <span class="tsd-signature-type">number</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -1898,13 +1847,13 @@
 					<a name="takewhile" class="tsd-anchor"></a>
 					<h3>take<wbr>While</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">take<wbr>While<span class="tsd-signature-symbol">(</span>predicate<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">take<wbr>While<span class="tsd-signature-symbol">(</span>predicate<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L194">src/Stream.ts:194</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L164">src/LinkedList.ts:164</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1937,7 +1886,7 @@
 									</ul>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -1952,7 +1901,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#toarray">toArray</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L487">src/Stream.ts:487</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L437">src/LinkedList.ts:437</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1962,28 +1911,6 @@
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[]</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="tolinkedlist" class="tsd-anchor"></a>
-					<h3>to<wbr>Linked<wbr>List</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">to<wbr>Linked<wbr>List<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L507">src/Stream.ts:507</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Convert this collection to a list.</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -1997,7 +1924,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L502">src/Stream.ts:502</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L452">src/LinkedList.ts:452</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2057,7 +1984,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#tostring">toString</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L529">src/Stream.ts:529</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L472">src/LinkedList.ts:472</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2079,7 +2006,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L493">src/Stream.ts:493</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L443">src/LinkedList.ts:443</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2102,7 +2029,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L515">src/Stream.ts:515</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L458">src/LinkedList.ts:458</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2124,14 +2051,14 @@
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
 											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
-												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">U</span></li>
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">U</span></li>
 											</ul>
 											<ul class="tsd-descriptions">
 												<li class="tsd-description">
 													<h4 class="tsd-parameters-title">Parameters</h4>
 													<ul class="tsd-parameters">
 														<li>
-															<h5>x: <a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
+															<h5>x: <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
 														</li>
 													</ul>
 													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">U</span></h4>
@@ -2149,14 +2076,14 @@
 					<a name="zip" class="tsd-anchor"></a>
 					<h3>zip</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">zip&lt;U&gt;<span class="tsd-signature-symbol">(</span>other<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">zip&lt;U&gt;<span class="tsd-signature-symbol">(</span>other<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#zip">zip</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L276">src/Stream.ts:276</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L246">src/LinkedList.ts:246</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2182,7 +2109,7 @@
 									<h5>other: <span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -2190,14 +2117,14 @@
 					<a name="zipwithindex" class="tsd-anchor"></a>
 					<h3>zip<wbr>With<wbr>Index</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">zip<wbr>With<wbr>Index<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">zip<wbr>With<wbr>Index<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#zipwithindex">zipWithIndex</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L285">src/Stream.ts:285</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L255">src/LinkedList.ts:255</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2206,62 +2133,10 @@
 										in it. Handy if you need the index when you map on
 									the collection for instance:</p>
 								</div>
-								<pre><code><span class="hljs-selector-tag">Stream</span><span class="hljs-selector-class">.of</span>(<span class="hljs-string">"a"</span>,<span class="hljs-string">"b"</span>)<span class="hljs-selector-class">.zipWithIndex</span>()<span class="hljs-selector-class">.map</span>([v,idx] =&gt; ...)
+								<pre><code><span class="hljs-selector-tag">LinkedList</span><span class="hljs-selector-class">.of</span>(<span class="hljs-string">"a"</span>,<span class="hljs-string">"b"</span>)<span class="hljs-selector-class">.zipWithIndex</span>()<span class="hljs-selector-class">.map</span>([v,idx] =&gt; ...)
 </code></pre>
 							</div>
-							<h4 class="tsd-returns-title">Returns <a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-					<a name="continually" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> continually</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">continually&lt;T&gt;<span class="tsd-signature-symbol">(</span>fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L84">src/Stream.ts:84</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Build an infinite stream by calling repeatedly a function.</p>
-								</div>
-								<pre><code>Stream.continually(() =&gt; <span class="hljs-number">1</span>)
-=&gt; [<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,...]
-
-Stream.continually(Math.random)
-=&gt; [<span class="hljs-number">0.49884723907769635</span>, <span class="hljs-number">0.3226548779864311</span>, ...]
-</code></pre>
-							</div>
-							<h4 class="tsd-type-parameters-title">Type parameters</h4>
-							<ul class="tsd-type-parameters">
-								<li>
-									<h4>T</h4>
-								</li>
-							</ul>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>fn: <span class="tsd-signature-type">function</span></h5>
-									<ul class="tsd-parameters">
-										<li class="tsd-parameter-siganture">
-											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
-												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
-											</ul>
-											<ul class="tsd-descriptions">
-												<li class="tsd-description">
-													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
-												</li>
-											</ul>
-										</li>
-									</ul>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -2269,13 +2144,13 @@ Stream.continually(Math.random)
 					<a name="empty" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> empty</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">empty&lt;T&gt;<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">empty&lt;T&gt;<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L26">src/Stream.ts:26</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L29">src/LinkedList.ts:29</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2289,65 +2164,7 @@ Stream.continually(Math.random)
 									<h4>T</h4>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-					<a name="iterate" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> iterate</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">iterate&lt;T&gt;<span class="tsd-signature-symbol">(</span>seed<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>, fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L71">src/Stream.ts:71</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Build an infinite stream from a seed and a transformation function.</p>
-								</div>
-								<pre><code>Stream.iterate(<span class="hljs-number">1</span>, x =&gt; x*<span class="hljs-number">2</span>)
-=&gt; [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">4</span>,<span class="hljs-number">8</span>,...]
-</code></pre>
-							</div>
-							<h4 class="tsd-type-parameters-title">Type parameters</h4>
-							<ul class="tsd-type-parameters">
-								<li>
-									<h4>T</h4>
-								</li>
-							</ul>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>seed: <span class="tsd-signature-type">T</span></h5>
-								</li>
-								<li>
-									<h5>fn: <span class="tsd-signature-type">function</span></h5>
-									<ul class="tsd-parameters">
-										<li class="tsd-parameter-siganture">
-											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
-												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>v<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
-											</ul>
-											<ul class="tsd-descriptions">
-												<li class="tsd-description">
-													<h4 class="tsd-parameters-title">Parameters</h4>
-													<ul class="tsd-parameters">
-														<li>
-															<h5>v: <span class="tsd-signature-type">T</span></h5>
-														</li>
-													</ul>
-													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
-												</li>
-											</ul>
-										</li>
-									</ul>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -2355,18 +2172,18 @@ Stream.continually(Math.random)
 					<a name="of" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> of</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">of&lt;T&gt;<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>elts<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">of&lt;T&gt;<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>elts<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L33">src/Stream.ts:33</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L36">src/LinkedList.ts:36</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Create a Stream with the elements you give.</p>
+									<p>Create a LinkedList with the elements you give.</p>
 								</div>
 							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -2381,47 +2198,7 @@ Stream.continually(Math.random)
 									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>elts: <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[]</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-					<a name="ofarray" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> of<wbr>Array</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">of<wbr>Array&lt;T&gt;<span class="tsd-signature-symbol">(</span>elts<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L57">src/Stream.ts:57</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Build a stream from an array (slightly faster
-									than building from an iterable)</p>
-								</div>
-								<dl class="tsd-comment-tags">
-									<dt>type</dt>
-									<dd><p>T the item type</p>
-									</dd>
-								</dl>
-							</div>
-							<h4 class="tsd-type-parameters-title">Type parameters</h4>
-							<ul class="tsd-type-parameters">
-								<li>
-									<h4>T</h4>
-								</li>
-							</ul>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>elts: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -2429,13 +2206,13 @@ Stream.continually(Math.random)
 					<a name="ofiterable" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> of<wbr>Iterable</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">of<wbr>Iterable&lt;T&gt;<span class="tsd-signature-symbol">(</span>elts<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">of<wbr>Iterable&lt;T&gt;<span class="tsd-signature-symbol">(</span>elts<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L42">src/Stream.ts:42</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L45">src/LinkedList.ts:45</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2461,7 +2238,7 @@ Stream.continually(Math.random)
 									<h5>elts: <span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -2469,13 +2246,13 @@ Stream.continually(Math.random)
 					<a name="unfoldright" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> unfold<wbr>Right</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">unfold<wbr>Right&lt;T, U&gt;<span class="tsd-signature-symbol">(</span>seed<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>, fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">unfold<wbr>Right&lt;T, U&gt;<span class="tsd-signature-symbol">(</span>seed<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>, fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/Stream.ts#L102">src/Stream.ts:102</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/143cabc/src/LinkedList.ts#L70">src/LinkedList.ts:70</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2530,7 +2307,7 @@ Stream.continually(Math.random)
 									</ul>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="stream.html" class="tsd-signature-type">Stream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -2561,207 +2338,189 @@ Stream.continually(Math.random)
 					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="lazy.html" class="tsd-kind-icon">Lazy</a>
 					</li>
-					<li class=" tsd-kind-class tsd-has-type-parameter">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class tsd-has-type-parameter">
 						<a href="linkedlist.html" class="tsd-kind-icon">Linked<wbr>List</a>
+						<ul>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linkedlist.html#___iterator" class="tsd-kind-icon">__@iterator</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linkedlist.html#allmatch" class="tsd-kind-icon">all<wbr>Match</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linkedlist.html#anymatch" class="tsd-kind-icon">any<wbr>Match</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linkedlist.html#append" class="tsd-kind-icon">append</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linkedlist.html#appendall" class="tsd-kind-icon">append<wbr>All</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+								<a href="linkedlist.html#arrangeby" class="tsd-kind-icon">arrange<wbr>By</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linkedlist.html#contains" class="tsd-kind-icon">contains</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+								<a href="linkedlist.html#distinctby" class="tsd-kind-icon">distinct<wbr>By</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linkedlist.html#drop" class="tsd-kind-icon">drop</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linkedlist.html#dropright" class="tsd-kind-icon">drop<wbr>Right</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linkedlist.html#dropwhile" class="tsd-kind-icon">drop<wbr>While</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linkedlist.html#equals" class="tsd-kind-icon">equals</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linkedlist.html#filter" class="tsd-kind-icon">filter</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linkedlist.html#find" class="tsd-kind-icon">find</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+								<a href="linkedlist.html#flatmap" class="tsd-kind-icon">flat<wbr>Map</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linkedlist.html#fold" class="tsd-kind-icon">fold</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+								<a href="linkedlist.html#foldleft" class="tsd-kind-icon">fold<wbr>Left</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+								<a href="linkedlist.html#foldright" class="tsd-kind-icon">fold<wbr>Right</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linkedlist.html#foreach" class="tsd-kind-icon">for<wbr>Each</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linkedlist.html#get" class="tsd-kind-icon">get</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+								<a href="linkedlist.html#groupby" class="tsd-kind-icon">group<wbr>By</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linkedlist.html#hashcode" class="tsd-kind-icon">hash<wbr>Code</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linkedlist.html#head" class="tsd-kind-icon">head</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linkedlist.html#inspect" class="tsd-kind-icon">inspect</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linkedlist.html#isempty" class="tsd-kind-icon">is<wbr>Empty</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linkedlist.html#last" class="tsd-kind-icon">last</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linkedlist.html#length" class="tsd-kind-icon">length</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+								<a href="linkedlist.html#map" class="tsd-kind-icon">map</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+								<a href="linkedlist.html#mapoption" class="tsd-kind-icon">map<wbr>Option</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linkedlist.html#mkstring" class="tsd-kind-icon">mk<wbr>String</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linkedlist.html#partition" class="tsd-kind-icon">partition</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linkedlist.html#prepend" class="tsd-kind-icon">prepend</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linkedlist.html#prependall" class="tsd-kind-icon">prepend<wbr>All</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linkedlist.html#removefirst" class="tsd-kind-icon">remove<wbr>First</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linkedlist.html#reverse" class="tsd-kind-icon">reverse</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linkedlist.html#shuffle" class="tsd-kind-icon">shuffle</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linkedlist.html#single" class="tsd-kind-icon">single</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linkedlist.html#sortby" class="tsd-kind-icon">sort<wbr>By</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linkedlist.html#sorton" class="tsd-kind-icon">sort<wbr>On</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linkedlist.html#span" class="tsd-kind-icon">span</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linkedlist.html#splitat" class="tsd-kind-icon">split<wbr>At</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linkedlist.html#tail" class="tsd-kind-icon">tail</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linkedlist.html#take" class="tsd-kind-icon">take</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linkedlist.html#takewhile" class="tsd-kind-icon">take<wbr>While</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linkedlist.html#toarray" class="tsd-kind-icon">to<wbr>Array</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+								<a href="linkedlist.html#tomap" class="tsd-kind-icon">to<wbr>Map</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linkedlist.html#tostring" class="tsd-kind-icon">to<wbr>String</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linkedlist.html#tovector" class="tsd-kind-icon">to<wbr>Vector</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+								<a href="linkedlist.html#transform" class="tsd-kind-icon">transform</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+								<a href="linkedlist.html#zip" class="tsd-kind-icon">zip</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linkedlist.html#zipwithindex" class="tsd-kind-icon">zip<wbr>With<wbr>Index</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+								<a href="linkedlist.html#empty" class="tsd-kind-icon">empty</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+								<a href="linkedlist.html#of" class="tsd-kind-icon">of</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+								<a href="linkedlist.html#ofiterable" class="tsd-kind-icon">of<wbr>Iterable</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+								<a href="linkedlist.html#unfoldright" class="tsd-kind-icon">unfold<wbr>Right</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="option.html" class="tsd-kind-icon">Option</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="predicates.html" class="tsd-kind-icon">Predicates</a>
 					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-class tsd-has-type-parameter">
+					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="stream.html" class="tsd-kind-icon">Stream</a>
-						<ul>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#___iterator" class="tsd-kind-icon">__@iterator</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#allmatch" class="tsd-kind-icon">all<wbr>Match</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#anymatch" class="tsd-kind-icon">any<wbr>Match</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#append" class="tsd-kind-icon">append</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#appendall" class="tsd-kind-icon">append<wbr>All</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#appendstream" class="tsd-kind-icon">append<wbr>Stream</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-								<a href="stream.html#arrangeby" class="tsd-kind-icon">arrange<wbr>By</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#contains" class="tsd-kind-icon">contains</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#cycle" class="tsd-kind-icon">cycle</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-								<a href="stream.html#distinctby" class="tsd-kind-icon">distinct<wbr>By</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#drop" class="tsd-kind-icon">drop</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#dropright" class="tsd-kind-icon">drop<wbr>Right</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#dropwhile" class="tsd-kind-icon">drop<wbr>While</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#equals" class="tsd-kind-icon">equals</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#filter" class="tsd-kind-icon">filter</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#find" class="tsd-kind-icon">find</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-								<a href="stream.html#flatmap" class="tsd-kind-icon">flat<wbr>Map</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#fold" class="tsd-kind-icon">fold</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-								<a href="stream.html#foldleft" class="tsd-kind-icon">fold<wbr>Left</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-								<a href="stream.html#foldright" class="tsd-kind-icon">fold<wbr>Right</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#foreach" class="tsd-kind-icon">for<wbr>Each</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#get" class="tsd-kind-icon">get</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-								<a href="stream.html#groupby" class="tsd-kind-icon">group<wbr>By</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#hashcode" class="tsd-kind-icon">hash<wbr>Code</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#head" class="tsd-kind-icon">head</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#inspect" class="tsd-kind-icon">inspect</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#isempty" class="tsd-kind-icon">is<wbr>Empty</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#last" class="tsd-kind-icon">last</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#length" class="tsd-kind-icon">length</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-								<a href="stream.html#map" class="tsd-kind-icon">map</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-								<a href="stream.html#mapoption" class="tsd-kind-icon">map<wbr>Option</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#mkstring" class="tsd-kind-icon">mk<wbr>String</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#partition" class="tsd-kind-icon">partition</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#prepend" class="tsd-kind-icon">prepend</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#prependall" class="tsd-kind-icon">prepend<wbr>All</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#removefirst" class="tsd-kind-icon">remove<wbr>First</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#reverse" class="tsd-kind-icon">reverse</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#shuffle" class="tsd-kind-icon">shuffle</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#single" class="tsd-kind-icon">single</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#sortby" class="tsd-kind-icon">sort<wbr>By</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#sorton" class="tsd-kind-icon">sort<wbr>On</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#span" class="tsd-kind-icon">span</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#splitat" class="tsd-kind-icon">split<wbr>At</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#tail" class="tsd-kind-icon">tail</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#take" class="tsd-kind-icon">take</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#takewhile" class="tsd-kind-icon">take<wbr>While</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#toarray" class="tsd-kind-icon">to<wbr>Array</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#tolinkedlist" class="tsd-kind-icon">to<wbr>Linked<wbr>List</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-								<a href="stream.html#tomap" class="tsd-kind-icon">to<wbr>Map</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#tostring" class="tsd-kind-icon">to<wbr>String</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#tovector" class="tsd-kind-icon">to<wbr>Vector</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-								<a href="stream.html#transform" class="tsd-kind-icon">transform</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-								<a href="stream.html#zip" class="tsd-kind-icon">zip</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="stream.html#zipwithindex" class="tsd-kind-icon">zip<wbr>With<wbr>Index</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-								<a href="stream.html#continually" class="tsd-kind-icon">continually</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-								<a href="stream.html#empty" class="tsd-kind-icon">empty</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-								<a href="stream.html#iterate" class="tsd-kind-icon">iterate</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-								<a href="stream.html#of" class="tsd-kind-icon">of</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-								<a href="stream.html#ofarray" class="tsd-kind-icon">of<wbr>Array</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-								<a href="stream.html#ofiterable" class="tsd-kind-icon">of<wbr>Iterable</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-								<a href="stream.html#unfoldright" class="tsd-kind-icon">unfold<wbr>Right</a>
-							</li>
-						</ul>
 					</li>
-				</ul>
-				<ul class="after-current">
 					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="tuple2.html" class="tsd-kind-icon">Tuple2</a>
 					</li>

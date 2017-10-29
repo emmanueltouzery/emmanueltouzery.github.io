@@ -65,7 +65,8 @@
 				<a href="https://circleci.com/gh/emmanueltouzery/prelude.ts"><img src="https://circleci.com/gh/emmanueltouzery/prelude.ts.svg?style=shield&amp;circle-token=6d8b74ef7ea7d1c204e77c4f88b05348682b4161" alt="Tests"></a></p>
 				<h2 id="intro">Intro</h2>
 				<p>Prelude.ts is a typescript library which aims to make functional programming
-				concepts accessible and productive in typescript.</p>
+					concepts accessible and productive in typescript. Note that even though it&#39;s
+				written in typescript, it&#39;s perfectly usable from javascript (including ES5)!</p>
 				<p>It provides <a href="https://en.wikipedia.org/wiki/Persistent_data_structure">persistent</a>
 					immutable collections (Vector, Set, Map, Stream), and constructs such as Option,
 				Either and Predicate.</p>
@@ -95,12 +96,15 @@ HashMap.of([<span class="hljs-string">"a"</span>,<span class="hljs-number">1</sp
 					<strong><a href="http://emmanueltouzery.github.io/prelude.ts/apidoc/globals.html">API documentation</a></strong>.
 					Note that the constructors are private, and you should use static methods to build
 				items, for instance <code>Option.of</code>, <code>Vector.of</code>, <code>Vector.ofIterable</code>, and so on.</p>
-				<p>At this time most of the collections are implemented using the
+				<p><code>HashSet</code> and <code>HashMap</code> are implemented using the
 					<a href="http://en.wikipedia.org/wiki/Hash_array_mapped_trie">HAMT algorithm</a>,
 					and concretely the <a href="https://www.npmjs.com/package/hamt_plus">hamt_plus library</a>.
 					Besides this dependency, I&#39;ll try to limit the number of dependencies.
+					<code>Vector</code> is implemented through a
+					<a href="http://hypirion.com/musings/understanding-persistent-vector-pt-1">bit-mapped vector trie</a>.
 					In addition the library is written in idiomatic javascript style, with loops
-				instead of recursion, so the performance should be reasonable.</p>
+					instead of recursion, so the performance should be reasonable
+				(<a href="https://github.com/emmanueltouzery/prelude.ts/wiki/Benchmarks">see benchmarks here</a>).</p>
 				<h2 id="set-map-and-equality">Set, Map and equality</h2>
 				<p>Javascript doesn&#39;t have structural equality, except for primitive types.
 					So, <code>1 === 1</code> is true. But <code>[1] === [1]</code> is not, and neither <code>{a:1} === {a:1}</code>.
@@ -134,18 +138,6 @@ HashMap.of([<span class="hljs-string">"a"</span>,<span class="hljs-number">1</sp
 				<pre><code class="lang-json">&quot;lib&quot;: [&quot;DOM&quot;, &quot;ES5&quot;, &quot;ScriptHost&quot;, &quot;es2015.iterable&quot;]
 </code></pre>
 				<p>(compared to the default es5 settings it only adds &#39;es2015.iterable&#39;)</p>
-				<p>You shouldn&#39;t have an issue to import prelude.ts in your application, but if you use
-					files it gets a little more complicated; One solution if you use them is to create
-				an <code>imports.d.ts</code> file with the following contents:</p>
-				<pre><code class="lang-typescript"><span class="hljs-comment">// https://github.com/Microsoft/TypeScript/issues/3180#issuecomment-283007750</span>
-<span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> _P <span class="hljs-keyword">from</span> <span class="hljs-string">'prelude.ts'</span>;
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">as</span> <span class="hljs-keyword">namespace</span> prelude_ts;
-<span class="hljs-keyword">export</span> = _P;
-</code></pre>
-				<p>Then in a <code>.ts</code> file of your application, outside of a module, you can do:</p>
-				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> Vector = prelude_ts.Vector;
-</code></pre>
-				<p>To get the values without namespace.</p>
 				<h3 id="using-in-nodejs">Using in nodejs</h3>
 				<p>Just add the dependency in your <code>package.json</code> and start using it (like
 					<code>import { Vector } from &quot;prelude.ts&quot;;</code>).
@@ -160,12 +152,26 @@ HashMap.of([<span class="hljs-string">"a"</span>,<span class="hljs-number">1</sp
 				include the relevant one in your index.html in script tags:</p>
 				<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"node_files/prelude.ts/dist/src/prelude_ts.min.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
+				<p>You shouldn&#39;t have an issue to import prelude.ts in your application, but if you use
+					files it gets a little more complicated; One solution if you use them is to create
+				an <code>imports.d.ts</code> file with the following contents:</p>
+				<pre><code class="lang-typescript"><span class="hljs-comment">// https://github.com/Microsoft/TypeScript/issues/3180#issuecomment-283007750</span>
+<span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> _P <span class="hljs-keyword">from</span> <span class="hljs-string">'prelude.ts'</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">as</span> <span class="hljs-keyword">namespace</span> prelude_ts;
+<span class="hljs-keyword">export</span> = _P;
+</code></pre>
+				<p>Then in a <code>.ts</code> file of your application, outside of a module, you can do:</p>
+				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> Vector = prelude_ts.Vector;
+</code></pre>
+				<p>To get the values without namespace.</p>
 				<p>Finally, if you also include <code>dist/src/chrome_dev_tools_formatters.js</code> through
 					a <code>script</code> tag, and <a href="http://bit.ly/object-formatters">enable Chrome custom formatters</a>,
 					then you can get
 				<a href="https://raw.githubusercontent.com/wiki/emmanueltouzery/prelude.ts/chrome_formatters.png">a nice display of prelude.ts values in the chrome debugger</a>.</p>
 				<h2 id="wishlist-upcoming-features">Wishlist/upcoming features</h2>
 				<ul>
+					<li>Function helpers (compose/andThen, curry)</li>
+					<li>Validation</li>
 					<li>Future, wrapping promises?</li>
 					<li>Non-empty vector probably</li>
 					<li>More functions on existing classes</li>
@@ -227,6 +233,9 @@ npm <span class="hljs-keyword">run</span><span class="bash"> benchmarks</span>
 					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="classes/either.html" class="tsd-kind-icon">Either</a>
 					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/function.html" class="tsd-kind-icon">Function</a>
+					</li>
 					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="classes/hashmap.html" class="tsd-kind-icon">Hash<wbr>Map</a>
 					</li>
@@ -237,12 +246,12 @@ npm <span class="hljs-keyword">run</span><span class="bash"> benchmarks</span>
 						<a href="classes/lazy.html" class="tsd-kind-icon">Lazy</a>
 					</li>
 					<li class=" tsd-kind-class tsd-has-type-parameter">
-						<a href="classes/list.html" class="tsd-kind-icon">List</a>
+						<a href="classes/linkedlist.html" class="tsd-kind-icon">Linked<wbr>List</a>
 					</li>
 					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="classes/option.html" class="tsd-kind-icon">Option</a>
 					</li>
-					<li class=" tsd-kind-class tsd-has-type-parameter">
+					<li class=" tsd-kind-class">
 						<a href="classes/predicates.html" class="tsd-kind-icon">Predicates</a>
 					</li>
 					<li class=" tsd-kind-class tsd-has-type-parameter">
@@ -259,6 +268,21 @@ npm <span class="hljs-keyword">run</span><span class="bash"> benchmarks</span>
 					</li>
 					<li class=" tsd-kind-interface tsd-has-type-parameter">
 						<a href="interfaces/foldable.html" class="tsd-kind-icon">Foldable</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/function1.html" class="tsd-kind-icon">Function1</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/function2.html" class="tsd-kind-icon">Function2</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/function3.html" class="tsd-kind-icon">Function3</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/function4.html" class="tsd-kind-icon">Function4</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/function5.html" class="tsd-kind-icon">Function5</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-has-type-parameter">
 						<a href="interfaces/imap.html" class="tsd-kind-icon">IMap</a>
