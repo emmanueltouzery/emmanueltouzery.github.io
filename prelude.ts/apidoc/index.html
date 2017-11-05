@@ -92,7 +92,7 @@ HashMap.of([<span class="hljs-string">"a"</span>,<span class="hljs-number">1</sp
 					you can use the <code>for .. of</code> construct on them. If you&#39;re not familiar with
 					immutable collections, <code>list.append(newItem)</code> keeps <code>list</code> unchanged; <code>append()</code>
 				returns a new list. Immutability helps reasonning about code.</p>
-				<p>You can check the tests for examples of use, and browse the
+				<p>You can check the <strong><a href="https://github.com/emmanueltouzery/prelude.ts/wiki/Prelude.ts-user-guide">User Guide</a></strong>, and browse the
 					<strong><a href="http://emmanueltouzery.github.io/prelude.ts/apidoc/globals.html">API documentation</a></strong>.
 					Note that the constructors are private, and you should use static methods to build
 				items, for instance <code>Option.of</code>, <code>Vector.of</code>, <code>Vector.ofIterable</code>, and so on.</p>
@@ -133,15 +133,16 @@ HashMap.of([<span class="hljs-string">"a"</span>,<span class="hljs-number">1</sp
 </code></pre><p>(this behavior is <a href="http://emmanueltouzery.github.io/prelude.ts/apidoc/globals.html#setcontractviolationaction">customizable</a>).</p>
 				<h2 id="installation">Installation</h2>
 				<p>Typescript must know about <code>Iterable</code>, an ES6 feature (but present in most browsers)
-					to compile prelude.ts. If you target ES5, a minimum change to your tsconfig.json
+					to compile prelude.ts. If you use typescript and target ES5, a minimum change to your tsconfig.json
 				could be to add:</p>
 				<pre><code class="lang-json">&quot;lib&quot;: [&quot;DOM&quot;, &quot;ES5&quot;, &quot;ScriptHost&quot;, &quot;es2015.iterable&quot;]
 </code></pre>
 				<p>(compared to the default es5 settings it only adds &#39;es2015.iterable&#39;)</p>
 				<h3 id="using-in-nodejs">Using in nodejs</h3>
 				<p>Just add the dependency in your <code>package.json</code> and start using it (like
-					<code>import { Vector } from &quot;prelude.ts&quot;;</code>).
-					Everything should work, including type-checking. Prelude.ts also provides
+					<code>import { Vector } from &quot;prelude.ts&quot;;</code>, or <code>const { Vector } = require(&quot;prelude.ts&quot;);</code>
+					if you use commonjs).
+					Everything should work, including type-checking if you use typescript. Prelude.ts also provides
 				pretty-printing in the node REPL.</p>
 				<h3 id="using-in-the-browser">Using in the browser</h3>
 				<p>Add the dependency in your <code>package.json</code>; Typescript should automatically

@@ -77,13 +77,10 @@
 						<span class="target">Foldable</span>
 						<ul class="tsd-hierarchy">
 							<li>
-								<a href="iset.html" class="tsd-signature-type">ISet</a>
-							</li>
-							<li>
 								<a href="imap.html" class="tsd-signature-type">IMap</a>
 							</li>
 							<li>
-								<a href="seq.html" class="tsd-signature-type">Seq</a>
+								<a href="collection.html" class="tsd-signature-type">Collection</a>
 							</li>
 						</ul>
 					</li>
@@ -99,6 +96,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="foldable.html#fold" class="tsd-kind-icon">fold</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-has-type-parameter"><a href="foldable.html#foldleft" class="tsd-kind-icon">fold<wbr>Left</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-has-type-parameter"><a href="foldable.html#foldright" class="tsd-kind-icon">fold<wbr>Right</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="foldable.html#reduce" class="tsd-kind-icon">reduce</a></li>
 							</ul>
 						</section>
 					</div>
@@ -116,7 +114,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/eb2e764/src/Foldable.ts#L13">src/Foldable.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/02ce15f/src/Foldable.ts#L15">src/Foldable.ts:15</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -174,7 +172,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/eb2e764/src/Foldable.ts#L29">src/Foldable.ts:29</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/02ce15f/src/Foldable.ts#L31">src/Foldable.ts:31</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -245,7 +243,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/eb2e764/src/Foldable.ts#L45">src/Foldable.ts:45</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/02ce15f/src/Foldable.ts#L47">src/Foldable.ts:47</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -303,6 +301,58 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">U</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="reduce" class="tsd-anchor"></a>
+					<h3>reduce</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">reduce<span class="tsd-signature-symbol">(</span>combine<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../classes/option.html" class="tsd-signature-type">Option</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/02ce15f/src/Foldable.ts#L55">src/Foldable.ts:55</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Reduces the collection to a single value by repeatedly
+										calling the combine function.
+										No starting value. The order in which the elements are
+									passed to the combining function is undetermined.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>combine: <span class="tsd-signature-type">function</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-siganture">
+											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>v1<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>, v2<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5>v1: <span class="tsd-signature-type">T</span></h5>
+														</li>
+														<li>
+															<h5>v2: <span class="tsd-signature-type">T</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../classes/option.html" class="tsd-signature-type">Option</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -367,6 +417,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-has-type-parameter">
 								<a href="foldable.html#foldright" class="tsd-kind-icon">fold<wbr>Right</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="foldable.html#reduce" class="tsd-kind-icon">reduce</a>
 							</li>
 						</ul>
 					</li>
