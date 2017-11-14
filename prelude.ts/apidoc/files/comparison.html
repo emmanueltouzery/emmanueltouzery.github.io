@@ -100,7 +100,7 @@
 					<div class="tsd-signature tsd-kind-icon">Has<wbr>Equals<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/02ce15f/src/Comparison.ts#L18">src/Comparison.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/Comparison.ts#L21">src/Comparison.ts:21</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -120,14 +120,17 @@
 					<div class="tsd-signature tsd-kind-icon">With<wbr>Equality<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><a href="comparison.html#hasequals" class="tsd-signature-type">HasEquals</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/02ce15f/src/Comparison.ts#L8">src/Comparison.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/Comparison.ts#L11">src/Comparison.ts:11</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>List of types which provide equality semantics:
 								some builtin JS types, for which === provides
-							proper semantics, and then types providing HasEquals.</p>
+								proper semantics, and then types providing HasEquals.
+								The reason I use all over the place T&amp;WithEquality
+								instead of saying <T extends WithEquality> earlier
+							in the declaration is: <a href="https://stackoverflow.com/a/45903143/516188">https://stackoverflow.com/a/45903143/516188</a></p>
 						</div>
 					</div>
 				</section>
@@ -144,7 +147,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/02ce15f/src/Comparison.ts#L67">src/Comparison.ts:67</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/Comparison.ts#L70">src/Comparison.ts:70</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -176,7 +179,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/02ce15f/src/Comparison.ts#L38">src/Comparison.ts:38</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/Comparison.ts#L41">src/Comparison.ts:41</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -211,7 +214,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/02ce15f/src/Comparison.ts#L86">src/Comparison.ts:86</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/Comparison.ts#L89">src/Comparison.ts:89</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -242,7 +245,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/02ce15f/src/Comparison.ts#L25">src/Comparison.ts:25</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/Comparison.ts#L28">src/Comparison.ts:28</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -272,7 +275,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/02ce15f/src/Comparison.ts#L51">src/Comparison.ts:51</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/Comparison.ts#L54">src/Comparison.ts:54</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
