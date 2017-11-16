@@ -104,6 +104,10 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="linkedlist.html#empty" class="tsd-kind-icon">empty</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="linkedlist.html#of" class="tsd-kind-icon">of</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="linkedlist.html#ofiterable" class="tsd-kind-icon">of<wbr>Iterable</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="linkedlist.html#unfoldright" class="tsd-kind-icon">unfold<wbr>Right</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#___iterator" class="tsd-kind-icon">__@iterator</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#allmatch" class="tsd-kind-icon">all<wbr>Match</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#anymatch" class="tsd-kind-icon">any<wbr>Match</a></li>
@@ -161,10 +165,6 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="linkedlist.html#transform" class="tsd-kind-icon">transform</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="linkedlist.html#zip" class="tsd-kind-icon">zip</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#zipwithindex" class="tsd-kind-icon">zip<wbr>With<wbr>Index</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="linkedlist.html#empty" class="tsd-kind-icon">empty</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="linkedlist.html#of" class="tsd-kind-icon">of</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="linkedlist.html#ofiterable" class="tsd-kind-icon">of<wbr>Iterable</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="linkedlist.html#unfoldright" class="tsd-kind-icon">unfold<wbr>Right</a></li>
 							</ul>
 						</section>
 					</div>
@@ -172,6 +172,177 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+					<a name="empty" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> empty</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">empty&lt;T&gt;<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L29">src/LinkedList.ts:29</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>The empty stream</p>
+								</div>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+					<a name="of" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> of</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">of&lt;T&gt;<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>elts<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L36">src/LinkedList.ts:36</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Create a LinkedList with the elements you give.</p>
+								</div>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>elts: <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+					<a name="ofiterable" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> of<wbr>Iterable</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">of<wbr>Iterable&lt;T&gt;<span class="tsd-signature-symbol">(</span>elts<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L45">src/LinkedList.ts:45</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Build a stream from any iterable, which means also
+									an array for instance.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>type</dt>
+									<dd><p>T the item type</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>elts: <span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+					<a name="unfoldright" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> unfold<wbr>Right</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">unfold<wbr>Right&lt;T, U&gt;<span class="tsd-signature-symbol">(</span>seed<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>, fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L70">src/LinkedList.ts:70</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Dual to the foldRight function. Build a collection from a seed.
+										Takes a starting element and a function.
+										It applies the function on the starting element; if the
+										function returns None, it stops building the list, if it
+										returns Some of a pair, it adds the first element to the result
+									and takes the second element as a seed to keep going.</p>
+								</div>
+								<pre><code>unfoldRight(
+     <span class="hljs-number">10</span>, x=&gt;Option.of(x)
+         .filter(x =&gt; x!==<span class="hljs-number">0</span>)
+         .map&lt;[number,number]&gt;(x =&gt; [x,x<span class="hljs-number">-1</span>]))
+=&gt; [<span class="hljs-number">10</span>, <span class="hljs-number">9</span>, <span class="hljs-number">8</span>, <span class="hljs-number">7</span>, <span class="hljs-number">6</span>, <span class="hljs-number">5</span>, <span class="hljs-number">4</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>]
+</code></pre>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+								</li>
+								<li>
+									<h4>U</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>seed: <span class="tsd-signature-type">T</span></h5>
+								</li>
+								<li>
+									<h5>fn: <span class="tsd-signature-type">function</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-siganture">
+											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="option.html" class="tsd-signature-type">Option</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5>x: <span class="tsd-signature-type">T</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <a href="option.html" class="tsd-signature-type">Option</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="___iterator" class="tsd-anchor"></a>
 					<h3>__@iterator</h3>
@@ -183,7 +354,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#___iterator">__@iterator</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L92">src/LinkedList.ts:92</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L92">src/LinkedList.ts:92</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -205,7 +376,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L376">src/LinkedList.ts:376</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L376">src/LinkedList.ts:376</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -252,7 +423,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L382">src/LinkedList.ts:382</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L382">src/LinkedList.ts:382</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -300,7 +471,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#append">append</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L327">src/LinkedList.ts:327</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L327">src/LinkedList.ts:327</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -329,7 +500,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#appendall">appendAll</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L332">src/LinkedList.ts:332</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L332">src/LinkedList.ts:332</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -352,7 +523,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L313">src/LinkedList.ts:313</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L313">src/LinkedList.ts:313</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -410,7 +581,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#contains">contains</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L152">src/LinkedList.ts:152</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L152">src/LinkedList.ts:152</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -439,7 +610,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L417">src/LinkedList.ts:417</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L417">src/LinkedList.ts:417</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -499,7 +670,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#drop">drop</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L172">src/LinkedList.ts:172</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L172">src/LinkedList.ts:172</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -531,7 +702,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#dropright">dropRight</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L187">src/LinkedList.ts:187</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L187">src/LinkedList.ts:187</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -562,7 +733,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L179">src/LinkedList.ts:179</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L179">src/LinkedList.ts:179</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -610,7 +781,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L528">src/LinkedList.ts:528</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L528">src/LinkedList.ts:528</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -640,7 +811,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L389">src/LinkedList.ts:389</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L389">src/LinkedList.ts:389</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -688,7 +859,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L146">src/LinkedList.ts:146</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L146">src/LinkedList.ts:146</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -736,7 +907,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L370">src/LinkedList.ts:370</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L370">src/LinkedList.ts:370</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -791,7 +962,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L199">src/LinkedList.ts:199</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L199">src/LinkedList.ts:199</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -849,7 +1020,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L217">src/LinkedList.ts:217</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L217">src/LinkedList.ts:217</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -920,7 +1091,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L233">src/LinkedList.ts:233</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L233">src/LinkedList.ts:233</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -991,7 +1162,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L422">src/LinkedList.ts:422</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L422">src/LinkedList.ts:422</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1038,7 +1209,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#get">get</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L139">src/LinkedList.ts:139</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L139">src/LinkedList.ts:139</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1071,7 +1242,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L305">src/LinkedList.ts:305</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L305">src/LinkedList.ts:305</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1131,7 +1302,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#hashcode">hashCode</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L540">src/LinkedList.ts:540</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L540">src/LinkedList.ts:540</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1156,7 +1327,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#head">head</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L115">src/LinkedList.ts:115</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L115">src/LinkedList.ts:115</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1181,7 +1352,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#inspect">inspect</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L542">src/LinkedList.ts:542</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L542">src/LinkedList.ts:542</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
@@ -1199,7 +1370,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#isempty">isEmpty</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L108">src/LinkedList.ts:108</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L108">src/LinkedList.ts:108</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1222,7 +1393,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#last">last</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L128">src/LinkedList.ts:128</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L128">src/LinkedList.ts:128</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1247,7 +1418,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#length">length</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L97">src/LinkedList.ts:97</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L97">src/LinkedList.ts:97</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1269,7 +1440,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L354">src/LinkedList.ts:354</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L354">src/LinkedList.ts:354</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1322,7 +1493,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L362">src/LinkedList.ts:362</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L362">src/LinkedList.ts:362</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1377,7 +1548,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L461">src/LinkedList.ts:461</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L461">src/LinkedList.ts:461</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1428,7 +1599,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L472">src/LinkedList.ts:472</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L472">src/LinkedList.ts:472</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1477,7 +1648,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L440">src/LinkedList.ts:440</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L440">src/LinkedList.ts:440</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1528,7 +1699,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L451">src/LinkedList.ts:451</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L451">src/LinkedList.ts:451</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1578,7 +1749,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#mkstring">mkString</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L492">src/LinkedList.ts:492</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L492">src/LinkedList.ts:492</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1610,7 +1781,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L295">src/LinkedList.ts:295</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L295">src/LinkedList.ts:295</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1664,7 +1835,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#prepend">prepend</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L343">src/LinkedList.ts:343</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L343">src/LinkedList.ts:343</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1693,7 +1864,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#prependall">prependAll</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L348">src/LinkedList.ts:348</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L348">src/LinkedList.ts:348</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1721,7 +1892,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L430">src/LinkedList.ts:430</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L430">src/LinkedList.ts:430</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1773,7 +1944,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L338">src/LinkedList.ts:338</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L338">src/LinkedList.ts:338</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1821,7 +1992,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#reverse">reverse</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L264">src/LinkedList.ts:264</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L264">src/LinkedList.ts:264</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1846,7 +2017,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#shuffle">shuffle</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L320">src/LinkedList.ts:320</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L320">src/LinkedList.ts:320</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1869,7 +2040,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#single">single</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L103">src/LinkedList.ts:103</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L103">src/LinkedList.ts:103</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1892,7 +2063,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L397">src/LinkedList.ts:397</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L397">src/LinkedList.ts:397</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1943,7 +2114,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L406">src/LinkedList.ts:406</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L406">src/LinkedList.ts:406</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1974,7 +2145,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L275">src/LinkedList.ts:275</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L275">src/LinkedList.ts:275</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2026,7 +2197,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#splitat">splitAt</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L283">src/LinkedList.ts:283</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L283">src/LinkedList.ts:283</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2057,7 +2228,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L481">src/LinkedList.ts:481</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L481">src/LinkedList.ts:481</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2106,7 +2277,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#tail">tail</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L121">src/LinkedList.ts:121</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L121">src/LinkedList.ts:121</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2130,7 +2301,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#take">take</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L158">src/LinkedList.ts:158</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L158">src/LinkedList.ts:158</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2159,7 +2330,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L164">src/LinkedList.ts:164</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L164">src/LinkedList.ts:164</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2207,7 +2378,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#toarray">toArray</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L498">src/LinkedList.ts:498</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L498">src/LinkedList.ts:498</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2230,7 +2401,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L513">src/LinkedList.ts:513</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L513">src/LinkedList.ts:513</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2290,7 +2461,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#tostring">toString</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L533">src/LinkedList.ts:533</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L533">src/LinkedList.ts:533</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2312,7 +2483,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L504">src/LinkedList.ts:504</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L504">src/LinkedList.ts:504</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2335,7 +2506,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L519">src/LinkedList.ts:519</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L519">src/LinkedList.ts:519</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2389,7 +2560,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#zip">zip</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L246">src/LinkedList.ts:246</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L246">src/LinkedList.ts:246</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2430,7 +2601,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/seq.html">Seq</a>.<a href="../interfaces/seq.html#zipwithindex">zipWithIndex</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L255">src/LinkedList.ts:255</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/LinkedList.ts#L255">src/LinkedList.ts:255</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2443,177 +2614,6 @@
 </code></pre>
 							</div>
 							<h4 class="tsd-returns-title">Returns <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-					<a name="empty" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> empty</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">empty&lt;T&gt;<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L29">src/LinkedList.ts:29</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>The empty stream</p>
-								</div>
-							</div>
-							<h4 class="tsd-type-parameters-title">Type parameters</h4>
-							<ul class="tsd-type-parameters">
-								<li>
-									<h4>T</h4>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-					<a name="of" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> of</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">of&lt;T&gt;<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>elts<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L36">src/LinkedList.ts:36</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Create a LinkedList with the elements you give.</p>
-								</div>
-							</div>
-							<h4 class="tsd-type-parameters-title">Type parameters</h4>
-							<ul class="tsd-type-parameters">
-								<li>
-									<h4>T</h4>
-								</li>
-							</ul>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>elts: <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[]</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-					<a name="ofiterable" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> of<wbr>Iterable</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">of<wbr>Iterable&lt;T&gt;<span class="tsd-signature-symbol">(</span>elts<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L45">src/LinkedList.ts:45</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Build a stream from any iterable, which means also
-									an array for instance.</p>
-								</div>
-								<dl class="tsd-comment-tags">
-									<dt>type</dt>
-									<dd><p>T the item type</p>
-									</dd>
-								</dl>
-							</div>
-							<h4 class="tsd-type-parameters-title">Type parameters</h4>
-							<ul class="tsd-type-parameters">
-								<li>
-									<h4>T</h4>
-								</li>
-							</ul>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>elts: <span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-					<a name="unfoldright" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> unfold<wbr>Right</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">unfold<wbr>Right&lt;T, U&gt;<span class="tsd-signature-symbol">(</span>seed<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>, fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/LinkedList.ts#L70">src/LinkedList.ts:70</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Dual to the foldRight function. Build a collection from a seed.
-										Takes a starting element and a function.
-										It applies the function on the starting element; if the
-										function returns None, it stops building the list, if it
-										returns Some of a pair, it adds the first element to the result
-									and takes the second element as a seed to keep going.</p>
-								</div>
-								<pre><code>unfoldRight(
-     <span class="hljs-number">10</span>, x=&gt;Option.of(x)
-         .filter(x =&gt; x!==<span class="hljs-number">0</span>)
-         .map&lt;[number,number]&gt;(x =&gt; [x,x<span class="hljs-number">-1</span>]))
-=&gt; [<span class="hljs-number">10</span>, <span class="hljs-number">9</span>, <span class="hljs-number">8</span>, <span class="hljs-number">7</span>, <span class="hljs-number">6</span>, <span class="hljs-number">5</span>, <span class="hljs-number">4</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>]
-</code></pre>
-							</div>
-							<h4 class="tsd-type-parameters-title">Type parameters</h4>
-							<ul class="tsd-type-parameters">
-								<li>
-									<h4>T</h4>
-								</li>
-								<li>
-									<h4>U</h4>
-								</li>
-							</ul>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>seed: <span class="tsd-signature-type">T</span></h5>
-								</li>
-								<li>
-									<h5>fn: <span class="tsd-signature-type">function</span></h5>
-									<ul class="tsd-parameters">
-										<li class="tsd-parameter-siganture">
-											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
-												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="option.html" class="tsd-signature-type">Option</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span></li>
-											</ul>
-											<ul class="tsd-descriptions">
-												<li class="tsd-description">
-													<h4 class="tsd-parameters-title">Parameters</h4>
-													<ul class="tsd-parameters">
-														<li>
-															<h5>x: <span class="tsd-signature-type">T</span></h5>
-														</li>
-													</ul>
-													<h4 class="tsd-returns-title">Returns <a href="option.html" class="tsd-signature-type">Option</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span></h4>
-												</li>
-											</ul>
-										</li>
-									</ul>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -2649,6 +2649,18 @@
 					<li class="current tsd-kind-class tsd-has-type-parameter">
 						<a href="linkedlist.html" class="tsd-kind-icon">Linked<wbr>List</a>
 						<ul>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+								<a href="linkedlist.html#empty" class="tsd-kind-icon">empty</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+								<a href="linkedlist.html#of" class="tsd-kind-icon">of</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+								<a href="linkedlist.html#ofiterable" class="tsd-kind-icon">of<wbr>Iterable</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+								<a href="linkedlist.html#unfoldright" class="tsd-kind-icon">unfold<wbr>Right</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="linkedlist.html#___iterator" class="tsd-kind-icon">__@iterator</a>
 							</li>
@@ -2819,18 +2831,6 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="linkedlist.html#zipwithindex" class="tsd-kind-icon">zip<wbr>With<wbr>Index</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-								<a href="linkedlist.html#empty" class="tsd-kind-icon">empty</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-								<a href="linkedlist.html#of" class="tsd-kind-icon">of</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-								<a href="linkedlist.html#ofiterable" class="tsd-kind-icon">of<wbr>Iterable</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-								<a href="linkedlist.html#unfoldright" class="tsd-kind-icon">unfold<wbr>Right</a>
 							</li>
 						</ul>
 					</li>

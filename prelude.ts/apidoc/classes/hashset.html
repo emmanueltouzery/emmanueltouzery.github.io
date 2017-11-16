@@ -104,6 +104,9 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="hashset.html#empty" class="tsd-kind-icon">empty</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="hashset.html#of" class="tsd-kind-icon">of</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="hashset.html#ofiterable" class="tsd-kind-icon">of<wbr>Iterable</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="hashset.html#___iterator" class="tsd-kind-icon">__@iterator</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="hashset.html#add" class="tsd-kind-icon">add</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="hashset.html#addall" class="tsd-kind-icon">add<wbr>All</a></li>
@@ -143,9 +146,6 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="hashset.html#tostring" class="tsd-kind-icon">to<wbr>String</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="hashset.html#tovector" class="tsd-kind-icon">to<wbr>Vector</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="hashset.html#transform" class="tsd-kind-icon">transform</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="hashset.html#empty" class="tsd-kind-icon">empty</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="hashset.html#of" class="tsd-kind-icon">of</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="hashset.html#ofiterable" class="tsd-kind-icon">of<wbr>Iterable</a></li>
 							</ul>
 						</section>
 					</div>
@@ -153,6 +153,118 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+					<a name="empty" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> empty</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">empty&lt;T&gt;<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="hashset.html" class="tsd-signature-type">HashSet</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L28">src/HashSet.ts:28</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>The empty hashset.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>type</dt>
+									<dd><p>T the item type</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="hashset.html" class="tsd-signature-type">HashSet</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+					<a name="of" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> of</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">of&lt;T&gt;<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>arr<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> &amp; </span><a href="../files/comparison.html#withequality" class="tsd-signature-type">WithEquality</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="hashset.html" class="tsd-signature-type">HashSet</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L45">src/HashSet.ts:45</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Build a hashset from a series of items (any number, as parameters)</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>type</dt>
+									<dd><p>T the item type</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>arr: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> &amp; </span><a href="../files/comparison.html#withequality" class="tsd-signature-type">WithEquality</a><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="hashset.html" class="tsd-signature-type">HashSet</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+					<a name="ofiterable" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> of<wbr>Iterable</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">of<wbr>Iterable&lt;T&gt;<span class="tsd-signature-symbol">(</span>elts<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> &amp; </span><a href="../files/comparison.html#withequality" class="tsd-signature-type">WithEquality</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="hashset.html" class="tsd-signature-type">HashSet</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L37">src/HashSet.ts:37</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Build a hashset from any iterable, which means also
+									an array for instance.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>type</dt>
+									<dd><p>T the item type</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>elts: <span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> &amp; </span><a href="../files/comparison.html#withequality" class="tsd-signature-type">WithEquality</a><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="hashset.html" class="tsd-signature-type">HashSet</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="___iterator" class="tsd-anchor"></a>
 					<h3>__@iterator</h3>
@@ -164,7 +276,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/iset.html">ISet</a>.<a href="../interfaces/iset.html#___iterator">__@iterator</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L52">src/HashSet.ts:52</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L52">src/HashSet.ts:52</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -187,7 +299,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/iset.html">ISet</a>.<a href="../interfaces/iset.html#add">add</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L59">src/HashSet.ts:59</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L59">src/HashSet.ts:59</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -216,7 +328,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/iset.html">ISet</a>.<a href="../interfaces/iset.html#addall">addAll</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L77">src/HashSet.ts:77</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L77">src/HashSet.ts:77</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -244,7 +356,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L307">src/HashSet.ts:307</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L307">src/HashSet.ts:307</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -291,7 +403,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L323">src/HashSet.ts:323</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L323">src/HashSet.ts:323</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -338,7 +450,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L371">src/HashSet.ts:371</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L371">src/HashSet.ts:371</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -396,7 +508,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/iset.html">ISet</a>.<a href="../interfaces/iset.html#contains">contains</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L100">src/HashSet.ts:100</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L100">src/HashSet.ts:100</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -426,7 +538,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/iset.html">ISet</a>.<a href="../interfaces/iset.html#diff">diff</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L263">src/HashSet.ts:263</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L263">src/HashSet.ts:263</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -456,7 +568,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L479">src/HashSet.ts:479</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L479">src/HashSet.ts:479</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -486,7 +598,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L145">src/HashSet.ts:145</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L145">src/HashSet.ts:145</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -534,7 +646,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L135">src/HashSet.ts:135</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L135">src/HashSet.ts:135</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -588,7 +700,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L169">src/HashSet.ts:169</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L169">src/HashSet.ts:169</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -646,7 +758,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L188">src/HashSet.ts:188</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L188">src/HashSet.ts:188</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -718,7 +830,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L209">src/HashSet.ts:209</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L209">src/HashSet.ts:209</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -790,7 +902,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L343">src/HashSet.ts:343</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L343">src/HashSet.ts:343</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -850,7 +962,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/iset.html">ISet</a>.<a href="../interfaces/iset.html#hashcode">hashCode</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L511">src/HashSet.ts:511</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L511">src/HashSet.ts:511</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -875,7 +987,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/iset.html">ISet</a>.<a href="../interfaces/iset.html#inspect">inspect</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L524">src/HashSet.ts:524</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L524">src/HashSet.ts:524</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
@@ -893,7 +1005,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/iset.html">ISet</a>.<a href="../interfaces/iset.html#intersect">intersect</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L275">src/HashSet.ts:275</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L275">src/HashSet.ts:275</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -925,7 +1037,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/iset.html">ISet</a>.<a href="../interfaces/iset.html#isempty">isEmpty</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L254">src/HashSet.ts:254</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L254">src/HashSet.ts:254</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -948,7 +1060,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/iset.html">ISet</a>.<a href="../interfaces/iset.html#issubsetof">isSubsetOf</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L281">src/HashSet.ts:281</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L281">src/HashSet.ts:281</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -972,7 +1084,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/iset.html">ISet</a>.<a href="../interfaces/iset.html#length">length</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L237">src/HashSet.ts:237</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L237">src/HashSet.ts:237</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -994,7 +1106,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L109">src/HashSet.ts:109</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L109">src/HashSet.ts:109</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1051,7 +1163,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L122">src/HashSet.ts:122</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L122">src/HashSet.ts:122</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1106,7 +1218,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L442">src/HashSet.ts:442</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L442">src/HashSet.ts:442</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1157,7 +1269,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L453">src/HashSet.ts:453</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L453">src/HashSet.ts:453</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1206,7 +1318,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L421">src/HashSet.ts:421</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L421">src/HashSet.ts:421</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1257,7 +1369,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L432">src/HashSet.ts:432</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L432">src/HashSet.ts:432</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1306,7 +1418,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L537">src/HashSet.ts:537</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L537">src/HashSet.ts:537</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1338,7 +1450,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L385">src/HashSet.ts:385</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L385">src/HashSet.ts:385</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1391,7 +1503,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L411">src/HashSet.ts:411</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L411">src/HashSet.ts:411</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1443,7 +1555,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L289">src/HashSet.ts:289</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L289">src/HashSet.ts:289</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1473,7 +1585,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/iset.html">ISet</a>.<a href="../interfaces/iset.html#removeall">removeAll</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L299">src/HashSet.ts:299</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L299">src/HashSet.ts:299</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1505,7 +1617,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/iset.html">ISet</a>.<a href="../interfaces/iset.html#single">single</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L245">src/HashSet.ts:245</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L245">src/HashSet.ts:245</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1528,7 +1640,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L462">src/HashSet.ts:462</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L462">src/HashSet.ts:462</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1577,7 +1689,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/iset.html">ISet</a>.<a href="../interfaces/iset.html#toarray">toArray</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L216">src/HashSet.ts:216</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L216">src/HashSet.ts:216</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1600,7 +1712,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/iset.html">ISet</a>.<a href="../interfaces/iset.html#tolinkedlist">toLinkedList</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L230">src/HashSet.ts:230</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L230">src/HashSet.ts:230</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1623,7 +1735,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/iset.html">ISet</a>.<a href="../interfaces/iset.html#tostring">toString</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L520">src/HashSet.ts:520</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L520">src/HashSet.ts:520</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1646,7 +1758,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/iset.html">ISet</a>.<a href="../interfaces/iset.html#tovector">toVector</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L223">src/HashSet.ts:223</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L223">src/HashSet.ts:223</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1668,7 +1780,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L470">src/HashSet.ts:470</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/8c4a283/src/HashSet.ts#L470">src/HashSet.ts:470</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1711,118 +1823,6 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-					<a name="empty" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> empty</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">empty&lt;T&gt;<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="hashset.html" class="tsd-signature-type">HashSet</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L28">src/HashSet.ts:28</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>The empty hashset.</p>
-								</div>
-								<dl class="tsd-comment-tags">
-									<dt>type</dt>
-									<dd><p>T the item type</p>
-									</dd>
-								</dl>
-							</div>
-							<h4 class="tsd-type-parameters-title">Type parameters</h4>
-							<ul class="tsd-type-parameters">
-								<li>
-									<h4>T</h4>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="hashset.html" class="tsd-signature-type">HashSet</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-					<a name="of" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> of</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">of&lt;T&gt;<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>arr<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> &amp; </span><a href="../files/comparison.html#withequality" class="tsd-signature-type">WithEquality</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="hashset.html" class="tsd-signature-type">HashSet</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L45">src/HashSet.ts:45</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Build a hashset from a series of items (any number, as parameters)</p>
-								</div>
-								<dl class="tsd-comment-tags">
-									<dt>type</dt>
-									<dd><p>T the item type</p>
-									</dd>
-								</dl>
-							</div>
-							<h4 class="tsd-type-parameters-title">Type parameters</h4>
-							<ul class="tsd-type-parameters">
-								<li>
-									<h4>T</h4>
-								</li>
-							</ul>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>arr: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> &amp; </span><a href="../files/comparison.html#withequality" class="tsd-signature-type">WithEquality</a><span class="tsd-signature-symbol">&gt;</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="hashset.html" class="tsd-signature-type">HashSet</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-					<a name="ofiterable" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> of<wbr>Iterable</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">of<wbr>Iterable&lt;T&gt;<span class="tsd-signature-symbol">(</span>elts<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> &amp; </span><a href="../files/comparison.html#withequality" class="tsd-signature-type">WithEquality</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="hashset.html" class="tsd-signature-type">HashSet</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c28726c/src/HashSet.ts#L37">src/HashSet.ts:37</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Build a hashset from any iterable, which means also
-									an array for instance.</p>
-								</div>
-								<dl class="tsd-comment-tags">
-									<dt>type</dt>
-									<dd><p>T the item type</p>
-									</dd>
-								</dl>
-							</div>
-							<h4 class="tsd-type-parameters-title">Type parameters</h4>
-							<ul class="tsd-type-parameters">
-								<li>
-									<h4>T</h4>
-								</li>
-							</ul>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>elts: <span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> &amp; </span><a href="../files/comparison.html#withequality" class="tsd-signature-type">WithEquality</a><span class="tsd-signature-symbol">&gt;</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="hashset.html" class="tsd-signature-type">HashSet</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
 			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -1849,6 +1849,15 @@
 					<li class="current tsd-kind-class tsd-has-type-parameter">
 						<a href="hashset.html" class="tsd-kind-icon">Hash<wbr>Set</a>
 						<ul>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+								<a href="hashset.html#empty" class="tsd-kind-icon">empty</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+								<a href="hashset.html#of" class="tsd-kind-icon">of</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+								<a href="hashset.html#ofiterable" class="tsd-kind-icon">of<wbr>Iterable</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="hashset.html#___iterator" class="tsd-kind-icon">__@iterator</a>
 							</li>
@@ -1965,15 +1974,6 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
 								<a href="hashset.html#transform" class="tsd-kind-icon">transform</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-								<a href="hashset.html#empty" class="tsd-kind-icon">empty</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-								<a href="hashset.html#of" class="tsd-kind-icon">of</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-								<a href="hashset.html#ofiterable" class="tsd-kind-icon">of<wbr>Iterable</a>
 							</li>
 						</ul>
 					</li>
