@@ -69,14 +69,8 @@
 								<li class="tsd-kind-module"><a href="files/either.html" class="tsd-kind-icon">Either</a></li>
 								<li class="tsd-kind-module"><a href="files/option.html" class="tsd-kind-icon">Option</a></li>
 								<li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/lazy.html" class="tsd-kind-icon">Lazy</a></li>
-								<li class="tsd-kind-class"><a href="classes/function.html" class="tsd-kind-icon">Function</a></li>
-								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/function1.html" class="tsd-kind-icon">Function1</a></li>
-								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/function2.html" class="tsd-kind-icon">Function2</a></li>
-								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/function3.html" class="tsd-kind-icon">Function3</a></li>
-								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/function4.html" class="tsd-kind-icon">Function4</a></li>
-								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/function5.html" class="tsd-kind-icon">Function5</a></li>
-								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/predicate.html" class="tsd-kind-icon">Predicate</a></li>
-								<li class="tsd-kind-class"><a href="classes/predicates.html" class="tsd-kind-icon">Predicates</a></li>
+								<li class="tsd-kind-module"><a href="files/function.html" class="tsd-kind-icon">Function</a></li>
+								<li class="tsd-kind-module"><a href="files/predicate.html" class="tsd-kind-icon">Predicate</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section">
@@ -93,6 +87,8 @@
 								<li class="tsd-kind-module"><a href="files/stream.html" class="tsd-kind-icon">Stream</a></li>
 								<li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/vector.html" class="tsd-kind-icon">Vector</a></li>
 								<li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/tuple2.html" class="tsd-kind-icon">Tuple2</a></li>
+								<li class="tsd-kind-type-alias"><a href="globals.html#sortonspec" class="tsd-kind-icon">Sort<wbr>OnSpec</a></li>
+								<li class="tsd-kind-type-alias"><a href="globals.html#sortbyspec" class="tsd-kind-icon">Sort<wbr>BySpec</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section">
@@ -103,6 +99,53 @@
 								<li class="tsd-kind-module"><a href="files/contract.html" class="tsd-kind-icon">Contract</a></li>
 							</ul>
 						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Type aliases</h2>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="sortbyspec" class="tsd-anchor"></a>
+					<h3>Sort<wbr>BySpec</h3>
+					<div class="tsd-signature tsd-kind-icon">Sort<wbr>BySpec<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/fe9f2c2/src/ISet.ts#L22">src/ISet.ts:22</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Ability to specify a sorting function.
+							See <a href="interfaces/seq.html#sortby">Seq.sortBy</a>.</p>
+						</div>
+						<p><code>{sortBy: (v1:T,v2:T)=&gt;Ordering}</code></p>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="sortonspec" class="tsd-anchor"></a>
+					<h3>Sort<wbr>OnSpec</h3>
+					<div class="tsd-signature tsd-kind-icon">Sort<wbr>OnSpec<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/fe9f2c2/src/ISet.ts#L14">src/ISet.ts:14</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Ability to specify a sorting function.
+							See <a href="interfaces/seq.html#sorton">Seq.sortOn</a>.</p>
+						</div>
+						<p><code>{sortOn: ((v:T)=&gt;number)|((v:T)=&gt;string)}</code></p>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+						</ul>
 					</div>
 				</section>
 			</section>
@@ -123,10 +166,16 @@
 						<a href="files/either.html">Either</a>
 					</li>
 					<li class=" tsd-kind-module">
+						<a href="files/function.html">Function</a>
+					</li>
+					<li class=" tsd-kind-module">
 						<a href="files/linkedlist.html">Linked<wbr>List</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="files/option.html">Option</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="files/predicate.html">Predicate</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="files/stream.html">Stream</a>
@@ -135,9 +184,6 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class">
-						<a href="classes/function.html" class="tsd-kind-icon">Function</a>
-					</li>
 					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="classes/hashmap.html" class="tsd-kind-icon">Hash<wbr>Map</a>
 					</li>
@@ -146,9 +192,6 @@
 					</li>
 					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="classes/lazy.html" class="tsd-kind-icon">Lazy</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="classes/predicates.html" class="tsd-kind-icon">Predicates</a>
 					</li>
 					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="classes/tuple2.html" class="tsd-kind-icon">Tuple2</a>
@@ -163,34 +206,22 @@
 						<a href="interfaces/foldable.html" class="tsd-kind-icon">Foldable</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-has-type-parameter">
-						<a href="interfaces/function1.html" class="tsd-kind-icon">Function1</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-has-type-parameter">
-						<a href="interfaces/function2.html" class="tsd-kind-icon">Function2</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-has-type-parameter">
-						<a href="interfaces/function3.html" class="tsd-kind-icon">Function3</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-has-type-parameter">
-						<a href="interfaces/function4.html" class="tsd-kind-icon">Function4</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-has-type-parameter">
-						<a href="interfaces/function5.html" class="tsd-kind-icon">Function5</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-has-type-parameter">
 						<a href="interfaces/imap.html" class="tsd-kind-icon">IMap</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-has-type-parameter">
 						<a href="interfaces/iset.html" class="tsd-kind-icon">ISet</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-has-type-parameter">
-						<a href="interfaces/predicate.html" class="tsd-kind-icon">Predicate</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-has-type-parameter">
 						<a href="interfaces/seq.html" class="tsd-kind-icon">Seq</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/value.html" class="tsd-kind-icon">Value</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#sortbyspec" class="tsd-kind-icon">Sort<wbr>BySpec</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#sortonspec" class="tsd-kind-icon">Sort<wbr>OnSpec</a>
 					</li>
 				</ul>
 			</nav>

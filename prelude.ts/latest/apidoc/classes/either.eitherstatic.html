@@ -109,7 +109,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/59da94a/src/Either.ts#L37">src/Either.ts:37</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/fe9f2c2/src/Either.ts#L37">src/Either.ts:37</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -146,7 +146,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/59da94a/src/Either.ts#L106">src/Either.ts:106</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/fe9f2c2/src/Either.ts#L106">src/Either.ts:106</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -264,7 +264,7 @@ lifted(
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/59da94a/src/Either.ts#L132">src/Either.ts:132</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/fe9f2c2/src/Either.ts#L132">src/Either.ts:132</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -274,7 +274,7 @@ lifted(
 								<p>Takes a function which operates on a simple JS object, and turns it
 									in a function that operates on the same JS object type except which each field
 									wrapped in an Either (&#39;lifts&#39; the function).
-									It&#39;s an alternative to [[Either.liftA2]] when the number of parameters
+									It&#39;s an alternative to <a href="either.eitherstatic.html#lifta2">EitherStatic.liftA2</a> when the number of parameters
 								is not two.</p>
 								<pre><code><span class="hljs-keyword">const</span> fn = <span class="hljs-function">(<span class="hljs-params">x:{a:<span class="hljs-built_in">number</span>,b:<span class="hljs-built_in">number</span>,c:<span class="hljs-built_in">number</span>}</span>) =&gt;</span> x.a+x.b+x.c;
 <span class="hljs-keyword">const</span> lifted = Either.liftAp(fn, {} <span class="hljs-keyword">as</span> <span class="hljs-built_in">number</span>);
@@ -368,7 +368,7 @@ lifted({a:Either.right&lt;<span class="hljs-built_in">number</span>,<span class=
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/59da94a/src/Either.ts#L44">src/Either.ts:44</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/fe9f2c2/src/Either.ts#L44">src/Either.ts:44</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -405,7 +405,7 @@ lifted({a:Either.right&lt;<span class="hljs-built_in">number</span>,<span class=
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/59da94a/src/Either.ts#L65">src/Either.ts:65</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/fe9f2c2/src/Either.ts#L65">src/Either.ts:65</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -462,10 +462,16 @@ lifted({a:Either.right&lt;<span class="hljs-built_in">number</span>,<span class=
 						<a href="../files/either.html">Either</a>
 					</li>
 					<li class=" tsd-kind-module">
+						<a href="../files/function.html">Function</a>
+					</li>
+					<li class=" tsd-kind-module">
 						<a href="../files/linkedlist.html">Linked<wbr>List</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="../files/option.html">Option</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../files/predicate.html">Predicate</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="../files/stream.html">Stream</a>
