@@ -94,6 +94,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="function.function0static.html#constant" class="tsd-kind-icon">constant</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="function.function0static.html#lifteither" class="tsd-kind-icon">lift<wbr>Either</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="function.function0static.html#liftnullable" class="tsd-kind-icon">lift<wbr>Nullable</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="function.function0static.html#liftoption" class="tsd-kind-icon">lift<wbr>Option</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="function.function0static.html#of" class="tsd-kind-icon">of</a></li>
 							</ul>
@@ -113,7 +114,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/a3b2a88/src/Function.ts#L367">src/Function.ts:367</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b157972/src/Function.ts#L367">src/Function.ts:367</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -149,7 +150,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/a3b2a88/src/Function.ts#L428">src/Function.ts:428</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b157972/src/Function.ts#L464">src/Function.ts:464</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -208,6 +209,75 @@ throws();
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+					<a name="liftnullable" class="tsd-anchor"></a>
+					<h3>lift<wbr>Nullable</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">lift<wbr>Nullable&lt;U&gt;<span class="tsd-signature-symbol">(</span>fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/function.function0.html" class="tsd-signature-type">Function0</a><span class="tsd-signature-symbol">&lt;</span><a href="../files/option.html" class="tsd-signature-type">Option</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b157972/src/Function.ts#L435">src/Function.ts:435</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Take a no-parameter partial function (may return null, undefined or throw),
+										and lift it to return an <a href="../files/option.html">Option</a> instead.
+									null and undefined become a <a href="option.none.html">None</a>, everything else a <a href="option.some.html">Some</a></p>
+								</div>
+								<pre><code>const randOpt = Function0.liftNullable(Math.random);
+randOpt();
+=&gt; Option.of(<span class="hljs-number">0.49884723907769635</span>)
+
+const undef = Function0.liftNullable(()=&gt;undefined);
+undef();
+=&gt; Option.none()
+
+const nl = Function0.liftNullable(()=&gt;null);
+nl();
+=&gt; Option.none()
+
+const throws = Function0.liftNullable(()=&gt;{throw <span class="hljs-string">"x"</span>});
+throws();
+=&gt; Option.none()
+</code></pre>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>U</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>fn: <span class="tsd-signature-type">function</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-siganture">
+											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">U</span>
+														<span class="tsd-signature-symbol"> | </span>
+														<span class="tsd-signature-type">null</span>
+														<span class="tsd-signature-symbol"> | </span>
+														<span class="tsd-signature-type">undefined</span>
+													</h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/function.function0.html" class="tsd-signature-type">Function0</a><span class="tsd-signature-symbol">&lt;</span><a href="../files/option.html" class="tsd-signature-type">Option</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
 					<a name="liftoption" class="tsd-anchor"></a>
 					<h3>lift<wbr>Option</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
@@ -217,14 +287,14 @@ throws();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/a3b2a88/src/Function.ts#L399">src/Function.ts:399</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b157972/src/Function.ts#L403">src/Function.ts:403</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Take a no-parameter partial function (may return undefined or throw),
 										and lift it to return an <a href="../files/option.html">Option</a> instead.
-									null and undefined become a <a href="option.none.html">None</a>, everything else a <a href="option.some.html">Some</a></p>
+									undefined becomes a <a href="option.none.html">None</a>, everything else a <a href="option.some.html">Some</a></p>
 								</div>
 								<pre><code>const randOpt = Function0.liftOption(Math.random);
 randOpt();
@@ -233,6 +303,10 @@ randOpt();
 const undef = Function0.liftOption(()=&gt;undefined);
 undef();
 =&gt; Option.none()
+
+const nl = Function0.liftOption(()=&gt;null);
+nl();
+=&gt; Option.of(null)
 
 const throws = Function0.liftOption(()=&gt;{throw <span class="hljs-string">"x"</span>});
 throws();
@@ -280,7 +354,7 @@ throws();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/a3b2a88/src/Function.ts#L375">src/Function.ts:375</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b157972/src/Function.ts#L375">src/Function.ts:375</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -363,6 +437,9 @@ throws();
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
 								<a href="function.function0static.html#lifteither" class="tsd-kind-icon">lift<wbr>Either</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+								<a href="function.function0static.html#liftnullable" class="tsd-kind-icon">lift<wbr>Nullable</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
 								<a href="function.function0static.html#liftoption" class="tsd-kind-icon">lift<wbr>Option</a>

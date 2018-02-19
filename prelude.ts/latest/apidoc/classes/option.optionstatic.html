@@ -91,6 +91,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="option.optionstatic.html#liftap" class="tsd-kind-icon">lift<wbr>Ap</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="option.optionstatic.html#none" class="tsd-kind-icon">none</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="option.optionstatic.html#of" class="tsd-kind-icon">of</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="option.optionstatic.html#ofnullable" class="tsd-kind-icon">of<wbr>Nullable</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="option.optionstatic.html#sequence" class="tsd-kind-icon">sequence</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="option.optionstatic.html#some" class="tsd-kind-icon">some</a></li>
 							</ul>
@@ -110,7 +111,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/a3b2a88/src/Option.ts#L134">src/Option.ts:134</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b157972/src/Option.ts#L175">src/Option.ts:175</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -213,7 +214,7 @@ lifted2(Option.of(<span class="hljs-number">5</span>), Option.none&lt;number&gt;
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/a3b2a88/src/Option.ts#L158">src/Option.ts:158</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b157972/src/Option.ts#L199">src/Option.ts:199</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -307,7 +308,7 @@ lifted({<span class="hljs-symbol">a:Op</span>tion.of(<span class="hljs-number">5
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/a3b2a88/src/Option.ts#L84">src/Option.ts:84</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b157972/src/Option.ts#L125">src/Option.ts:125</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -335,7 +336,7 @@ lifted({<span class="hljs-symbol">a:Op</span>tion.of(<span class="hljs-number">5
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/a3b2a88/src/Option.ts#L59">src/Option.ts:59</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b157972/src/Option.ts#L68">src/Option.ts:68</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -347,7 +348,15 @@ lifted({<span class="hljs-symbol">a:Op</span>tion.of(<span class="hljs-number">5
 										<li>null becomes a <a href="option.some.html">Some</a>.</li>
 									</ul>
 								</div>
-								<p>Also see <a href="option.optionstatic.html#some">OptionStatic.some</a></p>
+								<pre><code>Option.of(<span class="hljs-number">5</span>).isSome()
+=&gt; <span class="hljs-built_in">true</span>
+
+Option.of(undefined).isSome()
+=&gt; <span class="hljs-built_in">false</span>
+
+Option.of(null).isSome()
+=&gt; <span class="hljs-built_in">true</span>
+</code></pre><p>Also see <a href="option.optionstatic.html#some">OptionStatic.some</a>, <a href="option.optionstatic.html#ofnullable">OptionStatic.ofNullable</a></p>
 							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
@@ -366,6 +375,54 @@ lifted({<span class="hljs-symbol">a:Op</span>tion.of(<span class="hljs-number">5
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+					<a name="ofnullable" class="tsd-anchor"></a>
+					<h3>of<wbr>Nullable</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">of<wbr>Nullable&lt;T&gt;<span class="tsd-signature-symbol">(</span>v<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../files/option.html#option-1" class="tsd-signature-type">Option</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b157972/src/Option.ts#L89">src/Option.ts:89</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Build an optional value from a nullable.</p>
+									<ul>
+										<li>T is wrapped in a <a href="option.some.html">Some</a></li>
+										<li>undefined becomes a <a href="option.none.html">None</a></li>
+										<li>null becomes a <a href="option.none.html">None</a>.</li>
+									</ul>
+								</div>
+								<pre><code>Option.ofNullable(<span class="hljs-number">5</span>).isSome()
+=&gt; <span class="hljs-built_in">true</span>
+
+Option.ofNullable(undefined).isSome()
+=&gt; <span class="hljs-built_in">false</span>
+
+Option.ofNullable(null).isSome()
+=&gt; <span class="hljs-built_in">false</span>
+</code></pre><p>Also see <a href="option.optionstatic.html#some">OptionStatic.some</a>, <a href="option.optionstatic.html#of">OptionStatic.of</a></p>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>v: <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../files/option.html#option-1" class="tsd-signature-type">Option</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
 					<a name="sequence" class="tsd-anchor"></a>
 					<h3>sequence</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
@@ -375,7 +432,7 @@ lifted({<span class="hljs-symbol">a:Op</span>tion.of(<span class="hljs-number">5
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/a3b2a88/src/Option.ts#L100">src/Option.ts:100</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b157972/src/Option.ts#L141">src/Option.ts:141</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -416,7 +473,7 @@ lifted({<span class="hljs-symbol">a:Op</span>tion.of(<span class="hljs-number">5
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/a3b2a88/src/Option.ts#L68">src/Option.ts:68</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b157972/src/Option.ts#L109">src/Option.ts:109</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -425,6 +482,15 @@ lifted({<span class="hljs-symbol">a:Op</span>tion.of(<span class="hljs-number">5
 										or a <a href="option.none.html">None</a>.
 									Will throw if given undefined.</p>
 								</div>
+								<pre><code>Option.some(<span class="hljs-number">5</span>).isSome()
+=&gt; <span class="hljs-built_in">true</span>
+
+Option.some(undefined).isSome()
+=&gt; throws
+
+Option.some(null).isSome()
+=&gt; <span class="hljs-built_in">true</span>
+</code></pre><p>Also see <a href="option.optionstatic.html#of">OptionStatic.of</a>, <a href="option.optionstatic.html#ofnullable">OptionStatic.ofNullable</a></p>
 							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
@@ -497,6 +563,9 @@ lifted({<span class="hljs-symbol">a:Op</span>tion.of(<span class="hljs-number">5
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
 								<a href="option.optionstatic.html#of" class="tsd-kind-icon">of</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+								<a href="option.optionstatic.html#ofnullable" class="tsd-kind-icon">of<wbr>Nullable</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
 								<a href="option.optionstatic.html#sequence" class="tsd-kind-icon">sequence</a>
