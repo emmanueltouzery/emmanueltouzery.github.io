@@ -112,7 +112,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="option.none.html#asoption" class="tsd-kind-icon">as<wbr>Option</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="option.none.html#contains" class="tsd-kind-icon">contains</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="option.none.html#equals" class="tsd-kind-icon">equals</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="option.none.html#filter" class="tsd-kind-icon">filter</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="option.none.html#filter" class="tsd-kind-icon">filter</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="option.none.html#flatmap" class="tsd-kind-icon">flat<wbr>Map</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="option.none.html#getorcall" class="tsd-kind-icon">get<wbr>OrCall</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="option.none.html#getorelse" class="tsd-kind-icon">get<wbr>OrElse</a></li>
@@ -149,7 +149,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b157972/src/Option.ts#L497">src/Option.ts:497</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/85c3d5f/src/Option.ts#L499">src/Option.ts:499</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -172,7 +172,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b157972/src/Option.ts#L523">src/Option.ts:523</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/85c3d5f/src/Option.ts#L525">src/Option.ts:525</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -201,7 +201,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b157972/src/Option.ts#L650">src/Option.ts:650</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/85c3d5f/src/Option.ts#L654">src/Option.ts:654</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -221,17 +221,18 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
 					<a name="filter" class="tsd-anchor"></a>
 					<h3>filter</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">filter&lt;U&gt;<span class="tsd-signature-symbol">(</span>fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../files/option.html#option-1" class="tsd-signature-type">Option</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span></li>
 						<li class="tsd-signature tsd-kind-icon">filter<span class="tsd-signature-symbol">(</span>fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../files/option.html#option-1" class="tsd-signature-type">Option</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b157972/src/Option.ts#L580">src/Option.ts:580</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/85c3d5f/src/Option.ts#L582">src/Option.ts:582</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -241,6 +242,44 @@
 									If the contents don&#39;t match the predicate, return None.</p>
 								</div>
 							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>U<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>fn: <span class="tsd-signature-type">function</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-siganture">
+											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>v<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5>v: <span class="tsd-signature-type">T</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../files/option.html#option-1" class="tsd-signature-type">Option</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/85c3d5f/src/Option.ts#L583">src/Option.ts:583</a></li>
+								</ul>
+							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -279,7 +318,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b157972/src/Option.ts#L571">src/Option.ts:571</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/85c3d5f/src/Option.ts#L573">src/Option.ts:573</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -334,7 +373,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b157972/src/Option.ts#L553">src/Option.ts:553</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/85c3d5f/src/Option.ts#L555">src/Option.ts:555</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -381,7 +420,7 @@ Option.none&lt;number&gt;().getOrCall(() =&gt; <span class="hljs-number">6</span
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b157972/src/Option.ts#L539">src/Option.ts:539</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/85c3d5f/src/Option.ts#L541">src/Option.ts:541</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -410,7 +449,7 @@ Option.none&lt;number&gt;().getOrCall(() =&gt; <span class="hljs-number">6</span
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b157972/src/Option.ts#L515">src/Option.ts:515</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/85c3d5f/src/Option.ts#L517">src/Option.ts:517</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -444,7 +483,7 @@ Option.none&lt;number&gt;().getOrCall(() =&gt; <span class="hljs-number">6</span
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b157972/src/Option.ts#L531">src/Option.ts:531</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/85c3d5f/src/Option.ts#L533">src/Option.ts:533</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -470,7 +509,7 @@ Option.none&lt;number&gt;().getOrCall(() =&gt; <span class="hljs-number">6</span
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b157972/src/Option.ts#L641">src/Option.ts:641</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/85c3d5f/src/Option.ts#L645">src/Option.ts:645</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -493,7 +532,7 @@ Option.none&lt;number&gt;().getOrCall(() =&gt; <span class="hljs-number">6</span
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b157972/src/Option.ts#L659">src/Option.ts:659</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/85c3d5f/src/Option.ts#L663">src/Option.ts:663</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -517,7 +556,7 @@ Option.none&lt;number&gt;().getOrCall(() =&gt; <span class="hljs-number">6</span
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b157972/src/Option.ts#L596">src/Option.ts:596</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/85c3d5f/src/Option.ts#L600">src/Option.ts:600</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -558,7 +597,7 @@ Option.none&lt;number&gt;().getOrCall(() =&gt; <span class="hljs-number">6</span
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b157972/src/Option.ts#L588">src/Option.ts:588</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/85c3d5f/src/Option.ts#L592">src/Option.ts:592</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -605,7 +644,7 @@ Option.none&lt;number&gt;().getOrCall(() =&gt; <span class="hljs-number">6</span
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b157972/src/Option.ts#L673">src/Option.ts:673</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/85c3d5f/src/Option.ts#L677">src/Option.ts:677</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -627,7 +666,7 @@ Option.none&lt;number&gt;().getOrCall(() =&gt; <span class="hljs-number">6</span
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b157972/src/Option.ts#L489">src/Option.ts:489</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/85c3d5f/src/Option.ts#L491">src/Option.ts:491</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -649,7 +688,7 @@ Option.none&lt;number&gt;().getOrCall(() =&gt; <span class="hljs-number">6</span
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b157972/src/Option.ts#L482">src/Option.ts:482</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/85c3d5f/src/Option.ts#L484">src/Option.ts:484</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -671,7 +710,7 @@ Option.none&lt;number&gt;().getOrCall(() =&gt; <span class="hljs-number">6</span
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b157972/src/Option.ts#L561">src/Option.ts:561</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/85c3d5f/src/Option.ts#L563">src/Option.ts:563</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -724,7 +763,7 @@ Option.none&lt;number&gt;().getOrCall(() =&gt; <span class="hljs-number">6</span
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b157972/src/Option.ts#L612">src/Option.ts:612</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/85c3d5f/src/Option.ts#L616">src/Option.ts:616</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -768,7 +807,7 @@ Option.none&lt;number&gt;().getOrCall(() =&gt; <span class="hljs-number">6</span
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b157972/src/Option.ts#L505">src/Option.ts:505</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/85c3d5f/src/Option.ts#L507">src/Option.ts:507</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -797,7 +836,7 @@ Option.none&lt;number&gt;().getOrCall(() =&gt; <span class="hljs-number">6</span
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b157972/src/Option.ts#L637">src/Option.ts:637</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/85c3d5f/src/Option.ts#L641">src/Option.ts:641</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -832,7 +871,7 @@ Option.none&lt;number&gt;().getOrCall(() =&gt; <span class="hljs-number">6</span
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b157972/src/Option.ts#L666">src/Option.ts:666</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/85c3d5f/src/Option.ts#L670">src/Option.ts:670</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -854,7 +893,7 @@ Option.none&lt;number&gt;().getOrCall(() =&gt; <span class="hljs-number">6</span
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b157972/src/Option.ts#L629">src/Option.ts:629</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/85c3d5f/src/Option.ts#L633">src/Option.ts:633</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -878,7 +917,7 @@ Option.none&lt;number&gt;().getOrCall(() =&gt; <span class="hljs-number">6</span
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b157972/src/Option.ts#L620">src/Option.ts:620</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/85c3d5f/src/Option.ts#L624">src/Option.ts:624</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -971,7 +1010,7 @@ Option.none&lt;number&gt;().getOrCall(() =&gt; <span class="hljs-number">6</span
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="option.none.html#equals" class="tsd-kind-icon">equals</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
 								<a href="option.none.html#filter" class="tsd-kind-icon">filter</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
