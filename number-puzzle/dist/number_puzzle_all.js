@@ -64,7 +64,7 @@ var appState = {
     boardPolygons: [],
     tilePolygons: [],
     selectedPolygon: undefined,
-    displayHints: false
+    displayHints: new URLSearchParams(window.location.search).get("hints") === "1"
 };
 function cellIdxGetRowCol(cellIdx) {
     var rowsBefore = rowsStartItemIdx.takeWhile(function (startIdx) { return startIdx <= cellIdx; });
@@ -157,7 +157,7 @@ function drawTotalCheckDisqualifiesWin(ctx, rowIdx, row, options) {
         ctx.beginPath();
         var metrics = ctx.measureText(diag1Total + "");
         ctx.moveTo(HINTS_SPACING_X + metrics.width + 5, CELL_WIDTH_PX / 2);
-        ctx.lineTo(HINTS_SPACING_X + metrics.width + 5 + CELL_WIDTH_PX / 2, CELL_WIDTH_PX);
+        ctx.lineTo(HINTS_SPACING_X + metrics.width + 5 + 10, CELL_WIDTH_PX / 2 + 10);
         ctx.stroke();
         drawTotal(diag1Total);
         ctx.restore();
@@ -294,11 +294,12 @@ function getSelected(polygons, x, y) {
     return undefined;
 }
 function getOnCanvasXY(canvas, event) {
-    var x = event.pageX - canvas.offsetLeft;
-    var y = event.pageY - canvas.offsetTop;
-    return [x, y];
+    var _a = __read(event instanceof MouseEvent ?
+        [event.pageX, event.pageY] :
+        [event.touches[0].pageX, event.touches[0].pageY], 2), clickX = _a[0], clickY = _a[1];
+    return [clickX - canvas.offsetLeft, clickY - canvas.offsetTop];
 }
-function onMouseDown(backBuffer, backBufCtx, canvas, event) {
+function onDown(backBuffer, backBufCtx, canvas, event) {
     var _a = __read(getOnCanvasXY(canvas, event), 2), x = _a[0], y = _a[1];
     appState.selectedPolygon = getSelected(appState.tilePolygons, x, y);
     if (appState.selectedPolygon !== undefined) {
@@ -308,15 +309,15 @@ function onMouseDown(backBuffer, backBufCtx, canvas, event) {
     }
 }
 function onMove(backBuffer, canvas, ctx, event) {
-    if (appState.selectedPolygon === undefined) {
-        return;
-    }
     var _a = __read(getOnCanvasXY(canvas, event), 2), x = _a[0], y = _a[1];
+    if (appState.selectedPolygon === undefined) {
+        return [x, y];
+    }
     ctx.drawImage(backBuffer, 0, 0);
     drawTile(ctx, appState.selectedPolygon + 1, false, x - CELL_WIDTH_PX / 2, y - CELL_WIDTH_PX / 2);
+    return [x, y];
 }
-function onClick(backBuffer, backBufCtx, canvas, ctx, event) {
-    var _a = __read(getOnCanvasXY(canvas, event), 2), x = _a[0], y = _a[1];
+function onUp(backBuffer, backBufCtx, ctx, x, y) {
     var wasSelected = appState.selectedPolygon;
     appState.selectedPolygon = getSelected(appState.tilePolygons, x, y);
     var clickedBoardCell = appState.selectedPolygon !== undefined ? undefined :
@@ -366,19 +367,27 @@ window.onload = function () {
     ctx.font = FONT;
     backBufCtx.font = FONT;
     var mouseDown = false;
-    canvas.addEventListener('mousedown', function (evt) {
+    var handleDownEvt = function (evt) {
         mouseDown = true;
-        onMouseDown(backBuffer, backBufCtx, canvas, evt);
-    }, false);
-    canvas.addEventListener('mousemove', function (evt) {
+        onDown(backBuffer, backBufCtx, canvas, evt);
+    };
+    canvas.addEventListener('touchstart', handleDownEvt, false);
+    canvas.addEventListener('mousedown', handleDownEvt, false);
+    var curX, curY;
+    var handleMoveEvt = function (evt) {
         if (mouseDown) {
-            onMove(backBuffer, canvas, ctx, evt);
+            _a = __read(onMove(backBuffer, canvas, ctx, evt), 2), curX = _a[0], curY = _a[1];
         }
-    }, false);
-    canvas.addEventListener('mouseup', function (evt) {
+        var _a;
+    };
+    canvas.addEventListener('mousemove', handleMoveEvt, false);
+    canvas.addEventListener('touchmove', handleMoveEvt, false);
+    var handleUpEvt = function () {
         mouseDown = false;
-        onClick(backBuffer, backBufCtx, canvas, ctx, evt);
-    }, false);
+        onUp(backBuffer, backBufCtx, ctx, curX, curY);
+    };
+    canvas.addEventListener('mouseup', handleUpEvt, false);
+    canvas.addEventListener('touchend', handleUpEvt, false);
     // double click to toggle hints
     canvas.addEventListener('dblclick', function () {
         appState.displayHints = !appState.displayHints;
@@ -545,6 +554,22 @@ function hasTrueEquality(val) {
 }
 exports.hasTrueEquality = hasTrueEquality;
 ;
+/**
+ * Typescript doesn't infer typeguards for lambdas; it only sees
+ * predicates. This type allows you to cast a predicate to a type
+ * guard in a handy manner.
+ *
+ * It comes in handy for discriminated unions with a 'kind' discriminator,
+ * for instance:
+ *
+ * `.filter(typeGuard(p => p.kind === "in_board", {} as InBoard))`
+ *
+ * Normally you'd have to give both type parameters, but you can use
+ * the type witness parameter as shown in that example to skip
+ * the first type parameter.
+ *
+ * Also see [[typeGuard]], [[instanceOf]] and [[typeOf]].
+ */
 function typeGuard(predicate, typeWitness) {
     return predicate;
 }
@@ -564,7 +589,7 @@ exports.typeGuard = typeGuard;
  *     Option.of<any>(new Date('04 Dec 1995 00:12:00 GMT')).filter(instanceOf(Date))
  *     => Option.of<Date>(new Date('04 Dec 1995 00:12:00 GMT'))
  *
- * Also see [[TypeGuard]] and [[typeOf]].
+ * Also see [[typeGuard]] and [[typeOf]].
  */
 function instanceOf(ctor) {
     // https://github.com/Microsoft/TypeScript/issues/5101#issuecomment-145693151
@@ -586,7 +611,7 @@ exports.instanceOf = instanceOf;
  *     Option.of<any>("str").filter(typeOf("string"))
  *     => Option.of<string>("str")
  *
- * Also see [[instanceOf]] and [[TypeGuard]].
+ * Also see [[instanceOf]] and [[typeGuard]].
  */
 function typeOf(typ) {
     return (function (x) { return typeof x === typ; });
