@@ -32,7 +32,7 @@ var CELL_WIDTH_PX = 92;
 var TEXT_VERTICAL_OFFSET = 55;
 var HINTS_SPACING_X = 20;
 var FONT = "33px Arial";
-var CANVAS_PADDING_PX = 30;
+var CANVAS_PADDING_PX = 0;
 var WINNING_TOTAL = 38;
 // the board layout is:
 //   xxx
@@ -357,6 +357,8 @@ window.onload = function () {
     var canvas = prelude_ts_1.Option.ofNullable(document.getElementById("myCanvas"))
         .filter(prelude_ts_1.instanceOf(HTMLCanvasElement))
         .getOrThrow("Cannot find the canvas element!");
+    // center the canvas horizontally
+    CANVAS_PADDING_PX = (canvas.width - CELL_WIDTH_PX * 5) / 2;
     var backBuffer = document.createElement("canvas");
     backBuffer.width = canvas.width;
     backBuffer.height = canvas.height;
