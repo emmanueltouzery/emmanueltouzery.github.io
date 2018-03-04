@@ -426,7 +426,9 @@ window.onload = function () {
     appState.tilePolygons = polygons.tilePolygons;
     window.onresize = function () {
         computeDimensions(canvas, backBuffer, backBufCtx, ctx);
-        appState.tilePolygons = drawAndCheckForWin(backBuffer, backBufCtx).tilePolygons;
+        var polygons = drawAndCheckForWin(backBuffer, backBufCtx);
+        appState.boardPolygons = polygons.boardPolygons;
+        appState.tilePolygons = polygons.tilePolygons;
         ctx.drawImage(backBuffer, 0, 0);
     };
 };
