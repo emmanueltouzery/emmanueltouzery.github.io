@@ -28,11 +28,13 @@ var __values = (this && this.__values) || function (o) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var prelude_ts_1 = require("prelude.ts");
-var CELL_WIDTH_PX = 92;
-var TEXT_VERTICAL_OFFSET = 55;
+var CELL_WIDTH_PX = 0; // will be overwritten during initialization
+var TEXT_VERTICAL_OFFSET = 0; // will be overwritten during initialization
 var HINTS_SPACING_X = 20;
-var FONT = "33px Arial";
-var CANVAS_PADDING_PX = 0;
+var FONT = "px Arial";
+var FONT_WIDTH_PROPORTION_OF_CELL_PCENT = 20;
+var CANVAS_PADDING_X_PX = 0; // will be overwritten during initialization
+var CANVAS_PADDING_Y_PX = 0; // will be overwritten during initialization
 var WINNING_TOTAL = 38;
 // the board layout is:
 //   xxx
@@ -104,8 +106,8 @@ function drawTile(ctx, value, isInWinningDiagonal, x, y) {
     return polygon;
 }
 function drawTileInBoard(ctx, value, isInWinningDiagonal, x, y) {
-    var xOffset = CELL_WIDTH_PX * x + CANVAS_PADDING_PX;
-    var yOffset = 3 * CELL_WIDTH_PX / 4 * y + CANVAS_PADDING_PX;
+    var xOffset = CELL_WIDTH_PX * x + CANVAS_PADDING_X_PX;
+    var yOffset = 3 * CELL_WIDTH_PX / 4 * y + CANVAS_PADDING_Y_PX;
     return drawTile(ctx, value, isInWinningDiagonal, xOffset, yOffset);
 }
 function drawAndCheckForWin(canvas, ctx, options) {
@@ -132,7 +134,7 @@ function drawTotalCheckDisqualifiesWin(ctx, rowIdx, row, options) {
         .sumOn(function (p) { return p[1] + 1; });
     if (appState.displayHints) {
         ctx.save();
-        ctx.translate((row.x + row.items) * CELL_WIDTH_PX + CANVAS_PADDING_PX, rowIdx * (CELL_WIDTH_PX * 3 / 4) + CANVAS_PADDING_PX);
+        ctx.translate((row.x + row.items) * CELL_WIDTH_PX + CANVAS_PADDING_X_PX, rowIdx * (CELL_WIDTH_PX * 3 / 4) + CANVAS_PADDING_Y_PX);
         ctx.beginPath();
         ctx.moveTo(5, CELL_WIDTH_PX / 2);
         ctx.lineTo(15, CELL_WIDTH_PX / 2);
@@ -153,7 +155,7 @@ function drawTotalCheckDisqualifiesWin(ctx, rowIdx, row, options) {
     if (appState.displayHints) {
         ctx.save();
         var _a = __read(cellIdxGetRowCol(allDiagonal1Indexes.get(rowIdx).getOrThrow().toArray({ sortOn: function (x) { return x; } })[0]), 2), row_1 = _a[0], col = _a[1];
-        ctx.translate((rows.get(row_1).getOrThrow().x + col) * CELL_WIDTH_PX - CELL_WIDTH_PX / 2 + CANVAS_PADDING_PX, row_1 * (CELL_WIDTH_PX * 3 / 4) - CELL_WIDTH_PX / 2 + CANVAS_PADDING_PX);
+        ctx.translate((rows.get(row_1).getOrThrow().x + col) * CELL_WIDTH_PX - CELL_WIDTH_PX / 2 + CANVAS_PADDING_X_PX, row_1 * (CELL_WIDTH_PX * 3 / 4) - CELL_WIDTH_PX / 2 + CANVAS_PADDING_Y_PX);
         ctx.beginPath();
         var metrics = ctx.measureText(diag1Total + "");
         ctx.moveTo(HINTS_SPACING_X + metrics.width + 5, CELL_WIDTH_PX / 2);
@@ -175,7 +177,7 @@ function drawTotalCheckDisqualifiesWin(ctx, rowIdx, row, options) {
     if (appState.displayHints) {
         ctx.save();
         var _b = __read(cellIdxGetRowCol(allDiagonal2Indexes.get(rowIdx).getOrThrow().toArray({ sortOn: function (x) { return cellCount - x; } })[0]), 2), row_2 = _b[0], col = _b[1];
-        ctx.translate((rows.get(row_2).getOrThrow().x + col) * CELL_WIDTH_PX - CELL_WIDTH_PX / 2 + CANVAS_PADDING_PX, row_2 * (CELL_WIDTH_PX * 3 / 4) + CELL_WIDTH_PX / 2 + CANVAS_PADDING_PX);
+        ctx.translate((rows.get(row_2).getOrThrow().x + col) * CELL_WIDTH_PX - CELL_WIDTH_PX / 2 + CANVAS_PADDING_X_PX, row_2 * (CELL_WIDTH_PX * 3 / 4) + CELL_WIDTH_PX / 2 + CANVAS_PADDING_Y_PX);
         ctx.beginPath();
         var metrics = ctx.measureText(diag2Total + "");
         ctx.moveTo(HINTS_SPACING_X + metrics.width + 5, CELL_WIDTH_PX / 2);
@@ -353,21 +355,43 @@ function onUp(backBuffer, backBufCtx, ctx, x, y) {
     appState.tilePolygons = drawAndCheckForWin(backBuffer, backBufCtx).tilePolygons;
     ctx.drawImage(backBuffer, 0, 0);
 }
+function computeFontSize(ctx) {
+    var expectedWidth = CELL_WIDTH_PX * FONT_WIDTH_PROPORTION_OF_CELL_PCENT / 100;
+    var measured = 0;
+    var curFontSize = 1;
+    while (measured < expectedWidth) {
+        ctx.font = curFontSize + FONT;
+        measured = ctx.measureText("1").width;
+        ++curFontSize;
+    }
+    return curFontSize;
+}
+function computeDimensions(canvas, backBuffer, backBufCtx, ctx) {
+    canvas.width = canvas.clientWidth;
+    canvas.height = canvas.clientHeight;
+    backBuffer.width = canvas.clientWidth;
+    backBuffer.height = canvas.clientHeight;
+    CELL_WIDTH_PX = Math.min(canvas.width / 7, canvas.height / 6);
+    // center the canvas horizontally
+    CANVAS_PADDING_X_PX = (canvas.width - CELL_WIDTH_PX * 5) / 2;
+    CANVAS_PADDING_Y_PX = (canvas.height - CELL_WIDTH_PX * 4) / 2;
+    // can't vertically measure text with canvas AFAICT
+    // so must approximate
+    TEXT_VERTICAL_OFFSET = CELL_WIDTH_PX / 1.65;
+    var fontSize = computeFontSize(backBufCtx);
+    ctx.font = fontSize + FONT;
+    backBufCtx.font = fontSize + FONT;
+}
 window.onload = function () {
     var canvas = prelude_ts_1.Option.ofNullable(document.getElementById("myCanvas"))
         .filter(prelude_ts_1.instanceOf(HTMLCanvasElement))
         .getOrThrow("Cannot find the canvas element!");
-    // center the canvas horizontally
-    CANVAS_PADDING_PX = (canvas.width - CELL_WIDTH_PX * 5) / 2;
     var backBuffer = document.createElement("canvas");
-    backBuffer.width = canvas.width;
-    backBuffer.height = canvas.height;
     var backBufCtx = prelude_ts_1.Option.ofNullable(backBuffer.getContext("2d"))
         .getOrThrow("Can't get the 2d context for the backbuffer canvas!");
     var ctx = prelude_ts_1.Option.ofNullable(canvas.getContext("2d"))
         .getOrThrow("Can't get the 2d context for the canvas!");
-    ctx.font = FONT;
-    backBufCtx.font = FONT;
+    computeDimensions(canvas, backBuffer, backBufCtx, ctx);
     var mouseDown = false;
     var handleDownEvt = function (evt) {
         mouseDown = true;
@@ -400,6 +424,11 @@ window.onload = function () {
     ctx.drawImage(backBuffer, 0, 0);
     appState.boardPolygons = polygons.boardPolygons;
     appState.tilePolygons = polygons.tilePolygons;
+    window.onresize = function () {
+        computeDimensions(canvas, backBuffer, backBufCtx, ctx);
+        appState.tilePolygons = drawAndCheckForWin(backBuffer, backBufCtx).tilePolygons;
+        ctx.drawImage(backBuffer, 0, 0);
+    };
 };
 
 },{"prelude.ts":17}],2:[function(require,module,exports){
