@@ -301,6 +301,16 @@ function getOnCanvasXY(canvas, event) {
         [event.touches[0].pageX, event.touches[0].pageY], 2), clickX = _a[0], clickY = _a[1];
     return [clickX - canvas.offsetLeft, clickY - canvas.offsetTop];
 }
+/**
+ * clamp the coordinates to make sure a tile will stay 100%
+ * inside the playable area
+ */
+function clampedXY(canvas, coords) {
+    return {
+        x: Math.max(0, Math.min(coords.x - CELL_WIDTH_PX / 2, canvas.width - CELL_WIDTH_PX)),
+        y: Math.max(0, Math.min(coords.y - CELL_WIDTH_PX / 2, canvas.height - CELL_WIDTH_PX))
+    };
+}
 function onDown(backBuffer, backBufCtx, canvas, event) {
     var _a = __read(getOnCanvasXY(canvas, event), 2), x = _a[0], y = _a[1];
     appState.selectedPolygon = getSelected(appState.tilePolygons, x, y);
@@ -316,7 +326,8 @@ function onMove(backBuffer, canvas, ctx, event) {
         return [x, y];
     }
     ctx.drawImage(backBuffer, 0, 0);
-    drawTile(ctx, appState.selectedPolygon + 1, false, x - CELL_WIDTH_PX / 2, y - CELL_WIDTH_PX / 2);
+    var clampedCoords = clampedXY(canvas, { x: x, y: y });
+    drawTile(ctx, appState.selectedPolygon + 1, false, clampedCoords.x, clampedCoords.y);
     return [x, y];
 }
 function onUp(backBuffer, backBufCtx, ctx, x, y) {
@@ -337,9 +348,10 @@ function onUp(backBuffer, backBufCtx, ctx, x, y) {
     }
     else if (wasSelected !== undefined && appState.selectedPolygon === undefined) {
         // user wanted to move the selected polygon to another spot
+        var clampedCoords = clampedXY(backBuffer, { x: x, y: y });
         var newBoard = appState.tilePositions
             .replace(wasSelected, { kind: "out_of_board",
-            pos: { x: x - CELL_WIDTH_PX / 2, y: y - CELL_WIDTH_PX / 2 } });
+            pos: { x: clampedCoords.x, y: clampedCoords.y } });
         appState.tilePositions = newBoard;
     }
     else if (wasSelected !== undefined && appState.selectedPolygon !== undefined) {
