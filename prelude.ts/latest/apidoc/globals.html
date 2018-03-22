@@ -110,7 +110,7 @@
 					<div class="tsd-signature tsd-kind-icon">Sort<wbr>BySpec<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/85c3d5f/src/ISet.ts#L22">src/ISet.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/ISet.ts#L26">src/ISet.ts:26</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -132,7 +132,7 @@
 					<div class="tsd-signature tsd-kind-icon">Sort<wbr>OnSpec<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/85c3d5f/src/ISet.ts#L14">src/ISet.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/ISet.ts#L18">src/ISet.ts:18</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -140,7 +140,10 @@
 							<p>Ability to specify a sorting function.
 							See <a href="interfaces/seq.html#sorton">Seq.sortOn</a>.</p>
 						</div>
-						<p><code>{sortOn: ((v:T)=&gt;number)|((v:T)=&gt;string)}</code></p>
+						<p>You can give a lambda getting a sortable value (number or string) from your
+							object, or a list of lambdas, and in the list you can also put {desc:lambda}
+						items to request descending sorting</p>
+						<p><code>{sortOn: ToOrderable&lt;T&gt;|Array&lt;ToOrderable&lt;T&gt;|{desc:ToOrderable&lt;T&gt;}&gt;}</code></p>
 					</div>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>

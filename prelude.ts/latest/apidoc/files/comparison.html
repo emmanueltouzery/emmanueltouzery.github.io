@@ -76,6 +76,7 @@
 							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="comparison.html#hasequals" class="tsd-kind-icon">Has<wbr>Equals</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="comparison.html#toorderable" class="tsd-kind-icon">To<wbr>Orderable</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="comparison.html#typeguard" class="tsd-kind-icon">Type<wbr>Guard</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="comparison.html#withequality" class="tsd-kind-icon">With<wbr>Equality</a></li>
 							</ul>
@@ -104,7 +105,7 @@
 					<div class="tsd-signature tsd-kind-icon">Has<wbr>Equals<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/85c3d5f/src/Comparison.ts#L21">src/Comparison.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/Comparison.ts#L30">src/Comparison.ts:30</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -119,12 +120,30 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="toorderable" class="tsd-anchor"></a>
+					<h3>To<wbr>Orderable</h3>
+					<div class="tsd-signature tsd-kind-icon">To<wbr>Orderable<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/Comparison.ts#L10">src/Comparison.ts:10</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Sorting function for type T: function
+								to convert this type to a type which is natively
+								sortable in javascript, that is string, number or boolean.
+							<code>((v:T)=&gt;number) | ((v:T)=&gt;string) | ((v:T)=&gt;boolean</code></p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
 					<a name="typeguard" class="tsd-anchor"></a>
 					<h3>Type<wbr>Guard</h3>
 					<div class="tsd-signature tsd-kind-icon">Type<wbr>Guard<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/85c3d5f/src/Comparison.ts#L200">src/Comparison.ts:200</a></li>
+							<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/Comparison.ts#L209">src/Comparison.ts:209</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -166,7 +185,7 @@
 					<div class="tsd-signature tsd-kind-icon">With<wbr>Equality<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><a href="comparison.html#hasequals" class="tsd-signature-type">HasEquals</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/85c3d5f/src/Comparison.ts#L11">src/Comparison.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/Comparison.ts#L20">src/Comparison.ts:20</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -193,7 +212,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/85c3d5f/src/Comparison.ts#L76">src/Comparison.ts:76</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/Comparison.ts#L85">src/Comparison.ts:85</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -225,7 +244,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/85c3d5f/src/Comparison.ts#L47">src/Comparison.ts:47</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/Comparison.ts#L56">src/Comparison.ts:56</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -260,7 +279,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/85c3d5f/src/Comparison.ts#L95">src/Comparison.ts:95</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/Comparison.ts#L104">src/Comparison.ts:104</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -291,7 +310,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/85c3d5f/src/Comparison.ts#L28">src/Comparison.ts:28</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/Comparison.ts#L37">src/Comparison.ts:37</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -321,7 +340,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/85c3d5f/src/Comparison.ts#L240">src/Comparison.ts:240</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/Comparison.ts#L249">src/Comparison.ts:249</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -369,7 +388,7 @@ Option.of&lt;any&gt;(new <span class="hljs-built_in">Date</span>('<span class="h
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/85c3d5f/src/Comparison.ts#L60">src/Comparison.ts:60</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/Comparison.ts#L69">src/Comparison.ts:69</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -397,7 +416,7 @@ Option.of&lt;any&gt;(new <span class="hljs-built_in">Date</span>('<span class="h
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/85c3d5f/src/Comparison.ts#L218">src/Comparison.ts:218</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/Comparison.ts#L227">src/Comparison.ts:227</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -464,7 +483,7 @@ Option.of&lt;any&gt;(new <span class="hljs-built_in">Date</span>('<span class="h
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/85c3d5f/src/Comparison.ts#L262">src/Comparison.ts:262</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/Comparison.ts#L271">src/Comparison.ts:271</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -541,6 +560,9 @@ Option.of&lt;any&gt;(<span class="hljs-string">"str"</span>).filter(typeOf(<span
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
 						<a href="comparison.html#hasequals" class="tsd-kind-icon">Has<wbr>Equals</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="comparison.html#toorderable" class="tsd-kind-icon">To<wbr>Orderable</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
 						<a href="comparison.html#typeguard" class="tsd-kind-icon">Type<wbr>Guard</a>
