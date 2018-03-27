@@ -88,6 +88,8 @@
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="linkedlist.linkedliststatic.html#empty" class="tsd-kind-icon">empty</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="linkedlist.linkedliststatic.html#isempty" class="tsd-kind-icon">is<wbr>Empty</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="linkedlist.linkedliststatic.html#isnotempty" class="tsd-kind-icon">is<wbr>Not<wbr>Empty</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="linkedlist.linkedliststatic.html#of" class="tsd-kind-icon">of</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="linkedlist.linkedliststatic.html#ofiterable" class="tsd-kind-icon">of<wbr>Iterable</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="linkedlist.linkedliststatic.html#unfoldright" class="tsd-kind-icon">unfold<wbr>Right</a></li>
@@ -108,7 +110,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/LinkedList.ts#L44">src/LinkedList.ts:44</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/LinkedList.ts#L44">src/LinkedList.ts:44</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -127,6 +129,85 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+					<a name="isempty" class="tsd-anchor"></a>
+					<h3>is<wbr>Empty</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Empty&lt;T&gt;<span class="tsd-signature-symbol">(</span>l<span class="tsd-signature-symbol">: </span><a href="../files/linkedlist.html#linkedlist-1" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/LinkedList.ts#L79">src/LinkedList.ts:79</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Curried type guard for LinkedList.
+									Sometimes needed also due to <a href="https://github.com/Microsoft/TypeScript/issues/20218">https://github.com/Microsoft/TypeScript/issues/20218</a></p>
+								</div>
+								<pre><code>Vector.of(LinkedList.of(<span class="hljs-number">1</span>), LinkedList.empty&lt;number&gt;())
+    .filter(LinkedList.isEmpty)
+=&gt; Vector.of(LinkedList.empty&lt;number&gt;())
+</code></pre>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>l: <a href="../files/linkedlist.html#linkedlist-1" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+					<a name="isnotempty" class="tsd-anchor"></a>
+					<h3>is<wbr>Not<wbr>Empty</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Not<wbr>Empty&lt;T&gt;<span class="tsd-signature-symbol">(</span>l<span class="tsd-signature-symbol">: </span><a href="../files/linkedlist.html#linkedlist-1" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/LinkedList.ts#L92">src/LinkedList.ts:92</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Curried type guard for LinkedList.
+									Sometimes needed also due to <a href="https://github.com/Microsoft/TypeScript/issues/20218">https://github.com/Microsoft/TypeScript/issues/20218</a></p>
+								</div>
+								<pre><code>Vector.of(Stream.of(<span class="hljs-number">1</span>), Stream.empty&lt;number&gt;())
+    .filter(Stream.isNotEmpty)
+    .map(s =&gt; s.head().get()+<span class="hljs-number">1</span>)
+=&gt; Vector.of(<span class="hljs-number">2</span>)
+</code></pre>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>l: <a href="../files/linkedlist.html#linkedlist-1" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
 					<a name="of" class="tsd-anchor"></a>
 					<h3>of</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
@@ -136,7 +217,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/LinkedList.ts#L51">src/LinkedList.ts:51</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/LinkedList.ts#L51">src/LinkedList.ts:51</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -173,7 +254,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/LinkedList.ts#L60">src/LinkedList.ts:60</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/LinkedList.ts#L60">src/LinkedList.ts:60</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -211,7 +292,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/LinkedList.ts#L85">src/LinkedList.ts:85</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/LinkedList.ts#L110">src/LinkedList.ts:110</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -319,6 +400,12 @@
 						<ul>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
 								<a href="linkedlist.linkedliststatic.html#empty" class="tsd-kind-icon">empty</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+								<a href="linkedlist.linkedliststatic.html#isempty" class="tsd-kind-icon">is<wbr>Empty</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+								<a href="linkedlist.linkedliststatic.html#isnotempty" class="tsd-kind-icon">is<wbr>Not<wbr>Empty</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
 								<a href="linkedlist.linkedliststatic.html#of" class="tsd-kind-icon">of</a>

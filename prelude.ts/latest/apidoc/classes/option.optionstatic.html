@@ -87,6 +87,8 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="option.optionstatic.html#isnone" class="tsd-kind-icon">is<wbr>None</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="option.optionstatic.html#issome" class="tsd-kind-icon">is<wbr>Some</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="option.optionstatic.html#lifta2" class="tsd-kind-icon">lift<wbr>A2</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="option.optionstatic.html#liftap" class="tsd-kind-icon">lift<wbr>Ap</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="option.optionstatic.html#none" class="tsd-kind-icon">none</a></li>
@@ -102,6 +104,85 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+					<a name="isnone" class="tsd-anchor"></a>
+					<h3>is<wbr>None</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>None&lt;T&gt;<span class="tsd-signature-symbol">(</span>o<span class="tsd-signature-symbol">: </span><a href="../files/option.html#option-1" class="tsd-signature-type">Option</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/Option.ts#L150">src/Option.ts:150</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Curried type guard for Option
+									Sometimes needed also due to <a href="https://github.com/Microsoft/TypeScript/issues/20218">https://github.com/Microsoft/TypeScript/issues/20218</a></p>
+								</div>
+								<pre><code>Vector.of(Option.of(<span class="hljs-number">2</span>), Option.none&lt;number&gt;())
+    .filter(Option.isNone)
+=&gt; Vector.of(Option.none&lt;number&gt;())
+</code></pre>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>o: <a href="../files/option.html#option-1" class="tsd-signature-type">Option</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+					<a name="issome" class="tsd-anchor"></a>
+					<h3>is<wbr>Some</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Some&lt;T&gt;<span class="tsd-signature-symbol">(</span>o<span class="tsd-signature-symbol">: </span><a href="../files/option.html#option-1" class="tsd-signature-type">Option</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/Option.ts#L138">src/Option.ts:138</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Curried type guard for Option
+									Sometimes needed also due to <a href="https://github.com/Microsoft/TypeScript/issues/20218">https://github.com/Microsoft/TypeScript/issues/20218</a></p>
+								</div>
+								<pre><code>Vector.of(Option.of(<span class="hljs-number">2</span>), Option.none&lt;number&gt;())
+    .filter(Option.isSome)
+    .map(o =&gt; o.get())
+=&gt; Vector.of(<span class="hljs-number">2</span>)
+</code></pre>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>o: <a href="../files/option.html#option-1" class="tsd-signature-type">Option</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
 					<a name="lifta2" class="tsd-anchor"></a>
 					<h3>lift<wbr>A2</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
@@ -111,7 +192,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/Option.ts#L175">src/Option.ts:175</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/Option.ts#L200">src/Option.ts:200</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -214,7 +295,7 @@ lifted2(Option.of(<span class="hljs-number">5</span>), Option.none&lt;number&gt;
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/Option.ts#L199">src/Option.ts:199</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/Option.ts#L224">src/Option.ts:224</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -308,7 +389,7 @@ lifted({<span class="hljs-symbol">a:Op</span>tion.of(<span class="hljs-number">5
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/Option.ts#L125">src/Option.ts:125</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/Option.ts#L125">src/Option.ts:125</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -336,7 +417,7 @@ lifted({<span class="hljs-symbol">a:Op</span>tion.of(<span class="hljs-number">5
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/Option.ts#L68">src/Option.ts:68</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/Option.ts#L68">src/Option.ts:68</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -384,7 +465,7 @@ Option.of(null).isSome()
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/Option.ts#L89">src/Option.ts:89</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/Option.ts#L89">src/Option.ts:89</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -432,7 +513,7 @@ Option.ofNullable(null).isSome()
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/Option.ts#L141">src/Option.ts:141</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/Option.ts#L166">src/Option.ts:166</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -473,7 +554,7 @@ Option.ofNullable(null).isSome()
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/Option.ts#L109">src/Option.ts:109</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/Option.ts#L109">src/Option.ts:109</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -552,6 +633,12 @@ Option.some(null).isSome()
 					<li class="current tsd-kind-class tsd-parent-kind-module">
 						<a href="option.optionstatic.html" class="tsd-kind-icon">Option<wbr>Static</a>
 						<ul>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+								<a href="option.optionstatic.html#isnone" class="tsd-kind-icon">is<wbr>None</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+								<a href="option.optionstatic.html#issome" class="tsd-kind-icon">is<wbr>Some</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
 								<a href="option.optionstatic.html#lifta2" class="tsd-kind-icon">lift<wbr>A2</a>
 							</li>

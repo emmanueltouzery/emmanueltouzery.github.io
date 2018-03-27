@@ -87,11 +87,15 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="either.eitherstatic.html#isleft" class="tsd-kind-icon">is<wbr>Left</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="either.eitherstatic.html#isright" class="tsd-kind-icon">is<wbr>Right</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="either.eitherstatic.html#left" class="tsd-kind-icon">left</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="either.eitherstatic.html#lifta2" class="tsd-kind-icon">lift<wbr>A2</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="either.eitherstatic.html#liftap" class="tsd-kind-icon">lift<wbr>Ap</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="either.eitherstatic.html#liftapacc" class="tsd-kind-icon">lift<wbr>ApAcc</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="either.eitherstatic.html#right" class="tsd-kind-icon">right</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="either.eitherstatic.html#sequence" class="tsd-kind-icon">sequence</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="either.eitherstatic.html#sequenceacc" class="tsd-kind-icon">sequence<wbr>Acc</a></li>
 							</ul>
 						</section>
 					</div>
@@ -99,6 +103,92 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+					<a name="isleft" class="tsd-anchor"></a>
+					<h3>is<wbr>Left</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Left&lt;L, R&gt;<span class="tsd-signature-symbol">(</span>e<span class="tsd-signature-symbol">: </span><a href="../files/either.html#either-1" class="tsd-signature-type">Either</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">L</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/Either.ts#L57">src/Either.ts:57</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Curried type guard for Either
+									Sometimes needed also due to <a href="https://github.com/Microsoft/TypeScript/issues/20218">https://github.com/Microsoft/TypeScript/issues/20218</a></p>
+								</div>
+								<pre><code>Vector.of(Either.right&lt;number,number&gt;(<span class="hljs-number">2</span>), Either.left&lt;number,number&gt;(<span class="hljs-number">1</span>))
+    .filter(Either.isLeft)
+    .map(o =&gt; o.getLeft())
+=&gt; Vector.of(<span class="hljs-number">1</span>)
+</code></pre>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>L</h4>
+								</li>
+								<li>
+									<h4>R</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>e: <a href="../files/either.html#either-1" class="tsd-signature-type">Either</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">L</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+					<a name="isright" class="tsd-anchor"></a>
+					<h3>is<wbr>Right</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Right&lt;L, R&gt;<span class="tsd-signature-symbol">(</span>e<span class="tsd-signature-symbol">: </span><a href="../files/either.html#either-1" class="tsd-signature-type">Either</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">L</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/Either.ts#L70">src/Either.ts:70</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Curried type guard for Either
+									Sometimes needed also due to <a href="https://github.com/Microsoft/TypeScript/issues/20218">https://github.com/Microsoft/TypeScript/issues/20218</a></p>
+								</div>
+								<pre><code>Vector.of(Either.right&lt;number,number&gt;(<span class="hljs-number">2</span>), Either.left&lt;number,number&gt;(<span class="hljs-number">1</span>))
+    .filter(Either.isRight)
+    .map(o =&gt; o.get())
+=&gt; Vector.of(<span class="hljs-number">2</span>)
+</code></pre>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>L</h4>
+								</li>
+								<li>
+									<h4>R</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>e: <a href="../files/either.html#either-1" class="tsd-signature-type">Either</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">L</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
 					<a name="left" class="tsd-anchor"></a>
 					<h3>left</h3>
@@ -109,7 +199,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/Either.ts#L37">src/Either.ts:37</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/Either.ts#L37">src/Either.ts:37</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -146,7 +236,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/Either.ts#L106">src/Either.ts:106</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/Either.ts#L158">src/Either.ts:158</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -264,7 +354,7 @@ lifted(
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/Either.ts#L132">src/Either.ts:132</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/Either.ts#L190">src/Either.ts:190</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -278,11 +368,17 @@ lifted(
 								is not two.</p>
 								<pre><code><span class="hljs-keyword">const</span> fn = <span class="hljs-function">(<span class="hljs-params">x:{a:<span class="hljs-built_in">number</span>,b:<span class="hljs-built_in">number</span>,c:<span class="hljs-built_in">number</span>}</span>) =&gt;</span> x.a+x.b+x.c;
 <span class="hljs-keyword">const</span> lifted = Either.liftAp(fn, {} <span class="hljs-keyword">as</span> <span class="hljs-built_in">number</span>);
-lifted({a:Either.right&lt;<span class="hljs-built_in">number</span>,<span class="hljs-built_in">number</span>&gt;(<span class="hljs-number">5</span>), b:Either.right&lt;<span class="hljs-built_in">number</span>,<span class="hljs-built_in">number</span>&gt;(<span class="hljs-number">6</span>), c:Either.right&lt;<span class="hljs-built_in">number</span>,<span class="hljs-built_in">number</span>&gt;(<span class="hljs-number">3</span>)});
+lifted({
+    a: Either.right&lt;<span class="hljs-built_in">number</span>,<span class="hljs-built_in">number</span>&gt;(<span class="hljs-number">5</span>),
+    b: Either.right&lt;<span class="hljs-built_in">number</span>,<span class="hljs-built_in">number</span>&gt;(<span class="hljs-number">6</span>),
+    c: Either.right&lt;<span class="hljs-built_in">number</span>,<span class="hljs-built_in">number</span>&gt;(<span class="hljs-number">3</span>)});
 =&gt; Either.right(<span class="hljs-number">14</span>)
 
-<span class="hljs-keyword">const</span> lifted = Either.liftAp&lt;<span class="hljs-built_in">number</span>,{a:<span class="hljs-built_in">number</span>,b:<span class="hljs-built_in">number</span>},<span class="hljs-built_in">number</span>&gt;(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> x.a+x.b);
-lifted({a:Either.right&lt;<span class="hljs-built_in">number</span>,<span class="hljs-built_in">number</span>&gt;(<span class="hljs-number">5</span>), b:Either.left&lt;<span class="hljs-built_in">number</span>,<span class="hljs-built_in">number</span>&gt;(<span class="hljs-number">2</span>)});
+<span class="hljs-keyword">const</span> lifted = Either.liftAp&lt;<span class="hljs-built_in">number</span>,{a:<span class="hljs-built_in">number</span>,b:<span class="hljs-built_in">number</span>},<span class="hljs-built_in">number</span>&gt;(
+    <span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> x.a+x.b);
+lifted({
+    a: Either.right&lt;<span class="hljs-built_in">number</span>,<span class="hljs-built_in">number</span>&gt;(<span class="hljs-number">5</span>),
+    b: Either.left&lt;<span class="hljs-built_in">number</span>,<span class="hljs-built_in">number</span>&gt;(<span class="hljs-number">2</span>)});
 =&gt; Either.left(<span class="hljs-number">2</span>)
 </code></pre>
 							</div>
@@ -359,6 +455,119 @@ lifted({a:Either.right&lt;<span class="hljs-built_in">number</span>,<span class=
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+					<a name="liftapacc" class="tsd-anchor"></a>
+					<h3>lift<wbr>ApAcc</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">lift<wbr>ApAcc&lt;L, A, B&gt;<span class="tsd-signature-symbol">(</span>fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span>, leftWitness<span class="tsd-signature-symbol">?: </span><a href="" class="tsd-signature-type">L</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/Either.ts#L234">src/Either.ts:234</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Applicative lifting for Either. &#39;p&#39; stands for &#39;properties&#39;.
+										Compared to <a href="either.eitherstatic.html#liftap">EitherStatic.liftAp</a>, liftApAcc &#39;accumulates&#39;
+									the errors, instead of short-circuiting on the first error.</p>
+								</div>
+								<p>Takes a function which operates on a simple JS object, and turns it
+									in a function that operates on the same JS object type except which each field
+									wrapped in an Either (&#39;lifts&#39; the function).
+									It&#39;s an alternative to <a href="either.eitherstatic.html#lifta2">EitherStatic.liftA2</a> when the number of parameters
+								is not two.</p>
+								<pre><code><span class="hljs-keyword">const</span> fn = <span class="hljs-function">(<span class="hljs-params">x:{a:<span class="hljs-built_in">number</span>,b:<span class="hljs-built_in">number</span>,c:<span class="hljs-built_in">number</span>}</span>) =&gt;</span> x.a+x.b+x.c;
+<span class="hljs-keyword">const</span> lifted = Either.liftApAcc(fn, {} <span class="hljs-keyword">as</span> <span class="hljs-built_in">number</span>);
+lifted({
+    a: Either.right&lt;<span class="hljs-built_in">number</span>,<span class="hljs-built_in">number</span>&gt;(<span class="hljs-number">5</span>),
+    b: Either.right&lt;<span class="hljs-built_in">number</span>,<span class="hljs-built_in">number</span>&gt;(<span class="hljs-number">6</span>),
+    c:Either.right&lt;<span class="hljs-built_in">number</span>,<span class="hljs-built_in">number</span>&gt;(<span class="hljs-number">3</span>)});
+=&gt; Either.right(<span class="hljs-number">14</span>)
+
+<span class="hljs-keyword">const</span> fn = <span class="hljs-function">(<span class="hljs-params">x:{a:<span class="hljs-built_in">number</span>,b:<span class="hljs-built_in">number</span>,c:<span class="hljs-built_in">number</span>}</span>) =&gt;</span> x.a+x.b+x.c;
+<span class="hljs-keyword">const</span> lifted = Either.liftApAcc(fn, {} <span class="hljs-keyword">as</span> <span class="hljs-built_in">number</span>);
+lifted({
+    a: Either.right&lt;<span class="hljs-built_in">number</span>,<span class="hljs-built_in">number</span>&gt;(<span class="hljs-number">5</span>),
+    b: Either.left&lt;<span class="hljs-built_in">number</span>,<span class="hljs-built_in">number</span>&gt;(<span class="hljs-number">2</span>),
+    c: Either.left&lt;<span class="hljs-built_in">number</span>,<span class="hljs-built_in">number</span>&gt;(<span class="hljs-number">6</span>)});
+=&gt; Either.left(Vector.of(<span class="hljs-number">2</span>, <span class="hljs-number">6</span>))
+</code></pre>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>L</h4>
+									<div class="tsd-comment tsd-typography">
+										<p>the left type</p>
+									</div>
+								</li>
+								<li>
+									<h4>A</h4>
+									<div class="tsd-comment tsd-typography">
+										<p>the object property type specifying the parameters for your function</p>
+									</div>
+								</li>
+								<li>
+									<h4>B</h4>
+									<div class="tsd-comment tsd-typography">
+										<p>the type returned by your function, returned wrapped in an either by liftAp.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>fn: <span class="tsd-signature-type">function</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-siganture">
+											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">A</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">B</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5>x: <span class="tsd-signature-type">A</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">B</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> leftWitness: <a href="" class="tsd-signature-type">L</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">function</span></h4>
+							<ul class="tsd-parameters">
+								<li class="tsd-parameter-siganture">
+									<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+										<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../files/either.html#either-1" class="tsd-signature-type">Either</a><span class="tsd-signature-symbol">&lt;</span><a href="vector.html" class="tsd-signature-type">Vector</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">L</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">B</span><span class="tsd-signature-symbol">&gt;</span></li>
+									</ul>
+									<ul class="tsd-descriptions">
+										<li class="tsd-description">
+											<h4 class="tsd-parameters-title">Parameters</h4>
+											<ul class="tsd-parameters">
+												<li>
+													<h5>x: <span class="tsd-signature-type">object</span></h5>
+													<ul class="tsd-parameters">
+													</ul>
+												</li>
+											</ul>
+											<h4 class="tsd-returns-title">Returns <a href="../files/either.html#either-1" class="tsd-signature-type">Either</a><span class="tsd-signature-symbol">&lt;</span><a href="vector.html" class="tsd-signature-type">Vector</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">L</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">B</span><span class="tsd-signature-symbol">&gt;</span></h4>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
 					<a name="right" class="tsd-anchor"></a>
 					<h3>right</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
@@ -368,7 +577,7 @@ lifted({a:Either.right&lt;<span class="hljs-built_in">number</span>,<span class=
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/Either.ts#L44">src/Either.ts:44</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/Either.ts#L44">src/Either.ts:44</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -405,7 +614,7 @@ lifted({a:Either.right&lt;<span class="hljs-built_in">number</span>,<span class=
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/Either.ts#L65">src/Either.ts:65</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/Either.ts#L91">src/Either.ts:91</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -417,7 +626,7 @@ lifted({a:Either.right&lt;<span class="hljs-built_in">number</span>,<span class=
     Either.right&lt;number,number&gt;(<span class="hljs-number">1</span>),
     Either.right&lt;number,number&gt;(<span class="hljs-number">2</span>)));
 =&gt; Either.right(Vector.of(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>))
-</code></pre><p>But if a single element is None, everything is discarded:</p>
+</code></pre><p>But if a single element is Left, everything is discarded:</p>
 								<pre><code>Either.sequence(Vector.of(
       Either.right&lt;number,number&gt;(<span class="hljs-number">1</span>),
       Either.left&lt;number,number&gt;(<span class="hljs-number">2</span>),
@@ -441,6 +650,56 @@ lifted({a:Either.right&lt;<span class="hljs-built_in">number</span>,<span class=
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="../files/either.html#either-1" class="tsd-signature-type">Either</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">L</span><span class="tsd-signature-symbol">, </span><a href="vector.html" class="tsd-signature-type">Vector</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+					<a name="sequenceacc" class="tsd-anchor"></a>
+					<h3>sequence<wbr>Acc</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">sequence<wbr>Acc&lt;L, R&gt;<span class="tsd-signature-symbol">(</span>elts<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><a href="../files/either.html#either-1" class="tsd-signature-type">Either</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">L</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../files/either.html#either-1" class="tsd-signature-type">Either</a><span class="tsd-signature-symbol">&lt;</span><a href="vector.html" class="tsd-signature-type">Vector</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">L</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><a href="vector.html" class="tsd-signature-type">Vector</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/Either.ts#L124">src/Either.ts:124</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Turns a list of eithers in an either containing a list of items.
+										Compared to <a href="either.eitherstatic.html#sequence">EitherStatic.sequence</a>, sequenceAcc &#39;accumulates&#39;
+									the errors, instead of short-circuiting on the first error.</p>
+								</div>
+								<pre><code>Either.sequenceAcc(Vector.of(
+    Either.right&lt;number,number&gt;(<span class="hljs-number">1</span>),
+    Either.right&lt;number,number&gt;(<span class="hljs-number">2</span>)));
+=&gt; Either.right(Vector.of(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>))
+</code></pre><p>But if a single element is Left, you get all the lefts:</p>
+								<pre><code>Either.sequenceAcc(Vector.of(
+      Either.right&lt;number,number&gt;(<span class="hljs-number">1</span>),
+      Either.left&lt;number,number&gt;(<span class="hljs-number">2</span>),
+      Either.left&lt;number,number&gt;(<span class="hljs-number">3</span>)));
+=&gt; Either.left(Vector.of(<span class="hljs-number">2</span>,<span class="hljs-number">3</span>))
+</code></pre>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>L</h4>
+								</li>
+								<li>
+									<h4>R</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>elts: <span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><a href="../files/either.html#either-1" class="tsd-signature-type">Either</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">L</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../files/either.html#either-1" class="tsd-signature-type">Either</a><span class="tsd-signature-symbol">&lt;</span><a href="vector.html" class="tsd-signature-type">Vector</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">L</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><a href="vector.html" class="tsd-signature-type">Vector</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -486,6 +745,12 @@ lifted({a:Either.right&lt;<span class="hljs-built_in">number</span>,<span class=
 						<a href="either.eitherstatic.html" class="tsd-kind-icon">Either<wbr>Static</a>
 						<ul>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+								<a href="either.eitherstatic.html#isleft" class="tsd-kind-icon">is<wbr>Left</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+								<a href="either.eitherstatic.html#isright" class="tsd-kind-icon">is<wbr>Right</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
 								<a href="either.eitherstatic.html#left" class="tsd-kind-icon">left</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
@@ -495,10 +760,16 @@ lifted({a:Either.right&lt;<span class="hljs-built_in">number</span>,<span class=
 								<a href="either.eitherstatic.html#liftap" class="tsd-kind-icon">lift<wbr>Ap</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+								<a href="either.eitherstatic.html#liftapacc" class="tsd-kind-icon">lift<wbr>ApAcc</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
 								<a href="either.eitherstatic.html#right" class="tsd-kind-icon">right</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
 								<a href="either.eitherstatic.html#sequence" class="tsd-kind-icon">sequence</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+								<a href="either.eitherstatic.html#sequenceacc" class="tsd-kind-icon">sequence<wbr>Acc</a>
 							</li>
 						</ul>
 					</li>

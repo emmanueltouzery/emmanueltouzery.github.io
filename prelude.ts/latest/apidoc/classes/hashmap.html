@@ -112,6 +112,8 @@
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="hashmap.html#empty" class="tsd-kind-icon">empty</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="hashmap.html#isempty-1" class="tsd-kind-icon">is<wbr>Empty</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="hashmap.html#isnotempty" class="tsd-kind-icon">is<wbr>Not<wbr>Empty</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="hashmap.html#of" class="tsd-kind-icon">of</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="hashmap.html#ofiterable" class="tsd-kind-icon">of<wbr>Iterable</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="hashmap.html#ofobjectdictionary" class="tsd-kind-icon">of<wbr>Object<wbr>Dictionary</a></li>
@@ -167,7 +169,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L39">src/HashMap.ts:39</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L39">src/HashMap.ts:39</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -195,6 +197,88 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+					<a name="isempty-1" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> is<wbr>Empty</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Empty&lt;K, V&gt;<span class="tsd-signature-symbol">(</span>v<span class="tsd-signature-symbol">: </span><a href="hashmap.html" class="tsd-signature-type">HashMap</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L111">src/HashMap.ts:111</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Curried predicate to find out whether the HashMap is empty.</p>
+								</div>
+								<pre><code>Vector.of(HashMap.of([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>]), HashMap.empty&lt;number,number&gt;())
+    .filter(HashMap.isEmpty)
+=&gt; Vector.of(HashMap.empty&lt;number,number&gt;())
+</code></pre>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>K</h4>
+								</li>
+								<li>
+									<h4>V</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>v: <a href="hashmap.html" class="tsd-signature-type">HashMap</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+					<a name="isnotempty" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> is<wbr>Not<wbr>Empty</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Not<wbr>Empty&lt;K, V&gt;<span class="tsd-signature-symbol">(</span>v<span class="tsd-signature-symbol">: </span><a href="hashmap.html" class="tsd-signature-type">HashMap</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L122">src/HashMap.ts:122</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Curried predicate to find out whether the HashMap is empty.</p>
+								</div>
+								<pre><code>Vector.of(HashMap.of([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>]), HashMap.empty&lt;number,number&gt;())
+    .filter(HashMap.isNotEmpty)
+=&gt; Vector.of(HashMap.of([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>]))
+</code></pre>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>K</h4>
+								</li>
+								<li>
+									<h4>V</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>v: <a href="hashmap.html" class="tsd-signature-type">HashMap</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
 					<a name="of" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> of</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
@@ -204,7 +288,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L49">src/HashMap.ts:49</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L49">src/HashMap.ts:49</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -243,7 +327,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L58">src/HashMap.ts:58</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L58">src/HashMap.ts:58</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -281,7 +365,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L86">src/HashMap.ts:86</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L86">src/HashMap.ts:86</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -328,7 +412,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/imap.html">IMap</a>.<a href="../interfaces/imap.html#___iterator">__@iterator</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L114">src/HashMap.ts:114</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L136">src/HashMap.ts:136</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -350,7 +434,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L266">src/HashMap.ts:266</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L288">src/HashMap.ts:288</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -400,7 +484,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L282">src/HashMap.ts:282</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L304">src/HashMap.ts:304</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -451,7 +535,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/imap.html">IMap</a>.<a href="../interfaces/imap.html#contains">contains</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L298">src/HashMap.ts:298</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L320">src/HashMap.ts:320</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -481,7 +565,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/imap.html">IMap</a>.<a href="../interfaces/imap.html#containskey">containsKey</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L312">src/HashMap.ts:312</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L334">src/HashMap.ts:334</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -516,7 +600,7 @@ HashMap.of&lt;number,string&gt;([<span class="hljs-number">1</span>,<span class=
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L514">src/HashMap.ts:514</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L536">src/HashMap.ts:536</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -546,7 +630,7 @@ HashMap.of&lt;number,string&gt;([<span class="hljs-number">1</span>,<span class=
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L321">src/HashMap.ts:321</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L343">src/HashMap.ts:343</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -598,7 +682,7 @@ HashMap.of&lt;number,string&gt;([<span class="hljs-number">1</span>,<span class=
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L370">src/HashMap.ts:370</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L392">src/HashMap.ts:392</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -646,7 +730,7 @@ HashMap.of&lt;number,string&gt;([<span class="hljs-number">1</span>,<span class=
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L371">src/HashMap.ts:371</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L393">src/HashMap.ts:393</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -688,7 +772,7 @@ HashMap.of&lt;number,string&gt;([<span class="hljs-number">1</span>,<span class=
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L384">src/HashMap.ts:384</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L406">src/HashMap.ts:406</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -736,7 +820,7 @@ HashMap.of&lt;number,string&gt;([<span class="hljs-number">1</span>,<span class=
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L385">src/HashMap.ts:385</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L407">src/HashMap.ts:407</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -777,7 +861,7 @@ HashMap.of&lt;number,string&gt;([<span class="hljs-number">1</span>,<span class=
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L350">src/HashMap.ts:350</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L372">src/HashMap.ts:372</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -838,7 +922,7 @@ HashMap.of&lt;number,string&gt;([<span class="hljs-number">1</span>,'a'],[<span 
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L257">src/HashMap.ts:257</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L279">src/HashMap.ts:279</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -898,7 +982,7 @@ HashMap.of&lt;number,string&gt;([<span class="hljs-number">1</span>,'a'],[<span 
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L401">src/HashMap.ts:401</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L423">src/HashMap.ts:423</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -957,7 +1041,7 @@ HashMap.of&lt;number,string&gt;([<span class="hljs-number">1</span>,'a'],[<span 
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L421">src/HashMap.ts:421</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L443">src/HashMap.ts:443</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1030,7 +1114,7 @@ HashMap.of&lt;number,string&gt;([<span class="hljs-number">1</span>,'a'],[<span 
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L443">src/HashMap.ts:443</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L465">src/HashMap.ts:465</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1104,7 +1188,7 @@ HashMap.of&lt;number,string&gt;([<span class="hljs-number">1</span>,'a'],[<span 
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/imap.html">IMap</a>.<a href="../interfaces/imap.html#get">get</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L107">src/HashMap.ts:107</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L129">src/HashMap.ts:129</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1133,7 +1217,7 @@ HashMap.of&lt;number,string&gt;([<span class="hljs-number">1</span>,'a'],[<span 
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/imap.html">IMap</a>.<a href="../interfaces/imap.html#hashcode">hashCode</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L550">src/HashMap.ts:550</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L572">src/HashMap.ts:572</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1158,7 +1242,7 @@ HashMap.of&lt;number,string&gt;([<span class="hljs-number">1</span>,'a'],[<span 
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/imap.html">IMap</a>.<a href="../interfaces/imap.html#inspect">inspect</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L569">src/HashMap.ts:569</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L591">src/HashMap.ts:591</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
@@ -1176,7 +1260,7 @@ HashMap.of&lt;number,string&gt;([<span class="hljs-number">1</span>,'a'],[<span 
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/imap.html">IMap</a>.<a href="../interfaces/imap.html#isempty">isEmpty</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L187">src/HashMap.ts:187</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L209">src/HashMap.ts:209</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1199,7 +1283,7 @@ HashMap.of&lt;number,string&gt;([<span class="hljs-number">1</span>,'a'],[<span 
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/imap.html">IMap</a>.<a href="../interfaces/imap.html#keyset">keySet</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L194">src/HashMap.ts:194</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L216">src/HashMap.ts:216</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1222,7 +1306,7 @@ HashMap.of&lt;number,string&gt;([<span class="hljs-number">1</span>,'a'],[<span 
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/imap.html">IMap</a>.<a href="../interfaces/imap.html#length">length</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L170">src/HashMap.ts:170</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L192">src/HashMap.ts:192</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1244,7 +1328,7 @@ HashMap.of&lt;number,string&gt;([<span class="hljs-number">1</span>,'a'],[<span 
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L232">src/HashMap.ts:232</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L254">src/HashMap.ts:254</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1304,7 +1388,7 @@ HashMap.of&lt;number,string&gt;([<span class="hljs-number">1</span>,'a'],[<span 
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L246">src/HashMap.ts:246</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L268">src/HashMap.ts:268</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1359,7 +1443,7 @@ HashMap.of&lt;number,string&gt;([<span class="hljs-number">1</span>,'a'],[<span 
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L216">src/HashMap.ts:216</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L238">src/HashMap.ts:238</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1419,7 +1503,7 @@ HashMap.of&lt;number,string&gt;([<span class="hljs-number">1</span>,'a'],[<span 
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/imap.html">IMap</a>.<a href="../interfaces/imap.html#put">put</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L138">src/HashMap.ts:138</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L160">src/HashMap.ts:160</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1457,7 +1541,7 @@ HashMap.of&lt;number,string&gt;([<span class="hljs-number">1</span>,'a'],[<span 
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L158">src/HashMap.ts:158</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L180">src/HashMap.ts:180</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1524,7 +1608,7 @@ HashMap.of&lt;number,string&gt;([<span class="hljs-number">1</span>,'a'],[<span 
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L453">src/HashMap.ts:453</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L475">src/HashMap.ts:475</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1577,7 +1661,7 @@ HashMap.of&lt;number,string&gt;([<span class="hljs-number">1</span>,'a'],[<span 
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/imap.html">IMap</a>.<a href="../interfaces/imap.html#remove">remove</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L145">src/HashMap.ts:145</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L167">src/HashMap.ts:167</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1605,7 +1689,7 @@ HashMap.of&lt;number,string&gt;([<span class="hljs-number">1</span>,'a'],[<span 
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L178">src/HashMap.ts:178</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L200">src/HashMap.ts:200</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1629,7 +1713,7 @@ HashMap.of&lt;number,string&gt;([<span class="hljs-number">1</span>,'a'],[<span 
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/imap.html">IMap</a>.<a href="../interfaces/imap.html#toarray">toArray</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L461">src/HashMap.ts:461</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L483">src/HashMap.ts:483</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1652,7 +1736,7 @@ HashMap.of&lt;number,string&gt;([<span class="hljs-number">1</span>,'a'],[<span 
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/imap.html">IMap</a>.<a href="../interfaces/imap.html#tolinkedlist">toLinkedList</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L481">src/HashMap.ts:481</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L503">src/HashMap.ts:503</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1675,7 +1759,7 @@ HashMap.of&lt;number,string&gt;([<span class="hljs-number">1</span>,'a'],[<span 
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L494">src/HashMap.ts:494</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L516">src/HashMap.ts:516</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1733,7 +1817,7 @@ HashMap.of&lt;number,string&gt;([<span class="hljs-number">1</span>,'a'],[<span 
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/imap.html">IMap</a>.<a href="../interfaces/imap.html#tostring">toString</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L559">src/HashMap.ts:559</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L581">src/HashMap.ts:581</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
@@ -1751,7 +1835,7 @@ HashMap.of&lt;number,string&gt;([<span class="hljs-number">1</span>,'a'],[<span 
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/imap.html">IMap</a>.<a href="../interfaces/imap.html#tovector">toVector</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L471">src/HashMap.ts:471</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L493">src/HashMap.ts:493</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1774,7 +1858,7 @@ HashMap.of&lt;number,string&gt;([<span class="hljs-number">1</span>,'a'],[<span 
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L505">src/HashMap.ts:505</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L527">src/HashMap.ts:527</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1828,7 +1912,7 @@ HashMap.of&lt;number,string&gt;([<span class="hljs-number">1</span>,'a'],[<span 
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/imap.html">IMap</a>.<a href="../interfaces/imap.html#valueiterable">valueIterable</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0d773e7/src/HashMap.ts#L203">src/HashMap.ts:203</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/e9f6c27/src/HashMap.ts#L225">src/HashMap.ts:225</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1861,6 +1945,12 @@ HashMap.of&lt;number,string&gt;([<span class="hljs-number">1</span>,'a'],[<span 
 						<ul>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
 								<a href="hashmap.html#empty" class="tsd-kind-icon">empty</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+								<a href="hashmap.html#isempty-1" class="tsd-kind-icon">is<wbr>Empty</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+								<a href="hashmap.html#isnotempty" class="tsd-kind-icon">is<wbr>Not<wbr>Empty</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
 								<a href="hashmap.html#of" class="tsd-kind-icon">of</a>
