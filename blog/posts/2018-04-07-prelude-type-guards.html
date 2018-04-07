@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>My Hakyll Blog - Type guards and conditional types in typescript & prelude.ts</title>
+        <link rel="stylesheet" type="text/css" href="../css/default.css" />
+        <link href="https://fonts.googleapis.com/css?family=Merriweather|Roboto+Mono" rel="stylesheet">
+    </head>
+    <body>
+        <div id="header">
+            <div id="logo">
+                <a href="../">My Hakyll Blog</a>
+            </div>
+            <div id="navigation">
+                <a href="../">Home</a>
+                <a href="../about.html">About</a>
+                <a href="../archive.html">Archive</a>
+            </div>
+        </div>
+
+        <div id="content">
+            <h1>Type guards and conditional types in typescript & prelude.ts</h1>
+
+            <div class="info">
+    Posted on April  7, 2018
+    
+        by emmanuel
+    
+</div>
+
+<div class="tags">
+    
+    <a href="../tags/prelude.ts.html">prelude.ts</a> <a href="../tags/typescript.html">typescript</a> <a href="../tags/functional-programming.html">functional-programming</a>
+    
+</div>
+
+<p>This post describes how the <a href="https://github.com/emmanueltouzery/prelude.ts">prelude.ts</a> functional programming library takes advantage of typescript type guards and conditional types. It can also serve as an introduction to these typescript features in a more general context.</p>
+<h2 id="what-are-type-guards">What are type guards</h2>
+<h3 id="predicates">Predicates</h3>
+<p>Let’s first define predicates: predicates are functions returning booleans. For instance, <code>isPositive</code> is a predicate:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb1-1" data-line-number="1">function <span class="fu">isPositive</span>(x: number): <span class="dt">boolean</span> { <span class="kw">return</span> x &gt;= <span class="dv">0</span>; }</a></code></pre></div>
+<p>Type guards, then, are special types of predicates. What they return can be seen as special kinds of booleans. Type guards live purely in the type world and have no effect on the runtime at all. You can use a type guard to let the compiler infer a more precise type for a value in a certain context.</p>
+<h3 id="problem-to-solve">Problem to solve</h3>
+<p>Let’s say we use either inheritance or discriminated unions. For instance:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">class</span> <span class="dt">Some</span><span class="fu">&lt;</span><span class="dt">T</span><span class="fu">&gt;</span> {}</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw">class</span> <span class="dt">None</span><span class="fu">&lt;</span><span class="dt">T</span><span class="fu">&gt;</span> {}</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw">type</span> <span class="dt">Option</span><span class="fu">&lt;</span><span class="dt">T</span><span class="fu">&gt;</span> <span class="fu">=</span> <span class="dt">Some</span><span class="fu">&lt;</span><span class="dt">T</span><span class="fu">&gt;</span> <span class="fu">|</span> <span class="dt">None</span><span class="fu">&lt;</span><span class="dt">T</span><span class="fu">&gt;</span>;</a></code></pre></div>
+<p>or:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb3-1" data-line-number="1">abstract <span class="kw">class</span> <span class="dt">Option</span><span class="fu">&lt;</span><span class="dt">T</span><span class="fu">&gt;</span> {}</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">class</span> <span class="dt">Some</span><span class="fu">&lt;</span><span class="dt">T</span><span class="fu">&gt;</span> extends <span class="dt">Option</span><span class="fu">&lt;</span><span class="dt">T</span><span class="fu">&gt;</span> {}</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw">class</span> <span class="dt">None</span><span class="fu">&lt;</span><span class="dt">T</span><span class="fu">&gt;</span> extends <span class="dt">Option</span><span class="fu">&lt;</span><span class="dt">T</span><span class="fu">&gt;</span> {}</a></code></pre></div>
+<p>An <code>Option</code> is a value which is either present (the option is a <code>Some</code>), or not present (the option is a <code>None</code>). For instance:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="bu">Option</span>.<span class="fu">of</span>(<span class="dv">5</span>)          <span class="co">// value is present (it's 5), dynamic type is Some&lt;number&gt;</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="bu">Option</span>.<span class="fu">none</span>&lt;number&gt;() <span class="co">// value is not present, dynamic type is None&lt;number&gt;</span></a></code></pre></div>
+<p>Trying to read the value of an empty option makes no sense. For that reason, prelude offers two ways to read the value of an Option: <code>Some.get</code> and <code>Option.getOrThrow</code>. The latter is available on both <code>Some</code> and <code>None</code>, but <code>get</code> is available only on <code>Some</code>. Calling <code>getOrThrow</code> on a <code>Some</code> will return the value, but it will throw if called on a <code>None</code>.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb5-1" data-line-number="1">myOption.<span class="fu">getOrThrow</span>() <span class="co">// will get the value or throw if it was a None</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">mySome.<span class="fu">get</span>()          <span class="co">// will compile only if mySome is a Some</span></a></code></pre></div>
+<p>So you should try to convince the compiler that all your uses of options are safe, so that you can use <code>get</code> (or maybe <a href="http://emmanueltouzery.github.io/prelude.ts/latest/apidoc/classes/option.some.html#getorelse">getOrElse</a>), but avoid <code>getOrThrow</code>.</p>
+<p>So, if we did offer a function <code>isSome(): boolean</code>, you could do:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">if</span> (option.<span class="fu">isSome</span>()) {</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">    console.<span class="fu">log</span>((&lt;Some&lt;number&gt;&gt;option).<span class="fu">get</span>());</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">    <span class="co">// or..</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4">    console.<span class="fu">log</span>(option.<span class="fu">getOrThrow</span>());</a>
+<a class="sourceLine" id="cb6-5" data-line-number="5">}</a></code></pre></div>
+<p>That’s right, we must cast to <code>Some</code>, how would the compiler know for sure that we are in fact dealing with a Some? We can see the <code>if</code>, but the compiler doesn’t know it’s relevant if we don’t tell it.</p>
+<p>For that purpose, typescript supports <a href="https://blog.mariusschulz.com/2016/09/30/typescript-2-0-control-flow-based-type-analysis">flow control analysis</a> when <a href="https://www.typescriptlang.org/docs/handbook/advanced-types.html#type-guards-and-differentiating-types">type guards</a> are present.</p>
+<p>In prelude, both <code>Some</code> and <code>None</code> offer a <code>isSome</code> and a <code>isNone</code> method. But instead of returning <code>boolean</code>, they return <code>x is Some&lt;T&gt;</code> and <code>x is None&lt;T&gt;</code>.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">class</span> Some&lt;T&gt; {</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">    <span class="fu">isSome</span>(): <span class="kw">this</span> is Some&lt;T&gt; { <span class="kw">return</span> <span class="kw">true</span>; }</a>
+<a class="sourceLine" id="cb7-3" data-line-number="3">}</a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="kw">class</span> None&lt;T&gt; {</a>
+<a class="sourceLine" id="cb7-5" data-line-number="5">    <span class="fu">isSome</span>(): <span class="kw">this</span> is Some&lt;T&gt; { <span class="kw">return</span> <span class="kw">false</span>; }</a>
+<a class="sourceLine" id="cb7-6" data-line-number="6">}</a></code></pre></div>
+<p><code>isSome</code> and <code>isNone</code> are therefore type guards, not simple predicates.</p>
+<h2 id="use-in-if">Use in <code>if</code></h2>
+<p>With type guards, we can do:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="co">// here myOption has type Option&lt;number&gt;</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="kw">if</span> (myOption.<span class="fu">isSome</span>()) {</a>
+<a class="sourceLine" id="cb8-3" data-line-number="3">    <span class="co">// here myOption has type Some&lt;number&gt;</span></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4">} <span class="kw">else</span> {</a>
+<a class="sourceLine" id="cb8-5" data-line-number="5">    <span class="co">// here myOption has type None&lt;number&gt;</span></a>
+<a class="sourceLine" id="cb8-6" data-line-number="6">}</a></code></pre></div>
+<p>So the static type of the variable as seen by the compiler will depend on the context in which the variable is used. It is flow analysis (pioneered by <a href="https://github.com/facebook/flow">Facebook’s flow</a>).</p>
+<p>Careful though. We’ll get the <code>None</code> type in the <code>else</code> branch only if we use the <code>type Option&lt;T&gt; = Some&lt;T&gt; | None&lt;T&gt;</code> and NOT if we use the inheritance form (abstract class <code>Option</code>, and <code>Some</code> and <code>None</code> extending it). The reason is that inheritance is an “open” relationship: you can add at any time a third class which would inherit from <code>Option</code> and so the typescript compiler cannot say for sure that if the type is not <code>Some</code>, that it then must be <code>None</code>. But if we say quite literally that <code>Option=Some|None</code> instead of using inheritance, then the compiler can do that.</p>
+<p>So, no more casts in our <code>if</code> and <code>else</code>, and less unsafe <code>getOrThrow</code> calls. That’s already awesome, but we’re just getting started!</p>
+<p>Before we move on further with type guards, note that about the <code>Option</code> case in particular, let me mention that prelude.ts also offers a pretty nice <a href="http://emmanueltouzery.github.io/prelude.ts/latest/apidoc/classes/option.some.html#match">match</a> method on Option, enabling to do:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="bu">Option</span>.<span class="fu">of</span>(<span class="dv">5</span>).<span class="fu">match</span>({</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2">    Some: x  =&gt; <span class="st">&quot;got &quot;</span> + x,</a>
+<a class="sourceLine" id="cb9-3" data-line-number="3">    None: () =&gt; <span class="st">&quot;got nothing!&quot;</span></a>
+<a class="sourceLine" id="cb9-4" data-line-number="4">});</a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co">// =&gt; &quot;got 5&quot;</span></a></code></pre></div>
+<p><code>match</code> is the catamorphism for <code>Option</code>. But now, back to type guards!</p>
+<h2 id="use-in-filter">Use in <code>filter</code></h2>
+<p>Besides “simple” cases like <code>if</code> statements, type guards can also be used (even in the typescript standard library, on <code>Array</code>, and also in prelude.ts’s collections of course) on <code>filter</code> for instance.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="bu">Vector</span>.<span class="fu">of</span>(<span class="bu">Option</span>.<span class="fu">of</span>(<span class="dv">2</span>),<span class="bu">Option</span>.<span class="fu">none</span>&lt;number&gt;(), <span class="bu">Option</span>.<span class="fu">of</span>(<span class="dv">3</span>))</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">    .<span class="fu">filter</span>(<span class="bu">Option</span>.<span class="fu">isSome</span>)</a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="co">// =&gt; Vector.of(Option.of(2),Option.of(3)) of type Vector&lt;Some&lt;number&gt;&gt;</span></a></code></pre></div>
+<p>So we take a vector of three options, two <code>Some</code> and one <code>None</code>. And then we filter the collection to keep only <code>Some</code>s. The collection is properly filtered, but note that the type of the result is not anymore <code>Vector&lt;Option&lt;number&gt;&gt;</code> but <code>Vector&lt;Some&lt;number&gt;&gt;</code>: typescript realized that since we filtered by a type guard, the generic type of the result collection must be a <code>Some</code>.</p>
+<p>Prelude.ts also offers <a href="http://emmanueltouzery.github.io/prelude.ts/latest/apidoc/files/comparison.html#typeof">typeOf</a> and <a href="http://emmanueltouzery.github.io/prelude.ts/latest/apidoc/files/comparison.html#instanceof">instanceOf</a> helpers, so that we can do:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="bu">Vector</span>.<span class="fu">of</span>&lt;number|string&gt;(<span class="dv">1</span>,<span class="st">&quot;a&quot;</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="st">&quot;b&quot;</span>).<span class="fu">filter</span>(<span class="fu">typeOf</span>(<span class="st">&quot;number&quot;</span>))</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="co">// =&gt; Vector.of&lt;number&gt;(1,2,3)</span></a></code></pre></div>
+<p>The type of the result is not anymore <code>Vector&lt;number|string&gt;</code> but <code>Vector&lt;number&gt;</code>. This is possible because of the type signature of <code>filter</code>:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">class</span> <span class="bu">Collection</span>&lt;T&gt; {</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2">    filter&lt;U <span class="kw">extends</span> T&gt;(fn:(v:T)=&gt;v is U): <span class="bu">Collection</span>&lt;U&gt;;</a>
+<a class="sourceLine" id="cb12-3" data-line-number="3">    <span class="fu">filter</span>(predicate:(v:T)=&gt;<span class="dt">boolean</span>): <span class="bu">Collection</span>&lt;T&gt;;</a>
+<a class="sourceLine" id="cb12-4" data-line-number="4">}</a></code></pre></div>
+<p>As you can see, the type signature is overloaded. The first, more precise, definition, accepts only type guards and returns collections with another type (<code>U</code>, which must extend <code>T</code>). While the second, catch-all signature, accepts plain predicates, and returns a collection of the same type <code>T</code> as the input.</p>
+<p>Here’s a more motivating example, with something else than just options:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">const</span> canvas <span class="op">=</span> <span class="va">Option</span>.<span class="at">ofNullable</span>(<span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;myCanvas&quot;</span>))</a>
+<a class="sourceLine" id="cb13-2" data-line-number="2">    .<span class="at">filter</span>(<span class="at">instanceOf</span>(HTMLCanvasElement))</a>
+<a class="sourceLine" id="cb13-3" data-line-number="3">    .<span class="at">getOrThrow</span>(<span class="st">&quot;Cannot find the canvas element!&quot;</span>)<span class="op">;</span></a></code></pre></div>
+<p>Keep in mind that also Option offers a <code>filter</code> method. So what we do here, is that we lookup an html element in the DOM, by the id “myCanvas”. But if there’s no element by that name in the DOM, we’ll get back <code>null</code>, so we use <code>Option</code> to encode that. Also note that <code>getElementById</code> returns us a <code>HTMLElement</code>.</p>
+<p>So our next step is to make sure we’re in fact dealing with a canvas element, using <code>instanceOf(HTMLCanvasElement)</code>. But here’s the trick: that call to filter will not only make sure that we are dealing with a canvas element (if not we’ll get a <code>None</code> after the filter), but also change the type of the Option.. After the call, typescript we’ll know that we’re dealing with an <code>Option&lt;HTMLCanvasElement&gt;</code>, not anymore an <code>Option&lt;HTMLElement&gt;</code>! That’s the magic of type guards.</p>
+<h2 id="use-in-partition-and-conditional-types">Use in <code>partition</code> and conditional types</h2>
+<p><a href="http://emmanueltouzery.github.io/prelude.ts/latest/apidoc/classes/vector.html#partition">partition</a> is a pretty traditional FP function. It allows you to split a collection in two collections, depending on whether or not a condition is met. For instance:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="bu">Vector</span>.<span class="fu">of</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>).<span class="fu">partition</span>(x =&gt; x%<span class="dv">2</span>===<span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb14-2" data-line-number="2">=&gt; [<span class="bu">Vector</span>.<span class="fu">of</span>(<span class="dv">2</span>,<span class="dv">4</span>),<span class="bu">Vector</span>.<span class="fu">of</span>(<span class="dv">1</span>,<span class="dv">3</span>)]</a></code></pre></div>
+<p>So it returns a pair of collections. This can be very handy for instance when you have a list of computations which may or may not have succeeded, and you would like to split that list in two lists, one for all the successes, and one for all the failures. But there are plenty of use-cases.</p>
+<p>Using typescript 2.8.1 and older, the best that we can achieve in prelude.ts is:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="bu">Vector</span>.<span class="fu">of</span>&lt;number|string&gt;(<span class="dv">1</span>,<span class="st">&quot;a&quot;</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="st">&quot;b&quot;</span>)</a>
+<a class="sourceLine" id="cb15-2" data-line-number="2">    .<span class="fu">partition</span>(<span class="fu">typeOf</span>(<span class="st">&quot;number&quot;</span>))</a>
+<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="co">// =&gt; [Vector.of&lt;number&gt;(1,2,3), Vector.of&lt;number|string&gt;(&quot;a&quot;,&quot;b&quot;)]</span></a></code></pre></div>
+<p>As you can see, the compiler is smart enough to understand that the first sublist returned by <code>partition</code> will contain only <code>number</code> elements. That is because the definition of <code>partition</code> takes advantage of type guards:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw">class</span> <span class="bu">Collection</span>&lt;T&gt; {</a>
+<a class="sourceLine" id="cb16-2" data-line-number="2">    partition&lt;U <span class="kw">extends</span> T&gt;(predicate:(x:T)=&gt; x is U): [<span class="bu">Collection</span>&lt;U&gt;,<span class="bu">Collection</span>&lt;T&gt;];</a>
+<a class="sourceLine" id="cb16-3" data-line-number="3">    <span class="fu">partition</span>(predicate:(x:T)=&gt;<span class="dt">boolean</span>): [<span class="bu">Collection</span>&lt;T&gt;,<span class="bu">Collection</span>&lt;T&gt;];</a>
+<a class="sourceLine" id="cb16-4" data-line-number="4">}</a></code></pre></div>
+<p>Again we have an overloaded definition. If the parameter is a type guard, then instead of returning <code>Collection&lt;T&gt;</code>, we can return <code>Collection&lt;U&gt;</code> for the first sublist.</p>
+<p>But if we return to our example.. We had <code>number|string</code>, and we partitioned on whether the element is a <code>number</code>. And typescript didn’t realize that the second sublist could have the type <code>string</code> instead of <code>number|string</code>.</p>
+<p>To achieve that, in effect we have to tell the compiler that the type of the second sublist is the generic type of the input collection, <em>minus</em> the type that we keep for the first sublist. Type subtraction? Sounds impossible to express right?</p>
+<p>Except that <a href="https://blogs.msdn.microsoft.com/typescript/2018/03/27/announcing-typescript-2-8/">typescript 2.8.1</a> has added <a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-8.html">conditional types</a>. There is actually <a href="https://github.com/Microsoft/TypeScript/issues/22860">a bug</a> in 2.8.1 (which is the latest version of typescript as I’m writing this blog) which prevents prelude.ts from taking advantage of the feature, but 2.8.2 will have the fix, and that lets us achieve this:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="bu">Vector</span>.<span class="fu">of</span>&lt;number|string&gt;(<span class="dv">1</span>,<span class="st">&quot;a&quot;</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="st">&quot;b&quot;</span>)</a>
+<a class="sourceLine" id="cb17-2" data-line-number="2">    .<span class="fu">partition</span>(<span class="fu">typeOf</span>(<span class="st">&quot;number&quot;</span>))</a>
+<a class="sourceLine" id="cb17-3" data-line-number="3"><span class="co">// =&gt; [Vector.of&lt;number&gt;(1,2,3), Vector.of&lt;string&gt;(&quot;a&quot;,&quot;b&quot;)]</span></a></code></pre></div>
+<p>Or even:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="bu">Vector</span>.<span class="fu">of</span>&lt;number|string|<span class="dt">boolean</span>&gt;(<span class="dv">1</span>,<span class="st">&quot;a&quot;</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="st">&quot;b&quot;</span>,<span class="kw">true</span>)</a>
+<a class="sourceLine" id="cb18-2" data-line-number="2">    .<span class="fu">partition</span>(<span class="fu">typeOf</span>(<span class="st">&quot;number&quot;</span>))</a>
+<a class="sourceLine" id="cb18-3" data-line-number="3"><span class="co">// =&gt; [Vector.of&lt;number&gt;(1,2,3), Vector.of&lt;string|boolean&gt;(&quot;a&quot;,&quot;b&quot;,true)]</span></a></code></pre></div>
+<p>The new type signature that we need to achieve that is now:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb19-1" data-line-number="1">partition&lt;U <span class="kw">extends</span> T&gt;(predicate:(v:T)=&gt;v is U): [<span class="bu">Collection</span>&lt;U&gt;,<span class="bu">Collection</span>&lt;Exclude&lt;T,U&gt;&gt;];</a>
+<a class="sourceLine" id="cb19-2" data-line-number="2"><span class="fu">partition</span>(predicate:(x:T)=&gt;<span class="dt">boolean</span>): [<span class="bu">Collection</span>&lt;T&gt;,<span class="bu">Collection</span>&lt;T&gt;];</a></code></pre></div>
+<p>Notice that the generic type for the second sublist in the result is <code>Exclude&lt;T,U&gt;</code>, which expresses exactly what we want to say: <code>T</code> is the “base type”, <code>U</code> is the “more specific” type, give me the types left if you consider all the types matching <code>T</code>, <em>minus</em> the specific type <code>U</code>.</p>
+<p>Besides <code>Exclude</code>, typescript 2.8 <a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-8.html#predefined-conditional-types">adds a number of such predefined conditional types</a>: <code>Extract</code>, <code>NonNullable</code>, <code>ReturnType</code>, <code>InstanceType</code>.</p>
+<h2 id="more-about-conditional-types">More about conditional types</h2>
+<p>It is very satisfying to understand that these predefined conditional types are not each hardcoded in the compiler. The “only” mechanism known to the compiler is the ability to express conditions on types, compute a type based on other types and a condition like <code>T extends U ? X : Y</code>.</p>
+<p>Everything else is built upon that and the fact that conditional types are distributive. So if we follow the specific example of <code>Exclude</code>.. Its definition is:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="co">/**</span></a>
+<a class="sourceLine" id="cb20-2" data-line-number="2"><span class="co"> * Exclude from T those types that are assignable to U</span></a>
+<a class="sourceLine" id="cb20-3" data-line-number="3"><span class="co"> */</span></a>
+<a class="sourceLine" id="cb20-4" data-line-number="4">type Exclude<span class="op">&lt;</span>T<span class="op">,</span> U<span class="op">&gt;</span> <span class="op">=</span> T <span class="kw">extends</span> U <span class="op">?</span> never : T<span class="op">;</span></a></code></pre></div>
+<p>The typescript handbook explains the distributiveness aspect like this:</p>
+<blockquote>
+<p>Distributive conditional types are automatically distributed over union types during instantiation. For example, an instantiation of</p>
+<pre><code>T extends U ? X : Y</code></pre>
+<p>with the type argument <code>A | B | C</code> for <code>T</code> is resolved as</p>
+<pre><code>(A extends U ? X : Y) | (B extends U ? X : Y) | (C extends U ? X : Y).</code></pre>
+</blockquote>
+<p>So, let’s try to resolve <code>Exclude&lt;string|number|boolean, number&gt;</code>:</p>
+<pre><code>1. Exclude&lt;string|number|boolean, number&gt;
+
+2. string extends number ? never : string
+ | number extends number ? never : number
+ | boolean extends number ? never : boolean
+
+3. false ? never : string
+ | true ? never : number
+ | false ? never : boolean
+
+4. string | never | boolean
+
+5. string | boolean</code></pre>
+<p>And that’s exactly what the typescript compiler is doing behind the scenes!</p>
+<p>This improved <code>partition</code> is currently implemented in a branch in prelude.ts, to be merged to master when typescript 2.8.2 is released.</p>
+<h2 id="beyond-option">Beyond <code>Option</code></h2>
+<p>We’ve talked about discriminated types and type guards in prelude.ts for <code>Option</code>. But this pattern is applied in a number of contexts in prelude.ts, beyond the case of Option.</p>
+<p>We have:</p>
+<ul>
+<li><a href="http://emmanueltouzery.github.io/prelude.ts/latest/apidoc/files/linkedlist.html">LinkedList</a> can be <code>ConsLinkedList</code> (non empty) or <code>EmptyLinkedList</code>. On <code>ConsLinkedList</code>, <a href="http://emmanueltouzery.github.io/prelude.ts/latest/apidoc/classes/linkedlist.conslinkedlist.html#head">head</a> and <a href="http://emmanueltouzery.github.io/prelude.ts/latest/apidoc/classes/linkedlist.conslinkedlist.html#last">last</a> return a <code>Some</code> instead of a simple <code>Option</code>, and on <code>EmptyLinkedList</code> these methods return a <code>None</code>. And the type guard for LinkedList is <code>isEmpty</code>;</li>
+<li><a href="http://emmanueltouzery.github.io/prelude.ts/latest/apidoc/files/stream.html">Stream</a> can be a <code>ConsStream</code> or an <code>EmptyStream</code>. It behaves the same as <code>LinkedList</code> with type guards;</li>
+<li><a href="http://emmanueltouzery.github.io/prelude.ts/latest/apidoc/files/either.html">Either</a> can be a <code>Left</code> or a <code>Right</code>. Left has the extra <code>Left.getLeft</code> method that Right doesn’t have. Right has the extra <code>Right.get</code> method that Left doesn’t have. Both branches have <code>getLeftOrThrow</code> and <code>getOrThrow</code> (plus <code>orElse</code> variants). The type guard is <code>isRight</code>.</li>
+</ul>
+<p>To take an example with linked list, this means that we can do:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb24-1" data-line-number="1"><span class="kw">if</span> (!myLinkedList.<span class="fu">isEmpty</span>()) {</a>
+<a class="sourceLine" id="cb24-2" data-line-number="2">    <span class="kw">return</span> myLinkedList.<span class="fu">last</span>().<span class="fu">get</span>();</a>
+<a class="sourceLine" id="cb24-3" data-line-number="3">}</a></code></pre></div>
+<p>While for instance <code>Vector</code> doesn’t have the feature (it has other very important advantages though), and on vector we must do:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="kw">if</span> (!myVector.<span class="fu">isEmpty</span>()) {</a>
+<a class="sourceLine" id="cb25-2" data-line-number="2">    <span class="kw">return</span> myVector.<span class="fu">last</span>().<span class="fu">getOrThrow</span>();</a>
+<a class="sourceLine" id="cb25-3" data-line-number="3">}</a></code></pre></div>
+<p>What’s happening in the linked list example is that inside the <code>if</code>, the type of <code>myLinkedList</code> is not anymore <code>LinkedList&lt;T&gt;</code> but <code>ConsLinkedList&lt;T&gt;</code>. Which means that we know that the list contains at least one element. Therefore <code>last</code> doesn’t return <code>Option&lt;T&gt;</code> but <code>Some&lt;T&gt;</code> (and the same holds for <code>head</code>), and so we can call <code>Some.get</code> instead of the basic <code>Option.getOrThrow</code>.</p>
+<h2 id="takeaway">Takeaway</h2>
+<p>Type guards and conditional types allow us to give more information to the type checker so that the compiler can infer a more precise static type for values, letting us write safer programs. These mechanisms, like all type-level mechanisms in typescript, have no effect at runtime, they only allow us to express to the compiler type-level reasonings that the developer would otherwise do mentally: now they can be double-checked and made explicit by the machine.</p>
+<p>That’s it for today! You can learn more about my typescript functional library prelude.ts through its <a href="https://github.com/emmanueltouzery/prelude.ts">website</a>, <a href="https://github.com/emmanueltouzery/prelude.ts/wiki/Prelude.ts-user-guide">user guide</a> and <a href="http://emmanueltouzery.github.io/prelude.ts/latest/apidoc/globals.html">apidocs</a>.</p>
+
+<div id="disqus_thread"></div>
+<script>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+var disqus_config = function () {
+//this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = "/posts/2018-04-07-prelude-type-guards.html"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = '//emmanueltouzery.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+        </div>
+        <div id="footer">
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+        </div>
+    </body>
+</html>
