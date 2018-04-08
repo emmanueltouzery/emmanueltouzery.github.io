@@ -36,10 +36,10 @@
     
 </div>
 
-<p>This post describes how the <a href="https://github.com/emmanueltouzery/prelude.ts">prelude.ts</a> functional programming library takes advantage of typescript type guards and conditional types. It can also serve as an introduction to these typescript features in a more general context.</p>
+<p>This post describes how the <a href="https://github.com/emmanueltouzery/prelude.ts">prelude.ts</a> functional programming library takes advantage of typescript type guards and conditional types. It also introduces these typescript features in a more general context.</p>
 <h2 id="what-are-type-guards">What are type guards</h2>
-<h3 id="predicates">Predicates</h3>
-<p>Let’s first define predicates: predicates are functions returning booleans. For instance, <code>isPositive</code> is a predicate:</p>
+<h3 id="predicates-and-type-guards">Predicates and type guards</h3>
+<p>Let’s first define <em>predicates</em>: predicates are functions returning booleans. For instance, <code>isPositive</code> is a predicate:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb1-1" data-line-number="1">function <span class="fu">isPositive</span>(x: number): <span class="dt">boolean</span> { <span class="kw">return</span> x &gt;= <span class="dv">0</span>; }</a></code></pre></div>
 <p>Type guards, then, are special types of predicates. What they return can be seen as special kinds of booleans. Type guards live purely in the type world and have no effect on the runtime at all. You can use a type guard to let the compiler infer a more precise type for a value in a certain context.</p>
 <h3 id="problem-to-solve">Problem to solve</h3>
@@ -65,7 +65,8 @@
 <a class="sourceLine" id="cb6-4" data-line-number="4">    console.<span class="fu">log</span>(option.<span class="fu">getOrThrow</span>());</a>
 <a class="sourceLine" id="cb6-5" data-line-number="5">}</a></code></pre></div>
 <p>That’s right, we must cast to <code>Some</code>, how would the compiler know for sure that we are in fact dealing with a Some? We can see the <code>if</code>, but the compiler doesn’t know it’s relevant if we don’t tell it.</p>
-<p>For that purpose, typescript supports <a href="https://blog.mariusschulz.com/2016/09/30/typescript-2-0-control-flow-based-type-analysis">flow control analysis</a> when <a href="https://www.typescriptlang.org/docs/handbook/advanced-types.html#type-guards-and-differentiating-types">type guards</a> are present.</p>
+<h3 id="introducing-type-guards">Introducing type guards</h3>
+<p>When using <a href="https://www.typescriptlang.org/docs/handbook/advanced-types.html#type-guards-and-differentiating-types">type guards</a>, typescript does <a href="https://blog.mariusschulz.com/2016/09/30/typescript-2-0-control-flow-based-type-analysis">flow control analysis</a> (pioneered by <a href="https://github.com/facebook/flow">Facebook’s flow</a>) so that the explicit type cast is not necessary.</p>
 <p>In prelude, both <code>Some</code> and <code>None</code> offer a <code>isSome</code> and a <code>isNone</code> method. But instead of returning <code>boolean</code>, they return <code>x is Some&lt;T&gt;</code> and <code>x is None&lt;T&gt;</code>.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">class</span> Some&lt;T&gt; {</a>
 <a class="sourceLine" id="cb7-2" data-line-number="2">    <span class="fu">isSome</span>(): <span class="kw">this</span> is Some&lt;T&gt; { <span class="kw">return</span> <span class="kw">true</span>; }</a>
@@ -82,16 +83,16 @@
 <a class="sourceLine" id="cb8-4" data-line-number="4">} <span class="kw">else</span> {</a>
 <a class="sourceLine" id="cb8-5" data-line-number="5">    <span class="co">// here myOption has type None&lt;number&gt;</span></a>
 <a class="sourceLine" id="cb8-6" data-line-number="6">}</a></code></pre></div>
-<p>So the static type of the variable as seen by the compiler will depend on the context in which the variable is used. It is flow analysis (pioneered by <a href="https://github.com/facebook/flow">Facebook’s flow</a>).</p>
+<p>So the static type of the variable as seen by the compiler will depend on the context in which the variable is used. That is the code flow analysis we were referring to previously.</p>
 <p>Careful though. We’ll get the <code>None</code> type in the <code>else</code> branch only if we use the <code>type Option&lt;T&gt; = Some&lt;T&gt; | None&lt;T&gt;</code> and NOT if we use the inheritance form (abstract class <code>Option</code>, and <code>Some</code> and <code>None</code> extending it). The reason is that inheritance is an “open” relationship: you can add at any time a third class which would inherit from <code>Option</code> and so the typescript compiler cannot say for sure that if the type is not <code>Some</code>, that it then must be <code>None</code>. But if we say quite literally that <code>Option=Some|None</code> instead of using inheritance, then the compiler can do that.</p>
 <p>So, no more casts in our <code>if</code> and <code>else</code>, and less unsafe <code>getOrThrow</code> calls. That’s already awesome, but we’re just getting started!</p>
-<p>Before we move on further with type guards, note that about the <code>Option</code> case in particular, let me mention that prelude.ts also offers a pretty nice <a href="http://emmanueltouzery.github.io/prelude.ts/latest/apidoc/classes/option.some.html#match">match</a> method on Option, enabling to do:</p>
+<p>Before we move on further with type guards, note that about the <code>Option</code> case in particular, let me mention that prelude.ts also offers a pretty nice <a href="http://emmanueltouzery.github.io/prelude.ts/latest/apidoc/classes/option.some.html#match">match</a> <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> method on Option, enabling to do:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="bu">Option</span>.<span class="fu">of</span>(<span class="dv">5</span>).<span class="fu">match</span>({</a>
 <a class="sourceLine" id="cb9-2" data-line-number="2">    Some: x  =&gt; <span class="st">&quot;got &quot;</span> + x,</a>
 <a class="sourceLine" id="cb9-3" data-line-number="3">    None: () =&gt; <span class="st">&quot;got nothing!&quot;</span></a>
 <a class="sourceLine" id="cb9-4" data-line-number="4">});</a>
 <a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co">// =&gt; &quot;got 5&quot;</span></a></code></pre></div>
-<p><code>match</code> is the catamorphism for <code>Option</code>. But now, back to type guards!</p>
+<p>But now, back to type guards!</p>
 <h2 id="use-in-filter">Use in <code>filter</code></h2>
 <p>Besides “simple” cases like <code>if</code> statements, type guards can also be used (even in the typescript standard library, on <code>Array</code>, and also in prelude.ts’s collections of course) on <code>filter</code> for instance.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="bu">Vector</span>.<span class="fu">of</span>(<span class="bu">Option</span>.<span class="fu">of</span>(<span class="dv">2</span>), <span class="bu">Option</span>.<span class="fu">none</span>&lt;number&gt;(), <span class="bu">Option</span>.<span class="fu">of</span>(<span class="dv">3</span>))</a>
@@ -193,6 +194,12 @@
 <h2 id="takeaway">Takeaway</h2>
 <p>Type guards and conditional types allow us to give more information to the type checker so that the compiler can infer a more precise static type for values, letting us write safer programs. These mechanisms, like all type-level mechanisms in typescript, have no effect at runtime, they only allow us to express to the compiler type-level reasonings that the developer would otherwise do mentally: now they can be double-checked and made explicit by the machine.</p>
 <p>That’s it for today! You can learn more about my typescript functional library prelude.ts through its <a href="https://github.com/emmanueltouzery/prelude.ts">website</a>, <a href="https://github.com/emmanueltouzery/prelude.ts/wiki/Prelude.ts-user-guide">user guide</a> and <a href="http://emmanueltouzery.github.io/prelude.ts/latest/apidoc/globals.html">apidocs</a>.</p>
+<section class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>some trivia: <code>match</code> is the catamorphism for <code>Option</code>.<a href="#fnref1" class="footnote-back">↩</a></p></li>
+</ol>
+</section>
 
 <div id="disqus_thread"></div>
 <script>
