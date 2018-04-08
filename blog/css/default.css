@@ -1,10 +1,10 @@
-/* html { */
-/*     font-size: 18px; */
-/* } */
+html {
+    font-size: 18px;
+}
 
 body {
     color: #000000;
-    font-size: 1rem;
+    font-size: 0.9rem;
     margin: 0px auto 0px auto;
     width: 780px;
     font-family: "Roboto",Helvetica,sans-serif;
@@ -17,14 +17,6 @@ a:link {color:#326891; text-decoration:none;}
 a:visited {color:#326891; text-decoration:none;}
 a:hover {color:#326891; text-decoration:none;}
 
-/* try to fix mobile font sizes */
-body, html {
-    -ms-text-size-adjust: 100%;
-    -moz-text-size-adjust: 100%;
-    -o-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-}
-
 div.sourceCode pre {
     padding: 15px;
     background-color: #f6f8fa;
@@ -32,7 +24,7 @@ div.sourceCode pre {
 
 code, .sourceCode {
     font-family: 'Roboto Mono', monospace;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     background-color: #f6f8fa;
 }
 
