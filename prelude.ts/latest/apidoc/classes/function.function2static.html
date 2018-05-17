@@ -114,7 +114,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/afde512/src/Function.ts#L638">src/Function.ts:638</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Function.ts#L658">src/Function.ts:658</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -156,17 +156,22 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/afde512/src/Function.ts#L737">src/Function.ts:737</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Function.ts#L764">src/Function.ts:764</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Take a two-parameter partial function (may return undefined or throw),
-										and lift it to return an <a href="../files/either.html">Either</a> instead.
-										Note that unlike the <a href="function.function2static.html#liftoption">Function2Static.liftOption</a> version, if
-										the function returns undefined, the liftEither version will throw
-									(the liftOption version returns None()).</p>
+									and lift it to return an <a href="../files/either.html">Either</a> instead.</p>
 								</div>
+								<p>Note that unlike the <a href="function.function2static.html#liftoption">Function2Static.liftOption</a> version, if
+									the function returns undefined, the liftEither version will throw
+									(the liftOption version returns None()): if you want to do
+									pure side-effects which may throw, you&#39;re better off just using
+								javascript try blocks.</p>
+								<p>When using typescript, to help the compiler infer the left type,
+									you can either pass a second parameter like <code>{} as &lt;type&gt;</code>, or
+								call with <code>try_&lt;L,R&gt;(...)</code>.</p>
 								<pre><code>const add = Function2.liftEither((<span class="hljs-symbol">x:nu</span>mber,<span class="hljs-symbol">y:nu</span>mber) =&gt; x+y, {} as string);
 add(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>);
 =&gt; Either.right(<span class="hljs-number">3</span>)
@@ -239,7 +244,7 @@ throws(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>);
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/afde512/src/Function.ts#L708">src/Function.ts:708</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Function.ts#L728">src/Function.ts:728</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -323,7 +328,7 @@ throws(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>);
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/afde512/src/Function.ts#L677">src/Function.ts:677</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Function.ts#L697">src/Function.ts:697</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -405,7 +410,7 @@ throws(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>);
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/afde512/src/Function.ts#L646">src/Function.ts:646</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Function.ts#L666">src/Function.ts:666</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">

@@ -114,7 +114,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/afde512/src/Function.ts#L771">src/Function.ts:771</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Function.ts#L798">src/Function.ts:798</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -159,17 +159,22 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/afde512/src/Function.ts#L881">src/Function.ts:881</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Function.ts#L915">src/Function.ts:915</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Take a three-parameter partial function (may return undefined or throw),
-										and lift it to return an <a href="../files/either.html">Either</a> instead.
-										Note that unlike the <a href="function.function3static.html#liftoption">Function3Static.liftOption</a> version, if
-										the function returns undefined, the liftEither version will throw
-									(the liftOption version returns None()).</p>
+									and lift it to return an <a href="../files/either.html">Either</a> instead.</p>
 								</div>
+								<p>Note that unlike the <a href="function.function3static.html#liftoption">Function3Static.liftOption</a> version, if
+									the function returns undefined, the liftEither version will throw
+									(the liftOption version returns None()): if you want to do
+									pure side-effects which may throw, you&#39;re better off just using
+								javascript try blocks.</p>
+								<p>When using typescript, to help the compiler infer the left type,
+									you can either pass a second parameter like <code>{} as &lt;type&gt;</code>, or
+								call with <code>try_&lt;L,R&gt;(...)</code>.</p>
 								<pre><code>const add3 = Function3.liftEither((<span class="hljs-symbol">x:nu</span>mber,<span class="hljs-symbol">y:nu</span>mber,<span class="hljs-symbol">z:nu</span>mber) =&gt; x+y+z, {} as string);
 add3(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>);
 =&gt; Either.right(<span class="hljs-number">6</span>)
@@ -248,7 +253,7 @@ throws(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<sp
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/afde512/src/Function.ts#L851">src/Function.ts:851</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Function.ts#L878">src/Function.ts:878</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -342,7 +347,7 @@ throws(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<sp
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/afde512/src/Function.ts#L815">src/Function.ts:815</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Function.ts#L842">src/Function.ts:842</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -434,7 +439,7 @@ throws(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<sp
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/afde512/src/Function.ts#L779">src/Function.ts:779</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Function.ts#L806">src/Function.ts:806</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">

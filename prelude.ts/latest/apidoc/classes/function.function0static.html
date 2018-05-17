@@ -114,7 +114,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/afde512/src/Function.ts#L367">src/Function.ts:367</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Function.ts#L367">src/Function.ts:367</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -150,17 +150,22 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/afde512/src/Function.ts#L464">src/Function.ts:464</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Function.ts#L477">src/Function.ts:477</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Take a no-parameter partial function (may return undefined or throw),
-										and lift it to return an <a href="../files/either.html">Either</a> instead.
-										Note that unlike the <a href="function.function1static.html#of">Function1Static.of</a> version, if
-										the function returns undefined, the liftEither version will throw
-									(the liftOption version returns None()).</p>
+									and lift it to return an <a href="../files/either.html">Either</a> instead.</p>
 								</div>
+								<p>Note that unlike the <a href="function.function0static.html#liftoption">Function0Static.liftOption</a> version, if
+									the function returns undefined, the liftEither version will throw
+									(the liftOption version returns None()): if you want to do
+									pure side-effects which may throw, you&#39;re better off just using
+								javascript try blocks.</p>
+								<p>When using typescript, to help the compiler infer the left type,
+									you can either pass a second parameter like <code>{} as &lt;type&gt;</code>, or
+								call with <code>try_&lt;L,R&gt;(...)</code>.</p>
 								<pre><code>const eitherRand = Function0.liftEither(Math.random, {} as string);
 eitherRand();
 =&gt; Either.right(<span class="hljs-number">0.49884723907769635</span>)
@@ -172,7 +177,7 @@ undef();
 const throws = Function0.liftEither(() =&gt; {throw <span class="hljs-string">"x"</span>});
 throws();
 =&gt; Either.left(<span class="hljs-string">"x"</span>)
-</code></pre>
+</code></pre><p>Also see <a href="either.eitherstatic.html#try_">EitherStatic.try_</a></p>
 							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
@@ -218,7 +223,7 @@ throws();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/afde512/src/Function.ts#L435">src/Function.ts:435</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Function.ts#L439">src/Function.ts:439</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -242,7 +247,8 @@ nl();
 const throws = Function0.liftNullable(()=&gt;{throw <span class="hljs-string">"x"</span>});
 throws();
 =&gt; Option.none()
-</code></pre>
+</code></pre><p>Also see <a href="function.function0static.html#liftoption">Function0Static.liftOption</a>, <a href="option.optionstatic.html#try_">OptionStatic.try_</a> and
+								<a href="option.optionstatic.html#trynullable">OptionStatic.tryNullable</a></p>
 							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
@@ -287,7 +293,7 @@ throws();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/afde512/src/Function.ts#L403">src/Function.ts:403</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Function.ts#L405">src/Function.ts:405</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -311,7 +317,8 @@ nl();
 const throws = Function0.liftOption(()=&gt;{throw <span class="hljs-string">"x"</span>});
 throws();
 =&gt; Option.none()
-</code></pre>
+</code></pre><p>Also see <a href="function.function0static.html#liftnullable">Function0Static.liftNullable</a>, <a href="option.optionstatic.html#try_">OptionStatic.try_</a> and
+								<a href="option.optionstatic.html#trynullable">OptionStatic.tryNullable</a></p>
 							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
@@ -354,7 +361,7 @@ throws();
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/afde512/src/Function.ts#L375">src/Function.ts:375</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Function.ts#L375">src/Function.ts:375</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
