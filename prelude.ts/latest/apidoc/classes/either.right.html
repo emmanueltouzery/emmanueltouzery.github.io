@@ -125,6 +125,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="either.right.html#bimap" class="tsd-kind-icon">bimap</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="either.right.html#contains" class="tsd-kind-icon">contains</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="either.right.html#equals" class="tsd-kind-icon">equals</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="either.right.html#filter" class="tsd-kind-icon">filter</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="either.right.html#flatmap" class="tsd-kind-icon">flat<wbr>Map</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="either.right.html#get" class="tsd-kind-icon">get</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="either.right.html#getleftorelse" class="tsd-kind-icon">get<wbr>Left<wbr>OrElse</a></li>
@@ -164,7 +165,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Either.ts#L543">src/Either.ts:543</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b5309f1/src/Either.ts#L584">src/Either.ts:584</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -190,7 +191,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Either.ts#L603">src/Either.ts:603</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b5309f1/src/Either.ts#L644">src/Either.ts:644</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -267,7 +268,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Either.ts#L568">src/Either.ts:568</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b5309f1/src/Either.ts#L609">src/Either.ts:609</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -295,7 +296,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Either.ts#L746">src/Either.ts:746</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b5309f1/src/Either.ts#L806">src/Either.ts:806</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -315,6 +316,82 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="filter" class="tsd-anchor"></a>
+					<h3>filter</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">filter<span class="tsd-signature-symbol">(</span>p<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span>, ifLeft<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../files/either.html#either-1" class="tsd-signature-type">Either</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">L</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b5309f1/src/Either.ts#L660">src/Either.ts:660</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>&quot;filter&quot; the either. If it was a Left, it stays a Left.
+										If it was a Right and the predicate you pass returns
+										true for its value, return the either unchanged.
+										But if it was a left and the predicate returns false,
+										return a Left with the value returned by the function
+									passed as second parameter.</p>
+								</div>
+								<pre><code>Either.right&lt;string,number&gt;(-<span class="hljs-number">3</span>)
+    .filter(x =&gt; x &gt;= <span class="hljs-number">0</span>, v =&gt; <span class="hljs-string">"got negative value: "</span> + v);
+=&gt; Either.left&lt;string,number&gt;(<span class="hljs-string">"got negative value: -3"</span>)
+</code></pre>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>p: <span class="tsd-signature-type">function</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-siganture">
+											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5>x: <span class="tsd-signature-type">R</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<h5>ifLeft: <span class="tsd-signature-type">function</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-siganture">
+											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">L</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5>x: <span class="tsd-signature-type">R</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">L</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../files/either.html#either-1" class="tsd-signature-type">Either</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">L</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
 					<a name="flatmap" class="tsd-anchor"></a>
 					<h3>flat<wbr>Map</h3>
@@ -325,7 +402,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Either.ts#L586">src/Either.ts:586</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b5309f1/src/Either.ts#L627">src/Either.ts:627</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -380,7 +457,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Either.ts#L652">src/Either.ts:652</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b5309f1/src/Either.ts#L712">src/Either.ts:712</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -404,7 +481,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Either.ts#L688">src/Either.ts:688</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b5309f1/src/Either.ts#L748">src/Either.ts:748</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -433,7 +510,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Either.ts#L680">src/Either.ts:680</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b5309f1/src/Either.ts#L740">src/Either.ts:740</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -464,7 +541,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Either.ts#L670">src/Either.ts:670</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b5309f1/src/Either.ts#L730">src/Either.ts:730</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -493,7 +570,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Either.ts#L662">src/Either.ts:662</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b5309f1/src/Either.ts#L722">src/Either.ts:722</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -524,7 +601,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Either.ts#L726">src/Either.ts:726</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b5309f1/src/Either.ts#L786">src/Either.ts:786</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -541,7 +618,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Either.ts#L737">src/Either.ts:737</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b5309f1/src/Either.ts#L797">src/Either.ts:797</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -565,7 +642,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Either.ts#L628">src/Either.ts:628</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b5309f1/src/Either.ts#L688">src/Either.ts:688</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -612,7 +689,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Either.ts#L619">src/Either.ts:619</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b5309f1/src/Either.ts#L679">src/Either.ts:679</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -659,7 +736,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Either.ts#L768">src/Either.ts:768</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b5309f1/src/Either.ts#L828">src/Either.ts:828</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -681,7 +758,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Either.ts#L554">src/Either.ts:554</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b5309f1/src/Either.ts#L595">src/Either.ts:595</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -703,7 +780,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Either.ts#L561">src/Either.ts:561</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b5309f1/src/Either.ts#L602">src/Either.ts:602</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -725,7 +802,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Either.ts#L576">src/Either.ts:576</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b5309f1/src/Either.ts#L617">src/Either.ts:617</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -778,7 +855,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Either.ts#L595">src/Either.ts:595</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b5309f1/src/Either.ts#L636">src/Either.ts:636</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -832,7 +909,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Either.ts#L643">src/Either.ts:643</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b5309f1/src/Either.ts#L703">src/Either.ts:703</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -876,7 +953,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Either.ts#L611">src/Either.ts:611</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b5309f1/src/Either.ts#L671">src/Either.ts:671</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -905,7 +982,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Either.ts#L714">src/Either.ts:714</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b5309f1/src/Either.ts#L774">src/Either.ts:774</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -929,7 +1006,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Either.ts#L696">src/Either.ts:696</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b5309f1/src/Either.ts#L756">src/Either.ts:756</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -952,7 +1029,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Either.ts#L761">src/Either.ts:761</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b5309f1/src/Either.ts#L821">src/Either.ts:821</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -974,7 +1051,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Either.ts#L705">src/Either.ts:705</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b5309f1/src/Either.ts#L765">src/Either.ts:765</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -998,7 +1075,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/256488d/src/Either.ts#L722">src/Either.ts:722</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/b5309f1/src/Either.ts#L782">src/Either.ts:782</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1099,6 +1176,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="either.right.html#equals" class="tsd-kind-icon">equals</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="either.right.html#filter" class="tsd-kind-icon">filter</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
 								<a href="either.right.html#flatmap" class="tsd-kind-icon">flat<wbr>Map</a>

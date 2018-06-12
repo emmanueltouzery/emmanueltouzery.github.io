@@ -69,7 +69,7 @@
 				written in typescript, it&#39;s perfectly usable from javascript (including ES5)!</p>
 				<p>It provides <a href="https://en.wikipedia.org/wiki/Persistent_data_structure">persistent</a>
 					immutable collections (Vector, Set, Map, Stream), and constructs such as Option,
-				Either and Predicate.</p>
+				Either, Predicate and Future.</p>
 				<pre><code class="lang-typescript">Vector.of(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)
   .map(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> x*<span class="hljs-number">2</span>)
   .head()
@@ -91,7 +91,7 @@ HashMap.of([<span class="hljs-string">"a"</span>,<span class="hljs-number">1</sp
 				<p>The collections are also javascript iterables, so if you have an ES6 runtime,
 					you can use the <code>for .. of</code> construct on them. If you&#39;re not familiar with
 					immutable collections, <code>list.append(newItem)</code> keeps <code>list</code> unchanged; <code>append()</code>
-				returns a new list. Immutability helps reasonning about code.</p>
+				returns a new list. Immutability helps reasoning about code.</p>
 				<p>You can check the <strong><a href="https://github.com/emmanueltouzery/prelude.ts/wiki/Prelude.ts-user-guide">User Guide</a></strong>, and browse the
 					<strong><a href="http://emmanueltouzery.github.io/prelude.ts/latest/apidoc/globals.html">API documentation</a></strong>,
 					or our <strong><a href="http://emmanueltouzery.github.io/blog/tags/prelude.ts.html">blog</a></strong>.
@@ -104,8 +104,8 @@ HashMap.of([<span class="hljs-string">"a"</span>,<span class="hljs-number">1</sp
 					<code>Vector</code> is implemented through a
 					<a href="http://hypirion.com/musings/understanding-persistent-vector-pt-1">bit-mapped vector trie</a>.
 					In addition the library is written in idiomatic javascript style, with loops
-					instead of recursion, so the performance should be reasonable
-				(<a href="https://github.com/emmanueltouzery/prelude.ts/wiki/Benchmarks">see benchmarks here</a>).</p>
+					instead of recursion, so the performance should be good
+				(<a href="https://github.com/emmanueltouzery/prelude.ts/wiki/Benchmarks">see benchmarks here comparing to immutable.js and more</a>).</p>
 				<h2 id="set-map-and-equality">Set, Map and equality</h2>
 				<p>Javascript doesn&#39;t have structural equality, except for primitive types.
 					So, <code>1 === 1</code> is true. But <code>[1] === [1]</code> is not, and neither <code>{a:1} === {a:1}</code>.
@@ -173,7 +173,6 @@ HashMap.of([<span class="hljs-string">"a"</span>,<span class="hljs-number">1</sp
 				<h2 id="wishlist-upcoming-features">Wishlist/upcoming features</h2>
 				<ul>
 					<li>CharSeq, a string wrapper?</li>
-					<li>Future, wrapping promises?</li>
 					<li>Non-empty vector? (already have <a href="http://emmanueltouzery.github.io/prelude.ts/latest/apidoc/classes/linkedlist.conslinkedlist.html">non-empty linkedlist</a>)</li>
 					<li>More functions on existing classes</li>
 				</ul>
@@ -189,7 +188,8 @@ HashMap.of([<span class="hljs-string">"a"</span>,<span class="hljs-number">1</sp
 				<h2 id="alternatives-and-influences">Alternatives and Influences</h2>
 				<ul>
 					<li><a href="https://monet.github.io/monet.js/">monet.js</a> -- only has the <code>List</code> and
-					<code>Option</code> collections, implemented in functional-style ES5.</li>
+						<code>Option</code> collections, implemented in functional-style ES5. The implementation,
+					using recursion, means its list type is noticeably slower than prelude.ts&#39;s.</li>
 					<li><a href="https://facebook.github.io/immutable-js/">immutables.js</a> -- doesn&#39;t have the
 					<code>Option</code> concept, the types can be clunky.</li>
 					<li><a href="https://github.com/sanctuary-js/sanctuary">sanctuary</a>
@@ -207,8 +207,15 @@ HashMap.of([<span class="hljs-string">"a"</span>,<span class="hljs-number">1</sp
 					are opt-in.</li>
 					<li><a href="https://lodash.com">lodash</a> also has the global functions, and many functions
 					mutate the collections.</li>
-					<li><a href="http://www.vavr.io/">vavr</a> -- it&#39;s a java library, but it&#39;s the main inspiration for prelude.ts.</li>
+					<li><a href="http://www.vavr.io/">vavr</a> -- it&#39;s a java library, but it&#39;s the main inspiration for prelude.ts.
+						Note that vavr is inspired by the scala library, so prelude.ts also is,
+					transitively.</li>
 				</ul>
+				<h2 id="typescript-version">Typescript version</h2>
+				<p>If you&#39;re getting the error <code>error TS2304: Cannot find name &#39;Exclude&#39;</code> when building
+					prelude.ts, it means your version of typescript is too old. You can try prelude.ts
+					0.7.5, which didn&#39;t require such a new version, but versions after 0.7.5 require
+				typescript 2.8.3 or newer.</p>
 				<h2 id="commands">Commands</h2>
 				<pre><code>npm install
 
@@ -254,6 +261,9 @@ npm <span class="hljs-keyword">run</span><span class="bash"> benchmarks</span>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="classes/future.html" class="tsd-kind-icon">Future</a>
+					</li>
 					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="classes/hashmap.html" class="tsd-kind-icon">Hash<wbr>Map</a>
 					</li>
