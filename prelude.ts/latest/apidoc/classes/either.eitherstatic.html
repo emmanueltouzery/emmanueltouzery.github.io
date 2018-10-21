@@ -90,6 +90,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="either.eitherstatic.html#isleft" class="tsd-kind-icon">is<wbr>Left</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="either.eitherstatic.html#isright" class="tsd-kind-icon">is<wbr>Right</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="either.eitherstatic.html#left" class="tsd-kind-icon">left</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="either.eitherstatic.html#lift" class="tsd-kind-icon">lift</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="either.eitherstatic.html#lifta2" class="tsd-kind-icon">lift<wbr>A2</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="either.eitherstatic.html#liftap" class="tsd-kind-icon">lift<wbr>Ap</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="either.eitherstatic.html#liftapacc" class="tsd-kind-icon">lift<wbr>ApAcc</a></li>
@@ -115,7 +116,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/6214ccf/src/Either.ts#L58">src/Either.ts:58</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c492457/src/Either.ts#L58">src/Either.ts:58</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -158,7 +159,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/6214ccf/src/Either.ts#L71">src/Either.ts:71</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c492457/src/Either.ts#L71">src/Either.ts:71</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -201,7 +202,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/6214ccf/src/Either.ts#L38">src/Either.ts:38</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c492457/src/Either.ts#L38">src/Either.ts:38</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -229,6 +230,106 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+					<a name="lift" class="tsd-anchor"></a>
+					<h3>lift</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">lift&lt;T, L, U&gt;<span class="tsd-signature-symbol">(</span>fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span>, witness<span class="tsd-signature-symbol">?: </span><a href="" class="tsd-signature-type">L</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c492457/src/Either.ts#L306">src/Either.ts:306</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Take a partial function (may return undefined or throw),
+									and lift it to return an <a href="../files/either.html#either-1">Either</a> instead.</p>
+								</div>
+								<p>Note that unlike the <a href="option.optionstatic.html#lift">OptionStatic.lift</a> version, if
+									the function returns undefined, the Either.lift version will throw
+									(the Option.lift version returns None()): if you want to do
+									pure side-effects which may throw, you&#39;re better off just using
+								javascript try blocks.</p>
+								<p>When using typescript, to help the compiler infer the left type,
+									you can either pass a second parameter like <code>{} as &lt;type&gt;</code>, or
+								call with <code>lift&lt;L,R&gt;(...)</code>.</p>
+								<pre><code>const add = Either.lift((<span class="hljs-symbol">x:nu</span>mber,<span class="hljs-symbol">y:nu</span>mber) =&gt; x+y, {} as string);
+add(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>);
+=&gt; Either.right(<span class="hljs-number">3</span>)
+
+const undef = Either.lift((<span class="hljs-symbol">x:nu</span>mber,<span class="hljs-symbol">y:nu</span>mber,<span class="hljs-symbol">z:nu</span>mber) =&gt; undefined);
+undef(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>);
+=&gt; throws
+
+const throws = Either.lift(() =&gt; {throw <span class="hljs-string">"x"</span>});
+throws();
+=&gt; Either.left(<span class="hljs-string">"x"</span>)
+</code></pre>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h4>
+								</li>
+								<li>
+									<h4>L</h4>
+								</li>
+								<li>
+									<h4>U</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>fn: <span class="tsd-signature-type">function</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-siganture">
+											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">U</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">T</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">U</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> witness: <a href="" class="tsd-signature-type">L</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">function</span></h4>
+							<ul class="tsd-parameters">
+								<li class="tsd-parameter-siganture">
+									<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+										<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../files/either.html#either-1" class="tsd-signature-type">Either</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">L</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span></li>
+									</ul>
+									<ul class="tsd-descriptions">
+										<li class="tsd-description">
+											<h4 class="tsd-parameters-title">Parameters</h4>
+											<ul class="tsd-parameters">
+												<li>
+													<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">T</span></h5>
+												</li>
+											</ul>
+											<h4 class="tsd-returns-title">Returns <a href="../files/either.html#either-1" class="tsd-signature-type">Either</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">L</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span></h4>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
 					<a name="lifta2" class="tsd-anchor"></a>
 					<h3>lift<wbr>A2</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
@@ -238,7 +339,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/6214ccf/src/Either.ts#L184">src/Either.ts:184</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c492457/src/Either.ts#L184">src/Either.ts:184</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -356,7 +457,7 @@ lifted(
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/6214ccf/src/Either.ts#L216">src/Either.ts:216</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c492457/src/Either.ts#L216">src/Either.ts:216</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -466,7 +567,7 @@ lifted({
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/6214ccf/src/Either.ts#L260">src/Either.ts:260</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c492457/src/Either.ts#L260">src/Either.ts:260</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -579,7 +680,7 @@ lifted({
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/6214ccf/src/Either.ts#L45">src/Either.ts:45</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c492457/src/Either.ts#L45">src/Either.ts:45</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -616,7 +717,7 @@ lifted({
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/6214ccf/src/Either.ts#L94">src/Either.ts:94</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c492457/src/Either.ts#L94">src/Either.ts:94</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -665,7 +766,7 @@ lifted({
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/6214ccf/src/Either.ts#L150">src/Either.ts:150</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c492457/src/Either.ts#L150">src/Either.ts:150</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -715,7 +816,7 @@ lifted({
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/6214ccf/src/Either.ts#L117">src/Either.ts:117</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c492457/src/Either.ts#L117">src/Either.ts:117</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -788,7 +889,7 @@ Either.traverse([<span class="hljs-number">4</span>, -<span class="hljs-number">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/6214ccf/src/Either.ts#L306">src/Either.ts:306</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c492457/src/Either.ts#L346">src/Either.ts:346</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -898,6 +999,9 @@ Either.try_(() =&gt; {throw <span class="hljs-string">"x"</span>});
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
 								<a href="either.eitherstatic.html#left" class="tsd-kind-icon">left</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+								<a href="either.eitherstatic.html#lift" class="tsd-kind-icon">lift</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
 								<a href="either.eitherstatic.html#lifta2" class="tsd-kind-icon">lift<wbr>A2</a>

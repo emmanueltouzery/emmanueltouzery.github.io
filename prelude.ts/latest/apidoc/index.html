@@ -62,7 +62,8 @@
 			<div class="tsd-panel tsd-typography">
 				<h1 id="prelude-ts">prelude.ts</h1>
 				<p><a href="https://www.npmjs.com/package/prelude.ts"><img src="https://img.shields.io/npm/v/prelude.ts.svg?style=flat-square" alt="NPM version"></a>
-				<a href="https://circleci.com/gh/emmanueltouzery/prelude.ts"><img src="https://circleci.com/gh/emmanueltouzery/prelude.ts.svg?style=shield&amp;circle-token=6d8b74ef7ea7d1c204e77c4f88b05348682b4161" alt="Tests"></a></p>
+					<a href="https://circleci.com/gh/emmanueltouzery/prelude.ts"><img src="https://circleci.com/gh/emmanueltouzery/prelude.ts.svg?style=shield&amp;circle-token=6d8b74ef7ea7d1c204e77c4f88b05348682b4161" alt="Tests"></a>
+				<a href="http://emmanueltouzery.github.io/prelude.ts/latest/apidoc/globals.html"><img src="http://emmanueltouzery.github.io/prelude.ts/apidoc.svg" alt="apidoc"></a></p>
 				<h2 id="intro">Intro</h2>
 				<p>Prelude.ts is a typescript library which aims to make functional programming
 					concepts accessible and productive in typescript. Note that even though it&#39;s
@@ -100,12 +101,13 @@ HashMap.of([<span class="hljs-string">"a"</span>,<span class="hljs-number">1</sp
 				<p><code>HashSet</code> and <code>HashMap</code> are implemented using the
 					<a href="http://en.wikipedia.org/wiki/Hash_array_mapped_trie">HAMT algorithm</a>,
 					and concretely the <a href="https://www.npmjs.com/package/hamt_plus">hamt_plus library</a>.
-					This is the only dependency of <code>prelude.ts</code>.
 					<code>Vector</code> is implemented through a
-					<a href="http://hypirion.com/musings/understanding-persistent-vector-pt-1">bit-mapped vector trie</a>.
+					<a href="http://hypirion.com/musings/understanding-persistent-vector-pt-1">bit-mapped vector trie</a>
+					and concretely the <a href="https://github.com/funkia/list/">list library</a>, as of 0.7.7.
 					In addition the library is written in idiomatic javascript style, with loops
 					instead of recursion, so the performance should be good
-				(<a href="https://github.com/emmanueltouzery/prelude.ts/wiki/Benchmarks">see benchmarks here comparing to immutable.js and more</a>).</p>
+					(<a href="https://github.com/emmanueltouzery/prelude.ts/wiki/Benchmarks">see benchmarks here comparing to immutable.js and more</a>).
+				<code>list</code> and <code>hamt_plus</code> are the two only dependencies of prelude.ts.</p>
 				<h2 id="set-map-and-equality">Set, Map and equality</h2>
 				<p>Javascript doesn&#39;t have structural equality, except for primitive types.
 					So, <code>1 === 1</code> is true. But <code>[1] === [1]</code> is not, and neither <code>{a:1} === {a:1}</code>.

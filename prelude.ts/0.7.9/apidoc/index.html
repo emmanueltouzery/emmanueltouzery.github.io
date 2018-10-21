@@ -1,0 +1,377 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>prelude.ts</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">prelude.ts</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1> prelude.ts</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<h1 id="prelude-ts">prelude.ts</h1>
+				<p><a href="https://www.npmjs.com/package/prelude.ts"><img src="https://img.shields.io/npm/v/prelude.ts.svg?style=flat-square" alt="NPM version"></a>
+				<a href="https://circleci.com/gh/emmanueltouzery/prelude.ts"><img src="https://circleci.com/gh/emmanueltouzery/prelude.ts.svg?style=shield&amp;circle-token=6d8b74ef7ea7d1c204e77c4f88b05348682b4161" alt="Tests"></a></p>
+				<h2 id="intro">Intro</h2>
+				<p>Prelude.ts is a typescript library which aims to make functional programming
+					concepts accessible and productive in typescript. Note that even though it&#39;s
+				written in typescript, it&#39;s perfectly usable from javascript (including ES5)!</p>
+				<p>It provides <a href="https://en.wikipedia.org/wiki/Persistent_data_structure">persistent</a>
+					immutable collections (Vector, Set, Map, Stream), and constructs such as Option,
+				Either, Predicate and Future.</p>
+				<pre><code class="lang-typescript">Vector.of(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)
+  .map(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> x*<span class="hljs-number">2</span>)
+  .head()
+<span class="hljs-comment">// =&gt; Option.of(2)</span>
+
+Option.sequence(
+  Vector.of(Option.of(<span class="hljs-number">1</span>), Option.of(<span class="hljs-number">2</span>)))
+<span class="hljs-comment">// =&gt; Option.of(Vector.of(1,2))</span>
+
+Vector.of(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>).groupBy(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> x%<span class="hljs-number">2</span>)
+<span class="hljs-comment">// =&gt; HashMap.of([0, Vector.of(2,4)],[1, Vector.of(1,3)])</span>
+
+Vector.of(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>).zip(<span class="hljs-string">"a"</span>, <span class="hljs-string">"b"</span>, <span class="hljs-string">"c"</span>).takeWhile(<span class="hljs-function">(<span class="hljs-params">[k,v]</span>) =&gt;</span> k&lt;<span class="hljs-number">3</span>)
+<span class="hljs-comment">// Vector.of([1,"a"],[2,"b"])</span>
+
+HashMap.of([<span class="hljs-string">"a"</span>,<span class="hljs-number">1</span>],[<span class="hljs-string">"b"</span>,<span class="hljs-number">2</span>]).get(<span class="hljs-string">"a"</span>)
+<span class="hljs-comment">// Option.of(1)</span>
+</code></pre>
+				<p>The collections are also javascript iterables, so if you have an ES6 runtime,
+					you can use the <code>for .. of</code> construct on them. If you&#39;re not familiar with
+					immutable collections, <code>list.append(newItem)</code> keeps <code>list</code> unchanged; <code>append()</code>
+				returns a new list. Immutability helps reasoning about code.</p>
+				<p>You can check the <strong><a href="https://github.com/emmanueltouzery/prelude.ts/wiki/Prelude.ts-user-guide">User Guide</a></strong>, and browse the
+					<strong><a href="http://emmanueltouzery.github.io/prelude.ts/latest/apidoc/globals.html">API documentation</a></strong>,
+					or our <strong><a href="http://emmanueltouzery.github.io/blog/tags/prelude.ts.html">blog</a></strong>.
+					Note that the constructors are private, and you should use static methods to build
+				items, for instance <code>Option.of</code>, <code>Vector.of</code>, <code>Vector.ofIterable</code>, and so on.</p>
+				<p><code>HashSet</code> and <code>HashMap</code> are implemented using the
+					<a href="http://en.wikipedia.org/wiki/Hash_array_mapped_trie">HAMT algorithm</a>,
+					and concretely the <a href="https://www.npmjs.com/package/hamt_plus">hamt_plus library</a>.
+					This is the only dependency of <code>prelude.ts</code>.
+					<code>Vector</code> is implemented through a
+					<a href="http://hypirion.com/musings/understanding-persistent-vector-pt-1">bit-mapped vector trie</a>.
+					In addition the library is written in idiomatic javascript style, with loops
+					instead of recursion, so the performance should be good
+				(<a href="https://github.com/emmanueltouzery/prelude.ts/wiki/Benchmarks">see benchmarks here comparing to immutable.js and more</a>).</p>
+				<h2 id="set-map-and-equality">Set, Map and equality</h2>
+				<p>Javascript doesn&#39;t have structural equality, except for primitive types.
+					So, <code>1 === 1</code> is true. But <code>[1] === [1]</code> is not, and neither <code>{a:1} === {a:1}</code>.
+					This poses problems for collections, because if you have a <code>Set</code>, you don&#39;t
+				want duplicate elements because of this limited definition of equality.</p>
+				<p>For that reason, prelude.ts encourages you to define for your non-primitive types
+					methods <code>equals(other: any): boolean</code> and <code>hashCode(): number</code> (the same
+					methods that <a href="https://facebook.github.io/immutable-js/docs/#/ValueObject">immutable.js uses</a>).
+					With these methods, structural equality is achievable, and indeed
+					<code>Vector.of(1,2,3).equals(Vector.of(1,2,3))</code> is <code>true</code>. However this can only
+					work if the values you put in collections have themselves properly defined equality
+					(<a href="https://github.com/emmanueltouzery/prelude.ts/wiki/Equality">see how prelude.ts can help</a>).
+					If these values don&#39;t have structural equality, then we can get no better than
+				<code>===</code> behavior.</p>
+				<p>prelude.ts attempts to assist the programmer with this; it tries to encourage
+					the developer to do the right thing. First, it&#39;ll refuse types without obviously properly
+					defined equality in Sets and in Maps keys, so <code>HashSet.of([1])</code>,
+					or <code>Vector.of([1]).equals(Vector.of([2]))</code> will not compile.
+				For both of these, you get (a longer version of) this message:</p>
+				<pre><code><span class="hljs-keyword">Type</span> <span class="hljs-string">'number[]'</span> <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> assignable <span class="hljs-keyword">to</span> <span class="hljs-keyword">type</span> <span class="hljs-string">'HasEquals'</span>.
+  <span class="hljs-keyword">Property</span> <span class="hljs-string">'equals'</span> <span class="hljs-keyword">is</span> missing <span class="hljs-keyword">in</span> <span class="hljs-keyword">type</span> <span class="hljs-string">'number[]'</span>.
+</code></pre><p>But in some less obvious cases, we can&#39;t detect the issue at compile-time, so
+					prelude.ts will reject the code at runtime; for instance if you call
+				<code>HashSet.of(Vector.of([1]))</code> you&#39;ll get an exception at runtime:</p>
+				<pre><code><span class="hljs-keyword">Error </span>building a HashSet: element doesn't support true equality: Vector([1])
+</code></pre><p>(this behavior is <a href="http://emmanueltouzery.github.io/prelude.ts/latest/apidoc/globals.html#setcontractviolationaction">customizable</a>).</p>
+				<h2 id="installation">Installation</h2>
+				<p>Typescript must know about <code>Iterable</code>, an ES6 feature (but present in most browsers)
+					to compile prelude.ts. If you use typescript and target ES5, a minimum change to your tsconfig.json
+				could be to add:</p>
+				<pre><code class="lang-json">&quot;lib&quot;: [&quot;DOM&quot;, &quot;ES5&quot;, &quot;ScriptHost&quot;, &quot;es2015.iterable&quot;]
+</code></pre>
+				<p>(compared to the default es5 settings it only adds &#39;es2015.iterable&#39;)</p>
+				<h3 id="using-in-nodejs">Using in nodejs</h3>
+				<p>Just add the dependency in your <code>package.json</code> and start using it (like
+					<code>import { Vector } from &quot;prelude.ts&quot;;</code>, or <code>const { Vector } = require(&quot;prelude.ts&quot;);</code>
+					if you use commonjs).
+					Everything should work, including type-checking if you use typescript. Prelude.ts also provides
+				pretty-printing in the node REPL.</p>
+				<h3 id="using-in-the-browser">Using in the browser</h3>
+				<p>Add the dependency in your <code>package.json</code>; Typescript should automatically
+				register the type definitions.</p>
+				<p>The npm package contains the files <code>dist/src/prelude_ts.js</code>, <code>dist/src/prelude_ts.min.js</code>,
+					which are UMD bundles; they work with other module systems and set <code>prelude_ts</code>
+					as a window global if no module system is found.
+				include the relevant one in your index.html in script tags:</p>
+				<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"node_files/prelude.ts/dist/src/prelude_ts.min.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+				<p>You shouldn&#39;t have an issue to import prelude.ts in your application, but if you use
+					files it gets a little more complicated; One solution if you use them is to create
+				an <code>imports.d.ts</code> file with the following contents:</p>
+				<pre><code class="lang-typescript"><span class="hljs-comment">// https://github.com/Microsoft/TypeScript/issues/3180#issuecomment-283007750</span>
+<span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> _P <span class="hljs-keyword">from</span> <span class="hljs-string">'prelude.ts'</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">as</span> <span class="hljs-keyword">namespace</span> prelude_ts;
+<span class="hljs-keyword">export</span> = _P;
+</code></pre>
+				<p>Then in a <code>.ts</code> file of your application, outside of a module, you can do:</p>
+				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> Vector = prelude_ts.Vector;
+</code></pre>
+				<p>To get the values without namespace.</p>
+				<p>Finally, if you also include <code>dist/src/chrome_dev_tools_formatters.js</code> through
+					a <code>script</code> tag, and <a href="http://bit.ly/object-formatters">enable Chrome custom formatters</a>,
+					then you can get
+				<a href="https://raw.githubusercontent.com/wiki/emmanueltouzery/prelude.ts/chrome_formatters.png">a nice display of prelude.ts values in the chrome debugger</a>.</p>
+				<h2 id="wishlist-upcoming-features">Wishlist/upcoming features</h2>
+				<ul>
+					<li>CharSeq, a string wrapper?</li>
+					<li>Non-empty vector? (already have <a href="http://emmanueltouzery.github.io/prelude.ts/latest/apidoc/classes/linkedlist.conslinkedlist.html">non-empty linkedlist</a>)</li>
+					<li>More functions on existing classes</li>
+				</ul>
+				<h2 id="out-of-scope-for-prelude-ts">Out of scope for prelude.ts</h2>
+				<ul>
+					<li>Free monads</li>
+					<li>Monad transformers</li>
+					<li>Effect tracking</li>
+					<li>Higher-kinded types simulation</li>
+				</ul>
+				<p>I think these concepts are not expressible in a good enough manner on a language
+				such as typescript.</p>
+				<h2 id="alternatives-and-influences">Alternatives and Influences</h2>
+				<ul>
+					<li><a href="https://monet.github.io/monet.js/">monet.js</a> -- only has the <code>List</code> and
+						<code>Option</code> collections, implemented in functional-style ES5. The implementation,
+					using recursion, means its list type is noticeably slower than prelude.ts&#39;s.</li>
+					<li><a href="https://facebook.github.io/immutable-js/">immutables.js</a> -- doesn&#39;t have the
+					<code>Option</code> concept, the types can be clunky.</li>
+					<li><a href="https://github.com/sanctuary-js/sanctuary">sanctuary</a>
+						offers global functions like <code>S.filter(S.where(...))</code> while prelude.ts prefers a
+						fluent-api style like <code>list.filter(..).sortBy(...)</code>. Also, sanctuary doesn&#39;t
+						offer sets and maps. On the other hand, sanctuary has some JS runtime type system
+					which prelude.ts doesn&#39;t have.</li>
+					<li><a href="http://ramdajs.com/">ramdajs</a> offers global functions like
+						<code>R.filter(R.where(...))</code> while prelude.ts prefers a
+						fluent-api style like <code>list.filter(..).sortBy(...)</code>. Also, ramda doesn&#39;t offer
+						sets and maps. Ramda also uses currying a lot out of the box, which may not
+						be intuitive to a number of developers. In prelude,
+						<a href="http://emmanueltouzery.github.io/prelude.ts/latest/apidoc/interfaces/function.function2.html#curried">currying</a>
+						&amp; <a href="http://emmanueltouzery.github.io/prelude.ts/latest/apidoc/interfaces/function.function2.html#apply1">partial application</a>
+					are opt-in.</li>
+					<li><a href="https://lodash.com">lodash</a> also has the global functions, and many functions
+					mutate the collections.</li>
+					<li><a href="http://www.vavr.io/">vavr</a> -- it&#39;s a java library, but it&#39;s the main inspiration for prelude.ts.
+						Note that vavr is inspired by the scala library, so prelude.ts also is,
+					transitively.</li>
+				</ul>
+				<h2 id="typescript-version">Typescript version</h2>
+				<p>If you&#39;re getting the error <code>error TS2304: Cannot find name &#39;Exclude&#39;</code> when building
+					prelude.ts, it means your version of typescript is too old. You can try prelude.ts
+					0.7.5, which didn&#39;t require such a new version, but versions after 0.7.5 require
+				typescript 2.8.3 or newer.</p>
+				<h2 id="commands">Commands</h2>
+				<pre><code>npm install
+
+npm test
+
+npm <span class="hljs-keyword">run</span><span class="bash">-script docgen
+</span>
+npm <span class="hljs-keyword">run</span><span class="bash"> benchmarks</span>
+</code></pre>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="files/comparison.html">Comparison</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="files/contract.html">Contract</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="files/either.html">Either</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="files/function.html">Function</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="files/linkedlist.html">Linked<wbr>List</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="files/option.html">Option</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="files/predicate.html">Predicate</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="files/stream.html">Stream</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="classes/future.html" class="tsd-kind-icon">Future</a>
+					</li>
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="classes/hashmap.html" class="tsd-kind-icon">Hash<wbr>Map</a>
+					</li>
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="classes/hashset.html" class="tsd-kind-icon">Hash<wbr>Set</a>
+					</li>
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="classes/lazy.html" class="tsd-kind-icon">Lazy</a>
+					</li>
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="classes/tuple2.html" class="tsd-kind-icon">Tuple2</a>
+					</li>
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="classes/vector.html" class="tsd-kind-icon">Vector</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/collection.html" class="tsd-kind-icon">Collection</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/foldable.html" class="tsd-kind-icon">Foldable</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/imap.html" class="tsd-kind-icon">IMap</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/iset.html" class="tsd-kind-icon">ISet</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/seq.html" class="tsd-kind-icon">Seq</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/value.html" class="tsd-kind-icon">Value</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#sortbyspec" class="tsd-kind-icon">Sort<wbr>BySpec</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#sortonspec" class="tsd-kind-icon">Sort<wbr>OnSpec</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">File</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>

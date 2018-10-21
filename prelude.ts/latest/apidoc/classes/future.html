@@ -66,21 +66,10 @@
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
 						<p>A Future is the equivalent, and ultimately wraps, a javascript Promise.
-							A fundamental difference is that Futures are lazy. Just defining a
-							Future won&#39;t trigger its execution, you&#39;ll have to use it for that
-							(call <a href="future.html#map">Future.map</a>, <a href="future.html#flatmap">Future.flatMap</a>, use <code>await</code> on it and so on).
-						This means that a Future can have one of the four states:</p>
+							While Futures support the <a href="future.html#then">Future.then</a> call (so that among others
+							you can use <code>await</code> on them), you should call <a href="future.html#map">Future.map</a> and
+						<a href="future.html#flatmap">Future.flatMap</a>.</p>
 					</div>
-					<ol>
-						<li>not triggered</li>
-						<li>pending</li>
-						<li>fulfilled</li>
-						<li>rejected</li>
-					</ol>
-					<p>That first state doesn&#39;t exist with Javascript Promises. In addition,
-						while Futures support the <a href="future.html#then">Future.then</a> call (so that among others
-						you can use <code>await</code> on them), you should call <a href="future.html#map">Future.map</a> and
-					<a href="future.html#flatmap">Future.flatMap</a>.</p>
 					<p>Futures represent an asynchronous computation. A Future will only ever
 						be computed once at most. Once it&#39;s computed, calling <a href="future.html#map">Future.map</a> or
 					<code>await</code> will return instantly.</p>
@@ -109,14 +98,17 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="future.html#do" class="tsd-kind-icon">do</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="future.html#failed" class="tsd-kind-icon">failed</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="future.html#find" class="tsd-kind-icon">find</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="future.html#firstcompletedof" class="tsd-kind-icon">first<wbr>Completed<wbr>Of</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="future.html#firstsuccessfulof" class="tsd-kind-icon">first<wbr>Successful<wbr>Of</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="future.html#lift" class="tsd-kind-icon">lift</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="future.html#lifta2" class="tsd-kind-icon">lift<wbr>A2</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="future.html#liftap" class="tsd-kind-icon">lift<wbr>Ap</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="future.html#of" class="tsd-kind-icon">of</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="future.html#ofcallbackapi" class="tsd-kind-icon">of<wbr>Callback<wbr>Api</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="future.html#ofcallback" class="tsd-kind-icon">of<wbr>Callback</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="future.html#ofpromisector" class="tsd-kind-icon">of<wbr>Promise<wbr>Ctor</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="future.html#ok" class="tsd-kind-icon">ok</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="future.html#sequence" class="tsd-kind-icon">sequence</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="future.html#traverse" class="tsd-kind-icon">traverse</a></li>
@@ -127,7 +119,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="future.html#oncomplete" class="tsd-kind-icon">on<wbr>Complete</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="future.html#onfailure" class="tsd-kind-icon">on<wbr>Failure</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="future.html#onsuccess" class="tsd-kind-icon">on<wbr>Success</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="future.html#orelse" class="tsd-kind-icon">or<wbr>Else</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="future.html#recoverwith" class="tsd-kind-icon">recover<wbr>With</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="future.html#then" class="tsd-kind-icon">then</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="future.html#topromise" class="tsd-kind-icon">to<wbr>Promise</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="future.html#transform" class="tsd-kind-icon">transform</a></li>
@@ -139,6 +131,61 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+					<a name="do" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> do</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">do&lt;T&gt;<span class="tsd-signature-symbol">(</span>fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="future.html" class="tsd-signature-type">Future</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c492457/src/Future.ts#L85">src/Future.ts:85</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates a Future from a function returning a Promise,
+									which can be inline in the call, for instance:</p>
+								</div>
+								<pre><code><span class="hljs-keyword">const</span> f1 = Future.ok(<span class="hljs-number">1</span>);
+<span class="hljs-keyword">const</span> f2 = Future.ok(<span class="hljs-number">2</span>);
+<span class="hljs-keyword">return</span> Future.<span class="hljs-keyword">do</span>(<span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-keyword">const</span> v1 = <span class="hljs-keyword">await</span> f1;
+    <span class="hljs-keyword">const</span> v2 = <span class="hljs-keyword">await</span> f2;
+    <span class="hljs-keyword">return</span> v1 + v2;
+});
+</code></pre>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>fn: <span class="tsd-signature-type">function</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-siganture">
+											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="future.html" class="tsd-signature-type">Future</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
 					<a name="failed" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> failed</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
@@ -148,7 +195,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/6214ccf/src/Future.ts#L65">src/Future.ts:65</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c492457/src/Future.ts#L69">src/Future.ts:69</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -182,7 +229,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/6214ccf/src/Future.ts#L163">src/Future.ts:163</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c492457/src/Future.ts#L225">src/Future.ts:225</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -240,7 +287,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/6214ccf/src/Future.ts#L97">src/Future.ts:97</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c492457/src/Future.ts#L116">src/Future.ts:116</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -278,7 +325,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/6214ccf/src/Future.ts#L109">src/Future.ts:109</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c492457/src/Future.ts#L128">src/Future.ts:128</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -306,6 +353,80 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+					<a name="lift" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> lift</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">lift&lt;T, U&gt;<span class="tsd-signature-symbol">(</span>fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c492457/src/Future.ts#L301">src/Future.ts:301</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Take a function returning a Promise
+									and lift it to return a <a href="future.html">Future</a> instead.</p>
+								</div>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h4>
+								</li>
+								<li>
+									<h4>U</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>fn: <span class="tsd-signature-type">function</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-siganture">
+											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">T</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">function</span></h4>
+							<ul class="tsd-parameters">
+								<li class="tsd-parameter-siganture">
+									<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+										<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="future.html" class="tsd-signature-type">Future</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span></li>
+									</ul>
+									<ul class="tsd-descriptions">
+										<li class="tsd-description">
+											<h4 class="tsd-parameters-title">Parameters</h4>
+											<ul class="tsd-parameters">
+												<li>
+													<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">T</span></h5>
+												</li>
+											</ul>
+											<h4 class="tsd-returns-title">Returns <a href="future.html" class="tsd-signature-type">Future</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span></h4>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
 					<a name="lifta2" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> lift<wbr>A2</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
@@ -315,7 +436,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/6214ccf/src/Future.ts#L231">src/Future.ts:231</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c492457/src/Future.ts#L293">src/Future.ts:293</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -410,7 +531,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/6214ccf/src/Future.ts#L206">src/Future.ts:206</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c492457/src/Future.ts#L268">src/Future.ts:268</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -496,7 +617,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/6214ccf/src/Future.ts#L51">src/Future.ts:51</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c492457/src/Future.ts#L40">src/Future.ts:40</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -521,25 +642,23 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-					<a name="ofcallbackapi" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> of<wbr>Callback<wbr>Api</h3>
+					<a name="ofcallback" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> of<wbr>Callback</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">of<wbr>Callback<wbr>Api&lt;T&gt;<span class="tsd-signature-symbol">(</span>cb<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="future.html" class="tsd-signature-type">Future</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">of<wbr>Callback&lt;T&gt;<span class="tsd-signature-symbol">(</span>fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="future.html" class="tsd-signature-type">Future</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/6214ccf/src/Future.ts#L43">src/Future.ts:43</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c492457/src/Future.ts#L49">src/Future.ts:49</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Build a Future from callback-style call.
-										You get one callback to signal success, throw to signal
-									failure.</p>
+									<p>Build a Future from a node-style callback API, for instance:</p>
 								</div>
-								<pre><code><span class="hljs-type">Future</span>.ofCallbackApi&lt;<span class="hljs-built_in">string</span>&gt;(<span class="hljs-keyword">done</span> =&gt; setTimeout(<span class="hljs-keyword">done</span>, <span class="hljs-number">10</span>, <span class="hljs-string">"hello!"</span>))
+								<pre><code>Future.ofCallback&lt;<span class="hljs-built_in">string</span>&gt;(<span class="hljs-function"><span class="hljs-params">cb</span> =&gt;</span> fs.readFile(<span class="hljs-string">'/etc/passwd'</span>, <span class="hljs-string">'utf-8'</span>, cb))
 </code></pre>
 							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -551,18 +670,96 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>cb: <span class="tsd-signature-type">function</span></h5>
+									<h5>fn: <span class="tsd-signature-type">function</span></h5>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
 											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
-												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>done<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>cb<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 											</ul>
 											<ul class="tsd-descriptions">
 												<li class="tsd-description">
 													<h4 class="tsd-parameters-title">Parameters</h4>
 													<ul class="tsd-parameters">
 														<li>
-															<h5>done: <span class="tsd-signature-type">function</span></h5>
+															<h5>cb: <span class="tsd-signature-type">function</span></h5>
+															<ul class="tsd-parameters">
+																<li class="tsd-parameter-siganture">
+																	<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+																		<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>err<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, val<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+																	</ul>
+																	<ul class="tsd-descriptions">
+																		<li class="tsd-description">
+																			<h4 class="tsd-parameters-title">Parameters</h4>
+																			<ul class="tsd-parameters">
+																				<li>
+																					<h5>err: <span class="tsd-signature-type">any</span></h5>
+																				</li>
+																				<li>
+																					<h5>val: <span class="tsd-signature-type">T</span></h5>
+																				</li>
+																			</ul>
+																			<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+																		</li>
+																	</ul>
+																</li>
+															</ul>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="future.html" class="tsd-signature-type">Future</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+					<a name="ofpromisector" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> of<wbr>Promise<wbr>Ctor</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">of<wbr>Promise<wbr>Ctor&lt;T&gt;<span class="tsd-signature-symbol">(</span>executor<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="future.html" class="tsd-signature-type">Future</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c492457/src/Future.ts#L33">src/Future.ts:33</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Build a Future in the same way as the &#39;new Promise&#39;
+										constructor.
+										You get one callback to signal success (resolve),
+									failure (reject), or you can throw to signal failure.</p>
+								</div>
+								<pre><code>Future.ofPromiseCtor&lt;<span class="hljs-built_in">string</span>&gt;(<span class="hljs-function"><span class="hljs-params">(resolve,reject)</span> =&gt;</span> setTimeout(resolve, <span class="hljs-number">10</span>, <span class="hljs-string">"hello!"</span>))
+</code></pre>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>executor: <span class="tsd-signature-type">function</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-siganture">
+											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>resolve<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span>, reject<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5>resolve: <span class="tsd-signature-type">function</span></h5>
 															<ul class="tsd-parameters">
 																<li class="tsd-parameter-siganture">
 																	<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
@@ -574,6 +771,27 @@
 																			<ul class="tsd-parameters">
 																				<li>
 																					<h5>x: <span class="tsd-signature-type">T</span></h5>
+																				</li>
+																			</ul>
+																			<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+																		</li>
+																	</ul>
+																</li>
+															</ul>
+														</li>
+														<li>
+															<h5>reject: <span class="tsd-signature-type">function</span></h5>
+															<ul class="tsd-parameters">
+																<li class="tsd-parameter-siganture">
+																	<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+																		<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+																	</ul>
+																	<ul class="tsd-descriptions">
+																		<li class="tsd-description">
+																			<h4 class="tsd-parameters-title">Parameters</h4>
+																			<ul class="tsd-parameters">
+																				<li>
+																					<h5>x: <span class="tsd-signature-type">any</span></h5>
 																				</li>
 																			</ul>
 																			<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -604,7 +822,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/6214ccf/src/Future.ts#L58">src/Future.ts:58</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c492457/src/Future.ts#L62">src/Future.ts:62</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -638,7 +856,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/6214ccf/src/Future.ts#L137">src/Future.ts:137</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c492457/src/Future.ts#L156">src/Future.ts:156</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -669,13 +887,13 @@
 					<a name="traverse" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> traverse</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">traverse&lt;T, U&gt;<span class="tsd-signature-symbol">(</span>elts<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span>, fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="future.html" class="tsd-signature-type">Future</a><span class="tsd-signature-symbol">&lt;</span><a href="vector.html" class="tsd-signature-type">Vector</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">traverse&lt;T, U&gt;<span class="tsd-signature-symbol">(</span>elts<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span>, fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span>, opts<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="future.html" class="tsd-signature-type">Future</a><span class="tsd-signature-symbol">&lt;</span><a href="vector.html" class="tsd-signature-type">Vector</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/6214ccf/src/Future.ts#L151">src/Future.ts:151</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c492457/src/Future.ts#L175">src/Future.ts:175</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -686,6 +904,10 @@
 								</div>
 								<p>But if a single element results in failure, the result also
 								resolves to a failure.</p>
+								<p>There is an optional third parameter to specify options.
+									You can specify <code>{maxConcurrent: number}</code> to request that
+									the futures are not all triggered at the same time, but
+								rather only &#39;number&#39; at a time.</p>
 								<p>Also see <a href="future.html#sequence">Future.sequence</a></p>
 							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -723,6 +945,9 @@
 										</li>
 									</ul>
 								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> opts: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">object</span></h5>
+								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="future.html" class="tsd-signature-type">Future</a><span class="tsd-signature-symbol">&lt;</span><a href="vector.html" class="tsd-signature-type">Vector</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
@@ -738,7 +963,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/6214ccf/src/Future.ts#L319">src/Future.ts:319</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c492457/src/Future.ts#L382">src/Future.ts:382</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -811,7 +1036,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/6214ccf/src/Future.ts#L259">src/Future.ts:259</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c492457/src/Future.ts#L324">src/Future.ts:324</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -822,7 +1047,6 @@
 												Has no effect if the Future was failed. Will turn a successful Future in a failed
 												one if you throw an exception in the map callback (but please don&#39;t
 												do it.. Rather use <a href="future.html#filter">Future.filter</a> or another mechanism).
-												This method is eager, will trigger the underlying Promise.
 									This is the monadic bind.</p>
 								</div>
 							</div>
@@ -870,7 +1094,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/6214ccf/src/Future.ts#L243">src/Future.ts:243</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c492457/src/Future.ts#L311">src/Future.ts:311</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -880,7 +1104,6 @@
 										one if you throw an exception in the map callback (but please don&#39;t
 									do it.. Rather use <a href="future.html#filter">Future.filter</a> or another mechanism).</p>
 								</div>
-								<p>This method is eager, will trigger the underlying Promise.</p>
 							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
@@ -926,7 +1149,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/6214ccf/src/Future.ts#L271">src/Future.ts:271</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c492457/src/Future.ts#L332">src/Future.ts:332</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -934,7 +1157,6 @@
 									<p>Transform the value contained in a failed Future. Has no effect
 									if the Future was successful.</p>
 								</div>
-								<p>This method is eager, will trigger the underlying Promise.</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -974,7 +1196,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/6214ccf/src/Future.ts#L301">src/Future.ts:301</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c492457/src/Future.ts#L365">src/Future.ts:365</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -983,6 +1205,7 @@
 										completed. You get an <a href="../files/either.html">Either</a>, a <code>Right</code> if the Future is a
 									success, a <code>Left</code> if it&#39;s a failure.</p>
 								</div>
+								<p>The Future is unchanged by this call.</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -1022,13 +1245,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/6214ccf/src/Future.ts#L280">src/Future.ts:280</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c492457/src/Future.ts#L341">src/Future.ts:341</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Execute the side-effecting function you give if the Future is a failure.</p>
 								</div>
+								<p>The Future is unchanged by this call.</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -1068,13 +1292,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/6214ccf/src/Future.ts#L290">src/Future.ts:290</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c492457/src/Future.ts#L351">src/Future.ts:351</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Execute the side-effecting function you give if the Future is a success.</p>
 								</div>
+								<p>The Future is unchanged by this call.</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -1105,28 +1330,48 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="orelse" class="tsd-anchor"></a>
-					<h3>or<wbr>Else</h3>
+					<a name="recoverwith" class="tsd-anchor"></a>
+					<h3>recover<wbr>With</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">or<wbr>Else<span class="tsd-signature-symbol">(</span>other<span class="tsd-signature-symbol">: </span><a href="future.html" class="tsd-signature-type">Future</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="future.html" class="tsd-signature-type">Future</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">recover<wbr>With<span class="tsd-signature-symbol">(</span>f<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="future.html" class="tsd-signature-type">Future</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/6214ccf/src/Future.ts#L328">src/Future.ts:328</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c492457/src/Future.ts#L393">src/Future.ts:393</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Has no effect if this Future is successful. If it&#39;s failed however,
-									a Future equivalent to the one given as parameter is returned.</p>
+										the function you give will be called, receiving as parameter
+										the error contents, and a Future equivalent to the one your
+									function returns will be returned.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>other: <a href="future.html" class="tsd-signature-type">Future</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>f: <span class="tsd-signature-type">function</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-siganture">
+											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>err<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="future.html" class="tsd-signature-type">Future</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5>err: <span class="tsd-signature-type">any</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <a href="future.html" class="tsd-signature-type">Future</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="future.html" class="tsd-signature-type">Future</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -1143,14 +1388,13 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/6214ccf/src/Future.ts#L76">src/Future.ts:76</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c492457/src/Future.ts#L95">src/Future.ts:95</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>The <code>then</code> call is not meant to be a part of the <code>Future</code> API,
-										we need then so that <code>await</code> works directly.
-									This method is eager, will trigger the underlying Promise.</p>
+									we need then so that <code>await</code> works directly.</p>
 								</div>
 								<p>Please rather use <a href="future.html#map">Future.map</a> or <a href="future.html#flatmap">Future.flatMap</a>.</p>
 							</div>
@@ -1207,7 +1451,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/6214ccf/src/Future.ts#L85">src/Future.ts:85</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c492457/src/Future.ts#L104">src/Future.ts:104</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1229,7 +1473,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/6214ccf/src/Future.ts#L337">src/Future.ts:337</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c492457/src/Future.ts#L401">src/Future.ts:401</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1290,6 +1534,9 @@
 						<a href="future.html" class="tsd-kind-icon">Future</a>
 						<ul>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+								<a href="future.html#do" class="tsd-kind-icon">do</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
 								<a href="future.html#failed" class="tsd-kind-icon">failed</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
@@ -1302,6 +1549,9 @@
 								<a href="future.html#firstsuccessfulof" class="tsd-kind-icon">first<wbr>Successful<wbr>Of</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+								<a href="future.html#lift" class="tsd-kind-icon">lift</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
 								<a href="future.html#lifta2" class="tsd-kind-icon">lift<wbr>A2</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
@@ -1311,7 +1561,10 @@
 								<a href="future.html#of" class="tsd-kind-icon">of</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-								<a href="future.html#ofcallbackapi" class="tsd-kind-icon">of<wbr>Callback<wbr>Api</a>
+								<a href="future.html#ofcallback" class="tsd-kind-icon">of<wbr>Callback</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+								<a href="future.html#ofpromisector" class="tsd-kind-icon">of<wbr>Promise<wbr>Ctor</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
 								<a href="future.html#ok" class="tsd-kind-icon">ok</a>
@@ -1344,7 +1597,7 @@
 								<a href="future.html#onsuccess" class="tsd-kind-icon">on<wbr>Success</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="future.html#orelse" class="tsd-kind-icon">or<wbr>Else</a>
+								<a href="future.html#recoverwith" class="tsd-kind-icon">recover<wbr>With</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
 								<a href="future.html#then" class="tsd-kind-icon">then</a>

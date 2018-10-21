@@ -93,9 +93,6 @@
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="function.function3static.html#constant" class="tsd-kind-icon">constant</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="function.function3static.html#lifteither" class="tsd-kind-icon">lift<wbr>Either</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="function.function3static.html#liftnullable" class="tsd-kind-icon">lift<wbr>Nullable</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="function.function3static.html#liftoption" class="tsd-kind-icon">lift<wbr>Option</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="function.function3static.html#of" class="tsd-kind-icon">of</a></li>
 							</ul>
 						</section>
@@ -114,7 +111,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/6214ccf/src/Function.ts#L798">src/Function.ts:798</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c492457/src/Function.ts#L475">src/Function.ts:475</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -150,286 +147,6 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-					<a name="lifteither" class="tsd-anchor"></a>
-					<h3>lift<wbr>Either</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">lift<wbr>Either&lt;T1, T2, T3, L, R&gt;<span class="tsd-signature-symbol">(</span>fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span>, witness<span class="tsd-signature-symbol">?: </span><a href="" class="tsd-signature-type">L</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/function.function3.html" class="tsd-signature-type">Function3</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">T2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">T3</span><span class="tsd-signature-symbol">, </span><a href="../files/either.html" class="tsd-signature-type">Either</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">L</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/6214ccf/src/Function.ts#L915">src/Function.ts:915</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Take a three-parameter partial function (may return undefined or throw),
-									and lift it to return an <a href="../files/either.html">Either</a> instead.</p>
-								</div>
-								<p>Note that unlike the <a href="function.function3static.html#liftoption">Function3Static.liftOption</a> version, if
-									the function returns undefined, the liftEither version will throw
-									(the liftOption version returns None()): if you want to do
-									pure side-effects which may throw, you&#39;re better off just using
-								javascript try blocks.</p>
-								<p>When using typescript, to help the compiler infer the left type,
-									you can either pass a second parameter like <code>{} as &lt;type&gt;</code>, or
-								call with <code>try_&lt;L,R&gt;(...)</code>.</p>
-								<pre><code>const add3 = Function3.liftEither((<span class="hljs-symbol">x:nu</span>mber,<span class="hljs-symbol">y:nu</span>mber,<span class="hljs-symbol">z:nu</span>mber) =&gt; x+y+z, {} as string);
-add3(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>);
-=&gt; Either.right(<span class="hljs-number">6</span>)
-
-const undef = Function3.liftEither((<span class="hljs-symbol">x:nu</span>mber,<span class="hljs-symbol">y:nu</span>mber,<span class="hljs-symbol">z:nu</span>mber) =&gt; undefined);
-undef(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>);
-=&gt; throws
-
-const throws = Function3.liftEither((<span class="hljs-symbol">x:nu</span>mber,<span class="hljs-symbol">y:nu</span>mber,<span class="hljs-symbol">z:nu</span>mber) =&gt; {throw <span class="hljs-string">"x"</span>});
-throws(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>);
-=&gt; Either.left(<span class="hljs-string">"x"</span>)
-</code></pre>
-							</div>
-							<h4 class="tsd-type-parameters-title">Type parameters</h4>
-							<ul class="tsd-type-parameters">
-								<li>
-									<h4>T1</h4>
-								</li>
-								<li>
-									<h4>T2</h4>
-								</li>
-								<li>
-									<h4>T3</h4>
-								</li>
-								<li>
-									<h4>L</h4>
-								</li>
-								<li>
-									<h4>R</h4>
-								</li>
-							</ul>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>fn: <span class="tsd-signature-type">function</span></h5>
-									<ul class="tsd-parameters">
-										<li class="tsd-parameter-siganture">
-											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
-												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T1</span>, y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T2</span>, z<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T3</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">R</span></li>
-											</ul>
-											<ul class="tsd-descriptions">
-												<li class="tsd-description">
-													<h4 class="tsd-parameters-title">Parameters</h4>
-													<ul class="tsd-parameters">
-														<li>
-															<h5>x: <span class="tsd-signature-type">T1</span></h5>
-														</li>
-														<li>
-															<h5>y: <span class="tsd-signature-type">T2</span></h5>
-														</li>
-														<li>
-															<h5>z: <span class="tsd-signature-type">T3</span></h5>
-														</li>
-													</ul>
-													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">R</span></h4>
-												</li>
-											</ul>
-										</li>
-									</ul>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> witness: <a href="" class="tsd-signature-type">L</a></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/function.function3.html" class="tsd-signature-type">Function3</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">T2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">T3</span><span class="tsd-signature-symbol">, </span><a href="../files/either.html" class="tsd-signature-type">Either</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">L</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-					<a name="liftnullable" class="tsd-anchor"></a>
-					<h3>lift<wbr>Nullable</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">lift<wbr>Nullable&lt;T1, T2, T3, R&gt;<span class="tsd-signature-symbol">(</span>fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/function.function3.html" class="tsd-signature-type">Function3</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">T2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">T3</span><span class="tsd-signature-symbol">, </span><a href="../files/option.html" class="tsd-signature-type">Option</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/6214ccf/src/Function.ts#L878">src/Function.ts:878</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Take a three-parameter partial function (may return undefined or throw),
-										and lift it to return an <a href="../files/option.html">Option</a> instead.
-									null and undefined become a <a href="option.none.html">None</a>, everything else a <a href="option.some.html">Some</a></p>
-								</div>
-								<pre><code>const add3 = Function3.liftNullable(
-    (<span class="hljs-symbol">x:nu</span>mber,<span class="hljs-symbol">y:nu</span>mber,<span class="hljs-symbol">z:nu</span>mber)=&gt;x+y+z);
-add3(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>);
-=&gt; Option.of(<span class="hljs-number">6</span>)
-
-const undef = Function3.liftNullable(
-    (<span class="hljs-symbol">x:nu</span>mber,<span class="hljs-symbol">y:nu</span>mber,<span class="hljs-symbol">z:nu</span>mber)=&gt;undefined);
-undef(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>);
-=&gt; Option.none()
-
-const nl = Function3.liftNullable(
-    (<span class="hljs-symbol">x:nu</span>mber,<span class="hljs-symbol">y:nu</span>mber,<span class="hljs-symbol">z:nu</span>mber)=&gt;undefined);
-nl(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>);
-=&gt; Option.none()
-
-const throws = Function3.liftNullable(
-    (<span class="hljs-symbol">x:nu</span>mber,<span class="hljs-symbol">y:nu</span>mber,<span class="hljs-symbol">z:nu</span>mber)=&gt;{throw <span class="hljs-string">"x"</span>});
-throws(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>);
-=&gt; Option.none()
-</code></pre>
-							</div>
-							<h4 class="tsd-type-parameters-title">Type parameters</h4>
-							<ul class="tsd-type-parameters">
-								<li>
-									<h4>T1</h4>
-								</li>
-								<li>
-									<h4>T2</h4>
-								</li>
-								<li>
-									<h4>T3</h4>
-								</li>
-								<li>
-									<h4>R</h4>
-								</li>
-							</ul>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>fn: <span class="tsd-signature-type">function</span></h5>
-									<ul class="tsd-parameters">
-										<li class="tsd-parameter-siganture">
-											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
-												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T1</span>, y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T2</span>, z<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T3</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
-											</ul>
-											<ul class="tsd-descriptions">
-												<li class="tsd-description">
-													<h4 class="tsd-parameters-title">Parameters</h4>
-													<ul class="tsd-parameters">
-														<li>
-															<h5>x: <span class="tsd-signature-type">T1</span></h5>
-														</li>
-														<li>
-															<h5>y: <span class="tsd-signature-type">T2</span></h5>
-														</li>
-														<li>
-															<h5>z: <span class="tsd-signature-type">T3</span></h5>
-														</li>
-													</ul>
-													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">R</span>
-														<span class="tsd-signature-symbol"> | </span>
-														<span class="tsd-signature-type">null</span>
-														<span class="tsd-signature-symbol"> | </span>
-														<span class="tsd-signature-type">undefined</span>
-													</h4>
-												</li>
-											</ul>
-										</li>
-									</ul>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/function.function3.html" class="tsd-signature-type">Function3</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">T2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">T3</span><span class="tsd-signature-symbol">, </span><a href="../files/option.html" class="tsd-signature-type">Option</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-					<a name="liftoption" class="tsd-anchor"></a>
-					<h3>lift<wbr>Option</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">lift<wbr>Option&lt;T1, T2, T3, R&gt;<span class="tsd-signature-symbol">(</span>fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/function.function3.html" class="tsd-signature-type">Function3</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">T2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">T3</span><span class="tsd-signature-symbol">, </span><a href="../files/option.html" class="tsd-signature-type">Option</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/6214ccf/src/Function.ts#L842">src/Function.ts:842</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Take a three-parameter partial function (may return undefined or throw),
-										and lift it to return an <a href="../files/option.html">Option</a> instead.
-									undefined becomes a <a href="option.none.html">None</a>, everything else a <a href="option.some.html">Some</a></p>
-								</div>
-								<pre><code>const add3 = Function3.liftOption(
-    (<span class="hljs-symbol">x:nu</span>mber,<span class="hljs-symbol">y:nu</span>mber,<span class="hljs-symbol">z:nu</span>mber)=&gt;x+y+z);
-add3(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>);
-=&gt; Option.of(<span class="hljs-number">6</span>)
-
-const undef = Function3.liftOption(
-    (<span class="hljs-symbol">x:nu</span>mber,<span class="hljs-symbol">y:nu</span>mber,<span class="hljs-symbol">z:nu</span>mber)=&gt;undefined);
-undef(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>);
-=&gt; Option.none()
-
-const nl = Function3.liftOption(
-    (<span class="hljs-symbol">x:nu</span>mber,<span class="hljs-symbol">y:nu</span>mber,<span class="hljs-symbol">z:nu</span>mber)=&gt;null);
-nl(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>);
-=&gt; Option.some(null)
-
-const throws = Function3.liftOption(
-    (<span class="hljs-symbol">x:nu</span>mber,<span class="hljs-symbol">y:nu</span>mber,<span class="hljs-symbol">z:nu</span>mber)=&gt;{throw <span class="hljs-string">"x"</span>});
-throws(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>);
-=&gt; Option.none()
-</code></pre>
-							</div>
-							<h4 class="tsd-type-parameters-title">Type parameters</h4>
-							<ul class="tsd-type-parameters">
-								<li>
-									<h4>T1</h4>
-								</li>
-								<li>
-									<h4>T2</h4>
-								</li>
-								<li>
-									<h4>T3</h4>
-								</li>
-								<li>
-									<h4>R</h4>
-								</li>
-							</ul>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>fn: <span class="tsd-signature-type">function</span></h5>
-									<ul class="tsd-parameters">
-										<li class="tsd-parameter-siganture">
-											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
-												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T1</span>, y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T2</span>, z<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T3</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
-											</ul>
-											<ul class="tsd-descriptions">
-												<li class="tsd-description">
-													<h4 class="tsd-parameters-title">Parameters</h4>
-													<ul class="tsd-parameters">
-														<li>
-															<h5>x: <span class="tsd-signature-type">T1</span></h5>
-														</li>
-														<li>
-															<h5>y: <span class="tsd-signature-type">T2</span></h5>
-														</li>
-														<li>
-															<h5>z: <span class="tsd-signature-type">T3</span></h5>
-														</li>
-													</ul>
-													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">R</span>
-														<span class="tsd-signature-symbol"> | </span>
-														<span class="tsd-signature-type">undefined</span>
-													</h4>
-												</li>
-											</ul>
-										</li>
-									</ul>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/function.function3.html" class="tsd-signature-type">Function3</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">T2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">T3</span><span class="tsd-signature-symbol">, </span><a href="../files/option.html" class="tsd-signature-type">Option</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
 					<a name="of" class="tsd-anchor"></a>
 					<h3>of</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
@@ -439,7 +156,7 @@ throws(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<sp
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/6214ccf/src/Function.ts#L806">src/Function.ts:806</a></li>
+									<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/c492457/src/Function.ts#L483">src/Function.ts:483</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -549,15 +266,6 @@ throws(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<sp
 						<ul>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
 								<a href="function.function3static.html#constant" class="tsd-kind-icon">constant</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-								<a href="function.function3static.html#lifteither" class="tsd-kind-icon">lift<wbr>Either</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-								<a href="function.function3static.html#liftnullable" class="tsd-kind-icon">lift<wbr>Nullable</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-								<a href="function.function3static.html#liftoption" class="tsd-kind-icon">lift<wbr>Option</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
 								<a href="function.function3static.html#of" class="tsd-kind-icon">of</a>
