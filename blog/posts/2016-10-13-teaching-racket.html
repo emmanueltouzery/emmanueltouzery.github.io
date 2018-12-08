@@ -59,48 +59,48 @@
 <p>When I’ll give example code from now on, I’ll use English, but we did actually type it in Slovenian with the children.</p>
 <h2 id="beginnings">Beginnings</h2>
 <p>We started the first session by playing with the REPL in DrRacket, so performing basic arithmetic and viewing the results. So, expressions like <code>(+ 1 2)</code>, also defining variables, like creating a variable for each their names having as value their age, and calculating the age difference:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode scheme"><code class="sourceCode scheme"><a class="sourceLine" id="cb1-1" data-line-number="1">(<span class="kw">define</span><span class="fu"> lara </span><span class="dv">11</span>)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">(<span class="kw">define</span><span class="fu"> kristina </span><span class="dv">8</span>)</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3">(<span class="kw">-</span> lara kristina) <span class="co">;; age difference</span></a>
-<a class="sourceLine" id="cb1-4" data-line-number="4">(<span class="kw">define</span><span class="fu"> year </span><span class="dv">2016</span>)</a>
-<a class="sourceLine" id="cb1-5" data-line-number="5">(<span class="kw">-</span> year lara) <span class="co">;; birth year</span></a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode scheme"><code class="sourceCode scheme"><a class="sourceLine" id="cb1-1" title="1">(<span class="ex">define</span><span class="fu"> lara </span><span class="dv">11</span>)</a>
+<a class="sourceLine" id="cb1-2" title="2">(<span class="ex">define</span><span class="fu"> kristina </span><span class="dv">8</span>)</a>
+<a class="sourceLine" id="cb1-3" title="3">(<span class="op">-</span> lara kristina) <span class="co">;; age difference</span></a>
+<a class="sourceLine" id="cb1-4" title="4">(<span class="ex">define</span><span class="fu"> year </span><span class="dv">2016</span>)</a>
+<a class="sourceLine" id="cb1-5" title="5">(<span class="op">-</span> year lara) <span class="co">;; birth year</span></a></code></pre></div>
 <p>They would then create such variables for other family members, and computing age differences or even sums, then we would look at nested expressions like <code>(/ (+ 6 4) 2)</code> (which is (6+4)/2). Thanks to the interactivity of the REPL, what could be very confusing was not that problematic in the end.</p>
 <p>We then moved to the first exercise from the <code>Realm of Racket</code> book: guess the number. The player picks a number between 0 and 100, the computer must guess it, the player answers with ‘too high’, ‘too low’ until the computer finds the number. The insight is to write the app relying entirely on the REPL: you communicate with the computer by calling functions, so no need for mechanisms to parse user input for instance.</p>
 <p>A first implementation looks like that:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode scheme"><code class="sourceCode scheme"><a class="sourceLine" id="cb2-1" data-line-number="1">#lang racket</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3">(<span class="kw">define</span><span class="fu"> minimum </span><span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb2-4" data-line-number="4">(<span class="kw">define</span><span class="fu"> maximum </span><span class="dv">100</span>)</a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">;; guess =&gt; try the middle of the interval</span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">;; quotient is integer division</span></a>
-<a class="sourceLine" id="cb2-8" data-line-number="8">(<span class="kw">define</span><span class="fu"> </span>(guess)</a>
-<a class="sourceLine" id="cb2-9" data-line-number="9">  (<span class="kw">quotient</span> (<span class="kw">+</span> minimum maximum) <span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb2-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">;; set! overwrites a value</span></a>
-<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">;; sub1 subtracts 1</span></a>
-<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="co">;; =&gt; overwrite the maximum to become guess-1</span></a>
-<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="co">;;    and then guess again</span></a>
-<a class="sourceLine" id="cb2-15" data-line-number="15">(<span class="kw">define</span><span class="fu"> </span>(smaller)</a>
-<a class="sourceLine" id="cb2-16" data-line-number="16">  (set! maximum (sub1 (guess)))</a>
-<a class="sourceLine" id="cb2-17" data-line-number="17">  (guess))</a>
-<a class="sourceLine" id="cb2-18" data-line-number="18"></a>
-<a class="sourceLine" id="cb2-19" data-line-number="19"><span class="co">;; add1 adds 1</span></a>
-<a class="sourceLine" id="cb2-20" data-line-number="20"><span class="co">;; =&gt; overwrite the minimum to become guess+1</span></a>
-<a class="sourceLine" id="cb2-21" data-line-number="21"><span class="co">;;    and then guess again</span></a>
-<a class="sourceLine" id="cb2-22" data-line-number="22">(<span class="kw">define</span><span class="fu"> </span>(bigger)</a>
-<a class="sourceLine" id="cb2-23" data-line-number="23">  (set! mininum (add1 (guess)))</a>
-<a class="sourceLine" id="cb2-24" data-line-number="24">  (guess))</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode scheme"><code class="sourceCode scheme"><a class="sourceLine" id="cb2-1" title="1">#lang racket</a>
+<a class="sourceLine" id="cb2-2" title="2"></a>
+<a class="sourceLine" id="cb2-3" title="3">(<span class="ex">define</span><span class="fu"> minimum </span><span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb2-4" title="4">(<span class="ex">define</span><span class="fu"> maximum </span><span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb2-5" title="5"></a>
+<a class="sourceLine" id="cb2-6" title="6"><span class="co">;; guess =&gt; try the middle of the interval</span></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="co">;; quotient is integer division</span></a>
+<a class="sourceLine" id="cb2-8" title="8">(<span class="ex">define</span><span class="fu"> </span>(guess)</a>
+<a class="sourceLine" id="cb2-9" title="9">  (<span class="kw">quotient</span> (<span class="op">+</span> minimum maximum) <span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb2-10" title="10"></a>
+<a class="sourceLine" id="cb2-11" title="11"><span class="co">;; set! overwrites a value</span></a>
+<a class="sourceLine" id="cb2-12" title="12"><span class="co">;; sub1 subtracts 1</span></a>
+<a class="sourceLine" id="cb2-13" title="13"><span class="co">;; =&gt; overwrite the maximum to become guess-1</span></a>
+<a class="sourceLine" id="cb2-14" title="14"><span class="co">;;    and then guess again</span></a>
+<a class="sourceLine" id="cb2-15" title="15">(<span class="ex">define</span><span class="fu"> </span>(smaller)</a>
+<a class="sourceLine" id="cb2-16" title="16">  (set! maximum (sub1 (guess)))</a>
+<a class="sourceLine" id="cb2-17" title="17">  (guess))</a>
+<a class="sourceLine" id="cb2-18" title="18"></a>
+<a class="sourceLine" id="cb2-19" title="19"><span class="co">;; add1 adds 1</span></a>
+<a class="sourceLine" id="cb2-20" title="20"><span class="co">;; =&gt; overwrite the minimum to become guess+1</span></a>
+<a class="sourceLine" id="cb2-21" title="21"><span class="co">;;    and then guess again</span></a>
+<a class="sourceLine" id="cb2-22" title="22">(<span class="ex">define</span><span class="fu"> </span>(bigger)</a>
+<a class="sourceLine" id="cb2-23" title="23">  (set! mininum (add1 (guess)))</a>
+<a class="sourceLine" id="cb2-24" title="24">  (guess))</a></code></pre></div>
 <p>This is actually simplified from the book, removing some subtleties to stick the minimum more or less working solution.</p>
 <p>A session of playing this game looks like that (again, example from the book):</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode scheme"><code class="sourceCode scheme"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">&gt;</span> (guess)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="dv">50</span></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw">&gt;</span> (bigger)</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="dv">75</span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="kw">&gt;</span> (smaller)</a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="dv">62</span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="kw">&gt;</span> (smaller)</a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="dv">56</span></a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode scheme"><code class="sourceCode scheme"><a class="sourceLine" id="cb3-1" title="1"><span class="op">&gt;</span> (guess)</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="dv">50</span></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="op">&gt;</span> (bigger)</a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="dv">75</span></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="op">&gt;</span> (smaller)</a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="dv">62</span></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="op">&gt;</span> (smaller)</a>
+<a class="sourceLine" id="cb3-8" title="8"><span class="dv">56</span></a></code></pre></div>
 <p>The hardest thing here was explaining the binary search algorithm. But they got it, it’s pretty intuitive in the context of guessing a number. They quickly understood that picking the number in the middle of the interval would get the result faster, although of course their first plan was to try 1, then 2, and so on.</p>
 <p>Regarding the implementation, while I’m not a great fan of the mutation, it’s pretty concise, and the game was a great success with the kids. We proceeded to expand it, changing the range of numbers, and also detecting when we knew we won (when upper is equal to lower) – an idea of the kids.</p>
 <p>At that point it was mostly me changing the application itself, but I would ask the children what part of the program should be changed to achieve the new feature, and what exactly would they change. We would try every suggestion from the children, including those that were obviously not going to work, so that they could see the effects of the changes by themselves. I think that was an important aspect, that they could grasp this sense of interactivity and control.</p>
@@ -114,16 +114,16 @@
 <h2 id="drawing-our-hero">Drawing our hero</h2>
 <p>I found the style in <code>Realm of Racket</code> to be excessively using mutation and local <code>define</code> calls, so I did introduce the <a href="http://lexi-lambda.github.io/threading/threading.html">threading macros</a><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>, explaining just that they help chaining calls.</p>
 <p>So our first graphical program drew our snowman:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode scheme"><code class="sourceCode scheme"><a class="sourceLine" id="cb4-1" data-line-number="1">#lang racket</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3">(require 2htdp/image)</a>
-<a class="sourceLine" id="cb4-4" data-line-number="4">(require threading)</a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6">(~<span class="kw">&gt;</span> (rectangle <span class="dv">100</span> <span class="dv">100</span> <span class="st">&quot;solid&quot;</span> <span class="st">&quot;blue&quot;</span>)</a>
-<a class="sourceLine" id="cb4-7" data-line-number="7">    (place-image/align</a>
-<a class="sourceLine" id="cb4-8" data-line-number="8">     (circle <span class="dv">20</span> <span class="st">&quot;solid&quot;</span> <span class="st">&quot;white&quot;</span>) <span class="dv">30</span> <span class="dv">60</span> <span class="st">&quot;left&quot;</span> <span class="st">&quot;top&quot;</span> _)</a>
-<a class="sourceLine" id="cb4-9" data-line-number="9">    (place-image/align</a>
-<a class="sourceLine" id="cb4-10" data-line-number="10">     (circle <span class="dv">10</span> <span class="st">&quot;solid&quot;</span> <span class="st">&quot;white&quot;</span>) <span class="dv">40</span> <span class="dv">40</span> <span class="st">&quot;left&quot;</span> <span class="st">&quot;top&quot;</span> _))</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode scheme"><code class="sourceCode scheme"><a class="sourceLine" id="cb4-1" title="1">#lang racket</a>
+<a class="sourceLine" id="cb4-2" title="2"></a>
+<a class="sourceLine" id="cb4-3" title="3">(require 2htdp/image)</a>
+<a class="sourceLine" id="cb4-4" title="4">(require threading)</a>
+<a class="sourceLine" id="cb4-5" title="5"></a>
+<a class="sourceLine" id="cb4-6" title="6">(~<span class="op">&gt;</span> (rectangle <span class="dv">100</span> <span class="dv">100</span> <span class="st">&quot;solid&quot;</span> <span class="st">&quot;blue&quot;</span>)</a>
+<a class="sourceLine" id="cb4-7" title="7">    (place-image/align</a>
+<a class="sourceLine" id="cb4-8" title="8">     (circle <span class="dv">20</span> <span class="st">&quot;solid&quot;</span> <span class="st">&quot;white&quot;</span>) <span class="dv">30</span> <span class="dv">60</span> <span class="st">&quot;left&quot;</span> <span class="st">&quot;top&quot;</span> _)</a>
+<a class="sourceLine" id="cb4-9" title="9">    (place-image/align</a>
+<a class="sourceLine" id="cb4-10" title="10">     (circle <span class="dv">10</span> <span class="st">&quot;solid&quot;</span> <span class="st">&quot;white&quot;</span>) <span class="dv">40</span> <span class="dv">40</span> <span class="st">&quot;left&quot;</span> <span class="st">&quot;top&quot;</span> _))</a></code></pre></div>
 <figure>
 <img src="../images/2016-10-09-teaching-racket-snowman.png" alt="Our hero" /><figcaption>Our hero</figcaption>
 </figure>
@@ -138,44 +138,44 @@
 </ul>
 <p>So all you need for a functional game is an initial state, a drawing function taking the state, and functions to transform the state when any of those events occur.</p>
 <p>The first obvious program we built was to have the snowman fall on the display. Our state is a single integer: the y position of the snowman, and it increases with time. We also modify our existing <code>snowman</code> function to take as a parameter the vertical offset at which to draw.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode scheme"><code class="sourceCode scheme"><a class="sourceLine" id="cb5-1" data-line-number="1">#lang racket</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3">(require 2htdp/image 2htdp/universe)</a>
-<a class="sourceLine" id="cb5-4" data-line-number="4">(require threading)</a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">;; the snowman function now takes the Y offset as parameter</span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7">(<span class="kw">define</span></a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="fu"> </span>(snowman position)</a>
-<a class="sourceLine" id="cb5-9" data-line-number="9"> (~<span class="kw">&gt;</span> (rectangle <span class="dv">500</span> <span class="dv">300</span> <span class="st">&quot;solid&quot;</span> <span class="st">&quot;blue&quot;</span>)</a>
-<a class="sourceLine" id="cb5-10" data-line-number="10">     (place-image/align</a>
-<a class="sourceLine" id="cb5-11" data-line-number="11">      (circle <span class="dv">20</span> <span class="st">&quot;solid&quot;</span> <span class="st">&quot;white&quot;</span>) <span class="dv">240</span> (<span class="kw">+</span> position <span class="dv">20</span>) <span class="st">&quot;left&quot;</span> <span class="st">&quot;top&quot;</span> _)</a>
-<a class="sourceLine" id="cb5-12" data-line-number="12">     (place-image/align</a>
-<a class="sourceLine" id="cb5-13" data-line-number="13">      (circle <span class="dv">10</span> <span class="st">&quot;solid&quot;</span> <span class="st">&quot;white&quot;</span>) <span class="dv">250</span> position <span class="st">&quot;left&quot;</span> <span class="st">&quot;top&quot;</span> _)))</a>
-<a class="sourceLine" id="cb5-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb5-15" data-line-number="15">(big-bang <span class="dv">0</span>                  <span class="co">;; the initial state is the integer 0</span></a>
-<a class="sourceLine" id="cb5-16" data-line-number="16">          (on-tick add1)     <span class="co">;; increase the Y offset with time</span></a>
-<a class="sourceLine" id="cb5-17" data-line-number="17">          (on-draw snowman)) <span class="co">;; will be called with the state as parameter</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode scheme"><code class="sourceCode scheme"><a class="sourceLine" id="cb5-1" title="1">#lang racket</a>
+<a class="sourceLine" id="cb5-2" title="2"></a>
+<a class="sourceLine" id="cb5-3" title="3">(require 2htdp/image 2htdp/universe)</a>
+<a class="sourceLine" id="cb5-4" title="4">(require threading)</a>
+<a class="sourceLine" id="cb5-5" title="5"></a>
+<a class="sourceLine" id="cb5-6" title="6"><span class="co">;; the snowman function now takes the Y offset as parameter</span></a>
+<a class="sourceLine" id="cb5-7" title="7">(<span class="ex">define</span></a>
+<a class="sourceLine" id="cb5-8" title="8"><span class="fu"> </span>(snowman position)</a>
+<a class="sourceLine" id="cb5-9" title="9"> (~<span class="op">&gt;</span> (rectangle <span class="dv">500</span> <span class="dv">300</span> <span class="st">&quot;solid&quot;</span> <span class="st">&quot;blue&quot;</span>)</a>
+<a class="sourceLine" id="cb5-10" title="10">     (place-image/align</a>
+<a class="sourceLine" id="cb5-11" title="11">      (circle <span class="dv">20</span> <span class="st">&quot;solid&quot;</span> <span class="st">&quot;white&quot;</span>) <span class="dv">240</span> (<span class="op">+</span> position <span class="dv">20</span>) <span class="st">&quot;left&quot;</span> <span class="st">&quot;top&quot;</span> _)</a>
+<a class="sourceLine" id="cb5-12" title="12">     (place-image/align</a>
+<a class="sourceLine" id="cb5-13" title="13">      (circle <span class="dv">10</span> <span class="st">&quot;solid&quot;</span> <span class="st">&quot;white&quot;</span>) <span class="dv">250</span> position <span class="st">&quot;left&quot;</span> <span class="st">&quot;top&quot;</span> _)))</a>
+<a class="sourceLine" id="cb5-14" title="14"></a>
+<a class="sourceLine" id="cb5-15" title="15">(big-bang <span class="dv">0</span>                  <span class="co">;; the initial state is the integer 0</span></a>
+<a class="sourceLine" id="cb5-16" title="16">          (on-tick add1)     <span class="co">;; increase the Y offset with time</span></a>
+<a class="sourceLine" id="cb5-17" title="17">          (on-draw snowman)) <span class="co">;; will be called with the state as parameter</span></a></code></pre></div>
 <p><img src="../images/2016-10-09-teaching-racket-snowman-anim.png" onclick="this.src = this.src.endsWith('gif') ? '../images/2016-10-09-teaching-racket-snowman-anim.png' : '../images/2016-10-09-teaching-racket-snowman-anim.gif'" /></p>
 <p>At first the children modified the snowman function to take the vertical offset (experimenting with several values until they got it right), then we plugged in the big-bang.</p>
 <p>I expected that the origin of the coordinate system being the top-left would be a problem, but it turned out to be no issue at all. And, in hindsight, why would it be? At that age, they were never exposed to any cartesian coordinate system!</p>
 <p>We later expanded the program to detect when the snowman would hit the bottom of the screen (that it didn’t stop there out of the box proved surprisingly annoying to the children), and also added some control on the position by pressing the up and down arrow keys:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode scheme"><code class="sourceCode scheme"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co">;; did we reach the bottom of the screen?</span></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2">(<span class="kw">define</span><span class="fu"> </span>(end? position)</a>
-<a class="sourceLine" id="cb6-3" data-line-number="3">        (<span class="kw">&gt;=</span> position (<span class="kw">-</span> <span class="dv">300</span> <span class="dv">60</span>)))</a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">;; create an updated state on key press</span></a>
-<a class="sourceLine" id="cb6-6" data-line-number="6">(<span class="kw">define</span><span class="fu"> </span>(keypress position key)</a>
-<a class="sourceLine" id="cb6-7" data-line-number="7">        (match key</a>
-<a class="sourceLine" id="cb6-8" data-line-number="8">               [(== <span class="st">&quot;up&quot;</span>) (<span class="kw">-</span> position <span class="dv">10</span>)]</a>
-<a class="sourceLine" id="cb6-9" data-line-number="9">               [(== <span class="st">&quot;down&quot;</span>) (<span class="kw">+</span> position <span class="dv">10</span>)]</a>
-<a class="sourceLine" id="cb6-10" data-line-number="10">               [<span class="kw">else</span> position]))</a>
-<a class="sourceLine" id="cb6-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">;; two new clauses: stop-when and on-key</span></a>
-<a class="sourceLine" id="cb6-13" data-line-number="13">(big-bang <span class="dv">0</span></a>
-<a class="sourceLine" id="cb6-14" data-line-number="14">          (on-tick add1)</a>
-<a class="sourceLine" id="cb6-15" data-line-number="15">          (on-draw snowman)</a>
-<a class="sourceLine" id="cb6-16" data-line-number="16">          (stop-when end?)</a>
-<a class="sourceLine" id="cb6-17" data-line-number="17">          (on-key keypress))</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode scheme"><code class="sourceCode scheme"><a class="sourceLine" id="cb6-1" title="1"><span class="co">;; did we reach the bottom of the screen?</span></a>
+<a class="sourceLine" id="cb6-2" title="2">(<span class="ex">define</span><span class="fu"> </span>(end? position)</a>
+<a class="sourceLine" id="cb6-3" title="3">        (<span class="op">&gt;=</span> position (<span class="op">-</span> <span class="dv">300</span> <span class="dv">60</span>)))</a>
+<a class="sourceLine" id="cb6-4" title="4"></a>
+<a class="sourceLine" id="cb6-5" title="5"><span class="co">;; create an updated state on key press</span></a>
+<a class="sourceLine" id="cb6-6" title="6">(<span class="ex">define</span><span class="fu"> </span>(keypress position key)</a>
+<a class="sourceLine" id="cb6-7" title="7">        (match key</a>
+<a class="sourceLine" id="cb6-8" title="8">               [(== <span class="st">&quot;up&quot;</span>) (<span class="op">-</span> position <span class="dv">10</span>)]</a>
+<a class="sourceLine" id="cb6-9" title="9">               [(== <span class="st">&quot;down&quot;</span>) (<span class="op">+</span> position <span class="dv">10</span>)]</a>
+<a class="sourceLine" id="cb6-10" title="10">               [<span class="kw">else</span> position]))</a>
+<a class="sourceLine" id="cb6-11" title="11"></a>
+<a class="sourceLine" id="cb6-12" title="12"><span class="co">;; two new clauses: stop-when and on-key</span></a>
+<a class="sourceLine" id="cb6-13" title="13">(big-bang <span class="dv">0</span></a>
+<a class="sourceLine" id="cb6-14" title="14">          (on-tick add1)</a>
+<a class="sourceLine" id="cb6-15" title="15">          (on-draw snowman)</a>
+<a class="sourceLine" id="cb6-16" title="16">          (stop-when end?)</a>
+<a class="sourceLine" id="cb6-17" title="17">          (on-key keypress))</a></code></pre></div>
 <h1 id="structs-and-a-real-game">Structs and a real game</h1>
 <p>At this point we were thinking what to build going forward and we settled on a <a href="https://en.wikipedia.org/wiki/Flappy_Bird">Flappy Bird</a> clone. The game is actually amazingly simple: the bird only moves vertically, then you have a list of obstacles which move towards the left, and differ among themselves only by the vertical position of the opening.</p>
 <p>That means the state for the game is only:</p>
@@ -187,30 +187,30 @@
 <p>In reality we would also need a vertical acceleration for the bird (and probably also a points counter), but for our purpose, we could skip that.</p>
 <p>We already had the character, and knew how to move it vertically on the screen, and how to react to keys. We needed to draw obstacles, and work with that more complex state. But to define that state we need structs, which I had not introduced yet: our state so far was only an integer, which was not enough.</p>
 <p>At the time I was reading <a href="https://mitpress.mit.edu/books/art-prolog">a prolog book</a> which has many examples related to families and it struck me that this is one concept that would be crystal-clear to children. So we spent some time with examples like:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode scheme"><code class="sourceCode scheme"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co">;; structure named 'family' with three fields</span></a>
-<a class="sourceLine" id="cb7-2" data-line-number="2">(struct family (father mother children) #:transparent)</a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">;; define a family, bind it to the my-family variable.</span></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4">(<span class="kw">define</span><span class="fu"> my-family </span>(family <span class="st">&quot;emmanuel&quot;</span> <span class="st">&quot;simona&quot;</span> <span class="st">&quot;lara&quot;</span>))</a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">;; to read a field you call the function &lt;struct name&gt;-&lt;field name&gt;</span></a>
-<a class="sourceLine" id="cb7-7" data-line-number="7">(family-mother my-family) <span class="co">;; outputs &quot;simona&quot;</span></a>
-<a class="sourceLine" id="cb7-8" data-line-number="8">(family-father my-family) <span class="co">;; outputs &quot;emmanuel&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode scheme"><code class="sourceCode scheme"><a class="sourceLine" id="cb7-1" title="1"><span class="co">;; structure named 'family' with three fields</span></a>
+<a class="sourceLine" id="cb7-2" title="2">(struct family (father mother children) #:transparent)</a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="co">;; define a family, bind it to the my-family variable.</span></a>
+<a class="sourceLine" id="cb7-4" title="4">(<span class="ex">define</span><span class="fu"> my-family </span>(family <span class="st">&quot;emmanuel&quot;</span> <span class="st">&quot;simona&quot;</span> <span class="st">&quot;lara&quot;</span>))</a>
+<a class="sourceLine" id="cb7-5" title="5"></a>
+<a class="sourceLine" id="cb7-6" title="6"><span class="co">;; to read a field you call the function &lt;struct name&gt;-&lt;field name&gt;</span></a>
+<a class="sourceLine" id="cb7-7" title="7">(family-mother my-family) <span class="co">;; outputs &quot;simona&quot;</span></a>
+<a class="sourceLine" id="cb7-8" title="8">(family-father my-family) <span class="co">;; outputs &quot;emmanuel&quot;</span></a></code></pre></div>
 <p>And so on. The <code>#:transparent</code> is pretty unfortunate, it’s required among others so that the contents of the struct are nicely displayed by the REPL. Originally I intended to have the children be a list, but in the end I backed off, didn’t want to already introduce the concept of a list right then, also because non-graphic programming was much less attractive to the kids at this point (a difficult balance, that.. you want to build on the basics but you have to keep them motivated at all times…).</p>
 <p>Anyway to introduce the new feature we had with structures, we expanded the program we had by having a 2D position for the snowman, X and Y, taking advantage of all the arrow keys.</p>
 <p>That lesson was pretty boring for the kids as the code porting was pretty mechanical (previously the state was simply the Y of the snowman, now we had to call <code>game-state-position-top</code> to extract it) and unfortunately I did most of it myself. But they had fun playing with the updated game afterwards and the eldest daughter could understand structs much better after that. It was very tough for the younger one though.</p>
 <div class="note">
 <p>I also considered introducing pattern-matching, where you give the “shape” of the data to deconstruct it and extract the field(s) you’re interested in<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode scheme"><code class="sourceCode scheme"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="co">;; our game state-state struct has two fields: position top &amp; left</span></a>
-<a class="sourceLine" id="cb8-2" data-line-number="2">(struct game-state (position-top position-left) #:transparent)</a>
-<a class="sourceLine" id="cb8-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">;; no pattern matching</span></a>
-<a class="sourceLine" id="cb8-5" data-line-number="5">(<span class="kw">define</span><span class="fu"> </span>(end? state)</a>
-<a class="sourceLine" id="cb8-6" data-line-number="6">  (<span class="kw">&gt;=</span> (game-state-position-top state) (<span class="kw">-</span> <span class="dv">300</span> <span class="dv">60</span>)))</a>
-<a class="sourceLine" id="cb8-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="co">;; pattern matching</span></a>
-<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="co">;; extract the first field of the game-state to the variable 'top'</span></a>
-<a class="sourceLine" id="cb8-10" data-line-number="10">(define/match* (end2? (game-state top _))</a>
-<a class="sourceLine" id="cb8-11" data-line-number="11">  (<span class="kw">&gt;=</span> top (<span class="kw">-</span> <span class="dv">300</span> <span class="dv">60</span>)))</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode scheme"><code class="sourceCode scheme"><a class="sourceLine" id="cb8-1" title="1"><span class="co">;; our game state-state struct has two fields: position top &amp; left</span></a>
+<a class="sourceLine" id="cb8-2" title="2">(struct game-state (position-top position-left) #:transparent)</a>
+<a class="sourceLine" id="cb8-3" title="3"></a>
+<a class="sourceLine" id="cb8-4" title="4"><span class="co">;; no pattern matching</span></a>
+<a class="sourceLine" id="cb8-5" title="5">(<span class="ex">define</span><span class="fu"> </span>(end? state)</a>
+<a class="sourceLine" id="cb8-6" title="6">  (<span class="op">&gt;=</span> (game-state-position-top state) (<span class="op">-</span> <span class="dv">300</span> <span class="dv">60</span>)))</a>
+<a class="sourceLine" id="cb8-7" title="7"></a>
+<a class="sourceLine" id="cb8-8" title="8"><span class="co">;; pattern matching</span></a>
+<a class="sourceLine" id="cb8-9" title="9"><span class="co">;; extract the first field of the game-state to the variable 'top'</span></a>
+<a class="sourceLine" id="cb8-10" title="10">(define/match* (end2? (game-state top _))</a>
+<a class="sourceLine" id="cb8-11" title="11">  (<span class="op">&gt;=</span> top (<span class="op">-</span> <span class="dv">300</span> <span class="dv">60</span>)))</a></code></pre></div>
 <p>But already the introduction of structs was well enough without adding more concepts, so I renounced it. The code is more verbose, <a href="http://stackoverflow.com/questions/36228594">as in <code>Realm of Racket</code></a>, with many <code>define</code> calls, but it was the best compromise at that point.</p>
 </div>
 <h1 id="flappy-bird">Flappy bird</h1>
@@ -219,31 +219,31 @@
 <figure>
 <img src="../images/2016-10-09-teaching-racket-colors.png" alt="Improved colors: good work Lara!" /><figcaption>Improved colors: good work Lara!</figcaption>
 </figure>
-<div class="sourceCode" id="cb9"><pre class="sourceCode scheme"><code class="sourceCode scheme"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="co">;; the state has the top position of the snowman</span></a>
-<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="co">;; and the left position of a pillar</span></a>
-<a class="sourceLine" id="cb9-3" data-line-number="3">(struct game-state (position-top position-left) #:transparent)</a>
-<a class="sourceLine" id="cb9-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co">;; a pillar is two rectangles</span></a>
-<a class="sourceLine" id="cb9-6" data-line-number="6">(<span class="kw">define</span></a>
-<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="fu"> </span>(pillar drawing state)</a>
-<a class="sourceLine" id="cb9-8" data-line-number="8"> (~<span class="kw">&gt;</span></a>
-<a class="sourceLine" id="cb9-9" data-line-number="9">  (place-image/align (rectangle <span class="dv">40</span> <span class="dv">100</span> <span class="st">&quot;solid&quot;</span> <span class="st">&quot;green&quot;</span>)</a>
-<a class="sourceLine" id="cb9-10" data-line-number="10">                     <span class="dv">0</span> <span class="dv">0</span> <span class="st">&quot;left&quot;</span> <span class="st">&quot;top&quot;</span> drawing)</a>
-<a class="sourceLine" id="cb9-11" data-line-number="11">  (place-image/align (rectangle <span class="dv">40</span> <span class="dv">80</span> <span class="st">&quot;solid&quot;</span> <span class="st">&quot;yellow&quot;</span>)</a>
-<a class="sourceLine" id="cb9-12" data-line-number="12">                     <span class="dv">0</span> <span class="dv">220</span> <span class="st">&quot;left&quot;</span> <span class="st">&quot;top&quot;</span> _)))</a>
-<a class="sourceLine" id="cb9-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb9-14" data-line-number="14">(<span class="kw">define</span></a>
-<a class="sourceLine" id="cb9-15" data-line-number="15"><span class="fu"> </span>(draw-game state)</a>
-<a class="sourceLine" id="cb9-16" data-line-number="16"> (<span class="kw">define</span><span class="fu"> position-left </span>(game-state-position-left state))</a>
-<a class="sourceLine" id="cb9-17" data-line-number="17"> (<span class="kw">define</span><span class="fu"> position-top </span>(game-state-position-top state))</a>
-<a class="sourceLine" id="cb9-18" data-line-number="18"> (~<span class="kw">&gt;</span> (rectangle <span class="dv">500</span> <span class="dv">300</span> <span class="st">&quot;solid&quot;</span> <span class="st">&quot;violet&quot;</span>)</a>
-<a class="sourceLine" id="cb9-19" data-line-number="19">     (snowman position-left position-top)</a>
-<a class="sourceLine" id="cb9-20" data-line-number="20">     (pillar state)))</a>
-<a class="sourceLine" id="cb9-21" data-line-number="21"></a>
-<a class="sourceLine" id="cb9-22" data-line-number="22"><span class="co">;; move the snowman down with time, and the pillars left with time</span></a>
-<a class="sourceLine" id="cb9-23" data-line-number="23">(<span class="kw">define</span><span class="fu"> </span>(ticker game-state)</a>
-<a class="sourceLine" id="cb9-24" data-line-number="24">        (game-state (add1 (game-state-position-top game-state))</a>
-<a class="sourceLine" id="cb9-25" data-line-number="25">                    (sub1 (game-state-position-left game-state))))</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode scheme"><code class="sourceCode scheme"><a class="sourceLine" id="cb9-1" title="1"><span class="co">;; the state has the top position of the snowman</span></a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="co">;; and the left position of a pillar</span></a>
+<a class="sourceLine" id="cb9-3" title="3">(struct game-state (position-top position-left) #:transparent)</a>
+<a class="sourceLine" id="cb9-4" title="4"></a>
+<a class="sourceLine" id="cb9-5" title="5"><span class="co">;; a pillar is two rectangles</span></a>
+<a class="sourceLine" id="cb9-6" title="6">(<span class="ex">define</span></a>
+<a class="sourceLine" id="cb9-7" title="7"><span class="fu"> </span>(pillar drawing state)</a>
+<a class="sourceLine" id="cb9-8" title="8"> (~<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb9-9" title="9">  (place-image/align (rectangle <span class="dv">40</span> <span class="dv">100</span> <span class="st">&quot;solid&quot;</span> <span class="st">&quot;green&quot;</span>)</a>
+<a class="sourceLine" id="cb9-10" title="10">                     <span class="dv">0</span> <span class="dv">0</span> <span class="st">&quot;left&quot;</span> <span class="st">&quot;top&quot;</span> drawing)</a>
+<a class="sourceLine" id="cb9-11" title="11">  (place-image/align (rectangle <span class="dv">40</span> <span class="dv">80</span> <span class="st">&quot;solid&quot;</span> <span class="st">&quot;yellow&quot;</span>)</a>
+<a class="sourceLine" id="cb9-12" title="12">                     <span class="dv">0</span> <span class="dv">220</span> <span class="st">&quot;left&quot;</span> <span class="st">&quot;top&quot;</span> _)))</a>
+<a class="sourceLine" id="cb9-13" title="13"></a>
+<a class="sourceLine" id="cb9-14" title="14">(<span class="ex">define</span></a>
+<a class="sourceLine" id="cb9-15" title="15"><span class="fu"> </span>(draw-game state)</a>
+<a class="sourceLine" id="cb9-16" title="16"> (<span class="ex">define</span><span class="fu"> position-left </span>(game-state-position-left state))</a>
+<a class="sourceLine" id="cb9-17" title="17"> (<span class="ex">define</span><span class="fu"> position-top </span>(game-state-position-top state))</a>
+<a class="sourceLine" id="cb9-18" title="18"> (~<span class="op">&gt;</span> (rectangle <span class="dv">500</span> <span class="dv">300</span> <span class="st">&quot;solid&quot;</span> <span class="st">&quot;violet&quot;</span>)</a>
+<a class="sourceLine" id="cb9-19" title="19">     (snowman position-left position-top)</a>
+<a class="sourceLine" id="cb9-20" title="20">     (pillar state)))</a>
+<a class="sourceLine" id="cb9-21" title="21"></a>
+<a class="sourceLine" id="cb9-22" title="22"><span class="co">;; move the snowman down with time, and the pillars left with time</span></a>
+<a class="sourceLine" id="cb9-23" title="23">(<span class="ex">define</span><span class="fu"> </span>(ticker game-state)</a>
+<a class="sourceLine" id="cb9-24" title="24">        (game-state (add1 (game-state-position-top game-state))</a>
+<a class="sourceLine" id="cb9-25" title="25">                    (sub1 (game-state-position-left game-state))))</a></code></pre></div>
 <p><img src="../images/2016-10-09-teaching-racket-snowman-final.png" onclick="this.src = this.src.endsWith('gif') ? '../images/2016-10-09-teaching-racket-snowman-final.png' : '../images/2016-10-09-teaching-racket-snowman-final.gif'" /></p>
 <p>As a final step, we made the Y position of the opening in the pillar configurable. The maths and the geometry of that were are the limit of what the kids could do. The next steps would be to manage a list of pillars to show, with random opening heights for each of them… Many new concepts again.</p>
 <p>At that point we had reached the end of the summer holidays (we only programmed when at home, not when at the seaside and so on), and we called it a day, because with school and extra-school activities, the kids already have their hands full!</p>

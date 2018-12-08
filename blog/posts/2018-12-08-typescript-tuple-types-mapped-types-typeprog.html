@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>My Hakyll Blog - Tuple types, mapped types and some type-level programming in typescript</title>
+        <link rel="stylesheet" type="text/css" href="../css/default.css" />
+        <link href="https://fonts.googleapis.com/css?family=Merriweather|Roboto+Mono" rel="stylesheet">
+    </head>
+    <body>
+        <div id="header">
+            <div id="logo">
+                <a href="../">My Hakyll Blog</a>
+            </div>
+            <div id="navigation">
+                <a href="../">Home</a>
+                <a href="../about.html">About</a>
+                <a href="../archive.html">Archive</a>
+            </div>
+        </div>
+
+        <div id="content">
+            <h1>Tuple types, mapped types and some type-level programming in typescript</h1>
+
+            <div class="info">
+    Posted on December  8, 2018
+    
+        by emmanuel
+    
+</div>
+
+<div class="tags">
+    
+    <a href="../tags/typescript.html">typescript</a> <a href="../tags/functional-programming.html">functional-programming</a> <a href="../tags/types.html">types</a> <a href="../tags/prelude-ts.html">prelude-ts</a>
+    
+</div>
+
+<p>It is easy to treat typescript as a “java” with a couple of bonuses (like <a href="https://www.typescriptlang.org/docs/handbook/advanced-types.html#union-types">or types/union types</a>, <a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-1.html#keyof-and-lookup-types"><code class="sourceCode typescript"><span class="kw">keyof</span></code></a> and <a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-0.html#--strictnullchecks"><code>strictNullChecks</code></a>), but as this post tries to illustrate, that’d be leaving on the table a lot of the power offered by the language.</p>
+<p>This post covers a few use-cases for more advanced type constructs in typescript which I’ve met with recently, to illustrate the power of typescript’s type system and give some practical examples to its usefulness.</p>
+<p>We’ll also make an optional excursion in bizarro world, where we’ll abuse typescript’s type system to make it achieve things it was never meant to achieve (and that, in truth, it can only achieve in trivial examples).</p>
+<p>In this blog post we won’t be looking a function implementations, only type signatures. In the end, implementation is a javascript problem, for this post we’re only interested in the type checking, which is typescript’s domain.</p>
+<p>In general in this post, I’ll first write down the type definitions, and then explain then afterwards, so don’t worry if something is not clear immediately.</p>
+<h2 id="tuple-types-prelude-ts-either.lift-option.lift-future.lift">Tuple types: prelude-ts: Either.lift, Option.lift, Future.lift</h2>
+<h3 id="tuples-types-an-introduction">Tuples types, an introduction</h3>
+<p>Let’s start by taking advantage of <a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-0.html">tuple types</a>,. Typescript has had tuples for a long time, and so <code class="sourceCode typescript"><span class="op">[</span>number<span class="op">,</span> string<span class="op">]</span></code> is a tuple type, and <code class="sourceCode typescript"><span class="op">[</span><span class="dv">2</span><span class="op">,</span><span class="st">&quot;hello&quot;</span><span class="op">]</span></code> and <code class="sourceCode typescript"><span class="op">[-</span><span class="dv">3</span><span class="op">,</span> <span class="st">&quot;world&quot;</span><span class="op">]</span></code> are examples of inhabitants of that type. The type <code>number[]</code> (array of numbers) is quite different from the type <code>[number]</code> (a tuple with one element which is a number).</p>
+<p>Tuple types were supercharged with typescript 3.0, when it became possible to infer the type of parameters of a function as a single tuple type, including optional parameters and all patterns that can be used in function parameters.</p>
+<p>So for instance the parameters of this function:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode typescript"><code class="sourceCode typescript"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">function</span> <span class="fu">myFn</span>(name<span class="op">:</span> <span class="dt">string</span><span class="op">,</span> age<span class="op">:</span><span class="dt">number</span><span class="op">|</span><span class="kw">null</span><span class="op">,</span> height<span class="op">?:</span> <span class="dt">number</span>)<span class="op">:</span> <span class="dt">void</span> <span class="op">{}</span></a></code></pre></div>
+<p>Could be expressed by the tuple type <code class="sourceCode typescript"><span class="op">[</span>string<span class="op">,</span> number<span class="op">|</span><span class="kw">null</span><span class="op">,</span> number<span class="op">?]</span></code>. This goes hand in hand with the option that javascript gives us to interpret function parameters as an array, using the <code>...</code> spread operator, so this definition of <code>myFn</code> is equivalent to the previous one:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode typescript"><code class="sourceCode typescript"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">function</span> <span class="fu">myFn</span>(<span class="op">...</span>params<span class="op">:</span> <span class="op">[</span><span class="dt">string</span><span class="op">,</span> <span class="dt">number</span><span class="op">|</span><span class="kw">null</span><span class="op">,</span> <span class="dt">number</span><span class="op">?]</span>)<span class="op">:</span> <span class="dt">void</span> <span class="op">{}</span></a></code></pre></div>
+<h3 id="taking-advantage-of-tuple-types">Taking advantage of tuple types</h3>
+<p>In the <a href="https://github.com/emmanueltouzery/prelude-ts">prelude-ts</a> functional programming library, of which I’m the author, we introduce types like <a href="http://emmanueltouzery.github.io/prelude.ts/latest/apidoc/files/option.html"><code class="sourceCode typescript">Option<span class="op">&lt;</span>T<span class="op">&gt;</span></code></a> (offering a useful compositional API on top of the <code>T|undefined</code> concept), <a href="http://emmanueltouzery.github.io/prelude.ts/latest/apidoc/files/either.html"><code>Either&lt;L,R&gt;</code></a> (similar to the <code>L | R</code> concept) and <a href="http://emmanueltouzery.github.io/prelude.ts/latest/apidoc/classes/future.html"><code>Future&lt;T&gt;</code></a> (similar to the <code>Promise&lt;T&gt;</code> concept).</p>
+<p>To allow an easier integration with external code, we offer some functions to “lift” functions which are not Option-aware:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode typescript"><code class="sourceCode typescript"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">const</span> myFind <span class="op">=</span> <span class="va">Option</span><span class="op">.</span><span class="fu">lift</span>(<span class="va">_</span><span class="op">.</span><span class="at">find</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="kw">const</span> value <span class="op">=</span> <span class="fu">myFind</span>(list<span class="op">,</span> <span class="dv">3</span>)<span class="op">;</span> <span class="co">// value is Option&lt;number&gt;</span></a></code></pre></div>
+<p>So <a href="http://emmanueltouzery.github.io/prelude.ts/latest/apidoc/classes/option.optionstatic.html#lift">Option.lift</a> takes a function returning <code>T|undefined</code> and returns a new function which returns <code>Option&lt;T&gt;</code>. This is a perfect use-case for tuple types, because we don’t change the function parameters, only its result type. Therefore this is the type of <a href="http://emmanueltouzery.github.io/prelude.ts/latest/apidoc/classes/option.optionstatic.html#lift">Option.lift</a>:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode typescript"><code class="sourceCode typescript"><a class="sourceLine" id="cb4-1" title="1"><span class="fu">lift</span><span class="op">&lt;</span>T <span class="kw">extends</span> any<span class="op">[],</span>U<span class="op">&gt;</span>(fn<span class="op">:</span> (<span class="op">...</span>args<span class="op">:</span> T)<span class="kw">=&gt;</span>U<span class="op">|</span><span class="kw">undefined</span>)<span class="op">:</span> (<span class="op">...</span>args<span class="op">:</span>T)<span class="kw">=&gt;</span>Option<span class="op">&lt;</span>U<span class="op">&gt;;</span></a></code></pre></div>
+<p>So <code>lift</code> takes as a input a function taking parameters, the types of which we collect as a tuple type <code>T</code>, and returning <code>U|undefined</code>. And then it returns another function, taking the same parameters <code>T</code>, but returning <code>Option&lt;U&gt;</code>.</p>
+<p>Note that we must specify <code>extends any[]</code> in the generic constraints so that typescript understands we want tuple type inference. However now we see that not only it is possible to express the type of function parameters using tuple types, but on top of that, typescript can infer them, and we can reuse this type in other parts of the function signature.</p>
+<h2 id="mapped-types-fetch-settings">Mapped types: fetch settings</h2>
+<p>After tuple types, let’s now look at <a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-1.html#mapped-types">mapped types</a>, which were introduced in Typescript 2.1, through another, more concrete example.</p>
+<h3 id="the-problem">The problem</h3>
+<p>Imagine our typescript code runs on the client-side, on a web page, and we need to fetch setting values from the server. Each setting is referred to by a key and is of a certain type.</p>
+<p>Let’s define the list of settings that our server offers:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode typescript"><code class="sourceCode typescript"><a class="sourceLine" id="cb5-1" title="1"><span class="im">export</span> <span class="kw">interface</span> SettingKey <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-2" title="2">    General_Language<span class="op">:</span> <span class="st">'en'</span> <span class="op">|</span> <span class="st">'fr'</span> <span class="op">|</span> <span class="st">'sl'</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb5-3" title="3">    Map_InitialLongitude<span class="op">:</span> <span class="dt">number</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb5-4" title="4">    Map_InitialLatitude<span class="op">:</span> <span class="dt">number</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="op">}</span></a></code></pre></div>
+<p>This simple interface definition lets us define both the key names and their types. Notice how we use an or-type for the language (<code class="sourceCode typescript"><span class="st">'en'</span><span class="op">|</span><span class="st">'fr'</span><span class="op">|</span><span class="st">'sl'</span></code>), giving us more information than a simple <code>string</code> type.</p>
+<h3 id="fetch-a-single-setting">Fetch a single setting</h3>
+<p>Here’s how we can leverage mapped types to fetch a single setting:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode typescript"><code class="sourceCode typescript"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">function</span> <span class="fu">fetchSetting</span><span class="op">&lt;</span>K <span class="kw">extends</span> <span class="kw">keyof</span> SettingKey<span class="op">&gt;</span>(key<span class="op">:</span> K)<span class="op">:</span> <span class="bu">Promise</span><span class="op">&lt;</span>SettingKey<span class="op">[</span>K<span class="op">]&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-2" title="2">    <span class="cf">return</span> <span class="kw">undefined</span> <span class="im">as</span> any<span class="op">;</span> <span class="co">// ...</span></a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="op">}</span></a></code></pre></div>
+<p>The function takes a key from the <code>SettingKey</code> interface. Typescript will resolve it at compile-time, and <code class="sourceCode typescript"><span class="kw">keyof</span> SettingKey</code> is equivalent in this case to:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode typescript"><code class="sourceCode typescript"><a class="sourceLine" id="cb7-1" title="1"><span class="st">'General_Language'</span> <span class="op">|</span> <span class="st">'Map_InitialLongitude'</span> <span class="op">|</span> <span class="st">'Map_InitialLatitude'</span></a></code></pre></div>
+<p>So the parameter of the function must be of this or-type. And the function returns a promise of <code>SettingKey[K]</code>. This is a lookup type. And again, at compile time, there will be substitution. But the important thing is that we capture <code>K</code>. So the function parameter takes a key, but the type it will return will depend on <em>which</em> is that key… That means that:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode typescript"><code class="sourceCode typescript"><a class="sourceLine" id="cb8-1" title="1"><span class="fu">fetchSetting</span>(<span class="st">'General_Language'</span>)     <span class="co">// returns a Promise&lt;'en'|'fr'|'sl'&gt;</span></a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="fu">fetchSetting</span>(<span class="st">'Map_InitialLongitude'</span>) <span class="co">// returns a Promise&lt;number&gt;</span></a>
+<a class="sourceLine" id="cb8-3" title="3"><span class="fu">fetchSetting</span>(<span class="st">'Mp_InitialLongitude'</span>)  <span class="co">// doesn't compile (typo in the key name)</span></a></code></pre></div>
+<p>Note that we could achieve the same thing with typescript function overloading, however what we’ll do in the next section cannot be achieved with overloading anymore.</p>
+<h3 id="fetch-multiple-settings">Fetch multiple settings</h3>
+<p>It feels silly to start two separate HTTP requests to fetch the latitude and the longitude, so we’d like to fetch both at the same time. This is what we want to achieve:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode typescript"><code class="sourceCode typescript"><a class="sourceLine" id="cb9-1" title="1"><span class="fu">fetchSettings</span>(<span class="st">'General_Language'</span><span class="op">,</span> <span class="st">'Map_InitialLongitude'</span>).<span class="fu">then</span>(x <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb9-2" title="2">    <span class="co">// you can access by name. We got back both language and longitude</span></a>
+<a class="sourceLine" id="cb9-3" title="3">    <span class="co">// (and only these two)</span></a>
+<a class="sourceLine" id="cb9-4" title="4">    <span class="cf">return</span> <span class="va">x</span><span class="op">.</span><span class="at">General_Language</span> <span class="op">===</span> <span class="st">'en'</span></a>
+<a class="sourceLine" id="cb9-5" title="5"><span class="op">}</span>)</a></code></pre></div>
+<p>It does get interesting however in terms of the function signature…</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode typescript"><code class="sourceCode typescript"><a class="sourceLine" id="cb10-1" title="1"><span class="im">export</span> <span class="kw">interface</span> SettingKey <span class="op">{</span></a>
+<a class="sourceLine" id="cb10-2" title="2">    General_Language<span class="op">:</span> <span class="st">'en'</span> <span class="op">|</span> <span class="st">'fr'</span> <span class="op">|</span> <span class="st">'sl'</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb10-3" title="3">    Map_InitialLongitude<span class="op">:</span> <span class="dt">number</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb10-4" title="4">    Map_InitialLatitude<span class="op">:</span> <span class="dt">number</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb10-5" title="5"><span class="op">}</span></a>
+<a class="sourceLine" id="cb10-6" title="6"></a>
+<a class="sourceLine" id="cb10-7" title="7"><span class="kw">type</span> KeyArray <span class="op">=</span> (<span class="kw">keyof</span> SettingKey)<span class="op">[];</span></a>
+<a class="sourceLine" id="cb10-8" title="8"></a>
+<a class="sourceLine" id="cb10-9" title="9"><span class="kw">type</span> SettingKeyArray<span class="op">&lt;</span>KS <span class="kw">extends</span> KeyArray<span class="op">&gt;</span> <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb10-10" title="10">    <span class="op">[</span>P <span class="kw">in</span> KS<span class="op">[</span>number<span class="op">]]:</span> SettingKey<span class="op">[</span>P<span class="op">]</span></a>
+<a class="sourceLine" id="cb10-11" title="11"><span class="op">}</span></a>
+<a class="sourceLine" id="cb10-12" title="12"><span class="im">export</span> <span class="kw">function</span> fetchSettings<span class="op">&lt;</span>KS <span class="kw">extends</span> KeyArray<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb10-13" title="13">    (<span class="op">...</span>keys<span class="op">:</span> KS)<span class="op">:</span> <span class="bu">Promise</span><span class="op">&lt;</span>SettingKeyArray<span class="op">&lt;</span>KS<span class="op">&gt;&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb10-14" title="14">        <span class="cf">return</span> <span class="kw">null</span> <span class="im">as</span> any<span class="op">;</span></a>
+<a class="sourceLine" id="cb10-15" title="15">    <span class="op">}</span></a></code></pre></div>
+<p>OK, this is getting more complicated. So we have the same interface as before. Then we have <code>KeyArray</code>, which is a list of keys from <code>SettingKey</code>.</p>
+<p>So for instance <code class="sourceCode typescript"><span class="op">[</span><span class="st">'General_Language'</span><span class="op">,</span> <span class="st">'Map_InitialLatitude'</span><span class="op">]</span></code> is an inhabitant of the type <code>KeyArray</code>. And as we can see lower in the code sample, the <code>fetchSetting</code> function takes a <code>KeyArray</code> parameter. Well, since it takes it with the spread operator <code>...</code>, it takes it in an expanded form. So this is a valid call:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode typescript"><code class="sourceCode typescript"><a class="sourceLine" id="cb11-1" title="1"><span class="fu">fetchSetting</span>(<span class="st">'General_Language'</span><span class="op">,</span> <span class="st">'Map_InitialLatitude'</span>)<span class="op">;</span></a></code></pre></div>
+<p>Let’s now look at the <code>SettingKeyArray</code> type. First off, it’s parametrized on a type <code>KS</code>, which must be a <code>KeyArray</code>. This means that we’ll get a different <code>SettingKeyArray</code> type depending on the <code>KS</code> type parameter.</p>
+<p>Second, we use the <code>T[number]</code> pattern in that type definition. We can see a good example for this pattern in the <a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-8.html#example-2">typescript 2.8 release notes</a>, but long story short, <code>T[number]</code> refers to the element type of an array. So <code>T</code> must extend <code>any[]</code>, and for instance for <code>T</code>=<code>string[]</code>, then <code>T[number]</code> will be <code>string</code>.</p>
+<p>Let’s resolve the <code>SettingKeyArray</code> type for our previous example of a <code>KeyArray</code> type:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode typescript"><code class="sourceCode typescript"><a class="sourceLine" id="cb12-1" title="1">SettingKeyArray<span class="op">&lt;[</span><span class="st">'General_Language'</span><span class="op">,</span> <span class="st">'Map_InitialLatitude'</span><span class="op">]&gt;</span></a>
+<a class="sourceLine" id="cb12-2" title="2">↪</a>
+<a class="sourceLine" id="cb12-3" title="3"><span class="op">{</span> P <span class="kw">in</span> <span class="op">[</span><span class="st">'General_Language'</span><span class="op">,</span> <span class="st">'Map_InitialLatitude'</span><span class="op">][</span>number<span class="op">]:</span> SettingKey<span class="op">[</span>P<span class="op">]</span> <span class="op">}</span></a>
+<a class="sourceLine" id="cb12-4" title="4">↪</a>
+<a class="sourceLine" id="cb12-5" title="5"><span class="op">{</span> P <span class="fu">in</span> (<span class="st">'General_Language'</span><span class="op">|</span><span class="st">'Map_InitialLatitude'</span>)<span class="op">:</span> SettingKey<span class="op">[</span>P<span class="op">]</span> <span class="op">}</span></a>
+<a class="sourceLine" id="cb12-6" title="6">↪</a>
+<a class="sourceLine" id="cb12-7" title="7"><span class="op">{</span> <span class="st">'General_Language'</span><span class="op">:</span> SettingKey<span class="op">[</span><span class="st">'General_Language'</span><span class="op">],</span></a>
+<a class="sourceLine" id="cb12-8" title="8">  <span class="st">'Map_InitialLatitude'</span><span class="op">:</span> SettingKey<span class="op">[</span><span class="st">'Map_initialLatitude'</span><span class="op">]}</span></a>
+<a class="sourceLine" id="cb12-9" title="9">↪</a>
+<a class="sourceLine" id="cb12-10" title="10"><span class="op">{</span> <span class="st">'General_Language'</span><span class="op">:</span> <span class="st">'en'</span><span class="op">|</span><span class="st">'fr'</span><span class="op">|</span><span class="st">'sl'</span><span class="op">,</span> <span class="st">'Map_InitialLatitude'</span><span class="op">:</span> <span class="dt">number</span><span class="op">}</span></a></code></pre></div>
+<p>And that’s the shape of the data our function should be returning! (well it returns a promise of data with this shape, anyway)</p>
+<p>So to recap what we achieved, the type of our function <code>fetchSettings</code> indicates that the function takes a list of setting keys, and returns a promise of a object containing the setting values corresponding to the settings we fetched.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode typescript"><code class="sourceCode typescript"><a class="sourceLine" id="cb13-1" title="1"><span class="im">export</span> <span class="kw">function</span> fetchSettings<span class="op">&lt;</span>KS <span class="kw">extends</span> KeyArray<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb13-2" title="2">    (<span class="op">...</span>keys<span class="op">:</span> KS)<span class="op">:</span> <span class="bu">Promise</span><span class="op">&lt;</span>SettingKeyArray<span class="op">&lt;</span>KS<span class="op">&gt;&gt;;</span></a></code></pre></div>
+<p>Credits go to <a href="https://stackoverflow.com/users/125734/titian-cernicova-dragomir">Titian Cernicova-Dragomir</a> for <a href="https://stackoverflow.com/questions/53242568/typescript-mapped-tuple-lookup-types">this solution</a>!</p>
+<h2 id="prelude-ts-vector.zip">prelude-ts: Vector.zip</h2>
+<p>Let’s keep going now with tuple types and mapped types. In functional programming, the <code>zip</code> function is a classic. Here’s how it looks in the <a href="https://www.github.com/emmanueltouzery/prelude-ts">prelude-ts</a> library:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode typescript"><code class="sourceCode typescript"><a class="sourceLine" id="cb14-1" title="1"><span class="va">Vector</span><span class="op">.</span><span class="fu">of</span>(<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>).<span class="fu">zip</span>(<span class="op">[</span><span class="st">&quot;a&quot;</span><span class="op">,</span><span class="st">&quot;b&quot;</span><span class="op">,</span><span class="st">&quot;c&quot;</span><span class="op">]</span>)</a>
+<a class="sourceLine" id="cb14-2" title="2"><span class="co">// =&gt; Vector.of([1,&quot;a&quot;], [2,&quot;b&quot;], [3,&quot;c&quot;])</span></a></code></pre></div>
+<p>So we take two lists, and combine them to produce a new list which contains pairs from the original lists.</p>
+<p>The type signature is pretty simple:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode typescript"><code class="sourceCode typescript"><a class="sourceLine" id="cb15-1" title="1"><span class="kw">class</span> Vector<span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb15-2" title="2">    <span class="fu">zip</span><span class="op">&lt;</span>U<span class="op">&gt;</span>(other<span class="op">:</span> Iterable<span class="op">&lt;</span>U<span class="op">&gt;</span>)<span class="op">:</span> Vector<span class="op">&lt;[</span>T<span class="op">,</span>U<span class="op">]&gt;;</span></a>
+<a class="sourceLine" id="cb15-3" title="3"><span class="op">}</span></a></code></pre></div>
+<p>But what if we wanted to zip three lists? Or four? We can write a javascript function that would support any number of lists, but how could we express that with types… We could use overloads to express versions up to 5 or 6 lists… But as of typescript 3.1 we can now express the type of the function supporting any arity.</p>
+<p>The insight is to declare (and get typescript to infer) a tuple type describing the element types of all the iterables that we wish to zip together. So for instance if we we wish to zip an <code>Iterable&lt;boolean&gt;</code> together with a <code>number[]</code> and a <code>(string|undefined)[]</code> then the tuple type that we start with would be <code>[boolean, number, string|undefined]</code>.</p>
+<p>If we look again at the type signature of <code>zip</code>, but as a static function, not as a member method, it looks like this:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode typescript"><code class="sourceCode typescript"><a class="sourceLine" id="cb16-1" title="1"><span class="kw">function</span> <span class="fu">zip</span><span class="op">&lt;</span>T<span class="op">,</span>U<span class="op">&gt;</span>(it1<span class="op">:</span> Iterable<span class="op">&lt;</span>T<span class="op">&gt;,</span> it2<span class="op">:</span> Iterable<span class="op">&lt;</span>U<span class="op">&gt;</span>)<span class="op">:</span> Vector<span class="op">&lt;[</span>T<span class="op">,</span>U<span class="op">]&gt;;</span></a></code></pre></div>
+<p>Looking this now, our tuple type, the tuple type of the element types of the collections – let’s call it <code>A</code> – is clearly used for the result of the zip function: we return <code>Vector&lt;[T,U]&gt;</code>, in other words <code>Vector&lt;A&gt;</code>.</p>
+<p>But what about the parameters that our function accepts? First off clearly there are several of them, not just one.. And we’d like to work with one type. But we can use tuple types and the spread operator for that:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode typescript"><code class="sourceCode typescript"><a class="sourceLine" id="cb17-1" title="1"><span class="kw">function</span> <span class="fu">zip</span><span class="op">&lt;</span>T<span class="op">,</span>U<span class="op">&gt;</span>(<span class="op">...</span>its<span class="op">:</span> <span class="op">[</span>Iterable<span class="op">&lt;</span>T<span class="op">&gt;,</span> Iterable<span class="op">&lt;</span>U<span class="op">&gt;]</span>)<span class="op">:</span> Vector<span class="op">&lt;[</span>T<span class="op">,</span>U<span class="op">]&gt;;</span></a></code></pre></div>
+<p>Ok, so we have the <code>[T,U]</code> tuple type, our result type will be <code>Vector&lt;[T,U]&gt;</code>, but we somehow need to get to the spread parameter type, which is <code>[Iterable&lt;T&gt;, Iterable&lt;U&gt;]</code>.</p>
+<p>Mapped types can help! In this case we’ll need <a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-1.html">typescript 3.1 refinements to mapped types</a>, and the final type definition comes probably as simple as it could:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode typescript"><code class="sourceCode typescript"><a class="sourceLine" id="cb18-1" title="1"><span class="co">/**</span></a>
+<a class="sourceLine" id="cb18-2" title="2"><span class="co"> * IterableArray can take a type and apply iterable to its &quot;components&quot;.</span></a>
+<a class="sourceLine" id="cb18-3" title="3"><span class="co"> *</span></a>
+<a class="sourceLine" id="cb18-4" title="4"><span class="co"> * `IterableArray&lt;[string,number,string]&gt;`</span></a>
+<a class="sourceLine" id="cb18-5" title="5"><span class="co"> * =&gt; `[Iterable</span><span class="kw">&lt;string&gt;</span><span class="co">, Iterable</span><span class="kw">&lt;number&gt;</span><span class="co">, Iterable</span><span class="kw">&lt;string&gt;</span><span class="co">]`</span></a>
+<a class="sourceLine" id="cb18-6" title="6"><span class="co"> */</span></a>
+<a class="sourceLine" id="cb18-7" title="7"><span class="im">export</span> <span class="kw">type</span> IterableArray<span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">=</span> <span class="op">{</span> <span class="op">[</span>K <span class="kw">in</span> <span class="kw">keyof</span> T<span class="op">]</span> <span class="op">:</span> Iterable<span class="op">&lt;</span>T<span class="op">[</span>K<span class="op">]&gt;</span> <span class="op">};</span></a></code></pre></div>
+<p>So we apply mapped types on an array. We say that for each index <code>K</code> in the array <code>T</code>, we change the type from <code>T[K]</code> to <code>Iterable&lt;T[K]&gt;</code>.</p>
+<p>And so now we have all the elements to define our new <code>zip</code> function:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode typescript"><code class="sourceCode typescript"><a class="sourceLine" id="cb19-1" title="1"><span class="fu">zip</span><span class="op">&lt;</span>A <span class="kw">extends</span> any<span class="op">[]&gt;</span>(<span class="op">...</span>iterables<span class="op">:</span> IterableArray<span class="op">&lt;</span>A<span class="op">&gt;</span>)<span class="op">:</span> Vector<span class="op">&lt;</span>A<span class="op">&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb19-2" title="2">    <span class="cf">return</span> <span class="kw">undefined</span> <span class="im">as</span> any<span class="op">;</span></a>
+<a class="sourceLine" id="cb19-3" title="3"><span class="op">}</span></a></code></pre></div>
+<p>This is the implementation as it’s found in prelude-ts. We specify our type <code>A</code> only once (or ask typescript to infer it), then that type is used for the parameters in a mapped form, and for the result type as the element type of a <code>Vector</code>.</p>
+<p>However notice that we gave up our initial solution, which was a method on <code>Vector</code>, in favour of a standalone function. So, <code>Vector.zip(a,b)</code> instead of <code>a.zip(b)</code>. In prelude-ts, we would normally expect the first solution: a member in the <code>Vector</code> class, as the library prefers a fluent API, allowing to chain operations instead of nesting static calls, so rather <code>list.filter(..).map(..).find(..)</code> instead of <code>find(map(filter(list, ..), ..), ..)</code>. As it is, for <code>zip</code>, prelude-ts defines both a member method which accepts only one other iterable, and a “static” function accepting any number of iterables.</p>
+<p>It is in fact technically possible to achieve <code>a.zib(b,c,d)</code> and with the proper types, but it has serious downsides in the current versions of typescript.</p>
+<p>To achieve this we need to be able to add an item (the type component of the receiver) to a type-level list (the tuple type of the parameters to the method). So, in <code>a.zip(b,c,d)</code>, we have <code>Vector&lt;T&gt;</code> the type of the receiver, and <code>A</code> the tuple type of <code>[B,C,D]</code>. What we want is to prepend <code>T</code> to <code>A</code>, to get <code>[T,B,C,D]</code>.</p>
+<p>It turns out that <a href="https://github.com/fightingcat">@fightingcat</a> described in a typescript issue discussion <a href="https://github.com/Microsoft/TypeScript/pull/24897#issuecomment-400549996">a way to achieve that</a> with the current versions of typescript. Unfortunately the solution abuses the typescript type inference and in my tests caused an important compile time regression which made me drop the idea.</p>
+<p>I’ll still describe it here as an illustration of the power of these mechanisms in general, though they’re not yet really attainable in typescript. I’ll then expand yet further in the domain of type-level programming, which is also not something that is supported by typescript, but is barely achievable in small amounts if you’re willing to abuse the mechanisms that typescript make available and sacrifice compilation time.</p>
+<p>If you’re not interested in these unsupported mechanisms, you can skip the next section.</p>
+<div class="bizarro-world" style="margin-top:-5px">
+<h1 id="danger-zone">⚠ DANGER ZONE</h1>
+<div class="bizarro-world-inner">
+<p>So we take advantage of <code>Unshift</code> that <code>@fightingcat</code> described, and we get this working solution:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode typescript"><code class="sourceCode typescript"><a class="sourceLine" id="cb20-1" title="1"><span class="im">export</span> <span class="kw">type</span> IterableArray<span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">=</span> <span class="op">{</span> <span class="op">[</span>K <span class="kw">in</span> <span class="kw">keyof</span> T<span class="op">]</span> <span class="op">:</span> Iterable<span class="op">&lt;</span>T<span class="op">[</span>K<span class="op">]&gt;</span> <span class="op">};</span></a>
+<a class="sourceLine" id="cb20-2" title="2"><span class="co">// don't do this!</span></a>
+<a class="sourceLine" id="cb20-3" title="3"><span class="im">export</span> <span class="kw">type</span> Unshift<span class="op">&lt;</span>Tuple <span class="kw">extends</span> <span class="dt">any</span><span class="op">[],</span> <span class="bu">Element</span><span class="op">&gt;</span> <span class="op">=</span> </a>
+<a class="sourceLine" id="cb20-4" title="4">    ((h<span class="op">:</span> <span class="bu">Element</span><span class="op">,</span> <span class="op">...</span>t<span class="op">:</span> Tuple) <span class="kw">=&gt;</span> <span class="kw">void</span>) <span class="fu">extends</span> (<span class="op">...</span>t<span class="op">:</span> <span class="kw">infer</span> R) <span class="kw">=&gt;</span> <span class="kw">void</span> <span class="op">?</span> R <span class="op">:</span> <span class="dt">never</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb20-5" title="5"></a>
+<a class="sourceLine" id="cb20-6" title="6"><span class="kw">class</span> Vector<span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb20-7" title="7">    <span class="fu">zip</span><span class="op">&lt;</span>A <span class="kw">extends</span> any<span class="op">[]&gt;</span>(<span class="op">...</span>iterables<span class="op">:</span> IterableArray<span class="op">&lt;</span>A<span class="op">&gt;</span>)<span class="op">:</span> Vector<span class="op">&lt;</span>Unshift<span class="op">&lt;</span>A<span class="op">,</span>T<span class="op">&gt;&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb20-8" title="8">        <span class="cf">return</span> <span class="kw">undefined</span> <span class="im">as</span> any<span class="op">;</span></a>
+<a class="sourceLine" id="cb20-9" title="9">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb20-10" title="10"><span class="op">}</span></a></code></pre></div>
+<p>The way <code>Unshift</code> works is that it defines a function taking as first parameter a value of type <code>T</code> and as “rest” parameter the tuple type expanded using the spread operator: <code>(h: T, ...t: Tuple)</code>. So in effect that function takes as parameters exactly the tuple type we’re interested in: the tuple type, with <code>T</code> prefixed.</p>
+<p>It then uses the <code>infer</code> typescript keyword to be able to “capture” this type which is the tuple type with <code>T</code> prefixed: <code>(...t: infer R)</code>.</p>
+<p>Impressive as it is, this is not something typescript was meant to support, and I could see it clearly in my experiments, as the typescript compiler did go out of memory compiling the modified version of prelude.ts (this example works when built independently in a small file though).</p>
+<h2 id="going-overboard-actual-type-level-programming">Going overboard: actual type-level programming</h2>
+<p>Now we turn it up to 11, and venture well beyond where the typescript designers had intended the type-checker to go. But keep in mind, this is purely for fun and this code cannot go in the real prelude-ts library, and you shouldn’t do this in your codebase.</p>
+<p>With this caveat emptor out of the way, there are a couple of functions in prelude-ts for which the typescript type system limits us, for instance the <a href="http://emmanueltouzery.github.io/prelude.ts/latest/apidoc/files/function.html">Function</a> types. Here are some examples of their uses:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode typescript"><code class="sourceCode typescript"><a class="sourceLine" id="cb21-1" title="1"><span class="kw">const</span> plus5 <span class="op">=</span> <span class="va">Function2</span><span class="op">.</span><span class="fu">of</span>((x<span class="op">:</span><span class="dt">number</span><span class="op">,</span>y<span class="op">:</span><span class="dt">number</span>)<span class="kw">=&gt;</span>x<span class="op">+</span>y).<span class="fu">apply1</span>(<span class="dv">5</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb21-2" title="2"><span class="fu">plus5</span>(<span class="dv">1</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb21-3" title="3"><span class="kw">=&gt;</span> <span class="dv">6</span></a></code></pre></div>
+<p>So this is partial application. We take a function taking two parameters, and doing <code>a + b</code>. Then we apply only one parameter, giving it the value <code>5</code>, and now we get a new function, which takes a single parameter, and is in effect <code>b =&gt; 5 + b</code>.</p>
+<p>In that example the type of <code>plus5</code> is <code>Function1&lt;number,number&gt;</code>, while the <code>Function2.of()</code> call returns a value of type <code>Function2&lt;number,number,number&gt;</code>.</p>
+<p>What we don’t like about this is that we must have <code class="sourceCode typescript">Function2<span class="op">&lt;</span>T1<span class="op">,</span>T2<span class="op">,</span>R<span class="op">&gt;</span></code>, <code class="sourceCode typescript">Function3<span class="op">&lt;</span>T1<span class="op">,</span>T2<span class="op">,</span>T3<span class="op">,</span>R<span class="op">&gt;</span></code> and so on. So we must have the arity of the function in the type. And clearly we don’t support all possible arities. Currently prelude-ts supports up to <code>Function5</code>.</p>
+<p>Instead of that, we’d like to have a single <code>Function</code> type, and that type must enable us to do recursion in type-level functions. To set us up for that, let’s define these two types:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode typescript"><code class="sourceCode typescript"><a class="sourceLine" id="cb22-1" title="1"><span class="kw">class</span> FunctionX0<span class="op">&lt;</span>R<span class="op">&gt;</span> <span class="op">{}</span></a>
+<a class="sourceLine" id="cb22-2" title="2"><span class="kw">class</span> FunctionX<span class="op">&lt;</span>T<span class="op">,</span> P <span class="kw">extends</span> any<span class="op">[],</span> R<span class="op">&gt;</span> <span class="op">{}</span></a></code></pre></div>
+<p>So we have a special type for parameterless functions (<code>FunctionX0</code>), and another one for functions with a least one parameter (<code>FunctionX</code>). In the latter case, the first parameter is handled specially (it’s <code>T</code>), and the other parameters are stored through a tuple type <code>P</code>, which enables us to support any arity.</p>
+<p>So, for instance, we have:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode typescript"><code class="sourceCode typescript"><a class="sourceLine" id="cb23-1" title="1"><span class="co">// covered by FunctionX0&lt;void&gt;</span></a>
+<a class="sourceLine" id="cb23-2" title="2"><span class="kw">function</span> <span class="fu">noParams</span>()<span class="op">:</span> <span class="dt">void</span><span class="op">;</span> </a>
+<a class="sourceLine" id="cb23-3" title="3"></a>
+<a class="sourceLine" id="cb23-4" title="4"><span class="co">// covered by FunctionX&lt;string, [number,boolean], string&gt;</span></a>
+<a class="sourceLine" id="cb23-5" title="5"><span class="kw">function</span> <span class="fu">twoParams</span>(name<span class="op">:</span> <span class="dt">string</span><span class="op">,</span> age<span class="op">:</span> <span class="dt">number</span><span class="op">,</span> registered<span class="op">:</span> <span class="dt">boolean</span>)<span class="op">:</span> <span class="dt">string</span><span class="op">;</span> </a></code></pre></div>
+<p>With these types, we can apply the function by taking as parameters <code>(p1: T, ...rest: P)</code>. And using this <code>FunctionX</code> we can define <code>apply1()</code> (partial application) and <code>tupled()</code>, using the <code>infer</code> trick we’ve seen previously.</p>
+<p>You can see their definitions in the <a href="https://github.com/emmanueltouzery/prelude-ts/commit/f05cbf2d3a24c5b96dbda938353806864e98ffe1">prelude-ts branch</a> in which I was playing with this concept. But the one which is pushing it one step further is <code>curry()</code>, which actually requires type-level recursion.</p>
+<p><code>curry</code> will transform a 2-parameter function into a function of one parameter returning a function of one parameter returning the result. I think in the context of typescript and prelude-ts, <code>apply1</code> (partial application) is in fact useful in more cases, but curry is also interesting.</p>
+<p>So <code>Function2.of((a:number,b:number)=&gt;a+b).curry()</code> is of type <code>Function1&lt;number,Function1&lt;number, number&gt;&gt;</code> and can be called through <code>curried(5)(6)</code> (which will return 11).</p>
+<p>So, we want <code>curry</code> for <code class="sourceCode typescript">FunctionX<span class="op">&lt;</span>number<span class="op">,[</span>string<span class="op">,</span>boolean<span class="op">],</span>Result<span class="op">&gt;</span></code> to return <code class="sourceCode typescript">FunctionX<span class="op">&lt;</span>number<span class="op">,</span> <span class="op">[],</span> FunctionX<span class="op">&lt;</span>string<span class="op">,</span> <span class="op">[],</span> FunctionX<span class="op">&lt;</span>boolean<span class="op">,</span> <span class="op">[],</span> Result<span class="op">&gt;&gt;&gt;</span></code>.</p>
+<p>And this is how we achieve that:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode typescript"><code class="sourceCode typescript"><a class="sourceLine" id="cb24-1" title="1"><span class="kw">class</span> FunctionX<span class="op">&lt;</span>T<span class="op">,</span> P <span class="kw">extends</span> any<span class="op">[],</span> R<span class="op">&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb24-2" title="2"></a>
+<a class="sourceLine" id="cb24-3" title="3">    <span class="fu">curried</span>()<span class="op">:</span> CurryReturnType<span class="op">&lt;</span>T<span class="op">,</span>P<span class="op">,</span>R<span class="op">&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb24-4" title="4">        <span class="cf">return</span> <span class="kw">undefined</span> <span class="im">as</span> any<span class="op">;</span></a>
+<a class="sourceLine" id="cb24-5" title="5">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb24-6" title="6"><span class="op">}</span></a></code></pre></div>
+<p>Easy right? Well ok, all the fun is in the definition of <code>CurryReturnType</code>.</p>
+<p>Now, what we’d <strong>like</strong> to say would be:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode typescript"><code class="sourceCode typescript"><a class="sourceLine" id="cb25-1" title="1"><span class="co">// this doesn't work!</span></a>
+<a class="sourceLine" id="cb25-2" title="2"><span class="kw">type</span> CurryReturnType<span class="op">&lt;</span>T<span class="op">,</span>P<span class="op">,</span>R<span class="op">&gt;</span> <span class="op">=</span> P <span class="kw">extends</span> <span class="op">[</span><span class="kw">infer</span> T1<span class="op">,</span> <span class="op">...</span><span class="dt">any</span><span class="op">[]]</span> <span class="op">?</span></a>
+<a class="sourceLine" id="cb25-3" title="3">    FunctionX<span class="op">&lt;</span>T<span class="op">,[],</span>CurryReturnType<span class="op">&lt;</span>T1<span class="op">,</span>TTail<span class="op">&lt;</span>P<span class="op">&gt;,</span>R<span class="op">&gt;&gt;</span> <span class="op">:</span> FunctionX<span class="op">&lt;</span>T<span class="op">,[],</span>R<span class="op">&gt;;</span></a></code></pre></div>
+<p>So… in any case we return a function whose first parameter will be <code>T</code>. But the for the remaining parameters, we look at <code>P</code>, which are the remaining parameters besides the first one:</p>
+<ol type="1">
+<li><p>if <code>P</code> is a non-empty array (<code>P extends [infer T1, ...any[]]</code> returns true), then the extra parameters in our result function must be curried again. We already extracted the first of them: <code>T1</code>. And we wrap the rest in <code>CurryReturnType</code> – and that’s the type-level recursive call right here!</p></li>
+<li><p>If on the other hand the remaining parameters are the empty array, then there are no extra parameters and we stop the recursion.</p></li>
+</ol>
+<p>But, this doesn’t work :-) Typescript complains about circular references in type aliases.</p>
+<p>But this didn’t stop <a href="https://github.com/tycho01">@tycho1</a> from <a href="https://github.com/Microsoft/TypeScript/issues/14174#issuecomment-411661058">devising a workaround</a> for this kind of issue. Here is the workaround applied to our case:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode typescript"><code class="sourceCode typescript"><a class="sourceLine" id="cb26-1" title="1"><span class="kw">type</span> CurryReturnType<span class="op">&lt;</span>T<span class="op">,</span>P <span class="kw">extends</span> <span class="dt">any</span><span class="op">[],</span>R<span class="op">&gt;</span> <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb26-2" title="2">    <span class="dv">0</span><span class="op">:</span> FunctionX<span class="op">&lt;</span>T<span class="op">,[],</span>R<span class="op">&gt;,</span></a>
+<a class="sourceLine" id="cb26-3" title="3">    <span class="dv">1</span><span class="op">:</span> FunctionX<span class="op">&lt;</span>T<span class="op">,[],</span>CurryReturnType<span class="op">&lt;</span>THead<span class="op">&lt;</span>P<span class="op">&gt;,</span>TTail<span class="op">&lt;</span>P<span class="op">&gt;,</span>R<span class="op">&gt;&gt;</span></a>
+<a class="sourceLine" id="cb26-4" title="4"><span class="op">}[</span>P <span class="kw">extends</span> <span class="op">[</span><span class="kw">infer</span> T1<span class="op">,</span> <span class="op">...</span>any<span class="op">[]]</span> <span class="op">?</span> <span class="dv">1</span> <span class="op">:</span> <span class="dv">0</span><span class="op">];</span></a></code></pre></div>
+<p>At this point we’re basically knowingly tricking the typechecker in doing things it does not want to do:</p>
+<blockquote>
+<p>The idea is basically to ensure the recursive call is wrapped such that it cannot immediately evaluate the whole thing and complain about the recursion.</p>
+<p>This is done by wrapping the call into an object type (traditionally in the form <code>{ 0: ..., 1: ... }</code>), which you then navigate using a condition it is unable to simplify out right away (here using conditional types: <code>B extends [] ? 1 : 0</code>).</p>
+</blockquote>
+<p>This is very impressive, but as Anders Hejlsberg, the Lead architect of Typescript emphasized, <a href="https://github.com/Microsoft/TypeScript/pull/24897#issuecomment-401418254">don’t do it</a>:</p>
+<blockquote>
+<p>It’s clever, but it definitely pushes things well beyond their intended use. While it may work for small examples, it will scale horribly. Resolving those deeply recursive types consumes a lot of time and resources and might in the future run afoul of the recursion governors we have in the checker.</p>
+<pre><code></code></pre>
+<p>Don’t do it!</p>
+</blockquote>
+<p>But at this point we’re really deep down the rabbit hole and it’s time to go back to the real world 😊 (or maybe I should write 😞).</p>
+</div>
+</div>
+<h2 id="takeaways">Takeaways</h2>
+<p>There is a fine line to walk, between using types as a leverage to assist you with your work, or having sophisticated types just for the sake of it, <a href="https://lispcast.com/clojure-and-types/">as the clojure community often emphasizes</a>:</p>
+<blockquote>
+<p>Rich Hickey mentioned puzzles as being addictive, implying that it’s fun to do stuff in the type system because it’s like a puzzle. It’s similar to the Object-Oriented practice of really puzzling out those isA relationships. It very much is like a puzzle: you’ve got some rules and an objective. Can you figure out a solution? Meanwhile, it gets you no closer to the goal.</p>
+</blockquote>
+<p>There is also a compromise between documentation through type/readability and type expressiveness. The ability of a programmer to decipher advanced types does increase with time, but there is a fine line, especially when you push a language to its limits in terms of type expressiveness – if you feel you need this very often you might consider rather using a more advanced language. In general this should be used only in select areas in a typescript codebase, where you’ll get a high return on investment.</p>
+<p>There is real value though, in limiting the caller of an API, making sure it just cannot misuse the API, and self-documentation through these limits described by the types. And in effect the complexity doesn’t stem from the types – the typescript team implemented tuple types and mapped types to make it possible to express in typescript patterns which were used in common javascript libraries.</p>
+<h3 id="credits">Credits</h3>
+<p>I must thank <a href="https://stackoverflow.com/users/125734/titian-cernicova-dragomir">Titian Cernicova-Dragomir</a> who keeps answering my really strange and confused stackoverflow typescript questions, and <a href="https://github.com/qm3ster">@qm3ster</a> who brought the power of tuples types to my attention in a discussion related to <a href="http://emmanueltouzery.github.io/prelude.ts/latest/apidoc/classes/future.html">Future</a> support in prelude-ts.</p>
+<p>I hope this blog post doesn’t frighten you from FP style or prelude-ts - most of the types there are simple and all of them are here to help the user!</p>
+<p>That’s it for today! You can learn more about my typescript functional library prelude-ts through its <a href="https://github.com/emmanueltouzery/prelude-ts">website</a>, <a href="https://github.com/emmanueltouzery/prelude-ts/wiki/Prelude%E2%88%92ts-user-guide">user guide</a> and <a href="http://emmanueltouzery.github.io/prelude.ts/latest/apidoc/globals.html">apidocs</a>.</p>
+<p>See also <a href="http://emmanueltouzery.github.io/blog/posts/2018-04-07-prelude-type-guards.html">my other blog on typescript type guards and conditional types in prelude.ts</a></p>
+
+<div id="disqus_thread"></div>
+<script>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+var disqus_config = function () {
+//this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = "/posts/2018-12-08-typescript-tuple-types-mapped-types-typeprog.html"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = '//emmanueltouzery.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+        </div>
+        <div id="footer">
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+        </div>
+    </body>
+</html>
