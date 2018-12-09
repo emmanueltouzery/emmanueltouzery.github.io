@@ -217,10 +217,11 @@
 <div class="sourceCode" id="cb25"><pre class="sourceCode typescript"><code class="sourceCode typescript"><a class="sourceLine" id="cb25-1" title="1"><span class="co">// this doesn't work!</span></a>
 <a class="sourceLine" id="cb25-2" title="2"><span class="kw">type</span> CurryReturnType<span class="op">&lt;</span>T<span class="op">,</span>P<span class="op">,</span>R<span class="op">&gt;</span> <span class="op">=</span> P <span class="kw">extends</span> <span class="op">[</span><span class="kw">infer</span> T1<span class="op">,</span> <span class="op">...</span><span class="dt">any</span><span class="op">[]]</span> <span class="op">?</span></a>
 <a class="sourceLine" id="cb25-3" title="3">    FunctionX<span class="op">&lt;</span>T<span class="op">,[],</span>CurryReturnType<span class="op">&lt;</span>T1<span class="op">,</span>TTail<span class="op">&lt;</span>P<span class="op">&gt;,</span>R<span class="op">&gt;&gt;</span> <span class="op">:</span> FunctionX<span class="op">&lt;</span>T<span class="op">,[],</span>R<span class="op">&gt;;</span></a></code></pre></div>
-<p>So… in any case we return a function whose first parameter will be <code>T</code>. But the for the remaining parameters, we look at <code>P</code>, which are the remaining parameters besides the first one:</p>
+<p>So… in any case we return a function whose first parameter will be <code>T</code>. But the for the remaining parameters, we look at <code>P</code>, which are the remaining parameters besides the first one.</p>
+<p>Is <code>P</code> is a non-empty array (<code>P extends [infer T1, ...any[]]</code> returns true)?</p>
 <ol type="1">
-<li><p>if <code>P</code> is a non-empty array (<code>P extends [infer T1, ...any[]]</code> returns true), then the extra parameters in our result function must be curried again. We already extracted the first of them: <code>T1</code>. And we wrap the rest in <code>CurryReturnType</code> – and that’s the type-level recursive call right here!</p></li>
-<li><p>If on the other hand the remaining parameters are the empty array, then there are no extra parameters and we stop the recursion.</p></li>
+<li><p>YES =&gt; then the extra parameters in our result function must be curried again. We already extracted the first of them: <code>T1</code>. And we wrap the rest in <code>CurryReturnType</code> – and that’s the type-level recursive call right here!</p></li>
+<li><p>NO =&gt; then there are no extra parameters and we stop the recursion.</p></li>
 </ol>
 <p>But, this doesn’t work :-) Typescript complains about circular references in type aliases.</p>
 <p>But this didn’t stop <a href="https://github.com/tycho01">@tycho1</a> from <a href="https://github.com/Microsoft/TypeScript/issues/14174#issuecomment-411661058">devising a workaround</a> for this kind of issue. Here is the workaround applied to our case:</p>
