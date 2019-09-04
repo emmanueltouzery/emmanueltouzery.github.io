@@ -74,7 +74,7 @@
 					<p>You can build predicates using <a href="../classes/predicate.predicatestatic.html">PredicateStatic</a> through the
 					&#39;Predicate&#39; global constant.</p>
 					<p>Examples:</p>
-					<pre><code>const check = Predicate.of(x =&gt; x &gt; <span class="hljs-number">10</span>).<span class="hljs-built_in">and</span>(x =&gt; x &lt; <span class="hljs-number">20</span>);
+					<pre><code>const check = Predicate.of((<span class="hljs-symbol">x:</span> number) =&gt; x &gt; <span class="hljs-number">10</span>).<span class="hljs-built_in">and</span>(x =&gt; x &lt; <span class="hljs-number">20</span>);
 check(<span class="hljs-number">12</span>); // =&gt; <span class="hljs-built_in">true</span>
 check(<span class="hljs-number">21</span>);
 =&gt; <span class="hljs-built_in">false</span>
@@ -118,7 +118,7 @@ Vector.of(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,
 					<div class="tsd-signature tsd-kind-icon">Predicate<span class="tsd-signature-symbol">:</span> <a href="../classes/predicate.predicatestatic.html" class="tsd-signature-type">PredicateStatic</a><span class="tsd-signature-symbol"> =&nbsp;new PredicateStatic()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/94c944c/src/Predicate.ts#L129">src/Predicate.ts:129</a></li>
+							<li>Defined in <a href="https://github.com/emmanueltouzery/prelude.ts/blob/0f88b2a/src/Predicate.ts#L129">src/Predicate.ts:129</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
