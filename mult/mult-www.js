@@ -17,8 +17,11 @@ function PastComputations({ trail }) {
     trail.map((e, idx) =>
       React.createElement(
         "div",
-        { key: idx, className: e.question ? "question" : "comment" },
-        e.question || e.comment
+        {
+          key: idx,
+          className: e.question ? "question" : e.answer ? "answer" : "comment"
+        },
+        e.question || e.comment || e.answer
       )
     )
   );
@@ -120,12 +123,12 @@ function Mult() {
 
   const handleEntered = v => {
     if (Number(v) === computationResult()) {
-      setTrail([...trail, v, { comment: "Bravo! 🎉" }]);
+      setTrail([...trail, { answer: v }, { comment: "Bravo! 🎉" }]);
       setSuccessCount(successCount + 1);
       setAskedCount(askedCount + 1);
     } else {
       setErrorCount(errorCount + 1);
-      setTrail([...trail, v, { comment: "Ne pa ne!" }]);
+      setTrail([...trail, { answer: v }, { comment: "Ne pa ne!" }]);
     }
   };
 
