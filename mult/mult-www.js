@@ -27,7 +27,7 @@ function PastComputations({ trail }) {
   );
 }
 
-function AskQuestion({ addEntered, timeoutMs }) {
+function AskQuestion({ addEntered, timeoutMs, qNum }) {
   const ref = React.useRef();
   React.useEffect(() => {
     ref.current.scrollIntoView();
@@ -66,6 +66,9 @@ function AskQuestion({ addEntered, timeoutMs }) {
     React.createElement(
       "div",
       {
+        // tie the progress bar to the question number, so it resets
+        // when we move to the next question
+        key: qNum,
         style: {
           height: "30px",
           width: "20px",
@@ -182,7 +185,8 @@ function Mult() {
           AskQuestion,
           {
             addEntered: handleEntered,
-            timeoutMs: computation && computation.maxTime
+            timeoutMs: computation && computation.maxTime,
+            qNum: askedCount
           },
           null
         )
