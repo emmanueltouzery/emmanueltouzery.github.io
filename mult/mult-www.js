@@ -177,7 +177,8 @@ function Mult() {
             onClick: () => {
               setIsTooSlow(false);
               setAskedCount(askedCount + 1);
-            }
+            },
+            autoFocus: "autoFocus"
           },
           "Nadaljuj"
         )
