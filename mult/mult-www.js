@@ -54,7 +54,7 @@ function AskQuestion({ addEntered, timeoutMs, qNum }) {
         height: "30px",
         ref: ref,
         onKeyDown: e => {
-          if (e.key === "Enter") {
+          if (e.key === "Enter" && ref.current.value.length > 0) {
             addEntered(ref.current.value);
             ref.current.value = "";
           }
