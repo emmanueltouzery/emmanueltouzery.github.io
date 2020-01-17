@@ -27,18 +27,31 @@ function PastComputations({ trail }) {
   );
 }
 
-function AskQuestion({ addEntered }) {
+function AskQuestion({ addEntered, timeoutMs }) {
   const ref = React.useRef();
   React.useEffect(() => {
     ref.current.scrollIntoView();
   });
+
+  const animInfo =
+    timeoutMs !== undefined
+      ? {
+          animationDuration: `${timeoutMs / 2000}s`,
+          animationName: "entryAnim",
+          animationTimingFunction: "linear",
+          animationDelay: `${timeoutMs / 2000}s`
+        }
+      : {};
   return React.createElement(
     "div",
-    null,
+    {
+      style: { display: "flex" }
+    },
     React.createElement(
       "input",
       {
         type: "text",
+        height: "30px",
         ref: ref,
         onKeyDown: e => {
           if (e.key === "Enter") {
@@ -47,6 +60,19 @@ function AskQuestion({ addEntered }) {
           }
         },
         autoFocus: "autoFocus"
+      },
+      null
+    ),
+    React.createElement(
+      "div",
+      {
+        style: {
+          height: "30px",
+          width: "20px",
+          margin: "0px",
+          borderRadius: "3px",
+          ...animInfo
+        }
       },
       null
     )
@@ -152,7 +178,14 @@ function Mult() {
           },
           "Nadaljuj"
         )
-      : React.createElement(AskQuestion, { addEntered: handleEntered }, null)
+      : React.createElement(
+          AskQuestion,
+          {
+            addEntered: handleEntered,
+            timeoutMs: computation && computation.maxTime
+          },
+          null
+        )
   ];
   return React.createElement(...["div", null, ...items]);
 }
