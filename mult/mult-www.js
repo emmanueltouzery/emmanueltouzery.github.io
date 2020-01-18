@@ -1,6 +1,7 @@
 const ASK_COUNT = 25;
 const TIMEOUT_MULT_MS = 10000;
 const TIMEOUT_DIV_MS = 16000;
+const TIMEOUT_CONTINUE_BUTTON_ENABLE_MS = 1500;
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
@@ -102,6 +103,15 @@ function Mult() {
   const [errorCount, setErrorCount] = React.useState(0);
   const [tooSlowCount, setTooSlowCount] = React.useState(0);
   const [isTooSlow, setIsTooSlow] = React.useState(false);
+  // disable the 'continue' button in the first 1000ms after the timeout,
+  // so the student reads what they didn't know + students tend to press
+  // enter from the previous question and acknowledge this by mistake,
+  // immediately triggering the next question
+  const [isDisabledContinueButton, setDisabledContinueButton] = React.useState(
+    true
+  );
+  const buttonRef = React.useRef();
+
   const resetComputation = () => setComputation(getNewComputation());
   const computationResult = () =>
     computation.op === "x"
@@ -125,11 +135,9 @@ function Mult() {
     }
   }, [askedCount]);
   React.useEffect(() => {
-    if (isTooSlow) {
-      return;
-    }
     const timer = setInterval(() => {
       if (
+        !isTooSlow &&
         askedCount < ASK_COUNT &&
         new Date() - computation.started > computation.maxTime
       ) {
@@ -147,9 +155,22 @@ function Mult() {
         ]);
         setIsTooSlow(true);
       }
+      if (computation && isTooSlow) {
+        // disable the 'continue' button in the first X ms after the timeout
+        setDisabledContinueButton(
+          new Date() - computation.started - computation.maxTime <
+            TIMEOUT_CONTINUE_BUTTON_ENABLE_MS
+        );
+      }
     }, 1000);
     return () => clearInterval(timer);
   }, [computation, trail, isTooSlow]);
+  React.useEffect(() => {
+    // focus the 'continue' button when it gets enabled
+    if (!isDisabledContinueButton) {
+      buttonRef.current.focus();
+    }
+  }, [isDisabledContinueButton]);
 
   const handleEntered = v => {
     if (Number(v) === computationResult()) {
@@ -162,6 +183,9 @@ function Mult() {
     }
   };
 
+  const continueExtra = isDisabledContinueButton
+    ? { disabled: "disabled" }
+    : {};
   const items = [
     React.createElement(PastComputations, { trail: trail }),
     askedCount > ASK_COUNT
@@ -176,10 +200,12 @@ function Mult() {
           "button",
           {
             onClick: () => {
+              setDisabledContinueButton(true);
               setIsTooSlow(false);
               setAskedCount(askedCount + 1);
             },
-            autoFocus: "autoFocus"
+            ref: buttonRef,
+            ...continueExtra
           },
           "Nadaljuj"
         )
