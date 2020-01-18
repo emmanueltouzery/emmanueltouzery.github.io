@@ -95,6 +95,29 @@ function getNewComputation() {
   };
 }
 
+function useTimer(computation, setDisabledContinueButton) {
+  const [isTooSlow, setIsTooSlow] = React.useState(false);
+  const tooSlow = () =>
+    computation && new Date() - computation.started > computation.maxTime;
+  React.useEffect(() => {
+    setIsTooSlow(tooSlow());
+    const timer = setInterval(() => {
+      if (!isTooSlow && tooSlow()) {
+        setIsTooSlow(true);
+      }
+      if (computation && isTooSlow) {
+        // disable the 'continue' button in the first X ms after the timeout
+        setDisabledContinueButton(
+          new Date() - computation.started - computation.maxTime <
+            TIMEOUT_CONTINUE_BUTTON_ENABLE_MS
+        );
+      }
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [computation, isTooSlow]);
+  return isTooSlow;
+}
+
 function Mult() {
   const [trail, setTrail] = React.useState([]);
   const [askedCount, setAskedCount] = React.useState(1);
@@ -102,7 +125,6 @@ function Mult() {
   const [successCount, setSuccessCount] = React.useState(0);
   const [errorCount, setErrorCount] = React.useState(0);
   const [tooSlowCount, setTooSlowCount] = React.useState(0);
-  const [isTooSlow, setIsTooSlow] = React.useState(false);
   // disable the 'continue' button in the first 1000ms after the timeout,
   // so the student reads what they didn't know + students tend to press
   // enter from the previous question and acknowledge this by mistake,
@@ -134,41 +156,29 @@ function Mult() {
       resetComputation();
     }
   }, [askedCount]);
+
+  const isTooSlow = useTimer(computation, setDisabledContinueButton);
   React.useEffect(() => {
-    const timer = setInterval(() => {
-      if (
-        !isTooSlow &&
-        askedCount < ASK_COUNT &&
-        new Date() - computation.started > computation.maxTime
-      ) {
-        setTooSlowCount(tooSlowCount + 1);
-        setTrail([
-          ...trail,
-          {
-            comment: `Prepočasno! Odgovor je bil ${
-              computation.op === "x"
-                ? computation.fst * computation.snd
-                : computation.fst
-            } ker ${computation.fst}x${computation.snd} = ${computation.fst *
-              computation.snd}`
-          }
-        ]);
-        setIsTooSlow(true);
-      }
-      if (computation && isTooSlow) {
-        // disable the 'continue' button in the first X ms after the timeout
-        setDisabledContinueButton(
-          new Date() - computation.started - computation.maxTime <
-            TIMEOUT_CONTINUE_BUTTON_ENABLE_MS
-        );
-      }
-    }, 1000);
-    return () => clearInterval(timer);
-  }, [computation, trail, isTooSlow]);
+    if (computation && isTooSlow) {
+      setTooSlowCount(tooSlowCount + 1);
+      setTrail([
+        ...trail,
+        {
+          comment: `Prepočasno! Odgovor je bil ${
+            computation.op === "x"
+              ? computation.fst * computation.snd
+              : computation.fst
+          } ker ${computation.fst}x${computation.snd} = ${computation.fst *
+            computation.snd}`
+        }
+      ]);
+    }
+  }, [isTooSlow]);
+
   React.useEffect(() => {
     // focus the 'continue' button when it gets enabled
     if (!isDisabledContinueButton) {
-      buttonRef.current.focus();
+      buttonRef.current && buttonRef.current.focus();
     }
   }, [isDisabledContinueButton]);
 
@@ -201,7 +211,6 @@ function Mult() {
           {
             onClick: () => {
               setDisabledContinueButton(true);
-              setIsTooSlow(false);
               setAskedCount(askedCount + 1);
             },
             ref: buttonRef,
