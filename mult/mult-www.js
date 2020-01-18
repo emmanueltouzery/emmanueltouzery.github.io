@@ -119,9 +119,13 @@ function useTimer(computation, setDisabledContinueButton) {
 }
 
 function GameSummary({ askedCount, successCount, errorCount, tooSlowCount }) {
+  const ref = React.useRef();
+  React.useEffect(() => {
+    ref.current.scrollIntoView();
+  }, []);
   return React.createElement(
-    "h1",
-    null,
+    "h2",
+    { ref },
     `Vprašano: ${askedCount -
       1}, pravilno: ${successCount}, napačno: ${errorCount}, prepočasno: ${tooSlowCount}`
   );
