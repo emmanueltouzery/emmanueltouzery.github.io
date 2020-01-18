@@ -118,6 +118,38 @@ function useTimer(computation, setDisabledContinueButton) {
   return isTooSlow;
 }
 
+function GameSummary({ askedCount, successCount, errorCount, tooSlowCount }) {
+  return React.createElement(
+    "h1",
+    null,
+    `Vprašano: ${askedCount -
+      1}, pravilno: ${successCount}, napačno: ${errorCount}, prepočasno: ${tooSlowCount}`
+  );
+}
+
+function ContinueButton({ isDisabledContinueButton, onClick }) {
+  const buttonRef = React.useRef();
+  const continueExtra = isDisabledContinueButton
+    ? { disabled: "disabled" }
+    : {};
+  React.useEffect(() => {
+    // focus the 'continue' button when it gets enabled
+    if (!isDisabledContinueButton) {
+      buttonRef.current && buttonRef.current.focus();
+    }
+  }, [isDisabledContinueButton]);
+
+  return React.createElement(
+    "button",
+    {
+      onClick,
+      ref: buttonRef,
+      ...continueExtra
+    },
+    "Nadaljuj"
+  );
+}
+
 function Mult() {
   const [trail, setTrail] = React.useState([]);
   const [askedCount, setAskedCount] = React.useState(1);
@@ -132,7 +164,6 @@ function Mult() {
   const [isDisabledContinueButton, setDisabledContinueButton] = React.useState(
     true
   );
-  const buttonRef = React.useRef();
 
   const resetComputation = () => setComputation(getNewComputation());
   const computationResult = () =>
@@ -175,13 +206,6 @@ function Mult() {
     }
   }, [isTooSlow]);
 
-  React.useEffect(() => {
-    // focus the 'continue' button when it gets enabled
-    if (!isDisabledContinueButton) {
-      buttonRef.current && buttonRef.current.focus();
-    }
-  }, [isDisabledContinueButton]);
-
   const handleEntered = v => {
     if (Number(v) === computationResult()) {
       setTrail([...trail, { answer: v }, { comment: "Bravo! 🎉" }]);
@@ -193,40 +217,28 @@ function Mult() {
     }
   };
 
-  const continueExtra = isDisabledContinueButton
-    ? { disabled: "disabled" }
-    : {};
   const items = [
     React.createElement(PastComputations, { trail: trail }),
     askedCount > ASK_COUNT
-      ? React.createElement(
-          "h1",
-          null,
-          `Vprašano: ${askedCount -
-            1}, pravilno: ${successCount}, napačno: ${errorCount}, prepočasno: ${tooSlowCount}`
-        )
+      ? React.createElement(GameSummary, {
+          askedCount,
+          successCount,
+          errorCount,
+          tooSlowCount
+        })
       : isTooSlow
-      ? React.createElement(
-          "button",
-          {
-            onClick: () => {
-              setDisabledContinueButton(true);
-              setAskedCount(askedCount + 1);
-            },
-            ref: buttonRef,
-            ...continueExtra
-          },
-          "Nadaljuj"
-        )
-      : React.createElement(
-          AskQuestion,
-          {
-            addEntered: handleEntered,
-            timeoutMs: computation && computation.maxTime,
-            qNum: askedCount
-          },
-          null
-        )
+      ? React.createElement(ContinueButton, {
+          isDisabledContinueButton,
+          onClick: () => {
+            setDisabledContinueButton(true);
+            setAskedCount(askedCount + 1);
+          }
+        })
+      : React.createElement(AskQuestion, {
+          addEntered: handleEntered,
+          timeoutMs: computation && computation.maxTime,
+          qNum: askedCount
+        })
   ];
   return React.createElement(...["div", null, ...items]);
 }
