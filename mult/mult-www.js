@@ -72,7 +72,7 @@ function AskQuestion({ addEntered, timeoutMs, qNum }) {
         key: qNum,
         style: {
           height: "50px",
-          width: "35px",
+          width: "40px",
           margin: "0px",
           borderRadius: "3px",
           ...animInfo
