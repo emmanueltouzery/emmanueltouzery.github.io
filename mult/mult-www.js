@@ -51,8 +51,9 @@ function AskQuestion({ addEntered, timeoutMs, qNum }) {
       "input",
       {
         type: "text",
-        height: "30px",
+        height: "0px",
         ref: ref,
+        maxLength: "4",
         onKeyDown: e => {
           if (e.key === "Enter" && ref.current.value.length > 0) {
             addEntered(ref.current.value);
@@ -70,8 +71,8 @@ function AskQuestion({ addEntered, timeoutMs, qNum }) {
         // when we move to the next question
         key: qNum,
         style: {
-          height: "30px",
-          width: "20px",
+          height: "50px",
+          width: "30px",
           margin: "0px",
           borderRadius: "3px",
           ...animInfo
