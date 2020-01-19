@@ -7,10 +7,6 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
 
-function getRandomEnum(vals) {
-  return vals[getRandomInt(vals.length)];
-}
-
 function PickNumber({ text, onClick }) {
   return React.createElement(
     "div",
@@ -300,19 +296,6 @@ function Mult({ computations }) {
   return React.createElement(...["div", null, ...items]);
 }
 
-function getNewComputation(number) {
-  const op = getRandomInt(2) == 0 ? "x" : ":";
-  return {
-    fst: getRandomEnum([2, 3, 4, 5, 6, 7, 8, 9]),
-    snd:
-      number === "all"
-        ? getRandomEnum([2, 3, 4, 5, 6, 7, 8, 9])
-        : getRandomEnum([2, 3, 4, 5, 6]),
-    op: op,
-    maxTime: op === "x" ? TIMEOUT_MULT_MS : TIMEOUT_DIV_MS
-  };
-}
-
 // https://stackoverflow.com/a/2450976/516188
 function shuffle(array) {
   var currentIndex = array.length,
@@ -335,9 +318,9 @@ function shuffle(array) {
 }
 
 function getComputations(n) {
+  // compute all the combinations and shuffle them
+  // avoids asking multiple times the same question
   if (Number.isInteger(n)) {
-    // only 16 combinations possible
-    // compute them all and shuffle them
     return shuffle(
       [2, 3, 4, 5, 6, 7, 8, 9].flatMap(x => [
         { fst: x, snd: n, op: "x", maxTime: TIMEOUT_MULT_MS },
@@ -345,7 +328,24 @@ function getComputations(n) {
       ])
     );
   }
-  return [...Array(ASK_COUNT)].map(_ => getNewComputation(n));
+  if (n === "all") {
+    return shuffle(
+      [2, 3, 4, 5, 6, 7, 8, 9].flatMap(x =>
+        [2, 3, 4, 5, 6, 7, 8, 9].flatMap(n => [
+          { fst: x, snd: n, op: "x", maxTime: TIMEOUT_MULT_MS },
+          { fst: x, snd: n, op: ":", maxTime: TIMEOUT_DIV_MS }
+        ])
+      )
+    ).slice(0, ASK_COUNT);
+  }
+  return shuffle(
+    [2, 3, 4, 5, 6, 7, 8, 9].flatMap(x =>
+      [2, 3, 4, 5, 6].flatMap(n => [
+        { fst: x, snd: n, op: "x", maxTime: TIMEOUT_MULT_MS },
+        { fst: x, snd: n, op: ":", maxTime: TIMEOUT_DIV_MS }
+      ])
+    )
+  ).slice(0, ASK_COUNT);
 }
 
 function Game() {
