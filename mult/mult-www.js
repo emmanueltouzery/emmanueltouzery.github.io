@@ -377,7 +377,10 @@ function Game() {
   return computations
     ? React.createElement(Mult, {
         computations,
-        newGame: () => setComputations()
+        newGame: () => {
+          setComputations();
+          window.scrollTo(0, 0);
+        }
       })
     : React.createElement(PickNumbers, {
         numberPicked: n => setComputations(getComputations(n))
