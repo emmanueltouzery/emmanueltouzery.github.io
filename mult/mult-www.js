@@ -11,6 +11,68 @@ function getRandomEnum(vals) {
   return vals[getRandomInt(vals.length)];
 }
 
+function PickNumber({ text, onClick }) {
+  return React.createElement(
+    "div",
+    {
+      className: "number-pick",
+      style: {
+        width: "200px",
+        height: "200px",
+        border: "solid 1px black",
+        borderRadius: "5px",
+        textAlign: "center",
+        lineHeight: "200px",
+        fontWeight: "bold",
+        userSelect: "none",
+        cursor: "pointer",
+        fontSize: "150%"
+      },
+      onClick
+    },
+    text
+  );
+}
+
+function PickNumbers({ numberPicked }) {
+  return React.createElement(
+    "div",
+    { style: { display: "flex", flexWrap: "wrap" } },
+    [
+      React.createElement(PickNumber, {
+        text: "2",
+        key: "2",
+        onClick: () => numberPicked(2)
+      }),
+      React.createElement(PickNumber, {
+        text: "3",
+        key: "3",
+        onClick: () => numberPicked(3)
+      }),
+      React.createElement(PickNumber, {
+        text: "4",
+        key: "4",
+        onClick: () => numberPicked(4)
+      }),
+      React.createElement(PickNumber, {
+        text: "5",
+        key: "5",
+        onClick: () => numberPicked(5)
+      }),
+      React.createElement(PickNumber, {
+        text: "6",
+        key: "6",
+        onClick: () => numberPicked(6)
+      }),
+      React.createElement(PickNumber, {
+        text: "Vse 🏆",
+        key: "vse",
+        onClick: () => numberPicked("all")
+      })
+    ]
+  );
+}
+
 function PastComputations({ trail }) {
   return React.createElement(
     "div",
@@ -84,11 +146,11 @@ function AskQuestion({ addEntered, timeoutMs, qNum }) {
   );
 }
 
-function getNewComputation() {
+function getNewComputation(number) {
   const op = getRandomInt(2) == 0 ? "x" : ":";
   return {
     fst: getRandomEnum([2, 3, 4, 5, 6, 7, 8, 9]),
-    snd: getRandomEnum([2, 3, 4, 5, 6]),
+    snd: number === "all" ? getRandomEnum([2, 3, 4, 5, 6]) : number,
     op: op,
     maxTime: op === "x" ? TIMEOUT_MULT_MS : TIMEOUT_DIV_MS,
     started: new Date()
@@ -154,7 +216,7 @@ function ContinueButton({ isDisabledContinueButton, onClick }) {
   );
 }
 
-function Mult() {
+function Mult({ number }) {
   const [trail, setTrail] = React.useState([]);
   const [askedCount, setAskedCount] = React.useState(1);
   const [computation, setComputation] = React.useState();
@@ -169,7 +231,7 @@ function Mult() {
     true
   );
 
-  const resetComputation = () => setComputation(getNewComputation());
+  const resetComputation = () => setComputation(getNewComputation(number));
   const computationResult = () =>
     computation.op === "x"
       ? computation.fst * computation.snd
@@ -247,4 +309,12 @@ function Mult() {
   return React.createElement(...["div", null, ...items]);
 }
 
-ReactDOM.render(React.createElement(Mult), document.getElementById("body"));
+function Game() {
+  const [number, setNumber] = React.useState();
+
+  return number
+    ? React.createElement(Mult, { number })
+    : React.createElement(PickNumbers, { numberPicked: setNumber });
+}
+
+ReactDOM.render(React.createElement(Game), document.getElementById("body"));
