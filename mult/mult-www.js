@@ -35,35 +35,18 @@ function PickNumber({ text, onClick }) {
 }
 
 function PickNumbers({ numberPicked }) {
+  const numberChoices = [2, 3, 4, 5, 6, 7, 8, 9].map(n =>
+    React.createElement(PickNumber, {
+      text: `${n}`,
+      key: n,
+      onClick: () => numberPicked(n)
+    })
+  );
   return React.createElement(
     "div",
     { style: { display: "flex", flexWrap: "wrap" } },
     [
-      React.createElement(PickNumber, {
-        text: "2",
-        key: "2",
-        onClick: () => numberPicked(2)
-      }),
-      React.createElement(PickNumber, {
-        text: "3",
-        key: "3",
-        onClick: () => numberPicked(3)
-      }),
-      React.createElement(PickNumber, {
-        text: "4",
-        key: "4",
-        onClick: () => numberPicked(4)
-      }),
-      React.createElement(PickNumber, {
-        text: "5",
-        key: "5",
-        onClick: () => numberPicked(5)
-      }),
-      React.createElement(PickNumber, {
-        text: "6",
-        key: "6",
-        onClick: () => numberPicked(6)
-      }),
+      ...numberChoices,
       React.createElement(PickNumber, {
         text: "Vse 🏆",
         key: "vse",
