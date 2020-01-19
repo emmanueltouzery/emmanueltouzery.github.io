@@ -48,6 +48,11 @@ function PickNumbers({ numberPicked }) {
     [
       ...numberChoices,
       React.createElement(PickNumber, {
+        text: "≤6 💪",
+        key: "vsedo6",
+        onClick: () => numberPicked("alltill6")
+      }),
+      React.createElement(PickNumber, {
         text: "Vse 🏆",
         key: "vse",
         onClick: () => numberPicked("all")
@@ -133,7 +138,12 @@ function getNewComputation(number) {
   const op = getRandomInt(2) == 0 ? "x" : ":";
   return {
     fst: getRandomEnum([2, 3, 4, 5, 6, 7, 8, 9]),
-    snd: number === "all" ? getRandomEnum([2, 3, 4, 5, 6]) : number,
+    snd:
+      number === "all"
+        ? getRandomEnum([2, 3, 4, 5, 6, 7, 8, 9])
+        : number === "alltill6"
+        ? getRandomEnum([2, 3, 4, 5, 6])
+        : number,
     op: op,
     maxTime: op === "x" ? TIMEOUT_MULT_MS : TIMEOUT_DIV_MS,
     started: new Date()
