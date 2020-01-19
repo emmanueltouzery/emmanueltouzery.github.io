@@ -1,4 +1,4 @@
-const ASK_COUNT = 25;
+const ASK_COUNT = 16; // number of combinations when you pick only one number
 const TIMEOUT_MULT_MS = 10000;
 const TIMEOUT_DIV_MS = 16000;
 const TIMEOUT_CONTINUE_BUTTON_ENABLE_MS = 1500;
@@ -134,26 +134,15 @@ function AskQuestion({ addEntered, timeoutMs, qNum }) {
   );
 }
 
-function getNewComputation(number) {
-  const op = getRandomInt(2) == 0 ? "x" : ":";
-  return {
-    fst: getRandomEnum([2, 3, 4, 5, 6, 7, 8, 9]),
-    snd:
-      number === "all"
-        ? getRandomEnum([2, 3, 4, 5, 6, 7, 8, 9])
-        : number === "alltill6"
-        ? getRandomEnum([2, 3, 4, 5, 6])
-        : number,
-    op: op,
-    maxTime: op === "x" ? TIMEOUT_MULT_MS : TIMEOUT_DIV_MS,
-    started: new Date()
-  };
-}
-
-function useTimer(computation, setDisabledContinueButton) {
+function useTimer(
+  askedCount,
+  computationStarted,
+  computation,
+  setDisabledContinueButton
+) {
   const [isTooSlow, setIsTooSlow] = React.useState(false);
   const tooSlow = () =>
-    computation && new Date() - computation.started > computation.maxTime;
+    computation && new Date() - computationStarted > computation.maxTime;
   React.useEffect(() => {
     setIsTooSlow(tooSlow());
     const timer = setInterval(() => {
@@ -163,13 +152,13 @@ function useTimer(computation, setDisabledContinueButton) {
       if (computation && isTooSlow) {
         // disable the 'continue' button in the first X ms after the timeout
         setDisabledContinueButton(
-          new Date() - computation.started - computation.maxTime <
+          new Date() - computationStarted - computation.maxTime <
             TIMEOUT_CONTINUE_BUTTON_ENABLE_MS
         );
       }
     }, 1000);
     return () => clearInterval(timer);
-  }, [computation, isTooSlow]);
+  }, [askedCount, isTooSlow]);
   return isTooSlow;
 }
 
@@ -181,8 +170,7 @@ function GameSummary({ askedCount, successCount, errorCount, tooSlowCount }) {
   return React.createElement(
     "h2",
     { ref },
-    `Vprašano: ${askedCount -
-      1}, pravilno: ${successCount}, napačno: ${errorCount}, prepočasno: ${tooSlowCount}`
+    `Vprašano: ${askedCount}, pravilno: ${successCount}, napačno: ${errorCount}, prepočasno: ${tooSlowCount}`
   );
 }
 
@@ -209,10 +197,12 @@ function ContinueButton({ isDisabledContinueButton, onClick }) {
   );
 }
 
-function Mult({ number }) {
+function Mult({ computations }) {
   const [trail, setTrail] = React.useState([]);
-  const [askedCount, setAskedCount] = React.useState(1);
-  const [computation, setComputation] = React.useState();
+  const [askedCount, setAskedCount] = React.useState(0);
+  const [computationStarted, setComputationStarted] = React.useState(
+    new Date()
+  );
   const [successCount, setSuccessCount] = React.useState(0);
   const [errorCount, setErrorCount] = React.useState(0);
   const [tooSlowCount, setTooSlowCount] = React.useState(0);
@@ -224,42 +214,50 @@ function Mult({ number }) {
     true
   );
 
-  const resetComputation = () => setComputation(getNewComputation(number));
+  const nextQuestion = () => {
+    setAskedCount(askedCount + 1);
+    setComputationStarted(new Date());
+  };
+
+  const computation = () => computations[askedCount];
   const computationResult = () =>
-    computation.op === "x"
-      ? computation.fst * computation.snd
-      : computation.fst;
+    computation().op === "x"
+      ? computation().fst * computation().snd
+      : computation().fst;
+
+  const isTooSlow = useTimer(
+    askedCount,
+    computationStarted,
+    computation(),
+    setDisabledContinueButton
+  );
+
   React.useEffect(() => {
-    if (!computation) {
+    if (askedCount >= ASK_COUNT) {
       return;
     }
     const question =
-      computation.op === "x"
-        ? `${askedCount}. Koliko je ${computation.fst}${computation.op}${computation.snd}? `
-        : `${askedCount}. Koliko je ${computation.fst * computation.snd}${
-            computation.op
-          }${computation.snd}? `;
+      computation().op === "x"
+        ? `${askedCount + 1}. Koliko je ${computation().fst}${
+            computation().op
+          }${computation().snd}? `
+        : `${askedCount + 1}. Koliko je ${computation().fst *
+            computation().snd}${computation().op}${computation().snd}? `;
     setTrail([...trail, { question: question }]);
-  }, [computation]);
-  React.useEffect(() => {
-    if (askedCount <= ASK_COUNT) {
-      resetComputation();
-    }
   }, [askedCount]);
 
-  const isTooSlow = useTimer(computation, setDisabledContinueButton);
   React.useEffect(() => {
-    if (computation && isTooSlow) {
+    if (isTooSlow) {
       setTooSlowCount(tooSlowCount + 1);
       setTrail([
         ...trail,
         {
           comment: `Prepočasno! Odgovor je bil ${
-            computation.op === "x"
-              ? computation.fst * computation.snd
-              : computation.fst
-          } ker ${computation.fst}x${computation.snd} = ${computation.fst *
-            computation.snd}`
+            computation().op === "x"
+              ? computation().fst * computation().snd
+              : computation().fst
+          } ker ${computation().fst}x${computation().snd} = ${computation()
+            .fst * computation().snd}`
         }
       ]);
     }
@@ -269,7 +267,7 @@ function Mult({ number }) {
     if (Number(v) === computationResult()) {
       setTrail([...trail, { answer: v }, { comment: "Bravo! 🎉" }]);
       setSuccessCount(successCount + 1);
-      setAskedCount(askedCount + 1);
+      nextQuestion();
     } else {
       setErrorCount(errorCount + 1);
       setTrail([...trail, { answer: v }, { comment: "Ne pa ne!" }]);
@@ -278,7 +276,7 @@ function Mult({ number }) {
 
   const items = [
     React.createElement(PastComputations, { trail: trail }),
-    askedCount > ASK_COUNT
+    askedCount >= ASK_COUNT
       ? React.createElement(GameSummary, {
           askedCount,
           successCount,
@@ -290,24 +288,74 @@ function Mult({ number }) {
           isDisabledContinueButton,
           onClick: () => {
             setDisabledContinueButton(true);
-            setAskedCount(askedCount + 1);
+            nextQuestion();
           }
         })
       : React.createElement(AskQuestion, {
           addEntered: handleEntered,
-          timeoutMs: computation && computation.maxTime,
+          timeoutMs: computation().maxTime,
           qNum: askedCount
         })
   ];
   return React.createElement(...["div", null, ...items]);
 }
 
-function Game() {
-  const [number, setNumber] = React.useState();
+function getNewComputation(number) {
+  const op = getRandomInt(2) == 0 ? "x" : ":";
+  return {
+    fst: getRandomEnum([2, 3, 4, 5, 6, 7, 8, 9]),
+    snd:
+      number === "all"
+        ? getRandomEnum([2, 3, 4, 5, 6, 7, 8, 9])
+        : getRandomEnum([2, 3, 4, 5, 6]),
+    op: op,
+    maxTime: op === "x" ? TIMEOUT_MULT_MS : TIMEOUT_DIV_MS
+  };
+}
 
-  return number
-    ? React.createElement(Mult, { number })
-    : React.createElement(PickNumbers, { numberPicked: setNumber });
+// https://stackoverflow.com/a/2450976/516188
+function shuffle(array) {
+  var currentIndex = array.length,
+    temporaryValue,
+    randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+
+function getComputations(n) {
+  if (Number.isInteger(n)) {
+    // only 16 combinations possible
+    // compute them all and shuffle them
+    return shuffle(
+      [2, 3, 4, 5, 6, 7, 8, 9].flatMap(x => [
+        { fst: x, snd: n, op: "x", maxTime: TIMEOUT_MULT_MS },
+        { fst: x, snd: n, op: ":", maxTime: TIMEOUT_DIV_MS }
+      ])
+    );
+  }
+  return [...Array(ASK_COUNT)].map(_ => getNewComputation(n));
+}
+
+function Game() {
+  const [computations, setComputations] = React.useState();
+
+  return computations
+    ? React.createElement(Mult, { computations })
+    : React.createElement(PickNumbers, {
+        numberPicked: n => setComputations(getComputations(n))
+      });
 }
 
 ReactDOM.render(React.createElement(Game), document.getElementById("body"));
