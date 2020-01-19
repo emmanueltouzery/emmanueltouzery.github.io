@@ -158,7 +158,13 @@ function useTimer(
   return isTooSlow;
 }
 
-function GameSummary({ askedCount, successCount, errorCount, tooSlowCount }) {
+function GameSummary({
+  askedCount,
+  successCount,
+  errorCount,
+  tooSlowCount,
+  newGame
+}) {
   const ref = React.useRef();
   const [isPlayAgainEnabled, setPlayAgainEnabled] = React.useState(false);
   React.useEffect(() => {
@@ -180,7 +186,7 @@ function GameSummary({ askedCount, successCount, errorCount, tooSlowCount }) {
     ),
     React.createElement(
       "button",
-      { ref, ...playAgainExtra, onClick: () => window.location.reload() },
+      { ref, ...playAgainExtra, onClick: newGame },
       "Igraj ponovno"
     )
   );
@@ -209,7 +215,7 @@ function ContinueButton({ isDisabledContinueButton, onClick }) {
   );
 }
 
-function Mult({ computations }) {
+function Mult({ computations, newGame }) {
   const [trail, setTrail] = React.useState([]);
   const [askedCount, setAskedCount] = React.useState(0);
   const [computationStarted, setComputationStarted] = React.useState(
@@ -293,7 +299,8 @@ function Mult({ computations }) {
           askedCount,
           successCount,
           errorCount,
-          tooSlowCount
+          tooSlowCount,
+          newGame
         })
       : isTooSlow
       ? React.createElement(ContinueButton, {
@@ -368,7 +375,10 @@ function Game() {
   const [computations, setComputations] = React.useState();
 
   return computations
-    ? React.createElement(Mult, { computations })
+    ? React.createElement(Mult, {
+        computations,
+        newGame: () => setComputations()
+      })
     : React.createElement(PickNumbers, {
         numberPicked: n => setComputations(getComputations(n))
       });
