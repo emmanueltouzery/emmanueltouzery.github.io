@@ -160,13 +160,29 @@ function useTimer(
 
 function GameSummary({ askedCount, successCount, errorCount, tooSlowCount }) {
   const ref = React.useRef();
+  const [isPlayAgainEnabled, setPlayAgainEnabled] = React.useState(false);
   React.useEffect(() => {
     ref.current.scrollIntoView();
+    const timer = setTimeout(() => {
+      setPlayAgainEnabled(true);
+      ref.current.focus();
+    }, 1500);
+    return () => clearTimeout(timer);
   }, []);
+  const playAgainExtra = isPlayAgainEnabled ? {} : { disabled: "disabled" };
   return React.createElement(
-    "h2",
-    { ref },
-    `Vprašano: ${askedCount}, pravilno: ${successCount}, napačno: ${errorCount}, prepočasno: ${tooSlowCount}`
+    "div",
+    null,
+    React.createElement(
+      "h3",
+      null,
+      `Vprašano: ${askedCount}, pravilno: ${successCount}, napačno: ${errorCount}, prepočasno: ${tooSlowCount}`
+    ),
+    React.createElement(
+      "button",
+      { ref, ...playAgainExtra, onClick: () => window.location.reload() },
+      "Igraj ponovno"
+    )
   );
 }
 
