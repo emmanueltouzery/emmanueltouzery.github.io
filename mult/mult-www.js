@@ -1,6 +1,6 @@
 const ASK_COUNT = 16; // number of combinations when you pick only one number
-const TIMEOUT_MULT_MS = 10000;
-const TIMEOUT_DIV_MS = 16000;
+const TIMEOUT_MULT_MS = 7000;
+const TIMEOUT_DIV_MS = 14000;
 const TIMEOUT_CONTINUE_BUTTON_ENABLE_MS = 1500;
 
 function getRandomInt(max) {
