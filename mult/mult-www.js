@@ -74,7 +74,7 @@ function PastComputations({ trail }) {
   );
 }
 
-function AskQuestion({ addEntered, timeoutMs, qNum }) {
+function AskQuestion({ addEntered, timeoutMs, qNum, setCurrentEntryContents }) {
   const ref = React.useRef();
   React.useEffect(() => {
     ref.current.scrollIntoView();
@@ -106,6 +106,9 @@ function AskQuestion({ addEntered, timeoutMs, qNum }) {
             addEntered(ref.current.value);
             ref.current.value = "";
           }
+        },
+        onChange: e => {
+          setCurrentEntryContents(e.target.value);
         },
         autoFocus: "autoFocus"
       },
@@ -231,6 +234,7 @@ function Mult({ computations, newGame }) {
   const [isDisabledContinueButton, setDisabledContinueButton] = React.useState(
     true
   );
+  const [currentEntryContents, setCurrentEntryContents] = React.useState("");
 
   const nextQuestion = () => {
     setAskedCount(askedCount + 1);
@@ -266,18 +270,27 @@ function Mult({ computations, newGame }) {
 
   React.useEffect(() => {
     if (isTooSlow) {
-      setTooSlowCount(tooSlowCount + 1);
-      setTrail([
-        ...trail,
-        {
-          comment: `Prepočasno! Odgovor je bil ${
-            computation().op === "x"
-              ? computation().fst * computation().snd
-              : computation().fst
-          } ker ${computation().fst}x${computation().snd} = ${computation()
-            .fst * computation().snd}`
-        }
-      ]);
+      if (Number(currentEntryContents) == computationResult()) {
+        setTrail([
+          ...trail,
+          { answer: currentEntryContents },
+          { comment: "Bravo! 🎉" }
+        ]);
+        setSuccessCount(successCount + 1);
+      } else {
+        setTooSlowCount(tooSlowCount + 1);
+        setTrail([
+          ...trail,
+          {
+            comment: `Prepočasno! Odgovor je bil ${
+              computation().op === "x"
+                ? computation().fst * computation().snd
+                : computation().fst
+            } ker ${computation().fst}x${computation().snd} = ${computation()
+              .fst * computation().snd}`
+          }
+        ]);
+      }
     }
   }, [isTooSlow]);
 
@@ -313,7 +326,8 @@ function Mult({ computations, newGame }) {
       : React.createElement(AskQuestion, {
           addEntered: handleEntered,
           timeoutMs: computation().maxTime,
-          qNum: askedCount
+          qNum: askedCount,
+          setCurrentEntryContents
         })
   ];
   return React.createElement(...["div", null, ...items]);
