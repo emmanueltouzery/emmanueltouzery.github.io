@@ -145,7 +145,7 @@ const findCards = () => {
   for (let i = 0; i < blackContrastyAreas.length; i++) {
     drawArea(ctx2, blackContrastyAreas[i]);
   }
-  // guessCards(blueAreas, redAreas, blackContrastyAreas);
+  guessCards(blueAreas, redAreas, blackContrastyAreas);
 };
 
 const guessCards = (blueAreas, redAreas, blackContrastyAreas) => {
