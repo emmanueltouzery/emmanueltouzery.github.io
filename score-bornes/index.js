@@ -77,6 +77,7 @@ const findCards = () => {
   const blackContrastyPixels = [];
   let offset = 0;
   let neighbourIsWhitish = false;
+  let neighbourIsBlackish = false;
   for (let y = 0; y < HEIGHT; y++) {
     for (let x = 0; x < WIDTH; x++) {
       const red = data[offset];
@@ -85,32 +86,48 @@ const findCards = () => {
       if (red < 150 && red + 4 < green && green + 4 < blue) {
         bluePixels.push([x, y]);
         neighbourIsWhitish = false;
+        neighbourIsBlackish = false;
       } else if (red > 140 && red - 80 > green && red - 80 > blue) {
         redPixels.push([x, y]);
         neighbourIsWhitish = false;
-      } else if (neighbourIsWhitish && red < 60 && green < 60 && blue < 60) {
-        blackContrastyPixels.push([x, y]);
+        neighbourIsBlackish = false;
+      } else if (red < 60 && green < 60 && blue < 60) {
+        if (neighbourIsWhitish) {
+          blackContrastyPixels.push([x, y]);
+        }
         neighbourIsWhitish = false;
+        neighbourIsBlackish = true;
       } else if (red > 150 && green > 150 && blue > 150) {
+        if (neighbourIsBlackish) {
+          blackContrastyPixels.push([x, y]);
+        }
         neighbourIsWhitish = true;
       } else {
         neighbourIsWhitish = false;
+        neighbourIsBlackish = false;
       }
       offset += 4;
     }
   }
   console.log("Found " + bluePixels.length + " blue pixels");
-  const blueAreas = pixelsFindContiguousAreas(bluePixels);
+  const blueAreas = pixelsFindContiguousAreas(bluePixels, 6).filter(
+    area => area.bottomRight[1] - area.topLeft[1] > 15
+  );
   console.log("blue areas: " + blueAreas.length);
 
   console.log("Found " + redPixels.length + " red pixels");
-  const redAreas = pixelsFindContiguousAreas(redPixels);
+  const redAreas = pixelsFindContiguousAreas(redPixels, 6).filter(
+    area => area.bottomRight[1] - area.topLeft[1] > 15
+  );
   console.log("red areas: " + redAreas.length);
 
   console.log(
     "Found " + blackContrastyPixels.length + " blackContrasty pixels"
   );
-  const blackContrastyAreas = pixelsFindContiguousAreas(blackContrastyPixels);
+  const blackContrastyAreas = pixelsFindContiguousAreas(
+    blackContrastyPixels,
+    18
+  );
   console.log("blackContrasty areas: " + blackContrastyAreas.length);
 
   const ctx2 = window.bboxes.getContext("2d");
@@ -128,6 +145,23 @@ const findCards = () => {
   for (let i = 0; i < blackContrastyAreas.length; i++) {
     drawArea(ctx2, blackContrastyAreas[i]);
   }
+  // guessCards(blueAreas, redAreas, blackContrastyAreas);
+};
+
+const guessCards = (blueAreas, redAreas, blackContrastyAreas) => {
+  for (let i = 0; i < blueAreas.length; i++) {
+    const area = blueAreas.pop();
+    const w = area.width();
+
+    // search for neighbouring areas
+    const neighbours = blueAreas.filter(
+      a =>
+        Math.abs(area.topLeft[1] - a.topLeft[1]) < 7 &&
+        Math.abs(area.center()[0] - a.center()[0]) < ((w + a.width()) * 1.2) / 2
+    );
+  }
+
+  window.count.innerHTML = "I'm guessting 200";
 };
 
 const drawArea = (ctx, area) => {
@@ -141,13 +175,13 @@ const drawArea = (ctx, area) => {
 };
 
 // brute force
-const pixelsFindContiguousAreas = coords => {
+const pixelsFindContiguousAreas = (coords, tolerance) => {
   if (coords.length === 0) {
     return [];
   }
   const areas = coords.reduce(
     (soFar, cur) => {
-      const existing = soFar.find(bbox => bbox.sqDistance(cur) < 6);
+      const existing = soFar.find(bbox => bbox.sqDistance(cur) < tolerance);
       if (existing) {
         existing.addPoint(cur);
       } else {
@@ -232,6 +266,14 @@ class BoundingBox {
     const dx = Math.max(Math.abs(px - x) - width / 2, 0);
     const dy = Math.max(Math.abs(py - y) - height / 2, 0);
     return dx * dx + dy * dy;
+  }
+
+  width() {
+    return this.bottomRight[0] - this.topLeft[0];
+  }
+
+  height() {
+    return this.bottomRight[1] - this.topLeft[1];
   }
 
   addPoint([x, y]) {
