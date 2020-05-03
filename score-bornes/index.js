@@ -141,7 +141,7 @@ const findCards = () => {
   for (let i = 0; i < redAreas.length; i++) {
     drawArea(ctx2, redAreas[i]);
   }
-  ctx2.strokeStyle = "black";
+  ctx2.strokeStyle = "yellow";
   for (let i = 0; i < blackContrastyAreas.length; i++) {
     drawArea(ctx2, blackContrastyAreas[i]);
   }
