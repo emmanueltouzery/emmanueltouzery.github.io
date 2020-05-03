@@ -221,7 +221,8 @@ const guessCards = (blueAreas, redAreas, blackContrastyAreas) => {
     foundCards.push(50);
   }
 
-  window.count.innerHTML = "I'm guessing " + foundCards.join(", ");
+  document.getElementById("count").innerHTML =
+    "I'm guessing " + foundCards.join(", ");
 };
 
 const drawArea = (ctx, area) => {
