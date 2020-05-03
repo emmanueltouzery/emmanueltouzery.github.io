@@ -149,19 +149,79 @@ const findCards = () => {
 };
 
 const guessCards = (blueAreas, redAreas, blackContrastyAreas) => {
+  const foundCards = [];
   for (let i = 0; i < blueAreas.length; i++) {
     const area = blueAreas.pop();
     const w = area.width();
 
     // search for neighbouring areas
-    const neighbours = blueAreas.filter(
+    const redNeighbour = redAreas.find(
       a =>
         Math.abs(area.topLeft[1] - a.topLeft[1]) < 7 &&
         Math.abs(area.center()[0] - a.center()[0]) < ((w + a.width()) * 1.2) / 2
     );
+
+    // blue with a red neighbour => that's a 100 -- black, red, blue
+    if (redNeighbour) {
+      redAreas = redAreas.filter(a => a !== redNeighbour); // remove this red from further consideration
+      foundCards.push(100);
+      continue;
+    }
+
+    const blueNeighbour = blueAreas.find(
+      a =>
+        Math.abs(area.topLeft[1] - a.topLeft[1]) < 7 &&
+        Math.abs(area.center()[0] - a.center()[0]) < ((w + a.width()) * 1.2) / 2
+    );
+
+    // blue with a blue neighbour => that's a 25 -- blue, blue
+    if (blueNeighbour) {
+      blueAreas = blueAreas.filter(a => a !== blueNeighbour); // remove this blue from further consideration
+      foundCards.push(25);
+      continue;
+    }
+
+    const blackNeighbour = blackContrastyAreas.find(
+      a =>
+        Math.abs(area.topLeft[1] - a.topLeft[1]) < 7 &&
+        Math.abs(area.center()[0] - a.center()[0]) < ((w + a.width()) * 1.2) / 2
+    );
+
+    if (blackNeighbour) {
+      // blue with a black neighbour.. if the black is on the left that's a 200 -- red, black blue
+      if (blackNeighbour.topLeft[0] < area.topLeft[0]) {
+        foundCards.push(200);
+      } else {
+        // if the black is on the right that's a 75, blue black
+        foundCards.push(75);
+      }
+      continue;
+    }
+
+    // no neighbour, must be two blues that got merged, 25 blue blue
+    foundCards.push(25);
   }
 
-  window.count.innerHTML = "I'm guessting 200";
+  for (let i = 0; i < redAreas.length; i++) {
+    const area = redAreas.pop();
+
+    // this is a 50 red-red in any case, but i must remove a neighbour if
+    // i find one, not to double count
+
+    // search for neighbouring areas
+    const redNeighbour = redAreas.find(
+      a =>
+        Math.abs(area.topLeft[1] - a.topLeft[1]) < 7 &&
+        Math.abs(area.center()[0] - a.center()[0]) < ((w + a.width()) * 1.2) / 2
+    );
+
+    if (redNeighbour) {
+      redAreas = redAreas.filter(a => a !== redNeighbour); // remove this red from further consideration
+    }
+    foundCards.push(50);
+  }
+
+  window.count.innerHTML = "I'm guessing " + foundCards.join(", ");
 };
 
 const drawArea = (ctx, area) => {
