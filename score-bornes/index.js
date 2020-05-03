@@ -83,7 +83,7 @@ const findCards = () => {
       const red = data[offset];
       const green = data[offset + 1];
       const blue = data[offset + 2];
-      if (red < 150 && red + 4 < green && green + 4 < blue) {
+      if (red < 150 && red + 4 < green && green + 4 < blue && blue > 60) {
         bluePixels.push([x, y]);
         neighbourIsWhitish = false;
         neighbourIsBlackish = false;
