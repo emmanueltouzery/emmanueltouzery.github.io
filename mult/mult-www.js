@@ -52,6 +52,11 @@ function PickNumbers({ numberPicked }) {
         text: "Vse 🏆",
         key: "vse",
         onClick: () => numberPicked("all")
+      }),
+      React.createElement(PickNumber, {
+        text: "Vse +",
+        key: "vsep",
+        onClick: () => numberPicked("allplus0110")
       })
     ]
   );
@@ -375,9 +380,19 @@ function getComputations(n) {
       )
     ).slice(0, ASK_COUNT);
   }
+  if (n === "alltill6") {
+    return shuffle(
+      [2, 3, 4, 5, 6, 7, 8, 9].flatMap(x =>
+        [2, 3, 4, 5, 6].flatMap(n => [
+          { fst: x, snd: n, op: "x", maxTime: TIMEOUT_MULT_MS },
+          { fst: x, snd: n, op: ":", maxTime: TIMEOUT_DIV_MS }
+        ])
+      )
+    ).slice(0, ASK_COUNT);
+  }
   return shuffle(
-    [2, 3, 4, 5, 6, 7, 8, 9].flatMap(x =>
-      [2, 3, 4, 5, 6].flatMap(n => [
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].flatMap(x =>
+      [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].flatMap(n => [
         { fst: x, snd: n, op: "x", maxTime: TIMEOUT_MULT_MS },
         { fst: x, snd: n, op: ":", maxTime: TIMEOUT_DIV_MS }
       ])
