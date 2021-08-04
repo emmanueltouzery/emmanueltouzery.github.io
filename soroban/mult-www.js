@@ -220,7 +220,7 @@ function shuffle(array) {
 function getComputations(n) {
   const r = [];
   for (var i=0;i<5;i++) {
-    r.push(Math.round(Math.random()*1000));
+    r.push(Math.round(Math.random()*10000));
   }
   return r;
 }
