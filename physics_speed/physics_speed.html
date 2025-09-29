@@ -15,15 +15,31 @@
       let accLastX = 0;
       let accLastY = 0;
 
-      const params = new URLSearchParams(window.location.search).get('p').split(";");
-      const speed = Number(params[0]);
-      const acceleration = Number(params[1]);
+      const sectionsStr = new URLSearchParams(window.location.search).get('p').split("|");
+      let sections = sectionsStr.map(function(s) {
+        const params = s.split(";")
+        const duration = Number(params[0]);
+        const speed = Number(params[1]);
+        const acceleration = Number(params[2]);
 
+        const distance = speed*duration + acceleration*duration*duration;
 
-      const totalDuration = acceleration == 0
-        ? 100/speed
-          // resolve the polynomial 1/2*at^2+v0*t-d = 0 to get t
-        : (-speed + Math.sqrt(speed*speed + 2*acceleration*100))/acceleration
+        return {distance, speed, acceleration, duration};
+      });
+      const totalDuration = sections.reduce((soFar, cur) => soFar + cur.duration, 0);
+
+      function getCurSectionInfo(elapsedSecs) {
+        let remainingSecs = elapsedSecs;
+        const passedSections = [];
+        for (let section of sections) {
+          if (remainingSecs >= section.duration) {
+            passedSections.push(section);
+            remainingSecs -= section.duration;
+          } else {
+            return {passedSections, section, remainingSecs};
+          }
+        }
+      }
 
       function step(timestamp) {
         if (start === undefined) {
@@ -31,7 +47,10 @@
         }
         const elapsedSecs = (timestamp - start) / 1000;
 
-        const percentDistance = speed * elapsedSecs + acceleration * elapsedSecs * elapsedSecs;
+        const {passedSections, section, remainingSecs} = getCurSectionInfo(elapsedSecs);
+
+        const percentDistance = passedSections.reduce((soFar, cur) => soFar+cur.distance, 0) +
+          section.speed * remainingSecs + section.acceleration * remainingSecs * remainingSecs;
 
         const shift = Math.max(0, Math.min(percentDistance / 100 * containerWidth, containerWidth) - busWidth);
         busElt.style.transform = `translateX(${shift}px)`;
@@ -54,7 +73,7 @@
         speedCtx.beginPath();
         speedCtx.moveTo(speedLastX, speedLastY);
         const speedNewX = elapsedSecs*200/totalDuration;
-        const speedNewY = -(speed + acceleration * elapsedSecs);
+        const speedNewY = -(section.speed + section.acceleration * elapsedSecs);
         speedCtx.lineTo(speedNewX, speedNewY);
         speedCtx.stroke();
         // reset the translate
@@ -67,7 +86,7 @@
         accCtx.beginPath();
         accCtx.moveTo(accLastX, accLastY);
         const accNewX = elapsedSecs*200/totalDuration;
-        const accNewY = -acceleration*2; // *2 just to make it more visible
+        const accNewY = -section.acceleration*2; // *2 just to make it more visible
         accCtx.lineTo(accNewX, accNewY);
         accCtx.stroke();
         // reset the translate
