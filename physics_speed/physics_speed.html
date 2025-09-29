@@ -27,6 +27,10 @@
         return {distance, speed, acceleration, duration};
       });
       const totalDuration = sections.reduce((soFar, cur) => soFar + cur.duration, 0);
+      const maxSpeed = Math.ceil(Math.max(...sections.map(({speed, duration, acceleration}) => acceleration > 0
+        ? speed+acceleration*duration
+        : speed)));
+      const maxAcc = Math.ceil(Math.max(...sections.map(({acceleration}) => acceleration)));
 
       function getCurSectionInfo(elapsedSecs) {
         let remainingSecs = elapsedSecs;
@@ -73,7 +77,7 @@
         speedCtx.beginPath();
         speedCtx.moveTo(speedLastX, speedLastY);
         const speedNewX = elapsedSecs*200/totalDuration;
-        const speedNewY = -(section.speed + section.acceleration * elapsedSecs);
+        const speedNewY = -(section.speed + section.acceleration * elapsedSecs)*200/maxSpeed;
         speedCtx.lineTo(speedNewX, speedNewY);
         speedCtx.stroke();
         // reset the translate
@@ -86,7 +90,7 @@
         accCtx.beginPath();
         accCtx.moveTo(accLastX, accLastY);
         const accNewX = elapsedSecs*200/totalDuration;
-        const accNewY = -section.acceleration*2; // *2 just to make it more visible
+        const accNewY = -section.acceleration*200/maxAcc;
         accCtx.lineTo(accNewX, accNewY);
         accCtx.stroke();
         // reset the translate
@@ -140,13 +144,13 @@
         busElt = document.getElementById("bus");
 
         distanceGraphElt = document.getElementById("distance");
-        drawAxes(distanceGraphElt, "Razdalja");
+        drawAxes(distanceGraphElt, "Razdalja %");
 
         speedGraphElt = document.getElementById("speed");
-        drawAxes(speedGraphElt, "Hitrost");
+        drawAxes(speedGraphElt, "Hitrost: " + maxSpeed);
 
         accGraphElt = document.getElementById("acceleration");
-        drawAxes(accGraphElt, "Pospešek");
+        drawAxes(accGraphElt, "Pospešek: " + maxAcc);
 
         const parent = busElt.parentElement;
         const style = window.getComputedStyle(parent);
