@@ -8,6 +8,8 @@
       let start;
       let durationLastX = 0;
       let durationLastY = 0;
+      let speedLastX = 0;
+      let speedLastY = 0;
 
       const params = new URLSearchParams(window.location.search).get('p').split(";");
       const speed = Number(params[0]);
@@ -34,15 +36,27 @@
         distanceCtx.translate(50, 250); // origin bottom-left
         distanceCtx.beginPath();
         distanceCtx.moveTo(durationLastX, durationLastY);
-        const newX = elapsedSecs*200/totalDuration;
-        const newY = -percentDistance*200/100;
-        distanceCtx.lineTo(newX, newY);
+        const distanceNewX = elapsedSecs*200/totalDuration;
+        const distanceNewY = -percentDistance*200/100;
+        distanceCtx.lineTo(distanceNewX, distanceNewY);
         distanceCtx.stroke();
         // reset the translate
         distanceCtx.setTransform(1, 0, 0, 1, 0, 0);
+        durationLastX = distanceNewX;
+        durationLastY = distanceNewY;
 
-        durationLastX = newX;
-        durationLastY = newY;
+        const speedCtx = speedGraphElt.getContext("2d");
+        speedCtx.translate(50, 250); // origin bottom-left
+        speedCtx.beginPath();
+        speedCtx.moveTo(speedLastX, speedLastY);
+        const speedNewX = elapsedSecs*200/totalDuration;
+        const speedNewY = -(speed + acceleration * elapsedSecs);
+        speedCtx.lineTo(speedNewX, speedNewY);
+        speedCtx.stroke();
+        // reset the translate
+        speedCtx.setTransform(1, 0, 0, 1, 0, 0);
+        speedLastX = speedNewX;
+        speedLastY = speedNewY;
 
         if (shift < containerWidth - busWidth) {
           requestAnimationFrame(step);
@@ -71,9 +85,12 @@
 
       function doAnimate() {
         busElt = document.getElementById("bus");
-        distanceGraphElt = document.getElementById("distance");
 
+        distanceGraphElt = document.getElementById("distance");
         drawAxes(distanceGraphElt, "Distance");
+
+        speedGraphElt = document.getElementById("speed");
+        drawAxes(speedGraphElt, "Speed");
 
         const parent = busElt.parentElement;
         const style = window.getComputedStyle(parent);
@@ -92,5 +109,6 @@
       </span>
     </div>
     <canvas id="distance" width="300" height="300"></canvas>
+    <canvas id="speed" width="300" height="300"></canvas>
   </body>
 </html>
