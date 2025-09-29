@@ -1,0 +1,96 @@
+<html>
+  <head>
+    <script>
+      let busElt;
+      let distanceGraphElt;
+      let containerWidth;
+      let busWidth;
+      let start;
+      let durationLastX = 0;
+      let durationLastY = 0;
+
+      const params = new URLSearchParams(window.location.search).get('p').split(";");
+      const speed = Number(params[0]);
+      const acceleration = Number(params[1]);
+
+
+      const totalDuration = acceleration == 0
+        ? 100/speed
+          // resolve the polynomial 1/2*at^2+v0*t-d = 0 to get t
+        : (-speed + Math.sqrt(speed*speed + 2*acceleration*100))/acceleration
+
+      function step(timestamp) {
+        if (start === undefined) {
+          start = timestamp;
+        }
+        const elapsedSecs = (timestamp - start) / 1000;
+
+        const percentDistance = speed * elapsedSecs + acceleration * elapsedSecs * elapsedSecs;
+
+        const shift = Math.max(0, Math.min(percentDistance / 100 * containerWidth, containerWidth) - busWidth);
+        busElt.style.transform = `translateX(${shift}px)`;
+
+        const distanceCtx = distanceGraphElt.getContext("2d");
+        distanceCtx.translate(50, 250); // origin bottom-left
+        distanceCtx.beginPath();
+        distanceCtx.moveTo(durationLastX, durationLastY);
+        const newX = elapsedSecs*200/totalDuration;
+        const newY = -percentDistance*200/100;
+        distanceCtx.lineTo(newX, newY);
+        distanceCtx.stroke();
+        // reset the translate
+        distanceCtx.setTransform(1, 0, 0, 1, 0, 0);
+
+        durationLastX = newX;
+        durationLastY = newY;
+
+        if (shift < containerWidth - busWidth) {
+          requestAnimationFrame(step);
+        }
+      }
+
+      function drawAxes(canvasElt, yLabel) {
+        const ctx = canvasElt.getContext("2d");
+        ctx.clearRect(0, 0, canvasElt.width, canvasElt.height);
+
+        ctx.translate(50, 250); // origin bottom-left
+
+        // axes
+        ctx.beginPath();
+        ctx.moveTo(0, 0); ctx.lineTo(200, 0); // X axis
+        ctx.moveTo(0, 0); ctx.lineTo(0, -200); // Y axis
+        ctx.stroke();
+
+        // labels
+        ctx.fillText("Time", 200, 15);
+        ctx.fillText(yLabel, -15, -200);
+
+        // reset the translate
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+      }
+
+      function doAnimate() {
+        busElt = document.getElementById("bus");
+        distanceGraphElt = document.getElementById("distance");
+
+        drawAxes(distanceGraphElt, "Distance");
+
+        const parent = busElt.parentElement;
+        const style = window.getComputedStyle(parent);
+        containerWidth = busElt.parentElement.offsetWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
+        busWidth = busElt.offsetWidth;
+        start = undefined;
+        requestAnimationFrame(step);
+      }
+    </script>
+  </head>
+  <body>
+    <button onClick="doAnimate()">Animiraj</button>
+    <div style="padding: 20px; max-width: 100%; border: solid black 1px">
+      <span id="bus" style="font-size: 70px; display: inline-block">
+        🚌
+      </span>
+    </div>
+    <canvas id="distance" width="300" height="300"></canvas>
+  </body>
+</html>
