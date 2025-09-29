@@ -158,6 +158,13 @@
       }
 
       function doAnimate() {
+        travelDescElt = document.getElementById("travelDesc");
+        let desc = "";
+        for (const {distance, speed, acceleration, duration} of sections) {
+          desc += "<br>Trajanje: " + duration + " Razdalja: " + distance + " Hitrost: " + speed + " Pospešek: " + acceleration;
+        }
+        travelDescElt.innerHTML = desc;
+
         busElt = document.getElementById("bus");
 
         distanceGraphElt = document.getElementById("distance");
@@ -188,5 +195,6 @@
     <canvas id="distance" width="300" height="300"></canvas>
     <canvas id="speed" width="300" height="300"></canvas>
     <canvas id="acceleration" width="300" height="300"></canvas>
+    <span id="travelDesc"></span>
   </body>
 </html>
