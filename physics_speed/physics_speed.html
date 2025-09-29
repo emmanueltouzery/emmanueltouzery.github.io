@@ -77,7 +77,7 @@
         speedCtx.beginPath();
         speedCtx.moveTo(speedLastX, speedLastY);
         const speedNewX = elapsedSecs*200/totalDuration;
-        const speedNewY = -(section.speed + section.acceleration * elapsedSecs)*200/maxSpeed;
+        const speedNewY = -(section.speed + section.acceleration * remainingSecs)*200/maxSpeed;
         speedCtx.lineTo(speedNewX, speedNewY);
         speedCtx.stroke();
         // reset the translate
