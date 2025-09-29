@@ -3,6 +3,8 @@
     <script>
       let busElt;
       let distanceGraphElt;
+      let speedGraphElt;
+      let accGraphElt;
       let containerWidth;
       let busWidth;
       let start;
@@ -10,6 +12,8 @@
       let durationLastY = 0;
       let speedLastX = 0;
       let speedLastY = 0;
+      let accLastX = 0;
+      let accLastY = 0;
 
       const params = new URLSearchParams(window.location.search).get('p').split(";");
       const speed = Number(params[0]);
@@ -58,6 +62,19 @@
         speedLastX = speedNewX;
         speedLastY = speedNewY;
 
+        const accCtx = accGraphElt.getContext("2d");
+        accCtx.translate(50, 250); // origin bottom-left
+        accCtx.beginPath();
+        accCtx.moveTo(accLastX, accLastY);
+        const accNewX = elapsedSecs*200/totalDuration;
+        const accNewY = -acceleration*2; // *2 just to make it more visible
+        accCtx.lineTo(accNewX, accNewY);
+        accCtx.stroke();
+        // reset the translate
+        accCtx.setTransform(1, 0, 0, 1, 0, 0);
+        accLastX = accNewX;
+        accLastY = accNewY;
+
         if (shift < containerWidth - busWidth) {
           requestAnimationFrame(step);
         }
@@ -87,10 +104,13 @@
         busElt = document.getElementById("bus");
 
         distanceGraphElt = document.getElementById("distance");
-        drawAxes(distanceGraphElt, "Distance");
+        drawAxes(distanceGraphElt, "Razdalja");
 
         speedGraphElt = document.getElementById("speed");
-        drawAxes(speedGraphElt, "Speed");
+        drawAxes(speedGraphElt, "Hitrost");
+
+        accGraphElt = document.getElementById("acceleration");
+        drawAxes(accGraphElt, "Pospešek");
 
         const parent = busElt.parentElement;
         const style = window.getComputedStyle(parent);
@@ -110,5 +130,6 @@
     </div>
     <canvas id="distance" width="300" height="300"></canvas>
     <canvas id="speed" width="300" height="300"></canvas>
+    <canvas id="acceleration" width="300" height="300"></canvas>
   </body>
 </html>
