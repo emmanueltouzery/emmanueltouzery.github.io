@@ -60,6 +60,10 @@
         busElt.style.transform = `translateX(${shift}px)`;
 
         const distanceCtx = distanceGraphElt.getContext("2d");
+        distanceCtx.save();
+        distanceCtx.strokeStyle = "blue";
+        distanceCtx.lineCap = "round";
+        distanceCtx.lineWidth = 4;
         distanceCtx.translate(50, 250); // origin bottom-left
         distanceCtx.beginPath();
         distanceCtx.moveTo(durationLastX, durationLastY);
@@ -68,11 +72,15 @@
         distanceCtx.lineTo(distanceNewX, distanceNewY);
         distanceCtx.stroke();
         // reset the translate
-        distanceCtx.setTransform(1, 0, 0, 1, 0, 0);
+        distanceCtx.restore();
         durationLastX = distanceNewX;
         durationLastY = distanceNewY;
 
         const speedCtx = speedGraphElt.getContext("2d");
+        speedCtx.save();
+        speedCtx.strokeStyle = "blue";
+        speedCtx.lineCap = "round";
+        speedCtx.lineWidth = 4;
         speedCtx.translate(50, 250); // origin bottom-left
         speedCtx.beginPath();
         speedCtx.moveTo(speedLastX, speedLastY);
@@ -80,12 +88,15 @@
         const speedNewY = -(section.speed + section.acceleration * remainingSecs)*200/maxSpeed;
         speedCtx.lineTo(speedNewX, speedNewY);
         speedCtx.stroke();
-        // reset the translate
-        speedCtx.setTransform(1, 0, 0, 1, 0, 0);
+        speedCtx.restore();
         speedLastX = speedNewX;
         speedLastY = speedNewY;
 
         const accCtx = accGraphElt.getContext("2d");
+        accCtx.save();
+        accCtx.strokeStyle = "blue";
+        accCtx.lineCap = "round";
+        accCtx.lineWidth = 4;
         accCtx.translate(50, 250); // origin bottom-left
         accCtx.beginPath();
         accCtx.moveTo(accLastX, accLastY);
@@ -93,13 +104,19 @@
         const accNewY = -section.acceleration*200/maxAcc;
         accCtx.lineTo(accNewX, accNewY);
         accCtx.stroke();
-        // reset the translate
-        accCtx.setTransform(1, 0, 0, 1, 0, 0);
+        accCtx.restore();
         accLastX = accNewX;
         accLastY = accNewY;
 
         if (shift < containerWidth - busWidth) {
           requestAnimationFrame(step);
+        } else {
+          durationLastX = 0;
+          durationLastY = 0;
+          speedLastX = 0;
+          speedLastY = 0;
+          accLastX = 0;
+          accLastY = 0;
         }
       }
 
